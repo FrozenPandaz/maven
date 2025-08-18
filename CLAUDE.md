@@ -27,3 +27,8 @@ Create an Nx plugin that integrates Maven with Nx to run Maven tasks more effici
 - Build times improved through intelligent caching and parallelization
 - Seamless integration with existing Maven workflows
 - Developer productivity increased through unified tooling
+
+## Development Guidelines
+- **Always commit and push changes as you go** - Make regular commits during development to avoid losing work
+- Create meaningful commit messages that describe the changes made
+- Push commits to maintain backup and collaboration history
