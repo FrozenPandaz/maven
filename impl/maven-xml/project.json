@@ -1,0 +1,45 @@
+{
+  "name": "maven-xml",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "root": "impl/maven-xml",
+  "projectType": "application",
+  "sourceRoot": "impl/maven-xml/src/main/java",
+  "targets": {
+    "build": {
+      "executor": "./dist/packages/maven:compile",
+      "options": {
+        "goals": [
+          "compile"
+        ]
+      }
+    },
+    "clean": {
+      "executor": "./dist/packages/maven:compile",
+      "options": {
+        "goals": [
+          "clean"
+        ]
+      }
+    },
+    "test": {
+      "executor": "./dist/packages/maven:test",
+      "options": {
+        "goals": [
+          "test"
+        ]
+      }
+    },
+    "package": {
+      "executor": "./dist/packages/maven:package",
+      "options": {
+        "goals": [
+          "package"
+        ]
+      }
+    }
+  },
+  "tags": [
+    "maven:org.apache.maven",
+    "maven:jar"
+  ]
+}

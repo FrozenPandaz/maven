@@ -1,0 +1,7 @@
+packages:
+  # Include any packages in the workspace root
+  - '.'
+  # Include any potential subpackages if they exist in the future
+  - 'packages/*'
+  - 'libs/*'
+  - 'apps/*'

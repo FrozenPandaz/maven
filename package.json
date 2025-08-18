@@ -1,0 +1,25 @@
+{
+  "name": "nx-maven-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Nx plugin for Maven integration",
+  "scripts": {
+    "build": "nx build",
+    "test": "nx test",
+    "lint": "nx lint",
+    "format": "nx format:write",
+    "affected": "nx affected",
+    "dep-graph": "nx dep-graph"
+  },
+  "devDependencies": {
+    "@nx/devkit": "^21.3.11",
+    "@nx/js": "^21.3.11",
+    "@nx/plugin": "^21.3.11",
+    "@nx/workspace": "^21.3.11",
+    "@types/node": "^20.0.0",
+    "nx": "^21.3.11",
+    "typescript": "^5.0.0",
+    "tslib": "^2.3.0"
+  },
+  "packageManager": "pnpm@9.0.0"
+}
