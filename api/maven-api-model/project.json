@@ -1,0 +1,37 @@
+{
+  "name": "maven-api-model",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "root": "api/maven-api-model",
+  "projectType": "application",
+  "sourceRoot": "api/maven-api-model/src/main/java",
+  "targets": {
+    "build": {
+      "executor": "./dist/packages/maven:compile",
+      "options": {
+        "goals": [
+          "compile"
+        ]
+      }
+    },
+    "clean": {
+      "executor": "./dist/packages/maven:compile",
+      "options": {
+        "goals": [
+          "clean"
+        ]
+      }
+    },
+    "package": {
+      "executor": "./dist/packages/maven:package",
+      "options": {
+        "goals": [
+          "package"
+        ]
+      }
+    }
+  },
+  "tags": [
+    "maven:org.apache.maven",
+    "maven:jar"
+  ]
+}

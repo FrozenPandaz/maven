@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {},
+  "files": [],
+  "references": [
+    {
+      "path": "./packages/maven"
+    }
+  ]
+}
