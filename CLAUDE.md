@@ -32,3 +32,4 @@ Create an Nx plugin that integrates Maven with Nx to run Maven tasks more effici
 - **Always commit and push changes as you go** - Make regular commits during development to avoid losing work
 - Create meaningful commit messages that describe the changes made
 - Push commits to maintain backup and collaboration history
+- **No backwards compatibility concerns** - Feel free to make breaking changes and improvements without worrying about backwards compatibility
