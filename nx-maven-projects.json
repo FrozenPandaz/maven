@@ -12823,7 +12823,7 @@
       "commonPhases" : [ "validate", "install", "deploy" ]
     }
   } ],
-  "generatedAt" : 1755544652449,
+  "generatedAt" : 1755544809267,
   "workspaceRoot" : "/home/jason/projects/triage/java/maven",
   "totalProjects" : 39
 }
