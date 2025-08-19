@@ -1,0 +1,15 @@
+org.apache.maven.buildcache.BuildCacheMojosExecutionStrategy
+org.apache.maven.buildcache.CacheControllerImpl
+org.apache.maven.buildcache.CacheLifecycleParticipant
+org.apache.maven.buildcache.DefaultMultiModuleSupport
+org.apache.maven.buildcache.DefaultNormalizedModelProvider
+org.apache.maven.buildcache.DefaultProjectInputCalculator
+org.apache.maven.buildcache.DefaultRestoredArtifactHandler
+org.apache.maven.buildcache.LifecyclePhasesHelper
+org.apache.maven.buildcache.LocalCacheRepositoryImpl
+org.apache.maven.buildcache.MojoParametersListener
+org.apache.maven.buildcache.RemoteCacheRepositoryImpl
+org.apache.maven.buildcache.RemoteCacheRepositoryNoOp
+org.apache.maven.buildcache.RemoteCacheRepositoryProvider
+org.apache.maven.buildcache.xml.CacheConfigImpl
+org.apache.maven.buildcache.xml.XmlService
