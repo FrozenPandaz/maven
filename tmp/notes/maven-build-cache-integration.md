@@ -19,7 +19,8 @@
 ### **3. Successful Plugin Testing**
 - **Command**: `mvn dev.nx.maven:nx-maven-analyzer-plugin:1.0-SNAPSHOT:analyze -X`
 - **Result**: Plugin executes successfully, generates nx-maven-projects.json
-- **Dependencies**: Maven Build Cache Extension successfully included in plugin classpath
+- **Dependencies**: Maven Build Cache Extension properly resolved via Maven dependency
+- **Cleanup**: Removed manual JAR inclusion, using proper `org.apache.maven.extensions:maven-build-cache-extension:1.2.0` dependency
 
 ## 🔧 **Technical Implementation Details**
 
