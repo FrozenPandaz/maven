@@ -120,6 +120,251 @@ Maven paths are converted to Nx input patterns:
 "pom.xml" → "{projectRoot}/pom.xml"
 ```
 
+## Project Property Inference
+
+### Core Project Properties
+
+#### **Project Name**
+```kotlin
+// Source: MavenProject.artifactId
+val projectName = mavenProject.artifactId
+```
+- Uses Maven's artifact ID as the Nx project name
+- Ensures consistency with Maven naming conventions
+- Example: `my-service` → Nx project: `my-service`
+
+#### **Project Root**
+```kotlin
+// Source: MavenProject.basedir
+val projectRoot = mavenProject.basedir.absolutePath
+```
+- Uses Maven's base directory as the project root
+- Converted to relative path from workspace root for Nx
+- Example: `/workspace/modules/api` → `modules/api`
+
+#### **Project Type**
+```kotlin
+// Source: MavenProject.packaging
+val projectType = when (mavenProject.packaging) {
+    "jar" -> "library"
+    "war" -> "application" 
+    "ear" -> "application"
+    "pom" -> "library" // parent/aggregator
+    "maven-plugin" -> "library"
+    else -> "application"
+}
+```
+
+### Target Generation and Properties
+
+#### **Target Names**
+```kotlin
+// Source: Maven lifecycle phases
+val targetNames = listOf("compile", "test", "package", "install", "deploy", "clean")
+```
+- Maps directly to Maven lifecycle phases
+- Each phase becomes an Nx target
+- Custom phases from plugins also included
+
+#### **Target Executors**
+```kotlin
+// All targets use the Maven executor
+val executor = "nx:run-commands"
+val command = "mvn ${phase}"
+```
+- Consistent executor for all Maven targets
+- Commands mapped to corresponding Maven phases
+- Example: `compile` target → `mvn compile`
+
+#### **Cacheability Detection**
+```kotlin
+// Source: Maven Build Cache Extension + fallback analysis
+fun determineCacheability(execution: MojoExecution, project: MavenProject): Boolean {
+    return try {
+        // 1. Try Maven Build Cache Extension
+        val controller = session.container.lookup("org.apache.maven.buildcache.CacheController")
+        controller.isCacheable(execution) // Maven's own decision
+    } catch {
+        // 2. Fallback: Only cache safe build phases
+        phase in setOf("compile", "test-compile", "test", "package")
+    }
+}
+```
+
+**Cacheable Phases** (via Maven Build Cache Extension):
+- `compile` - Compilation has no side effects
+- `test-compile` - Test compilation is pure
+- `test` - Tests don't modify external state
+- `package` - Creates artifacts deterministically
+
+**Non-Cacheable Phases**:
+- `install` - Modifies local Maven repository
+- `deploy` - Publishes to remote repositories  
+- `clean` - Destructive file operations
+
+#### **Input Pattern Inference**
+
+**From Maven Build Cache Extension:**
+```kotlin
+fun extractMavenInputs(execution: MojoExecution): List<String> {
+    val calculator = container.lookup("org.apache.maven.buildcache.DefaultProjectInputCalculator")
+    val inputs = calculator.calculateInputs(execution, project)
+    return inputs.map { convertToNxPattern(it) }
+}
+```
+
+**Fallback Goal-Based Analysis:**
+```kotlin
+val inputs = when (goal) {
+    "compile" -> [
+        "{projectRoot}/src/main/**/*",
+        "{projectRoot}/pom.xml"
+    ]
+    "test-compile" -> [
+        "{projectRoot}/src/test/**/*", 
+        "{projectRoot}/src/main/**/*",
+        "{projectRoot}/pom.xml"
+    ]
+    "test" -> [
+        "{projectRoot}/src/test/**/*",
+        "{projectRoot}/target/classes/**/*",
+        "{projectRoot}/pom.xml"
+    ]
+    "package" -> [
+        "{projectRoot}/target/classes/**/*",
+        "{projectRoot}/src/main/resources/**/*", 
+        "{projectRoot}/pom.xml"
+    ]
+}
+```
+
+#### **Output Pattern Inference**
+
+**From Maven Build Cache Extension:**
+```kotlin
+fun extractMavenOutputs(execution: MojoExecution): List<String> {
+    val config = container.lookup("org.apache.maven.buildcache.xml.CacheConfigImpl")
+    val outputs = config.getOutputDirectories(execution)
+    return outputs.map { convertToNxPattern(it) }
+}
+```
+
+**Goal-Based Output Inference:**
+```kotlin
+val outputs = when (goal) {
+    "compile" -> ["{projectRoot}/target/classes"]
+    "test-compile" -> ["{projectRoot}/target/test-classes"] 
+    "test" -> [
+        "{projectRoot}/target/surefire-reports",
+        "{projectRoot}/target/test-results"
+    ]
+    "package" -> when (packaging) {
+        "jar" -> ["{projectRoot}/target/*.jar"]
+        "war" -> ["{projectRoot}/target/*.war"] 
+        "ear" -> ["{projectRoot}/target/*.ear"]
+        else -> ["{projectRoot}/target"]
+    }
+    "resources" -> if (testScope) {
+        ["{projectRoot}/target/test-classes"]
+    } else {
+        ["{projectRoot}/target/classes"] 
+    }
+}
+```
+
+#### **Parallelism Detection**
+```kotlin
+fun canRunInParallel(phase: String): Boolean {
+    return !isExternalStateModifyingPhase(phase)
+}
+
+fun isExternalStateModifyingPhase(phase: String): Boolean {
+    return phase in setOf("install", "deploy", "release")
+}
+```
+- Phases that only read/write to project directory: `parallelism: true`
+- Phases that modify external state (repositories): `parallelism: false`
+
+### Inter-Project Dependencies
+
+#### **Dependency Resolution**
+```kotlin
+// Source: MavenProject.dependencies + reactor projects
+fun resolveDependencies(project: MavenProject, allProjects: List<MavenProject>): List<String> {
+    val dependencies = mutableListOf<String>()
+    
+    project.dependencies.forEach { dependency ->
+        val coordinates = "${dependency.groupId}:${dependency.artifactId}"
+        val dependentProject = allProjects.find { 
+            "${it.groupId}:${it.artifactId}" == coordinates 
+        }
+        dependentProject?.let { dependencies.add(it.artifactId) }
+    }
+    
+    return dependencies
+}
+```
+
+#### **Implicit Dependencies**
+```kotlin
+// Target-level dependencies based on Maven lifecycle
+val implicitDependencies = when (phase) {
+    "test" -> ["compile"] // Tests depend on compilation
+    "package" -> ["compile"] // Packaging depends on compilation  
+    "install" -> ["package"] // Install depends on packaging
+    "deploy" -> ["package"] // Deploy depends on packaging
+    else -> emptyList()
+}
+```
+
+### Path Pattern Conversion
+
+#### **Maven Path → Nx Pattern**
+```kotlin
+fun convertToNxInputPattern(mavenPath: String, project: MavenProject): String {
+    val projectRoot = project.basedir.absolutePath
+    
+    return when {
+        // Absolute paths relative to project
+        mavenPath.startsWith(projectRoot) -> {
+            val relativePath = mavenPath.removePrefix(projectRoot).removePrefix("/")
+            "{projectRoot}/$relativePath"
+        }
+        // Maven standard directories
+        mavenPath.startsWith("src/") -> "{projectRoot}/$mavenPath"
+        mavenPath.startsWith("target/") -> "{projectRoot}/$mavenPath"
+        mavenPath == "pom.xml" -> "{projectRoot}/pom.xml"
+        // External dependencies (workspace-level)
+        mavenPath.startsWith("/") -> mavenPath 
+        // Default to project-relative
+        else -> "{projectRoot}/$mavenPath"
+    }
+}
+```
+
+**Example Conversions:**
+- `/project/src/main/java` → `{projectRoot}/src/main/java`
+- `src/main/java` → `{projectRoot}/src/main/java`
+- `target/classes` → `{projectRoot}/target/classes`
+- `pom.xml` → `{projectRoot}/pom.xml`
+
+### Metadata Extraction
+
+#### **Project Metadata**
+```kotlin
+val metadata = mapOf(
+    "mavenGroupId" to project.groupId,
+    "mavenArtifactId" to project.artifactId, 
+    "mavenVersion" to project.version,
+    "mavenPackaging" to project.packaging,
+    "mavenInputsCount" to inputs.size,
+    "mavenOutputsCount" to outputs.size,
+    "cacheDecisionSource" to decision.source // "Build Cache Extension" or "Fallback"
+)
+```
+
+This comprehensive inference system ensures that Nx project configuration accurately reflects Maven project structure and behavior while leveraging Maven's native analysis where possible.
+
 ## Implementation Status
 
 ### ✅ Completed
