@@ -166,6 +166,42 @@ val targetNames = listOf("compile", "test", "package", "install", "deploy", "cle
 - Each phase becomes an Nx target
 - Custom phases from plugins also included
 
+#### **Target Groups**
+```kotlin
+// Organize targets by Maven lifecycle and plugin categories
+val targetGroups = mapOf(
+    "build" -> ["validate", "compile", "process-classes"],
+    "test" -> ["test-compile", "test"], 
+    "package" -> ["prepare-package", "package"],
+    "integration" -> ["integration-test", "verify"],
+    "deploy" -> ["install", "deploy"],
+    "clean" -> ["clean"],
+    "quality" -> ["checkstyle", "pmd", "spotbugs", "jacoco"],
+    "docs" -> ["javadoc", "site"]
+)
+```
+
+**Lifecycle-Based Groups:**
+- **build**: Compilation and processing phases
+- **test**: Test-related phases (compile, execute)
+- **package**: Artifact creation phases
+- **integration**: Integration testing and verification
+- **deploy**: Installation and deployment phases
+- **clean**: Cleanup phases
+- **site**: Documentation and site generation
+
+**Plugin-Based Groups:**
+- **quality**: Code quality tools (Checkstyle, PMD, SpotBugs, JaCoCo, SonarQube)
+- **docs**: Documentation generation (Javadoc, AsciiDoc, Antora)
+- **compiler**: Compiler-specific goals
+- **test-tools**: Testing framework goals (Surefire, Failsafe)
+
+**Packaging-Specific Groups:**
+- **jar**: JAR-specific goals (jar:jar, jar:test-jar)
+- **war**: WAR-specific goals (war:war, war:exploded)
+- **ear**: EAR-specific goals (ear:ear)
+- **plugin**: Maven plugin goals (plugin:descriptor, plugin:help)
+
 #### **Target Executors**
 ```kotlin
 // All targets use the Maven executor
