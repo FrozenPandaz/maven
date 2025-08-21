@@ -4,7 +4,7 @@
       "api/maven-api-annotations" : {
         "name" : "org.apache.maven.maven-api-annotations",
         "root" : "api/maven-api-annotations",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "api/maven-api-annotations/src/main/java",
         "targets" : {
           "clean" : {
@@ -14,7 +14,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -35,7 +36,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "package" : {
@@ -47,7 +48,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -57,10 +58,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -69,7 +68,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -78,7 +78,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -89,7 +90,7 @@
       "api/maven-api-di" : {
         "name" : "org.apache.maven.maven-api-di",
         "root" : "api/maven-api-di",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "api/maven-api-di/src/main/java",
         "targets" : {
           "clean" : {
@@ -99,7 +100,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -120,7 +122,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "package" : {
@@ -132,7 +134,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -142,10 +144,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -154,7 +154,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -163,7 +164,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -174,7 +176,7 @@
       "api/maven-api-xml" : {
         "name" : "org.apache.maven.maven-api-xml",
         "root" : "api/maven-api-xml",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "api/maven-api-xml/src/main/java",
         "targets" : {
           "clean" : {
@@ -184,7 +186,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:clean", "org.apache.maven.maven-api-annotations:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -205,7 +208,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "package" : {
@@ -217,7 +220,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -227,10 +230,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -239,7 +240,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:install", "org.apache.maven.maven-api-annotations:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -248,7 +250,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:deploy", "org.apache.maven.maven-api-annotations:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -259,7 +262,7 @@
       "api/maven-api-model" : {
         "name" : "org.apache.maven.maven-api-model",
         "root" : "api/maven-api-model",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "api/maven-api-model/src/main/java",
         "targets" : {
           "clean" : {
@@ -269,7 +272,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-xml:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -290,7 +294,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-xml:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "package" : {
@@ -302,7 +306,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -312,10 +316,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-xml:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -324,7 +326,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-xml:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -333,7 +336,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-xml:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -344,7 +348,7 @@
       "api/maven-api-plugin" : {
         "name" : "org.apache.maven.maven-api-plugin",
         "root" : "api/maven-api-plugin",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "api/maven-api-plugin/src/main/java",
         "targets" : {
           "clean" : {
@@ -354,7 +358,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-xml:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -375,7 +380,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-xml:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -387,8 +392,8 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-xml:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -399,7 +404,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -409,10 +414,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-xml:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -421,7 +424,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-xml:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -430,7 +434,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-xml:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -441,7 +446,7 @@
       "api/maven-api-settings" : {
         "name" : "org.apache.maven.maven-api-settings",
         "root" : "api/maven-api-settings",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "api/maven-api-settings/src/main/java",
         "targets" : {
           "clean" : {
@@ -451,7 +456,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-xml:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -472,7 +478,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-xml:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -484,8 +490,8 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-xml:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -496,7 +502,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -506,10 +512,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-xml:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -518,7 +522,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-xml:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -527,7 +532,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-xml:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -538,7 +544,7 @@
       "api/maven-api-toolchain" : {
         "name" : "org.apache.maven.maven-api-toolchain",
         "root" : "api/maven-api-toolchain",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "api/maven-api-toolchain/src/main/java",
         "targets" : {
           "clean" : {
@@ -548,7 +554,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-xml:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -569,7 +576,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-xml:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "package" : {
@@ -581,7 +588,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -591,10 +598,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-xml:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -603,7 +608,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-xml:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -612,7 +618,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-xml:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -623,7 +630,7 @@
       "api/maven-api-metadata" : {
         "name" : "org.apache.maven.maven-api-metadata",
         "root" : "api/maven-api-metadata",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "api/maven-api-metadata/src/main/java",
         "targets" : {
           "clean" : {
@@ -633,7 +640,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:clean", "org.apache.maven.maven-api-annotations:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -654,7 +662,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "package" : {
@@ -666,7 +674,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -676,10 +684,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -688,7 +694,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:install", "org.apache.maven.maven-api-annotations:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -697,7 +704,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:deploy", "org.apache.maven.maven-api-annotations:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -708,7 +716,7 @@
       "api/maven-api-core" : {
         "name" : "org.apache.maven.maven-api-core",
         "root" : "api/maven-api-core",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "api/maven-api-core/src/main/java",
         "targets" : {
           "clean" : {
@@ -718,7 +726,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-di:clean", "org.apache.maven.maven-api-model:clean", "org.apache.maven.maven-api-settings:clean", "org.apache.maven.maven-api-toolchain:clean", "org.apache.maven.maven-api-plugin:clean", "org.apache.maven.maven-api-xml:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -739,7 +748,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-di:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-api-plugin:compile", "org.apache.maven.maven-api-xml:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -751,8 +760,8 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-di:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-settings:test", "org.apache.maven.maven-api-toolchain:test", "org.apache.maven.maven-api-plugin:test", "org.apache.maven.maven-api-xml:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -763,7 +772,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-plugin:package", "org.apache.maven.maven-api-xml:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -773,10 +782,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-di:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-settings:verify", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-api-plugin:verify", "org.apache.maven.maven-api-xml:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -785,7 +792,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-di:install", "org.apache.maven.maven-api-model:install", "org.apache.maven.maven-api-settings:install", "org.apache.maven.maven-api-toolchain:install", "org.apache.maven.maven-api-plugin:install", "org.apache.maven.maven-api-xml:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -794,7 +802,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-di:deploy", "org.apache.maven.maven-api-model:deploy", "org.apache.maven.maven-api-settings:deploy", "org.apache.maven.maven-api-toolchain:deploy", "org.apache.maven.maven-api-plugin:deploy", "org.apache.maven.maven-api-xml:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -805,7 +814,7 @@
       "api/maven-api-spi" : {
         "name" : "org.apache.maven.maven-api-spi",
         "root" : "api/maven-api-spi",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "api/maven-api-spi/src/main/java",
         "targets" : {
           "clean" : {
@@ -815,7 +824,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-model:clean", "org.apache.maven.maven-api-core:clean", "org.apache.maven.maven-api-di:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -836,7 +846,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-di:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "package" : {
@@ -848,7 +858,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-di:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -858,10 +868,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-di:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -870,7 +878,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-model:install", "org.apache.maven.maven-api-core:install", "org.apache.maven.maven-api-di:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -879,7 +888,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-model:deploy", "org.apache.maven.maven-api-core:deploy", "org.apache.maven.maven-api-di:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -890,7 +900,7 @@
       "api/maven-api-cli" : {
         "name" : "org.apache.maven.maven-api-cli",
         "root" : "api/maven-api-cli",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "api/maven-api-cli/src/main/java",
         "targets" : {
           "clean" : {
@@ -900,7 +910,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-core:clean", "org.apache.maven.maven-api-xml:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -921,7 +932,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-xml:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "package" : {
@@ -933,7 +944,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-xml:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -943,10 +954,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-xml:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -955,7 +964,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-core:install", "org.apache.maven.maven-api-xml:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -964,7 +974,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-core:deploy", "org.apache.maven.maven-api-xml:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -985,7 +996,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -1004,7 +1016,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -1013,7 +1026,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:pom" ]
@@ -1024,7 +1038,7 @@
       "impl/maven-support" : {
         "name" : "org.apache.maven.maven-support",
         "root" : "impl/maven-support",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "impl/maven-support/src/main/java",
         "targets" : {
           "clean" : {
@@ -1034,7 +1048,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:clean", "org.apache.maven.maven-api-model:clean", "org.apache.maven.maven-api-settings:clean", "org.apache.maven.maven-api-toolchain:clean", "org.apache.maven.maven-api-metadata:clean", "org.apache.maven.maven-api-plugin:clean", "org.apache.maven.maven-xml:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -1055,7 +1070,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-api-metadata:compile", "org.apache.maven.maven-api-plugin:compile", "org.apache.maven.maven-xml:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -1067,8 +1082,8 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-settings:test", "org.apache.maven.maven-api-toolchain:test", "org.apache.maven.maven-api-metadata:test", "org.apache.maven.maven-api-plugin:test", "org.apache.maven.maven-xml:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -1079,7 +1094,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-api-plugin:package", "org.apache.maven.maven-xml:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -1089,10 +1104,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-settings:verify", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-api-metadata:verify", "org.apache.maven.maven-api-plugin:verify", "org.apache.maven.maven-xml:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -1101,7 +1114,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:install", "org.apache.maven.maven-api-model:install", "org.apache.maven.maven-api-settings:install", "org.apache.maven.maven-api-toolchain:install", "org.apache.maven.maven-api-metadata:install", "org.apache.maven.maven-api-plugin:install", "org.apache.maven.maven-xml:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -1110,7 +1124,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:deploy", "org.apache.maven.maven-api-model:deploy", "org.apache.maven.maven-api-settings:deploy", "org.apache.maven.maven-api-toolchain:deploy", "org.apache.maven.maven-api-metadata:deploy", "org.apache.maven.maven-api-plugin:deploy", "org.apache.maven.maven-xml:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -1121,7 +1136,7 @@
       "impl/maven-impl" : {
         "name" : "org.apache.maven.maven-impl",
         "root" : "impl/maven-impl",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "impl/maven-impl/src/main/java",
         "targets" : {
           "clean" : {
@@ -1131,7 +1146,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:clean", "org.apache.maven.maven-api-core:clean", "org.apache.maven.maven-api-spi:clean", "org.apache.maven.maven-api-metadata:clean", "org.apache.maven.maven-api-xml:clean", "org.apache.maven.maven-api-toolchain:clean", "org.apache.maven.maven-api-di:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-model:clean", "org.apache.maven.maven-api-settings:clean", "org.apache.maven.maven-di:clean", "org.apache.maven.maven-support:clean", "org.apache.maven.maven-xml:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -1152,7 +1168,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-spi:compile", "org.apache.maven.maven-api-metadata:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-api-di:compile", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-di:compile", "org.apache.maven.maven-support:compile", "org.apache.maven.maven-xml:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -1164,8 +1180,8 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-api-spi:test", "org.apache.maven.maven-api-metadata:test", "org.apache.maven.maven-api-xml:test", "org.apache.maven.maven-api-toolchain:test", "org.apache.maven.maven-api-di:test", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-settings:test", "org.apache.maven.maven-di:test", "org.apache.maven.maven-support:test", "org.apache.maven.maven-xml:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -1176,7 +1192,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-spi:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-di:package", "org.apache.maven.maven-support:package", "org.apache.maven.maven-xml:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -1186,10 +1202,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-spi:verify", "org.apache.maven.maven-api-metadata:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-api-di:verify", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-settings:verify", "org.apache.maven.maven-di:verify", "org.apache.maven.maven-support:verify", "org.apache.maven.maven-xml:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -1198,7 +1212,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:install", "org.apache.maven.maven-api-core:install", "org.apache.maven.maven-api-spi:install", "org.apache.maven.maven-api-metadata:install", "org.apache.maven.maven-api-xml:install", "org.apache.maven.maven-api-toolchain:install", "org.apache.maven.maven-api-di:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-model:install", "org.apache.maven.maven-api-settings:install", "org.apache.maven.maven-di:install", "org.apache.maven.maven-support:install", "org.apache.maven.maven-xml:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -1207,7 +1222,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:deploy", "org.apache.maven.maven-api-core:deploy", "org.apache.maven.maven-api-spi:deploy", "org.apache.maven.maven-api-metadata:deploy", "org.apache.maven.maven-api-xml:deploy", "org.apache.maven.maven-api-toolchain:deploy", "org.apache.maven.maven-api-di:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-model:deploy", "org.apache.maven.maven-api-settings:deploy", "org.apache.maven.maven-di:deploy", "org.apache.maven.maven-support:deploy", "org.apache.maven.maven-xml:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -1218,7 +1234,7 @@
       "impl/maven-di" : {
         "name" : "org.apache.maven.maven-di",
         "root" : "impl/maven-di",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "impl/maven-di/src/main/java",
         "targets" : {
           "clean" : {
@@ -1228,7 +1244,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:clean", "org.apache.maven.maven-api-di:clean", "org.apache.maven.maven-api-annotations:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -1249,7 +1266,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-di:compile", "org.apache.maven.maven-api-annotations:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -1261,8 +1278,8 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-di:test", "org.apache.maven.maven-api-annotations:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -1273,7 +1290,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-annotations:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -1283,10 +1300,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-di:verify", "org.apache.maven.maven-api-annotations:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -1295,7 +1310,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:install", "org.apache.maven.maven-api-di:install", "org.apache.maven.maven-api-annotations:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -1304,7 +1320,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:deploy", "org.apache.maven.maven-api-di:deploy", "org.apache.maven.maven-api-annotations:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -1315,7 +1332,7 @@
       "impl/maven-xml" : {
         "name" : "org.apache.maven.maven-xml",
         "root" : "impl/maven-xml",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "impl/maven-xml/src/main/java",
         "targets" : {
           "clean" : {
@@ -1325,7 +1342,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:clean", "org.apache.maven.maven-api-xml:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -1346,7 +1364,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-xml:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -1358,8 +1376,8 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-xml:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -1370,7 +1388,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-xml:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -1380,10 +1398,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-xml:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -1392,7 +1408,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:install", "org.apache.maven.maven-api-xml:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -1401,7 +1418,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:deploy", "org.apache.maven.maven-api-xml:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -1412,7 +1430,7 @@
       "impl/maven-jline" : {
         "name" : "org.apache.maven.maven-jline",
         "root" : "impl/maven-jline",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "impl/maven-jline/src/main/java",
         "targets" : {
           "clean" : {
@@ -1422,7 +1440,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-core:clean", "org.apache.maven.maven-api-di:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -1443,7 +1462,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-di:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "package" : {
@@ -1455,7 +1474,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-di:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -1465,10 +1484,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-di:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -1477,7 +1494,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-core:install", "org.apache.maven.maven-api-di:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -1486,7 +1504,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-core:deploy", "org.apache.maven.maven-api-di:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -1497,7 +1516,7 @@
       "impl/maven-logging" : {
         "name" : "org.apache.maven.maven-logging",
         "root" : "impl/maven-logging",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "impl/maven-logging/src/main/java",
         "targets" : {
           "clean" : {
@@ -1507,7 +1526,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:clean", "org.apache.maven.maven-api-core:clean", "org.apache.maven.maven-jline:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -1528,7 +1548,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-jline:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -1540,8 +1560,8 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-jline:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -1552,7 +1572,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-jline:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -1562,10 +1582,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-jline:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -1574,7 +1592,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:install", "org.apache.maven.maven-api-core:install", "org.apache.maven.maven-jline:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -1583,7 +1602,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:deploy", "org.apache.maven.maven-api-core:deploy", "org.apache.maven.maven-jline:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -1594,7 +1614,7 @@
       "impl/maven-core" : {
         "name" : "org.apache.maven.maven-core",
         "root" : "impl/maven-core",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "impl/maven-core/src/main/java",
         "targets" : {
           "clean" : {
@@ -1604,7 +1624,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-core:clean", "org.apache.maven.maven-api-di:clean", "org.apache.maven.maven-api-metadata:clean", "org.apache.maven.maven-api-model:clean", "org.apache.maven.maven-api-plugin:clean", "org.apache.maven.maven-api-settings:clean", "org.apache.maven.maven-api-spi:clean", "org.apache.maven.maven-api-toolchain:clean", "org.apache.maven.maven-api-xml:clean", "org.apache.maven.maven-di:clean", "org.apache.maven.maven-impl:clean", "org.apache.maven.maven-jline:clean", "org.apache.maven.maven-logging:clean", "org.apache.maven.maven-xml:clean", "org.apache.maven.maven-artifact:clean", "org.apache.maven.maven-model:clean", "org.apache.maven.maven-model-builder:clean", "org.apache.maven.maven-plugin-api:clean", "org.apache.maven.maven-repository-metadata:clean", "org.apache.maven.maven-settings:clean", "org.apache.maven.maven-toolchain-model:clean", "org.apache.maven.maven-toolchain-builder:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -1625,7 +1646,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-di:compile", "org.apache.maven.maven-api-metadata:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-plugin:compile", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-api-spi:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-di:compile", "org.apache.maven.maven-impl:compile", "org.apache.maven.maven-jline:compile", "org.apache.maven.maven-logging:compile", "org.apache.maven.maven-xml:compile", "org.apache.maven.maven-artifact:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-model-builder:compile", "org.apache.maven.maven-plugin-api:compile", "org.apache.maven.maven-repository-metadata:compile", "org.apache.maven.maven-settings:compile", "org.apache.maven.maven-toolchain-model:compile", "org.apache.maven.maven-toolchain-builder:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -1637,8 +1658,8 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-api-di:test", "org.apache.maven.maven-api-metadata:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-plugin:test", "org.apache.maven.maven-api-settings:test", "org.apache.maven.maven-api-spi:test", "org.apache.maven.maven-api-toolchain:test", "org.apache.maven.maven-api-xml:test", "org.apache.maven.maven-di:test", "org.apache.maven.maven-impl:test", "org.apache.maven.maven-jline:test", "org.apache.maven.maven-logging:test", "org.apache.maven.maven-xml:test", "org.apache.maven.maven-artifact:test", "org.apache.maven.maven-model:test", "org.apache.maven.maven-model-builder:test", "org.apache.maven.maven-plugin-api:test", "org.apache.maven.maven-repository-metadata:test", "org.apache.maven.maven-settings:test", "org.apache.maven.maven-toolchain-model:test", "org.apache.maven.maven-toolchain-builder:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -1649,7 +1670,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-plugin:package", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-spi:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-di:package", "org.apache.maven.maven-impl:package", "org.apache.maven.maven-jline:package", "org.apache.maven.maven-logging:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-model-builder:package", "org.apache.maven.maven-plugin-api:package", "org.apache.maven.maven-repository-metadata:package", "org.apache.maven.maven-settings:package", "org.apache.maven.maven-toolchain-model:package", "org.apache.maven.maven-toolchain-builder:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -1659,10 +1680,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-di:verify", "org.apache.maven.maven-api-metadata:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-plugin:verify", "org.apache.maven.maven-api-settings:verify", "org.apache.maven.maven-api-spi:verify", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-di:verify", "org.apache.maven.maven-impl:verify", "org.apache.maven.maven-jline:verify", "org.apache.maven.maven-logging:verify", "org.apache.maven.maven-xml:verify", "org.apache.maven.maven-artifact:verify", "org.apache.maven.maven-model:verify", "org.apache.maven.maven-model-builder:verify", "org.apache.maven.maven-plugin-api:verify", "org.apache.maven.maven-repository-metadata:verify", "org.apache.maven.maven-settings:verify", "org.apache.maven.maven-toolchain-model:verify", "org.apache.maven.maven-toolchain-builder:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -1671,7 +1690,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-core:install", "org.apache.maven.maven-api-di:install", "org.apache.maven.maven-api-metadata:install", "org.apache.maven.maven-api-model:install", "org.apache.maven.maven-api-plugin:install", "org.apache.maven.maven-api-settings:install", "org.apache.maven.maven-api-spi:install", "org.apache.maven.maven-api-toolchain:install", "org.apache.maven.maven-api-xml:install", "org.apache.maven.maven-di:install", "org.apache.maven.maven-impl:install", "org.apache.maven.maven-jline:install", "org.apache.maven.maven-logging:install", "org.apache.maven.maven-xml:install", "org.apache.maven.maven-artifact:install", "org.apache.maven.maven-model:install", "org.apache.maven.maven-model-builder:install", "org.apache.maven.maven-plugin-api:install", "org.apache.maven.maven-repository-metadata:install", "org.apache.maven.maven-settings:install", "org.apache.maven.maven-toolchain-model:install", "org.apache.maven.maven-toolchain-builder:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -1680,7 +1700,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-core:deploy", "org.apache.maven.maven-api-di:deploy", "org.apache.maven.maven-api-metadata:deploy", "org.apache.maven.maven-api-model:deploy", "org.apache.maven.maven-api-plugin:deploy", "org.apache.maven.maven-api-settings:deploy", "org.apache.maven.maven-api-spi:deploy", "org.apache.maven.maven-api-toolchain:deploy", "org.apache.maven.maven-api-xml:deploy", "org.apache.maven.maven-di:deploy", "org.apache.maven.maven-impl:deploy", "org.apache.maven.maven-jline:deploy", "org.apache.maven.maven-logging:deploy", "org.apache.maven.maven-xml:deploy", "org.apache.maven.maven-artifact:deploy", "org.apache.maven.maven-model:deploy", "org.apache.maven.maven-model-builder:deploy", "org.apache.maven.maven-plugin-api:deploy", "org.apache.maven.maven-repository-metadata:deploy", "org.apache.maven.maven-settings:deploy", "org.apache.maven.maven-toolchain-model:deploy", "org.apache.maven.maven-toolchain-builder:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -1691,7 +1712,7 @@
       "impl/maven-cli" : {
         "name" : "org.apache.maven.maven-cli",
         "root" : "impl/maven-cli",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "impl/maven-cli/src/main/java",
         "targets" : {
           "clean" : {
@@ -1701,7 +1722,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-core:clean", "org.apache.maven.maven-api-cli:clean", "org.apache.maven.maven-api-di:clean", "org.apache.maven.maven-api-model:clean", "org.apache.maven.maven-api-settings:clean", "org.apache.maven.maven-api-spi:clean", "org.apache.maven.maven-api-toolchain:clean", "org.apache.maven.maven-api-xml:clean", "org.apache.maven.maven-core:clean", "org.apache.maven.maven-di:clean", "org.apache.maven.maven-impl:clean", "org.apache.maven.maven-jline:clean", "org.apache.maven.maven-logging:clean", "org.apache.maven.maven-xml:clean", "org.apache.maven.maven-artifact:clean", "org.apache.maven.maven-model:clean", "org.apache.maven.maven-plugin-api:clean", "org.apache.maven.maven-settings:clean", "org.apache.maven.maven-toolchain-model:clean", "org.apache.maven.maven-compat:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -1722,7 +1744,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-cli:compile", "org.apache.maven.maven-api-di:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-api-spi:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-core:compile", "org.apache.maven.maven-di:compile", "org.apache.maven.maven-impl:compile", "org.apache.maven.maven-jline:compile", "org.apache.maven.maven-logging:compile", "org.apache.maven.maven-xml:compile", "org.apache.maven.maven-artifact:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-plugin-api:compile", "org.apache.maven.maven-settings:compile", "org.apache.maven.maven-toolchain-model:compile", "org.apache.maven.maven-compat:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -1734,8 +1756,8 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-api-cli:test", "org.apache.maven.maven-api-di:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-settings:test", "org.apache.maven.maven-api-spi:test", "org.apache.maven.maven-api-toolchain:test", "org.apache.maven.maven-api-xml:test", "org.apache.maven.maven-core:test", "org.apache.maven.maven-di:test", "org.apache.maven.maven-impl:test", "org.apache.maven.maven-jline:test", "org.apache.maven.maven-logging:test", "org.apache.maven.maven-xml:test", "org.apache.maven.maven-artifact:test", "org.apache.maven.maven-model:test", "org.apache.maven.maven-plugin-api:test", "org.apache.maven.maven-settings:test", "org.apache.maven.maven-toolchain-model:test", "org.apache.maven.maven-compat:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -1746,7 +1768,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-cli:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-spi:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-core:package", "org.apache.maven.maven-di:package", "org.apache.maven.maven-impl:package", "org.apache.maven.maven-jline:package", "org.apache.maven.maven-logging:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-plugin-api:package", "org.apache.maven.maven-settings:package", "org.apache.maven.maven-toolchain-model:package", "org.apache.maven.maven-compat:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -1756,10 +1778,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-cli:verify", "org.apache.maven.maven-api-di:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-settings:verify", "org.apache.maven.maven-api-spi:verify", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-core:verify", "org.apache.maven.maven-di:verify", "org.apache.maven.maven-impl:verify", "org.apache.maven.maven-jline:verify", "org.apache.maven.maven-logging:verify", "org.apache.maven.maven-xml:verify", "org.apache.maven.maven-artifact:verify", "org.apache.maven.maven-model:verify", "org.apache.maven.maven-plugin-api:verify", "org.apache.maven.maven-settings:verify", "org.apache.maven.maven-toolchain-model:verify", "org.apache.maven.maven-compat:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -1768,7 +1788,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-core:install", "org.apache.maven.maven-api-cli:install", "org.apache.maven.maven-api-di:install", "org.apache.maven.maven-api-model:install", "org.apache.maven.maven-api-settings:install", "org.apache.maven.maven-api-spi:install", "org.apache.maven.maven-api-toolchain:install", "org.apache.maven.maven-api-xml:install", "org.apache.maven.maven-core:install", "org.apache.maven.maven-di:install", "org.apache.maven.maven-impl:install", "org.apache.maven.maven-jline:install", "org.apache.maven.maven-logging:install", "org.apache.maven.maven-xml:install", "org.apache.maven.maven-artifact:install", "org.apache.maven.maven-model:install", "org.apache.maven.maven-plugin-api:install", "org.apache.maven.maven-settings:install", "org.apache.maven.maven-toolchain-model:install", "org.apache.maven.maven-compat:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -1777,7 +1798,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-core:deploy", "org.apache.maven.maven-api-cli:deploy", "org.apache.maven.maven-api-di:deploy", "org.apache.maven.maven-api-model:deploy", "org.apache.maven.maven-api-settings:deploy", "org.apache.maven.maven-api-spi:deploy", "org.apache.maven.maven-api-toolchain:deploy", "org.apache.maven.maven-api-xml:deploy", "org.apache.maven.maven-core:deploy", "org.apache.maven.maven-di:deploy", "org.apache.maven.maven-impl:deploy", "org.apache.maven.maven-jline:deploy", "org.apache.maven.maven-logging:deploy", "org.apache.maven.maven-xml:deploy", "org.apache.maven.maven-artifact:deploy", "org.apache.maven.maven-model:deploy", "org.apache.maven.maven-plugin-api:deploy", "org.apache.maven.maven-settings:deploy", "org.apache.maven.maven-toolchain-model:deploy", "org.apache.maven.maven-compat:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -1788,7 +1810,7 @@
       "impl/maven-testing" : {
         "name" : "org.apache.maven.maven-testing",
         "root" : "impl/maven-testing",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "impl/maven-testing/src/main/java",
         "targets" : {
           "clean" : {
@@ -1798,7 +1820,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:clean", "org.apache.maven.maven-api-core:clean", "org.apache.maven.maven-api-model:clean", "org.apache.maven.maven-api-di:clean", "org.apache.maven.maven-xml:clean", "org.apache.maven.maven-core:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -1819,7 +1842,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-di:compile", "org.apache.maven.maven-xml:compile", "org.apache.maven.maven-core:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -1831,8 +1854,8 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-di:test", "org.apache.maven.maven-xml:test", "org.apache.maven.maven-core:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -1843,7 +1866,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-core:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -1853,10 +1876,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-di:verify", "org.apache.maven.maven-xml:verify", "org.apache.maven.maven-core:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -1865,7 +1886,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:install", "org.apache.maven.maven-api-core:install", "org.apache.maven.maven-api-model:install", "org.apache.maven.maven-api-di:install", "org.apache.maven.maven-xml:install", "org.apache.maven.maven-core:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -1874,7 +1896,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:deploy", "org.apache.maven.maven-api-core:deploy", "org.apache.maven.maven-api-model:deploy", "org.apache.maven.maven-api-di:deploy", "org.apache.maven.maven-xml:deploy", "org.apache.maven.maven-core:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -1885,7 +1908,7 @@
       "impl/maven-executor" : {
         "name" : "org.apache.maven.maven-executor",
         "root" : "impl/maven-executor",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "impl/maven-executor/src/main/java",
         "targets" : {
           "clean" : {
@@ -1895,7 +1918,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.apache-maven:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -1916,7 +1940,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.apache-maven:validate" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -1928,8 +1952,8 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.apache-maven:validate" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -1940,7 +1964,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.apache-maven:validate" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -1950,10 +1974,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.apache-maven:validate" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -1962,7 +1984,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.apache-maven:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -1971,7 +1994,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.apache-maven:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -1992,7 +2016,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -2011,7 +2036,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -2020,7 +2046,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:pom" ]
@@ -2031,7 +2058,7 @@
       "compat/maven-plugin-api" : {
         "name" : "org.apache.maven.maven-plugin-api",
         "root" : "compat/maven-plugin-api",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "compat/maven-plugin-api/src/main/java",
         "targets" : {
           "clean" : {
@@ -2041,7 +2068,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:clean", "org.apache.maven.maven-api-xml:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-plugin:clean", "org.apache.maven.maven-xml:clean", "org.apache.maven.maven-model:clean", "org.apache.maven.maven-artifact:clean", "org.apache.maven.maven-support:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -2062,7 +2090,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-plugin:compile", "org.apache.maven.maven-xml:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-artifact:compile", "org.apache.maven.maven-support:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -2074,8 +2102,8 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-xml:test", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-plugin:test", "org.apache.maven.maven-xml:test", "org.apache.maven.maven-model:test", "org.apache.maven.maven-artifact:test", "org.apache.maven.maven-support:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -2086,7 +2114,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-plugin:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-support:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -2096,10 +2124,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-plugin:verify", "org.apache.maven.maven-xml:verify", "org.apache.maven.maven-model:verify", "org.apache.maven.maven-artifact:verify", "org.apache.maven.maven-support:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -2108,7 +2134,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:install", "org.apache.maven.maven-api-xml:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-plugin:install", "org.apache.maven.maven-xml:install", "org.apache.maven.maven-model:install", "org.apache.maven.maven-artifact:install", "org.apache.maven.maven-support:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -2117,7 +2144,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:deploy", "org.apache.maven.maven-api-xml:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-plugin:deploy", "org.apache.maven.maven-xml:deploy", "org.apache.maven.maven-model:deploy", "org.apache.maven.maven-artifact:deploy", "org.apache.maven.maven-support:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -2128,7 +2156,7 @@
       "compat/maven-builder-support" : {
         "name" : "org.apache.maven.maven-builder-support",
         "root" : "compat/maven-builder-support",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "compat/maven-builder-support/src/main/java",
         "targets" : {
           "clean" : {
@@ -2138,7 +2166,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:clean", "org.apache.maven.maven-api-core:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -2159,7 +2188,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-core:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -2171,8 +2200,8 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-core:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -2183,7 +2212,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-core:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -2193,10 +2222,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-core:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -2205,7 +2232,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:install", "org.apache.maven.maven-api-core:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -2214,7 +2242,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:deploy", "org.apache.maven.maven-api-core:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -2225,7 +2254,7 @@
       "compat/maven-model" : {
         "name" : "org.apache.maven.maven-model",
         "root" : "compat/maven-model",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "compat/maven-model/src/main/java",
         "targets" : {
           "clean" : {
@@ -2235,7 +2264,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:clean", "org.apache.maven.maven-api-model:clean", "org.apache.maven.maven-api-xml:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-support:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -2256,7 +2286,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-support:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -2268,8 +2298,8 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-xml:test", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-support:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -2280,7 +2310,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-support:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -2290,10 +2320,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-support:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -2302,7 +2330,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:install", "org.apache.maven.maven-api-model:install", "org.apache.maven.maven-api-xml:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-support:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -2311,7 +2340,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:deploy", "org.apache.maven.maven-api-model:deploy", "org.apache.maven.maven-api-xml:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-support:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -2322,7 +2352,7 @@
       "compat/maven-model-builder" : {
         "name" : "org.apache.maven.maven-model-builder",
         "root" : "compat/maven-model-builder",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "compat/maven-model-builder/src/main/java",
         "targets" : {
           "clean" : {
@@ -2332,7 +2362,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-model:clean", "org.apache.maven.maven-model:clean", "org.apache.maven.maven-artifact:clean", "org.apache.maven.maven-builder-support:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -2353,7 +2384,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-artifact:compile", "org.apache.maven.maven-builder-support:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -2365,8 +2396,8 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-model:test", "org.apache.maven.maven-artifact:test", "org.apache.maven.maven-builder-support:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -2377,7 +2408,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-builder-support:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -2387,10 +2418,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-model:verify", "org.apache.maven.maven-artifact:verify", "org.apache.maven.maven-builder-support:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -2399,7 +2428,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-model:install", "org.apache.maven.maven-model:install", "org.apache.maven.maven-artifact:install", "org.apache.maven.maven-builder-support:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -2408,7 +2438,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-model:deploy", "org.apache.maven.maven-model:deploy", "org.apache.maven.maven-artifact:deploy", "org.apache.maven.maven-builder-support:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -2419,7 +2450,7 @@
       "compat/maven-settings" : {
         "name" : "org.apache.maven.maven-settings",
         "root" : "compat/maven-settings",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "compat/maven-settings/src/main/java",
         "targets" : {
           "clean" : {
@@ -2429,7 +2460,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:clean", "org.apache.maven.maven-api-settings:clean", "org.apache.maven.maven-api-xml:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-xml:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -2450,7 +2482,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-xml:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "package" : {
@@ -2462,7 +2494,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-xml:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -2472,10 +2504,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-xml:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -2484,7 +2514,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:install", "org.apache.maven.maven-api-settings:install", "org.apache.maven.maven-api-xml:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-xml:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -2493,7 +2524,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:deploy", "org.apache.maven.maven-api-settings:deploy", "org.apache.maven.maven-api-xml:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-xml:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -2504,7 +2536,7 @@
       "compat/maven-settings-builder" : {
         "name" : "org.apache.maven.maven-settings-builder",
         "root" : "compat/maven-settings-builder",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "compat/maven-settings-builder/src/main/java",
         "targets" : {
           "clean" : {
@@ -2514,7 +2546,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:clean", "org.apache.maven.maven-api-settings:clean", "org.apache.maven.maven-api-core:clean", "org.apache.maven.maven-support:clean", "org.apache.maven.maven-builder-support:clean", "org.apache.maven.maven-settings:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -2535,7 +2568,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-support:compile", "org.apache.maven.maven-builder-support:compile", "org.apache.maven.maven-settings:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -2547,8 +2580,8 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:test", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-support:test", "org.apache.maven.maven-builder-support:test", "org.apache.maven.maven-settings:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -2559,7 +2592,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-support:package", "org.apache.maven.maven-builder-support:package", "org.apache.maven.maven-settings:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -2569,10 +2602,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-support:verify", "org.apache.maven.maven-builder-support:verify", "org.apache.maven.maven-settings:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -2581,7 +2612,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:install", "org.apache.maven.maven-api-settings:install", "org.apache.maven.maven-api-core:install", "org.apache.maven.maven-support:install", "org.apache.maven.maven-builder-support:install", "org.apache.maven.maven-settings:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -2590,7 +2622,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:deploy", "org.apache.maven.maven-api-settings:deploy", "org.apache.maven.maven-api-core:deploy", "org.apache.maven.maven-support:deploy", "org.apache.maven.maven-builder-support:deploy", "org.apache.maven.maven-settings:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -2601,7 +2634,7 @@
       "compat/maven-artifact" : {
         "name" : "org.apache.maven.maven-artifact",
         "root" : "compat/maven-artifact",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "compat/maven-artifact/src/main/java",
         "targets" : {
           "clean" : {
@@ -2611,7 +2644,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -2632,7 +2666,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -2644,8 +2678,8 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -2656,7 +2690,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -2666,10 +2700,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -2678,7 +2710,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -2687,7 +2720,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -2698,7 +2732,7 @@
       "compat/maven-resolver-provider" : {
         "name" : "org.apache.maven.maven-resolver-provider",
         "root" : "compat/maven-resolver-provider",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "compat/maven-resolver-provider/src/main/java",
         "targets" : {
           "clean" : {
@@ -2708,7 +2742,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-xml:clean", "org.apache.maven.maven-api-metadata:clean", "org.apache.maven.maven-api-spi:clean", "org.apache.maven.maven-api-core:clean", "org.apache.maven.maven-xml:clean", "org.apache.maven.maven-support:clean", "org.apache.maven.maven-model:clean", "org.apache.maven.maven-model-builder:clean", "org.apache.maven.maven-repository-metadata:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -2729,7 +2764,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-api-metadata:compile", "org.apache.maven.maven-api-spi:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-xml:compile", "org.apache.maven.maven-support:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-model-builder:compile", "org.apache.maven.maven-repository-metadata:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -2741,8 +2776,8 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-xml:test", "org.apache.maven.maven-api-metadata:test", "org.apache.maven.maven-api-spi:test", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-xml:test", "org.apache.maven.maven-support:test", "org.apache.maven.maven-model:test", "org.apache.maven.maven-model-builder:test", "org.apache.maven.maven-repository-metadata:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -2753,7 +2788,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-api-spi:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-support:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-model-builder:package", "org.apache.maven.maven-repository-metadata:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -2763,10 +2798,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-api-metadata:verify", "org.apache.maven.maven-api-spi:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-xml:verify", "org.apache.maven.maven-support:verify", "org.apache.maven.maven-model:verify", "org.apache.maven.maven-model-builder:verify", "org.apache.maven.maven-repository-metadata:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -2775,7 +2808,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-xml:install", "org.apache.maven.maven-api-metadata:install", "org.apache.maven.maven-api-spi:install", "org.apache.maven.maven-api-core:install", "org.apache.maven.maven-xml:install", "org.apache.maven.maven-support:install", "org.apache.maven.maven-model:install", "org.apache.maven.maven-model-builder:install", "org.apache.maven.maven-repository-metadata:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -2784,7 +2818,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-xml:deploy", "org.apache.maven.maven-api-metadata:deploy", "org.apache.maven.maven-api-spi:deploy", "org.apache.maven.maven-api-core:deploy", "org.apache.maven.maven-xml:deploy", "org.apache.maven.maven-support:deploy", "org.apache.maven.maven-model:deploy", "org.apache.maven.maven-model-builder:deploy", "org.apache.maven.maven-repository-metadata:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -2795,7 +2830,7 @@
       "compat/maven-repository-metadata" : {
         "name" : "org.apache.maven.maven-repository-metadata",
         "root" : "compat/maven-repository-metadata",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "compat/maven-repository-metadata/src/main/java",
         "targets" : {
           "clean" : {
@@ -2805,7 +2840,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-metadata:clean", "org.apache.maven.maven-support:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -2826,7 +2862,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-metadata:compile", "org.apache.maven.maven-support:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -2838,8 +2874,8 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-metadata:test", "org.apache.maven.maven-support:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -2850,7 +2886,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-support:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -2860,10 +2896,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-metadata:verify", "org.apache.maven.maven-support:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -2872,7 +2906,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-metadata:install", "org.apache.maven.maven-support:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -2881,7 +2916,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-metadata:deploy", "org.apache.maven.maven-support:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -2892,7 +2928,7 @@
       "compat/maven-embedder" : {
         "name" : "org.apache.maven.maven-embedder",
         "root" : "compat/maven-embedder",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "compat/maven-embedder/src/main/java",
         "targets" : {
           "clean" : {
@@ -2902,7 +2938,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-core:clean", "org.apache.maven.maven-api-cli:clean", "org.apache.maven.maven-api-model:clean", "org.apache.maven.maven-api-xml:clean", "org.apache.maven.maven-core:clean", "org.apache.maven.maven-cli:clean", "org.apache.maven.maven-di:clean", "org.apache.maven.maven-jline:clean", "org.apache.maven.maven-logging:clean", "org.apache.maven.maven-xml:clean", "org.apache.maven.maven-artifact:clean", "org.apache.maven.maven-builder-support:clean", "org.apache.maven.maven-model:clean", "org.apache.maven.maven-model-builder:clean", "org.apache.maven.maven-plugin-api:clean", "org.apache.maven.maven-settings:clean", "org.apache.maven.maven-settings-builder:clean", "org.apache.maven.maven-toolchain-builder:clean", "org.apache.maven.maven-toolchain-model:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -2923,7 +2960,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-cli:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-core:compile", "org.apache.maven.maven-cli:compile", "org.apache.maven.maven-di:compile", "org.apache.maven.maven-jline:compile", "org.apache.maven.maven-logging:compile", "org.apache.maven.maven-xml:compile", "org.apache.maven.maven-artifact:compile", "org.apache.maven.maven-builder-support:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-model-builder:compile", "org.apache.maven.maven-plugin-api:compile", "org.apache.maven.maven-settings:compile", "org.apache.maven.maven-settings-builder:compile", "org.apache.maven.maven-toolchain-builder:compile", "org.apache.maven.maven-toolchain-model:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -2935,8 +2972,8 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-api-cli:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-xml:test", "org.apache.maven.maven-core:test", "org.apache.maven.maven-cli:test", "org.apache.maven.maven-di:test", "org.apache.maven.maven-jline:test", "org.apache.maven.maven-logging:test", "org.apache.maven.maven-xml:test", "org.apache.maven.maven-artifact:test", "org.apache.maven.maven-builder-support:test", "org.apache.maven.maven-model:test", "org.apache.maven.maven-model-builder:test", "org.apache.maven.maven-plugin-api:test", "org.apache.maven.maven-settings:test", "org.apache.maven.maven-settings-builder:test", "org.apache.maven.maven-toolchain-builder:test", "org.apache.maven.maven-toolchain-model:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -2947,7 +2984,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-cli:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-core:package", "org.apache.maven.maven-cli:package", "org.apache.maven.maven-di:package", "org.apache.maven.maven-jline:package", "org.apache.maven.maven-logging:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-builder-support:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-model-builder:package", "org.apache.maven.maven-plugin-api:package", "org.apache.maven.maven-settings:package", "org.apache.maven.maven-settings-builder:package", "org.apache.maven.maven-toolchain-builder:package", "org.apache.maven.maven-toolchain-model:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -2957,10 +2994,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-cli:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-core:verify", "org.apache.maven.maven-cli:verify", "org.apache.maven.maven-di:verify", "org.apache.maven.maven-jline:verify", "org.apache.maven.maven-logging:verify", "org.apache.maven.maven-xml:verify", "org.apache.maven.maven-artifact:verify", "org.apache.maven.maven-builder-support:verify", "org.apache.maven.maven-model:verify", "org.apache.maven.maven-model-builder:verify", "org.apache.maven.maven-plugin-api:verify", "org.apache.maven.maven-settings:verify", "org.apache.maven.maven-settings-builder:verify", "org.apache.maven.maven-toolchain-builder:verify", "org.apache.maven.maven-toolchain-model:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -2969,7 +3004,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-core:install", "org.apache.maven.maven-api-cli:install", "org.apache.maven.maven-api-model:install", "org.apache.maven.maven-api-xml:install", "org.apache.maven.maven-core:install", "org.apache.maven.maven-cli:install", "org.apache.maven.maven-di:install", "org.apache.maven.maven-jline:install", "org.apache.maven.maven-logging:install", "org.apache.maven.maven-xml:install", "org.apache.maven.maven-artifact:install", "org.apache.maven.maven-builder-support:install", "org.apache.maven.maven-model:install", "org.apache.maven.maven-model-builder:install", "org.apache.maven.maven-plugin-api:install", "org.apache.maven.maven-settings:install", "org.apache.maven.maven-settings-builder:install", "org.apache.maven.maven-toolchain-builder:install", "org.apache.maven.maven-toolchain-model:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -2978,7 +3014,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-core:deploy", "org.apache.maven.maven-api-cli:deploy", "org.apache.maven.maven-api-model:deploy", "org.apache.maven.maven-api-xml:deploy", "org.apache.maven.maven-core:deploy", "org.apache.maven.maven-cli:deploy", "org.apache.maven.maven-di:deploy", "org.apache.maven.maven-jline:deploy", "org.apache.maven.maven-logging:deploy", "org.apache.maven.maven-xml:deploy", "org.apache.maven.maven-artifact:deploy", "org.apache.maven.maven-builder-support:deploy", "org.apache.maven.maven-model:deploy", "org.apache.maven.maven-model-builder:deploy", "org.apache.maven.maven-plugin-api:deploy", "org.apache.maven.maven-settings:deploy", "org.apache.maven.maven-settings-builder:deploy", "org.apache.maven.maven-toolchain-builder:deploy", "org.apache.maven.maven-toolchain-model:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -2989,7 +3026,7 @@
       "compat/maven-compat" : {
         "name" : "org.apache.maven.maven-compat",
         "root" : "compat/maven-compat",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "compat/maven-compat/src/main/java",
         "targets" : {
           "clean" : {
@@ -2999,7 +3036,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:clean", "org.apache.maven.maven-api-annotations:clean", "org.apache.maven.maven-api-core:clean", "org.apache.maven.maven-api-di:clean", "org.apache.maven.maven-api-metadata:clean", "org.apache.maven.maven-api-model:clean", "org.apache.maven.maven-api-toolchain:clean", "org.apache.maven.maven-impl:clean", "org.apache.maven.maven-core:clean", "org.apache.maven.maven-artifact:clean", "org.apache.maven.maven-model:clean", "org.apache.maven.maven-model-builder:clean", "org.apache.maven.maven-settings:clean", "org.apache.maven.maven-settings-builder:clean", "org.apache.maven.maven-plugin-api:clean", "org.apache.maven.maven-repository-metadata:clean", "org.apache.maven.maven-toolchain-builder:clean", "org.apache.maven.maven-toolchain-model:clean", "org.apache.maven.maven-resolver-provider:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -3020,7 +3058,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-di:compile", "org.apache.maven.maven-api-metadata:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-impl:compile", "org.apache.maven.maven-core:compile", "org.apache.maven.maven-artifact:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-model-builder:compile", "org.apache.maven.maven-settings:compile", "org.apache.maven.maven-settings-builder:compile", "org.apache.maven.maven-plugin-api:compile", "org.apache.maven.maven-repository-metadata:compile", "org.apache.maven.maven-toolchain-builder:compile", "org.apache.maven.maven-toolchain-model:compile", "org.apache.maven.maven-resolver-provider:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -3032,8 +3070,8 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-api-di:test", "org.apache.maven.maven-api-metadata:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-toolchain:test", "org.apache.maven.maven-impl:test", "org.apache.maven.maven-core:test", "org.apache.maven.maven-artifact:test", "org.apache.maven.maven-model:test", "org.apache.maven.maven-model-builder:test", "org.apache.maven.maven-settings:test", "org.apache.maven.maven-settings-builder:test", "org.apache.maven.maven-plugin-api:test", "org.apache.maven.maven-repository-metadata:test", "org.apache.maven.maven-toolchain-builder:test", "org.apache.maven.maven-toolchain-model:test", "org.apache.maven.maven-resolver-provider:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -3044,7 +3082,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-impl:package", "org.apache.maven.maven-core:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-model-builder:package", "org.apache.maven.maven-settings:package", "org.apache.maven.maven-settings-builder:package", "org.apache.maven.maven-plugin-api:package", "org.apache.maven.maven-repository-metadata:package", "org.apache.maven.maven-toolchain-builder:package", "org.apache.maven.maven-toolchain-model:package", "org.apache.maven.maven-resolver-provider:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -3054,10 +3092,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-di:verify", "org.apache.maven.maven-api-metadata:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-impl:verify", "org.apache.maven.maven-core:verify", "org.apache.maven.maven-artifact:verify", "org.apache.maven.maven-model:verify", "org.apache.maven.maven-model-builder:verify", "org.apache.maven.maven-settings:verify", "org.apache.maven.maven-settings-builder:verify", "org.apache.maven.maven-plugin-api:verify", "org.apache.maven.maven-repository-metadata:verify", "org.apache.maven.maven-toolchain-builder:verify", "org.apache.maven.maven-toolchain-model:verify", "org.apache.maven.maven-resolver-provider:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -3066,7 +3102,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:install", "org.apache.maven.maven-api-annotations:install", "org.apache.maven.maven-api-core:install", "org.apache.maven.maven-api-di:install", "org.apache.maven.maven-api-metadata:install", "org.apache.maven.maven-api-model:install", "org.apache.maven.maven-api-toolchain:install", "org.apache.maven.maven-impl:install", "org.apache.maven.maven-core:install", "org.apache.maven.maven-artifact:install", "org.apache.maven.maven-model:install", "org.apache.maven.maven-model-builder:install", "org.apache.maven.maven-settings:install", "org.apache.maven.maven-settings-builder:install", "org.apache.maven.maven-plugin-api:install", "org.apache.maven.maven-repository-metadata:install", "org.apache.maven.maven-toolchain-builder:install", "org.apache.maven.maven-toolchain-model:install", "org.apache.maven.maven-resolver-provider:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -3075,7 +3112,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:deploy", "org.apache.maven.maven-api-annotations:deploy", "org.apache.maven.maven-api-core:deploy", "org.apache.maven.maven-api-di:deploy", "org.apache.maven.maven-api-metadata:deploy", "org.apache.maven.maven-api-model:deploy", "org.apache.maven.maven-api-toolchain:deploy", "org.apache.maven.maven-impl:deploy", "org.apache.maven.maven-core:deploy", "org.apache.maven.maven-artifact:deploy", "org.apache.maven.maven-model:deploy", "org.apache.maven.maven-model-builder:deploy", "org.apache.maven.maven-settings:deploy", "org.apache.maven.maven-settings-builder:deploy", "org.apache.maven.maven-plugin-api:deploy", "org.apache.maven.maven-repository-metadata:deploy", "org.apache.maven.maven-toolchain-builder:deploy", "org.apache.maven.maven-toolchain-model:deploy", "org.apache.maven.maven-resolver-provider:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -3086,7 +3124,7 @@
       "compat/maven-toolchain-model" : {
         "name" : "org.apache.maven.maven-toolchain-model",
         "root" : "compat/maven-toolchain-model",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "compat/maven-toolchain-model/src/main/java",
         "targets" : {
           "clean" : {
@@ -3096,7 +3134,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:clean", "org.apache.maven.maven-support:clean", "org.apache.maven.maven-api-toolchain:clean", "org.apache.maven.maven-api-xml:clean", "org.apache.maven.maven-api-annotations:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -3117,7 +3156,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-support:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-api-annotations:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "package" : {
@@ -3129,7 +3168,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-support:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-annotations:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -3139,10 +3178,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-support:verify", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-api-annotations:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -3151,7 +3188,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:install", "org.apache.maven.maven-support:install", "org.apache.maven.maven-api-toolchain:install", "org.apache.maven.maven-api-xml:install", "org.apache.maven.maven-api-annotations:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -3160,7 +3198,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:deploy", "org.apache.maven.maven-support:deploy", "org.apache.maven.maven-api-toolchain:deploy", "org.apache.maven.maven-api-xml:deploy", "org.apache.maven.maven-api-annotations:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -3171,7 +3210,7 @@
       "compat/maven-toolchain-builder" : {
         "name" : "org.apache.maven.maven-toolchain-builder",
         "root" : "compat/maven-toolchain-builder",
-        "projectType" : "application",
+        "projectType" : "library",
         "sourceRoot" : "compat/maven-toolchain-builder/src/main/java",
         "targets" : {
           "clean" : {
@@ -3181,7 +3220,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:clean", "org.apache.maven.maven-api-toolchain:clean", "org.apache.maven.maven-support:clean", "org.apache.maven.maven-toolchain-model:clean", "org.apache.maven.maven-builder-support:clean", "org.apache.maven.maven-impl:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -3202,7 +3242,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-support:compile", "org.apache.maven.maven-toolchain-model:compile", "org.apache.maven.maven-builder-support:compile", "org.apache.maven.maven-impl:compile" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/classes" ]
           },
           "test" : {
@@ -3214,8 +3254,8 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-toolchain:test", "org.apache.maven.maven-support:test", "org.apache.maven.maven-toolchain-model:test", "org.apache.maven.maven-builder-support:test", "org.apache.maven.maven-impl:test" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml", "{projectRoot}/src/test/**/*" ],
-            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/failsafe-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production", "{projectRoot}/src/test/**/*" ],
+            "outputs" : [ "{projectRoot}/target/test-reports", "{projectRoot}/target/surefire-reports", "{workspaceRoot}/coverage/{projectRoot}" ]
           },
           "package" : {
             "executor" : "nx:run-commands",
@@ -3226,7 +3266,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-support:package", "org.apache.maven.maven-toolchain-model:package", "org.apache.maven.maven-builder-support:package", "org.apache.maven.maven-impl:package" ],
             "cache" : true,
             "parallelism" : true,
-            "inputs" : [ "production", "^production", "{projectRoot}/pom.xml" ],
+            "inputs" : [ "default", "{projectRoot}/pom.xml", "^production" ],
             "outputs" : [ "{projectRoot}/target/*.jar" ]
           },
           "verify" : {
@@ -3236,10 +3276,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-support:verify", "org.apache.maven.maven-toolchain-model:verify", "org.apache.maven.maven-builder-support:verify", "org.apache.maven.maven-impl:verify" ],
-            "cache" : true,
-            "parallelism" : true,
-            "inputs" : [ "default", "^production", "{projectRoot}/pom.xml" ],
-            "outputs" : [ "{projectRoot}/target/verify-reports", "{projectRoot}/target/integration-test-reports" ]
+            "cache" : false,
+            "parallelism" : true
           },
           "install" : {
             "executor" : "nx:run-commands",
@@ -3248,7 +3286,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:install", "org.apache.maven.maven-api-toolchain:install", "org.apache.maven.maven-support:install", "org.apache.maven.maven-toolchain-model:install", "org.apache.maven.maven-builder-support:install", "org.apache.maven.maven-impl:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -3257,7 +3296,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:deploy", "org.apache.maven.maven-api-toolchain:deploy", "org.apache.maven.maven-support:deploy", "org.apache.maven.maven-toolchain-model:deploy", "org.apache.maven.maven-builder-support:deploy", "org.apache.maven.maven-impl:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:jar" ]
@@ -3278,7 +3318,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -3297,7 +3338,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -3306,7 +3348,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:pom" ]
@@ -3327,7 +3370,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven:clean", "org.apache.maven.maven-cli:clean", "org.apache.maven.maven-embedder:clean", "org.apache.maven.maven-core:clean", "org.apache.maven.maven-compat:clean", "org.apache.maven.maven-logging:clean" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : true
           },
           "validate" : {
             "executor" : "nx:run-commands",
@@ -3346,7 +3390,8 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven:install", "org.apache.maven.maven-cli:install", "org.apache.maven.maven-embedder:install", "org.apache.maven.maven-core:install", "org.apache.maven.maven-compat:install", "org.apache.maven.maven-logging:install" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
           },
           "deploy" : {
             "executor" : "nx:run-commands",
@@ -3355,14 +3400,63 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven:deploy", "org.apache.maven.maven-cli:deploy", "org.apache.maven.maven-embedder:deploy", "org.apache.maven.maven-core:deploy", "org.apache.maven.maven-compat:deploy", "org.apache.maven.maven-logging:deploy" ],
-            "cache" : false
+            "cache" : false,
+            "parallelism" : false
+          }
+        },
+        "tags" : [ "maven:org.apache.maven", "maven:pom" ]
+      }
+    }
+  } ], [ ".", {
+    "projects" : {
+      "." : {
+        "name" : "org.apache.maven.maven",
+        "root" : ".",
+        "projectType" : "library",
+        "sourceRoot" : "./src/main/java",
+        "targets" : {
+          "clean" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn clean -pl org.apache.maven:maven",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "validate" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn validate -pl org.apache.maven:maven",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "install" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn install -pl org.apache.maven:maven",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "deploy" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn deploy -pl org.apache.maven:maven",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : false
           }
         },
         "tags" : [ "maven:org.apache.maven", "maven:pom" ]
       }
     }
   } ] ],
-  "generatedAt" : 1755641123053,
+  "generatedAt" : 1755731433450,
   "workspaceRoot" : "/home/jason/projects/triage/java/maven",
   "totalProjects" : 39
 }
