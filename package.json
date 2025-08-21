@@ -12,12 +12,12 @@
     "dep-graph": "nx dep-graph"
   },
   "devDependencies": {
-    "@nx/devkit": "^21.4.0",
-    "@nx/js": "^21.4.0",
-    "@nx/plugin": "^21.4.0",
-    "@nx/workspace": "^21.4.0",
+    "@nx/devkit": "21.5.0-beta.0",
+    "@nx/js": "21.5.0-beta.0",
+    "@nx/plugin": "21.5.0-beta.0",
+    "@nx/workspace": "21.5.0-beta.0",
     "@types/node": "^20.0.0",
-    "nx": "^21.4.0",
+    "nx": "21.5.0-beta.0",
     "typescript": "^5.0.0",
     "tslib": "^2.3.0"
   },
