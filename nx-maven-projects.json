@@ -26,7 +26,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-annotations/pom.xml" ],
-            "outputs" : [ "api/maven-api-annotations/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -38,7 +38,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-annotations/src/main/java/**/*", "api/maven-api-annotations/pom.xml" ],
-            "outputs" : [ "api/maven-api-annotations/target/classes", "api/maven-api-annotations/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "package" : {
@@ -50,7 +50,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-annotations/target/classes/**/*", "api/maven-api-annotations/pom.xml" ],
-            "outputs" : [ "api/maven-api-annotations/target/maven-api-annotations-4.1.0-SNAPSHOT.jar", "api/maven-api-annotations/target/classes", "api/maven-api-annotations/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-api-annotations-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -62,7 +62,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-annotations/target/**/*", "api/maven-api-annotations/pom.xml" ],
-            "outputs" : [ "api/maven-api-annotations/target/failsafe-reports", "api/maven-api-annotations/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -116,7 +116,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-di/pom.xml" ],
-            "outputs" : [ "api/maven-api-di/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -128,7 +128,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-di/src/main/java/**/*", "api/maven-api-di/src/main/resources/**/*", "api/maven-api-di/pom.xml" ],
-            "outputs" : [ "api/maven-api-di/target/classes", "api/maven-api-di/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "package" : {
@@ -140,7 +140,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-di/target/classes/**/*", "api/maven-api-di/src/main/resources/**/*", "api/maven-api-di/pom.xml" ],
-            "outputs" : [ "api/maven-api-di/target/maven-api-di-4.1.0-SNAPSHOT.jar", "api/maven-api-di/target/classes", "api/maven-api-di/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-api-di-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -152,7 +152,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-di/target/**/*", "api/maven-api-di/pom.xml" ],
-            "outputs" : [ "api/maven-api-di/target/failsafe-reports", "api/maven-api-di/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -206,7 +206,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-xml/pom.xml" ],
-            "outputs" : [ "api/maven-api-xml/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -218,7 +218,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-xml/src/main/java/**/*", "api/maven-api-xml/pom.xml" ],
-            "outputs" : [ "api/maven-api-xml/target/classes", "api/maven-api-xml/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "package" : {
@@ -230,7 +230,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-xml/target/classes/**/*", "api/maven-api-xml/pom.xml" ],
-            "outputs" : [ "api/maven-api-xml/target/maven-api-xml-4.1.0-SNAPSHOT.jar", "api/maven-api-xml/target/classes", "api/maven-api-xml/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-api-xml-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -242,7 +242,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-xml/target/**/*", "api/maven-api-xml/pom.xml" ],
-            "outputs" : [ "api/maven-api-xml/target/failsafe-reports", "api/maven-api-xml/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -296,7 +296,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-xml:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-model/pom.xml" ],
-            "outputs" : [ "api/maven-api-model/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -308,7 +308,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-xml:compile" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-model/src/main/java/**/*", "api/maven-api-model/pom.xml" ],
-            "outputs" : [ "api/maven-api-model/target/classes", "api/maven-api-model/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "package" : {
@@ -320,7 +320,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-model/target/classes/**/*", "api/maven-api-model/pom.xml" ],
-            "outputs" : [ "api/maven-api-model/target/maven-api-model-4.1.0-SNAPSHOT.jar", "api/maven-api-model/target/classes", "api/maven-api-model/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-api-model-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -332,7 +332,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-xml:verify" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-model/target/**/*", "api/maven-api-model/pom.xml" ],
-            "outputs" : [ "api/maven-api-model/target/failsafe-reports", "api/maven-api-model/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -386,7 +386,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-xml:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-plugin/pom.xml" ],
-            "outputs" : [ "api/maven-api-plugin/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -398,7 +398,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-xml:compile" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-plugin/src/main/java/**/*", "api/maven-api-plugin/pom.xml" ],
-            "outputs" : [ "api/maven-api-plugin/target/classes", "api/maven-api-plugin/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -410,7 +410,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-xml:test" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-plugin/target/test-classes/**/*", "api/maven-api-plugin/target/classes/**/*", "api/maven-api-plugin/pom.xml" ],
-            "outputs" : [ "api/maven-api-plugin/target/surefire-reports", "api/maven-api-plugin/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -422,7 +422,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-plugin/target/classes/**/*", "api/maven-api-plugin/pom.xml" ],
-            "outputs" : [ "api/maven-api-plugin/target/maven-api-plugin-4.1.0-SNAPSHOT.jar", "api/maven-api-plugin/target/classes", "api/maven-api-plugin/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-api-plugin-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -434,7 +434,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-xml:verify" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-plugin/target/**/*", "api/maven-api-plugin/pom.xml", "api/maven-api-plugin/target/surefire-reports/**/*" ],
-            "outputs" : [ "api/maven-api-plugin/target/failsafe-reports", "api/maven-api-plugin/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -488,7 +488,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-xml:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-settings/pom.xml" ],
-            "outputs" : [ "api/maven-api-settings/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -500,7 +500,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-xml:compile" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-settings/src/main/java/**/*", "api/maven-api-settings/pom.xml" ],
-            "outputs" : [ "api/maven-api-settings/target/classes", "api/maven-api-settings/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -512,7 +512,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-xml:test" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-settings/target/test-classes/**/*", "api/maven-api-settings/target/classes/**/*", "api/maven-api-settings/pom.xml" ],
-            "outputs" : [ "api/maven-api-settings/target/surefire-reports", "api/maven-api-settings/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -524,7 +524,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-settings/target/classes/**/*", "api/maven-api-settings/pom.xml" ],
-            "outputs" : [ "api/maven-api-settings/target/maven-api-settings-4.1.0-SNAPSHOT.jar", "api/maven-api-settings/target/classes", "api/maven-api-settings/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-api-settings-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -536,7 +536,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-xml:verify" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-settings/target/**/*", "api/maven-api-settings/pom.xml", "api/maven-api-settings/target/surefire-reports/**/*" ],
-            "outputs" : [ "api/maven-api-settings/target/failsafe-reports", "api/maven-api-settings/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -590,7 +590,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-xml:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-toolchain/pom.xml" ],
-            "outputs" : [ "api/maven-api-toolchain/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -602,7 +602,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-xml:compile" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-toolchain/src/main/java/**/*", "api/maven-api-toolchain/pom.xml" ],
-            "outputs" : [ "api/maven-api-toolchain/target/classes", "api/maven-api-toolchain/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "package" : {
@@ -614,7 +614,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-toolchain/target/classes/**/*", "api/maven-api-toolchain/pom.xml" ],
-            "outputs" : [ "api/maven-api-toolchain/target/maven-api-toolchain-4.1.0-SNAPSHOT.jar", "api/maven-api-toolchain/target/classes", "api/maven-api-toolchain/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-api-toolchain-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -626,7 +626,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-xml:verify" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-toolchain/target/**/*", "api/maven-api-toolchain/pom.xml" ],
-            "outputs" : [ "api/maven-api-toolchain/target/failsafe-reports", "api/maven-api-toolchain/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -680,7 +680,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-metadata/pom.xml" ],
-            "outputs" : [ "api/maven-api-metadata/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -692,7 +692,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-metadata/src/main/java/**/*", "api/maven-api-metadata/pom.xml" ],
-            "outputs" : [ "api/maven-api-metadata/target/classes", "api/maven-api-metadata/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "package" : {
@@ -704,7 +704,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-metadata/target/classes/**/*", "api/maven-api-metadata/pom.xml" ],
-            "outputs" : [ "api/maven-api-metadata/target/maven-api-metadata-4.1.0-SNAPSHOT.jar", "api/maven-api-metadata/target/classes", "api/maven-api-metadata/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-api-metadata-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -716,7 +716,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-metadata/target/**/*", "api/maven-api-metadata/pom.xml" ],
-            "outputs" : [ "api/maven-api-metadata/target/failsafe-reports", "api/maven-api-metadata/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -770,7 +770,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-di:validate", "org.apache.maven.maven-api-model:validate", "org.apache.maven.maven-api-settings:validate", "org.apache.maven.maven-api-toolchain:validate", "org.apache.maven.maven-api-plugin:validate", "org.apache.maven.maven-api-xml:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-core/pom.xml" ],
-            "outputs" : [ "api/maven-api-core/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -782,7 +782,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-di:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-api-plugin:compile", "org.apache.maven.maven-api-xml:compile" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-core/src/main/java/**/*", "api/maven-api-core/pom.xml" ],
-            "outputs" : [ "api/maven-api-core/target/classes", "api/maven-api-core/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -794,7 +794,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-di:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-settings:test", "org.apache.maven.maven-api-toolchain:test", "org.apache.maven.maven-api-plugin:test", "org.apache.maven.maven-api-xml:test" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-core/target/test-classes/**/*", "api/maven-api-core/target/classes/**/*", "api/maven-api-core/pom.xml" ],
-            "outputs" : [ "api/maven-api-core/target/surefire-reports", "api/maven-api-core/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -806,7 +806,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-plugin:package", "org.apache.maven.maven-api-xml:package" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-core/target/classes/**/*", "api/maven-api-core/pom.xml" ],
-            "outputs" : [ "api/maven-api-core/target/maven-api-core-4.1.0-SNAPSHOT.jar", "api/maven-api-core/target/classes", "api/maven-api-core/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-api-core-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -818,7 +818,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-di:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-settings:verify", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-api-plugin:verify", "org.apache.maven.maven-api-xml:verify" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-core/target/**/*", "api/maven-api-core/pom.xml", "api/maven-api-core/target/surefire-reports/**/*" ],
-            "outputs" : [ "api/maven-api-core/target/failsafe-reports", "api/maven-api-core/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -872,7 +872,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-model:validate", "org.apache.maven.maven-api-core:validate", "org.apache.maven.maven-api-di:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-spi/pom.xml" ],
-            "outputs" : [ "api/maven-api-spi/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -884,7 +884,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-di:compile" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-spi/src/main/java/**/*", "api/maven-api-spi/pom.xml" ],
-            "outputs" : [ "api/maven-api-spi/target/classes", "api/maven-api-spi/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "package" : {
@@ -896,7 +896,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-di:package" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-spi/target/classes/**/*", "api/maven-api-spi/pom.xml" ],
-            "outputs" : [ "api/maven-api-spi/target/maven-api-spi-4.1.0-SNAPSHOT.jar", "api/maven-api-spi/target/classes", "api/maven-api-spi/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-api-spi-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -908,7 +908,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-di:verify" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-spi/target/**/*", "api/maven-api-spi/pom.xml" ],
-            "outputs" : [ "api/maven-api-spi/target/failsafe-reports", "api/maven-api-spi/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -962,7 +962,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-core:validate", "org.apache.maven.maven-api-xml:validate" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-cli/pom.xml" ],
-            "outputs" : [ "api/maven-api-cli/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -974,7 +974,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-xml:compile" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-cli/src/main/java/**/*", "api/maven-api-cli/pom.xml" ],
-            "outputs" : [ "api/maven-api-cli/target/classes", "api/maven-api-cli/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "package" : {
@@ -986,7 +986,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-xml:package" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-cli/target/classes/**/*", "api/maven-api-cli/pom.xml" ],
-            "outputs" : [ "api/maven-api-cli/target/maven-api-cli-4.1.0-SNAPSHOT.jar", "api/maven-api-cli/target/classes", "api/maven-api-cli/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-api-cli-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -998,7 +998,7 @@
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-xml:verify" ],
             "cache" : true,
             "inputs" : [ "api/maven-api-cli/target/**/*", "api/maven-api-cli/pom.xml" ],
-            "outputs" : [ "api/maven-api-cli/target/failsafe-reports", "api/maven-api-cli/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -1052,7 +1052,7 @@
             "dependsOn" : [ "org.apache.maven.maven:validate" ],
             "cache" : true,
             "inputs" : [ "api/pom.xml" ],
-            "outputs" : [ "api/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -1106,7 +1106,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-model:validate", "org.apache.maven.maven-api-settings:validate", "org.apache.maven.maven-api-toolchain:validate", "org.apache.maven.maven-api-metadata:validate", "org.apache.maven.maven-api-plugin:validate", "org.apache.maven.maven-xml:validate" ],
             "cache" : true,
             "inputs" : [ "impl/maven-support/pom.xml" ],
-            "outputs" : [ "impl/maven-support/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -1118,7 +1118,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-api-metadata:compile", "org.apache.maven.maven-api-plugin:compile", "org.apache.maven.maven-xml:compile" ],
             "cache" : true,
             "inputs" : [ "impl/maven-support/pom.xml" ],
-            "outputs" : [ "impl/maven-support/target/classes", "impl/maven-support/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -1130,7 +1130,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-settings:test", "org.apache.maven.maven-api-toolchain:test", "org.apache.maven.maven-api-metadata:test", "org.apache.maven.maven-api-plugin:test", "org.apache.maven.maven-xml:test" ],
             "cache" : true,
             "inputs" : [ "impl/maven-support/target/test-classes/**/*", "impl/maven-support/target/classes/**/*", "impl/maven-support/pom.xml" ],
-            "outputs" : [ "impl/maven-support/target/surefire-reports", "impl/maven-support/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -1142,7 +1142,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-api-plugin:package", "org.apache.maven.maven-xml:package" ],
             "cache" : true,
             "inputs" : [ "impl/maven-support/target/classes/**/*", "impl/maven-support/pom.xml" ],
-            "outputs" : [ "impl/maven-support/target/maven-support-4.1.0-SNAPSHOT.jar", "impl/maven-support/target/classes", "impl/maven-support/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-support-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1154,7 +1154,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-settings:verify", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-api-metadata:verify", "org.apache.maven.maven-api-plugin:verify", "org.apache.maven.maven-xml:verify" ],
             "cache" : true,
             "inputs" : [ "impl/maven-support/target/**/*", "impl/maven-support/pom.xml", "impl/maven-support/target/surefire-reports/**/*" ],
-            "outputs" : [ "impl/maven-support/target/failsafe-reports", "impl/maven-support/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -1208,7 +1208,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:validate", "org.apache.maven.maven-api-spi:validate", "org.apache.maven.maven-api-metadata:validate", "org.apache.maven.maven-api-xml:validate", "org.apache.maven.maven-api-toolchain:validate", "org.apache.maven.maven-api-di:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-model:validate", "org.apache.maven.maven-api-settings:validate", "org.apache.maven.maven-di:validate", "org.apache.maven.maven-support:validate", "org.apache.maven.maven-xml:validate" ],
             "cache" : true,
             "inputs" : [ "impl/maven-impl/pom.xml" ],
-            "outputs" : [ "impl/maven-impl/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -1220,7 +1220,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-spi:compile", "org.apache.maven.maven-api-metadata:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-api-di:compile", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-di:compile", "org.apache.maven.maven-support:compile", "org.apache.maven.maven-xml:compile" ],
             "cache" : true,
             "inputs" : [ "impl/maven-impl/src/main/java/**/*", "impl/maven-impl/src/main/resources/**/*", "impl/maven-impl/pom.xml" ],
-            "outputs" : [ "impl/maven-impl/target/classes", "impl/maven-impl/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -1232,7 +1232,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-api-spi:test", "org.apache.maven.maven-api-metadata:test", "org.apache.maven.maven-api-xml:test", "org.apache.maven.maven-api-toolchain:test", "org.apache.maven.maven-api-di:test", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-settings:test", "org.apache.maven.maven-di:test", "org.apache.maven.maven-support:test", "org.apache.maven.maven-xml:test" ],
             "cache" : true,
             "inputs" : [ "impl/maven-impl/target/test-classes/**/*", "impl/maven-impl/target/classes/**/*", "impl/maven-impl/src/test/resources/**/*", "impl/maven-impl/pom.xml" ],
-            "outputs" : [ "impl/maven-impl/target/surefire-reports", "impl/maven-impl/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -1244,7 +1244,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-spi:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-di:package", "org.apache.maven.maven-support:package", "org.apache.maven.maven-xml:package" ],
             "cache" : true,
             "inputs" : [ "impl/maven-impl/target/classes/**/*", "impl/maven-impl/src/main/resources/**/*", "impl/maven-impl/pom.xml" ],
-            "outputs" : [ "impl/maven-impl/target/maven-impl-4.1.0-SNAPSHOT.jar", "impl/maven-impl/target/classes", "impl/maven-impl/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-impl-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1256,7 +1256,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-spi:verify", "org.apache.maven.maven-api-metadata:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-api-di:verify", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-settings:verify", "org.apache.maven.maven-di:verify", "org.apache.maven.maven-support:verify", "org.apache.maven.maven-xml:verify" ],
             "cache" : true,
             "inputs" : [ "impl/maven-impl/target/**/*", "impl/maven-impl/pom.xml", "impl/maven-impl/target/surefire-reports/**/*" ],
-            "outputs" : [ "impl/maven-impl/target/failsafe-reports", "impl/maven-impl/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -1310,7 +1310,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-di:validate", "org.apache.maven.maven-api-annotations:validate" ],
             "cache" : true,
             "inputs" : [ "impl/maven-di/pom.xml" ],
-            "outputs" : [ "impl/maven-di/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -1322,7 +1322,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-di:compile", "org.apache.maven.maven-api-annotations:compile" ],
             "cache" : true,
             "inputs" : [ "impl/maven-di/src/main/java/**/*", "impl/maven-di/pom.xml" ],
-            "outputs" : [ "impl/maven-di/target/classes", "impl/maven-di/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -1334,7 +1334,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-di:test", "org.apache.maven.maven-api-annotations:test" ],
             "cache" : true,
             "inputs" : [ "impl/maven-di/target/test-classes/**/*", "impl/maven-di/target/classes/**/*", "impl/maven-di/pom.xml" ],
-            "outputs" : [ "impl/maven-di/target/surefire-reports", "impl/maven-di/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -1346,7 +1346,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-annotations:package" ],
             "cache" : true,
             "inputs" : [ "impl/maven-di/target/classes/**/*", "impl/maven-di/pom.xml" ],
-            "outputs" : [ "impl/maven-di/target/maven-di-4.1.0-SNAPSHOT.jar", "impl/maven-di/target/classes", "impl/maven-di/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-di-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1358,7 +1358,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-di:verify", "org.apache.maven.maven-api-annotations:verify" ],
             "cache" : true,
             "inputs" : [ "impl/maven-di/target/**/*", "impl/maven-di/pom.xml", "impl/maven-di/target/surefire-reports/**/*" ],
-            "outputs" : [ "impl/maven-di/target/failsafe-reports", "impl/maven-di/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -1412,7 +1412,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-xml:validate" ],
             "cache" : true,
             "inputs" : [ "impl/maven-xml/pom.xml" ],
-            "outputs" : [ "impl/maven-xml/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -1424,7 +1424,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-xml:compile" ],
             "cache" : true,
             "inputs" : [ "impl/maven-xml/src/main/java/**/*", "impl/maven-xml/src/main/resources/**/*", "impl/maven-xml/pom.xml" ],
-            "outputs" : [ "impl/maven-xml/target/classes", "impl/maven-xml/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -1436,7 +1436,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-xml:test" ],
             "cache" : true,
             "inputs" : [ "impl/maven-xml/target/test-classes/**/*", "impl/maven-xml/target/classes/**/*", "impl/maven-xml/pom.xml" ],
-            "outputs" : [ "impl/maven-xml/target/surefire-reports", "impl/maven-xml/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -1448,7 +1448,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-xml:package" ],
             "cache" : true,
             "inputs" : [ "impl/maven-xml/target/classes/**/*", "impl/maven-xml/src/main/resources/**/*", "impl/maven-xml/pom.xml" ],
-            "outputs" : [ "impl/maven-xml/target/maven-xml-4.1.0-SNAPSHOT.jar", "impl/maven-xml/target/classes", "impl/maven-xml/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-xml-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1460,7 +1460,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-xml:verify" ],
             "cache" : true,
             "inputs" : [ "impl/maven-xml/target/**/*", "impl/maven-xml/pom.xml", "impl/maven-xml/target/surefire-reports/**/*" ],
-            "outputs" : [ "impl/maven-xml/target/failsafe-reports", "impl/maven-xml/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -1514,7 +1514,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-core:validate", "org.apache.maven.maven-api-di:validate" ],
             "cache" : true,
             "inputs" : [ "impl/maven-jline/pom.xml" ],
-            "outputs" : [ "impl/maven-jline/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -1526,7 +1526,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-di:compile" ],
             "cache" : true,
             "inputs" : [ "impl/maven-jline/src/main/java/**/*", "impl/maven-jline/pom.xml" ],
-            "outputs" : [ "impl/maven-jline/target/classes", "impl/maven-jline/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "package" : {
@@ -1538,7 +1538,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-di:package" ],
             "cache" : true,
             "inputs" : [ "impl/maven-jline/target/classes/**/*", "impl/maven-jline/pom.xml" ],
-            "outputs" : [ "impl/maven-jline/target/maven-jline-4.1.0-SNAPSHOT.jar", "impl/maven-jline/target/classes", "impl/maven-jline/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-jline-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1550,7 +1550,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-di:verify" ],
             "cache" : true,
             "inputs" : [ "impl/maven-jline/target/**/*", "impl/maven-jline/pom.xml" ],
-            "outputs" : [ "impl/maven-jline/target/failsafe-reports", "impl/maven-jline/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -1604,7 +1604,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:validate", "org.apache.maven.maven-jline:validate" ],
             "cache" : true,
             "inputs" : [ "impl/maven-logging/pom.xml" ],
-            "outputs" : [ "impl/maven-logging/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -1616,7 +1616,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-jline:compile" ],
             "cache" : true,
             "inputs" : [ "impl/maven-logging/src/main/java/**/*", "impl/maven-logging/src/main/resources/**/*", "impl/maven-logging/pom.xml" ],
-            "outputs" : [ "impl/maven-logging/target/classes", "impl/maven-logging/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -1628,7 +1628,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-jline:test" ],
             "cache" : true,
             "inputs" : [ "impl/maven-logging/target/test-classes/**/*", "impl/maven-logging/target/classes/**/*", "impl/maven-logging/pom.xml" ],
-            "outputs" : [ "impl/maven-logging/target/surefire-reports", "impl/maven-logging/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -1640,7 +1640,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-jline:package" ],
             "cache" : true,
             "inputs" : [ "impl/maven-logging/target/classes/**/*", "impl/maven-logging/src/main/resources/**/*", "impl/maven-logging/pom.xml" ],
-            "outputs" : [ "impl/maven-logging/target/maven-logging-4.1.0-SNAPSHOT.jar", "impl/maven-logging/target/classes", "impl/maven-logging/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-logging-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1652,7 +1652,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-jline:verify" ],
             "cache" : true,
             "inputs" : [ "impl/maven-logging/target/**/*", "impl/maven-logging/pom.xml", "impl/maven-logging/target/surefire-reports/**/*" ],
-            "outputs" : [ "impl/maven-logging/target/failsafe-reports", "impl/maven-logging/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -1706,7 +1706,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-core:validate", "org.apache.maven.maven-api-di:validate", "org.apache.maven.maven-api-metadata:validate", "org.apache.maven.maven-api-model:validate", "org.apache.maven.maven-api-plugin:validate", "org.apache.maven.maven-api-settings:validate", "org.apache.maven.maven-api-spi:validate", "org.apache.maven.maven-api-toolchain:validate", "org.apache.maven.maven-api-xml:validate", "org.apache.maven.maven-di:validate", "org.apache.maven.maven-impl:validate", "org.apache.maven.maven-jline:validate", "org.apache.maven.maven-logging:validate", "org.apache.maven.maven-xml:validate", "org.apache.maven.maven-artifact:validate", "org.apache.maven.maven-model:validate", "org.apache.maven.maven-model-builder:validate", "org.apache.maven.maven-plugin-api:validate", "org.apache.maven.maven-repository-metadata:validate", "org.apache.maven.maven-settings:validate", "org.apache.maven.maven-toolchain-model:validate", "org.apache.maven.maven-toolchain-builder:validate" ],
             "cache" : true,
             "inputs" : [ "impl/maven-core/pom.xml" ],
-            "outputs" : [ "impl/maven-core/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -1718,7 +1718,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-di:compile", "org.apache.maven.maven-api-metadata:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-plugin:compile", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-api-spi:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-di:compile", "org.apache.maven.maven-impl:compile", "org.apache.maven.maven-jline:compile", "org.apache.maven.maven-logging:compile", "org.apache.maven.maven-xml:compile", "org.apache.maven.maven-artifact:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-model-builder:compile", "org.apache.maven.maven-plugin-api:compile", "org.apache.maven.maven-repository-metadata:compile", "org.apache.maven.maven-settings:compile", "org.apache.maven.maven-toolchain-model:compile", "org.apache.maven.maven-toolchain-builder:compile" ],
             "cache" : true,
             "inputs" : [ "impl/maven-core/src/main/java/**/*", "impl/maven-core/src/main/resources/**/*", "impl/maven-core/pom.xml" ],
-            "outputs" : [ "impl/maven-core/target/classes", "impl/maven-core/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -1730,7 +1730,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-api-di:test", "org.apache.maven.maven-api-metadata:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-plugin:test", "org.apache.maven.maven-api-settings:test", "org.apache.maven.maven-api-spi:test", "org.apache.maven.maven-api-toolchain:test", "org.apache.maven.maven-api-xml:test", "org.apache.maven.maven-di:test", "org.apache.maven.maven-impl:test", "org.apache.maven.maven-jline:test", "org.apache.maven.maven-logging:test", "org.apache.maven.maven-xml:test", "org.apache.maven.maven-artifact:test", "org.apache.maven.maven-model:test", "org.apache.maven.maven-model-builder:test", "org.apache.maven.maven-plugin-api:test", "org.apache.maven.maven-repository-metadata:test", "org.apache.maven.maven-settings:test", "org.apache.maven.maven-toolchain-model:test", "org.apache.maven.maven-toolchain-builder:test" ],
             "cache" : true,
             "inputs" : [ "impl/maven-core/target/test-classes/**/*", "impl/maven-core/target/classes/**/*", "impl/maven-core/src/test/resources/**/*", "impl/maven-core/pom.xml" ],
-            "outputs" : [ "impl/maven-core/target/surefire-reports", "impl/maven-core/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -1742,7 +1742,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-plugin:package", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-spi:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-di:package", "org.apache.maven.maven-impl:package", "org.apache.maven.maven-jline:package", "org.apache.maven.maven-logging:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-model-builder:package", "org.apache.maven.maven-plugin-api:package", "org.apache.maven.maven-repository-metadata:package", "org.apache.maven.maven-settings:package", "org.apache.maven.maven-toolchain-model:package", "org.apache.maven.maven-toolchain-builder:package" ],
             "cache" : true,
             "inputs" : [ "impl/maven-core/target/classes/**/*", "impl/maven-core/src/main/resources/**/*", "impl/maven-core/pom.xml" ],
-            "outputs" : [ "impl/maven-core/target/maven-core-4.1.0-SNAPSHOT.jar", "impl/maven-core/target/classes", "impl/maven-core/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-core-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1754,7 +1754,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-di:verify", "org.apache.maven.maven-api-metadata:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-plugin:verify", "org.apache.maven.maven-api-settings:verify", "org.apache.maven.maven-api-spi:verify", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-di:verify", "org.apache.maven.maven-impl:verify", "org.apache.maven.maven-jline:verify", "org.apache.maven.maven-logging:verify", "org.apache.maven.maven-xml:verify", "org.apache.maven.maven-artifact:verify", "org.apache.maven.maven-model:verify", "org.apache.maven.maven-model-builder:verify", "org.apache.maven.maven-plugin-api:verify", "org.apache.maven.maven-repository-metadata:verify", "org.apache.maven.maven-settings:verify", "org.apache.maven.maven-toolchain-model:verify", "org.apache.maven.maven-toolchain-builder:verify" ],
             "cache" : true,
             "inputs" : [ "impl/maven-core/target/**/*", "impl/maven-core/pom.xml", "impl/maven-core/target/surefire-reports/**/*" ],
-            "outputs" : [ "impl/maven-core/target/failsafe-reports", "impl/maven-core/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -1808,7 +1808,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-core:validate", "org.apache.maven.maven-api-cli:validate", "org.apache.maven.maven-api-di:validate", "org.apache.maven.maven-api-model:validate", "org.apache.maven.maven-api-settings:validate", "org.apache.maven.maven-api-spi:validate", "org.apache.maven.maven-api-toolchain:validate", "org.apache.maven.maven-api-xml:validate", "org.apache.maven.maven-core:validate", "org.apache.maven.maven-di:validate", "org.apache.maven.maven-impl:validate", "org.apache.maven.maven-jline:validate", "org.apache.maven.maven-logging:validate", "org.apache.maven.maven-xml:validate", "org.apache.maven.maven-artifact:validate", "org.apache.maven.maven-model:validate", "org.apache.maven.maven-plugin-api:validate", "org.apache.maven.maven-settings:validate", "org.apache.maven.maven-toolchain-model:validate", "org.apache.maven.maven-compat:validate" ],
             "cache" : true,
             "inputs" : [ "impl/maven-cli/pom.xml" ],
-            "outputs" : [ "impl/maven-cli/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -1820,7 +1820,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-cli:compile", "org.apache.maven.maven-api-di:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-api-spi:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-core:compile", "org.apache.maven.maven-di:compile", "org.apache.maven.maven-impl:compile", "org.apache.maven.maven-jline:compile", "org.apache.maven.maven-logging:compile", "org.apache.maven.maven-xml:compile", "org.apache.maven.maven-artifact:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-plugin-api:compile", "org.apache.maven.maven-settings:compile", "org.apache.maven.maven-toolchain-model:compile", "org.apache.maven.maven-compat:compile" ],
             "cache" : true,
             "inputs" : [ "impl/maven-cli/src/main/java/**/*", "impl/maven-cli/src/main/resources/**/*", "impl/maven-cli/pom.xml" ],
-            "outputs" : [ "impl/maven-cli/target/classes", "impl/maven-cli/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -1832,7 +1832,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-api-cli:test", "org.apache.maven.maven-api-di:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-settings:test", "org.apache.maven.maven-api-spi:test", "org.apache.maven.maven-api-toolchain:test", "org.apache.maven.maven-api-xml:test", "org.apache.maven.maven-core:test", "org.apache.maven.maven-di:test", "org.apache.maven.maven-impl:test", "org.apache.maven.maven-jline:test", "org.apache.maven.maven-logging:test", "org.apache.maven.maven-xml:test", "org.apache.maven.maven-artifact:test", "org.apache.maven.maven-model:test", "org.apache.maven.maven-plugin-api:test", "org.apache.maven.maven-settings:test", "org.apache.maven.maven-toolchain-model:test", "org.apache.maven.maven-compat:test" ],
             "cache" : true,
             "inputs" : [ "impl/maven-cli/target/test-classes/**/*", "impl/maven-cli/target/classes/**/*", "impl/maven-cli/src/test/resources/**/*", "impl/maven-cli/pom.xml" ],
-            "outputs" : [ "impl/maven-cli/target/surefire-reports", "impl/maven-cli/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -1844,7 +1844,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-cli:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-spi:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-core:package", "org.apache.maven.maven-di:package", "org.apache.maven.maven-impl:package", "org.apache.maven.maven-jline:package", "org.apache.maven.maven-logging:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-plugin-api:package", "org.apache.maven.maven-settings:package", "org.apache.maven.maven-toolchain-model:package", "org.apache.maven.maven-compat:package" ],
             "cache" : true,
             "inputs" : [ "impl/maven-cli/target/classes/**/*", "impl/maven-cli/src/main/resources/**/*", "impl/maven-cli/pom.xml" ],
-            "outputs" : [ "impl/maven-cli/target/maven-cli-4.1.0-SNAPSHOT.jar", "impl/maven-cli/target/classes", "impl/maven-cli/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-cli-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1856,7 +1856,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-cli:verify", "org.apache.maven.maven-api-di:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-settings:verify", "org.apache.maven.maven-api-spi:verify", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-core:verify", "org.apache.maven.maven-di:verify", "org.apache.maven.maven-impl:verify", "org.apache.maven.maven-jline:verify", "org.apache.maven.maven-logging:verify", "org.apache.maven.maven-xml:verify", "org.apache.maven.maven-artifact:verify", "org.apache.maven.maven-model:verify", "org.apache.maven.maven-plugin-api:verify", "org.apache.maven.maven-settings:verify", "org.apache.maven.maven-toolchain-model:verify", "org.apache.maven.maven-compat:verify" ],
             "cache" : true,
             "inputs" : [ "impl/maven-cli/target/**/*", "impl/maven-cli/pom.xml", "impl/maven-cli/target/surefire-reports/**/*" ],
-            "outputs" : [ "impl/maven-cli/target/failsafe-reports", "impl/maven-cli/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -1910,7 +1910,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:validate", "org.apache.maven.maven-api-model:validate", "org.apache.maven.maven-api-di:validate", "org.apache.maven.maven-xml:validate", "org.apache.maven.maven-core:validate" ],
             "cache" : true,
             "inputs" : [ "impl/maven-testing/pom.xml" ],
-            "outputs" : [ "impl/maven-testing/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -1922,7 +1922,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-di:compile", "org.apache.maven.maven-xml:compile", "org.apache.maven.maven-core:compile" ],
             "cache" : true,
             "inputs" : [ "impl/maven-testing/src/main/java/**/*", "impl/maven-testing/pom.xml" ],
-            "outputs" : [ "impl/maven-testing/target/classes", "impl/maven-testing/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -1934,7 +1934,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-di:test", "org.apache.maven.maven-xml:test", "org.apache.maven.maven-core:test" ],
             "cache" : true,
             "inputs" : [ "impl/maven-testing/target/test-classes/**/*", "impl/maven-testing/target/classes/**/*", "impl/maven-testing/src/test/resources/**/*", "impl/maven-testing/pom.xml" ],
-            "outputs" : [ "impl/maven-testing/target/surefire-reports", "impl/maven-testing/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -1946,7 +1946,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-core:package" ],
             "cache" : true,
             "inputs" : [ "impl/maven-testing/target/classes/**/*", "impl/maven-testing/pom.xml" ],
-            "outputs" : [ "impl/maven-testing/target/maven-testing-4.1.0-SNAPSHOT.jar", "impl/maven-testing/target/classes", "impl/maven-testing/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-testing-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1958,7 +1958,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-di:verify", "org.apache.maven.maven-xml:verify", "org.apache.maven.maven-core:verify" ],
             "cache" : true,
             "inputs" : [ "impl/maven-testing/target/**/*", "impl/maven-testing/pom.xml", "impl/maven-testing/target/surefire-reports/**/*" ],
-            "outputs" : [ "impl/maven-testing/target/failsafe-reports", "impl/maven-testing/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -2012,7 +2012,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.apache-maven:validate" ],
             "cache" : true,
             "inputs" : [ "impl/maven-executor/pom.xml" ],
-            "outputs" : [ "impl/maven-executor/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -2024,7 +2024,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.apache-maven:validate" ],
             "cache" : true,
             "inputs" : [ "impl/maven-executor/src/main/java/**/*", "impl/maven-executor/pom.xml" ],
-            "outputs" : [ "impl/maven-executor/target/classes", "impl/maven-executor/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -2036,7 +2036,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.apache-maven:validate" ],
             "cache" : true,
             "inputs" : [ "impl/maven-executor/target/test-classes/**/*", "impl/maven-executor/target/classes/**/*", "impl/maven-executor/pom.xml" ],
-            "outputs" : [ "impl/maven-executor/target/surefire-reports", "impl/maven-executor/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -2048,7 +2048,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.apache-maven:validate" ],
             "cache" : true,
             "inputs" : [ "impl/maven-executor/target/classes/**/*", "impl/maven-executor/pom.xml" ],
-            "outputs" : [ "impl/maven-executor/target/maven-executor-4.1.0-SNAPSHOT.jar", "impl/maven-executor/target/classes", "impl/maven-executor/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-executor-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -2060,7 +2060,7 @@
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.apache-maven:validate" ],
             "cache" : true,
             "inputs" : [ "impl/maven-executor/target/**/*", "impl/maven-executor/pom.xml", "impl/maven-executor/target/surefire-reports/**/*" ],
-            "outputs" : [ "impl/maven-executor/target/failsafe-reports", "impl/maven-executor/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -2114,7 +2114,7 @@
             "dependsOn" : [ "org.apache.maven.maven:validate" ],
             "cache" : true,
             "inputs" : [ "impl/pom.xml" ],
-            "outputs" : [ "impl/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -2168,7 +2168,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-xml:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-plugin:validate", "org.apache.maven.maven-xml:validate", "org.apache.maven.maven-model:validate", "org.apache.maven.maven-artifact:validate", "org.apache.maven.maven-support:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-plugin-api/pom.xml" ],
-            "outputs" : [ "compat/maven-plugin-api/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -2180,7 +2180,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-plugin:compile", "org.apache.maven.maven-xml:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-artifact:compile", "org.apache.maven.maven-support:compile" ],
             "cache" : true,
             "inputs" : [ "compat/maven-plugin-api/src/main/java/**/*", "compat/maven-plugin-api/pom.xml" ],
-            "outputs" : [ "compat/maven-plugin-api/target/classes", "compat/maven-plugin-api/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -2192,7 +2192,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-xml:test", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-plugin:test", "org.apache.maven.maven-xml:test", "org.apache.maven.maven-model:test", "org.apache.maven.maven-artifact:test", "org.apache.maven.maven-support:test" ],
             "cache" : true,
             "inputs" : [ "compat/maven-plugin-api/target/test-classes/**/*", "compat/maven-plugin-api/target/classes/**/*", "compat/maven-plugin-api/src/test/resources/**/*", "compat/maven-plugin-api/pom.xml" ],
-            "outputs" : [ "compat/maven-plugin-api/target/surefire-reports", "compat/maven-plugin-api/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -2204,7 +2204,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-plugin:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-support:package" ],
             "cache" : true,
             "inputs" : [ "compat/maven-plugin-api/target/classes/**/*", "compat/maven-plugin-api/pom.xml" ],
-            "outputs" : [ "compat/maven-plugin-api/target/maven-plugin-api-4.1.0-SNAPSHOT.jar", "compat/maven-plugin-api/target/classes", "compat/maven-plugin-api/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-plugin-api-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -2216,7 +2216,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-plugin:verify", "org.apache.maven.maven-xml:verify", "org.apache.maven.maven-model:verify", "org.apache.maven.maven-artifact:verify", "org.apache.maven.maven-support:verify" ],
             "cache" : true,
             "inputs" : [ "compat/maven-plugin-api/target/**/*", "compat/maven-plugin-api/pom.xml", "compat/maven-plugin-api/target/surefire-reports/**/*" ],
-            "outputs" : [ "compat/maven-plugin-api/target/failsafe-reports", "compat/maven-plugin-api/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -2270,7 +2270,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-core:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-builder-support/pom.xml" ],
-            "outputs" : [ "compat/maven-builder-support/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -2282,7 +2282,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-core:compile" ],
             "cache" : true,
             "inputs" : [ "compat/maven-builder-support/src/main/java/**/*", "compat/maven-builder-support/pom.xml" ],
-            "outputs" : [ "compat/maven-builder-support/target/classes", "compat/maven-builder-support/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -2294,7 +2294,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-core:test" ],
             "cache" : true,
             "inputs" : [ "compat/maven-builder-support/target/test-classes/**/*", "compat/maven-builder-support/target/classes/**/*", "compat/maven-builder-support/src/test/resources/**/*", "compat/maven-builder-support/pom.xml" ],
-            "outputs" : [ "compat/maven-builder-support/target/surefire-reports", "compat/maven-builder-support/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -2306,7 +2306,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-core:package" ],
             "cache" : true,
             "inputs" : [ "compat/maven-builder-support/target/classes/**/*", "compat/maven-builder-support/pom.xml" ],
-            "outputs" : [ "compat/maven-builder-support/target/maven-builder-support-4.1.0-SNAPSHOT.jar", "compat/maven-builder-support/target/classes", "compat/maven-builder-support/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-builder-support-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -2318,7 +2318,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-core:verify" ],
             "cache" : true,
             "inputs" : [ "compat/maven-builder-support/target/**/*", "compat/maven-builder-support/pom.xml", "compat/maven-builder-support/target/surefire-reports/**/*" ],
-            "outputs" : [ "compat/maven-builder-support/target/failsafe-reports", "compat/maven-builder-support/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -2372,7 +2372,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-model:validate", "org.apache.maven.maven-api-xml:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-support:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-model/pom.xml" ],
-            "outputs" : [ "compat/maven-model/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -2384,7 +2384,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-support:compile" ],
             "cache" : true,
             "inputs" : [ "compat/maven-model/src/main/java/**/*", "compat/maven-model/pom.xml" ],
-            "outputs" : [ "compat/maven-model/target/classes", "compat/maven-model/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -2396,7 +2396,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-xml:test", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-support:test" ],
             "cache" : true,
             "inputs" : [ "compat/maven-model/target/test-classes/**/*", "compat/maven-model/target/classes/**/*", "compat/maven-model/src/test/resources/**/*", "compat/maven-model/pom.xml" ],
-            "outputs" : [ "compat/maven-model/target/surefire-reports", "compat/maven-model/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -2408,7 +2408,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-support:package" ],
             "cache" : true,
             "inputs" : [ "compat/maven-model/target/classes/**/*", "compat/maven-model/pom.xml" ],
-            "outputs" : [ "compat/maven-model/target/maven-model-4.1.0-SNAPSHOT.jar", "compat/maven-model/target/classes", "compat/maven-model/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-model-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -2420,7 +2420,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-support:verify" ],
             "cache" : true,
             "inputs" : [ "compat/maven-model/target/**/*", "compat/maven-model/pom.xml", "compat/maven-model/target/surefire-reports/**/*" ],
-            "outputs" : [ "compat/maven-model/target/failsafe-reports", "compat/maven-model/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -2474,7 +2474,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-model:validate", "org.apache.maven.maven-model:validate", "org.apache.maven.maven-artifact:validate", "org.apache.maven.maven-builder-support:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-model-builder/pom.xml" ],
-            "outputs" : [ "compat/maven-model-builder/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -2486,7 +2486,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-artifact:compile", "org.apache.maven.maven-builder-support:compile" ],
             "cache" : true,
             "inputs" : [ "compat/maven-model-builder/src/main/java/**/*", "compat/maven-model-builder/src/main/resources/**/*", "compat/maven-model-builder/pom.xml" ],
-            "outputs" : [ "compat/maven-model-builder/target/classes", "compat/maven-model-builder/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -2498,7 +2498,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-model:test", "org.apache.maven.maven-artifact:test", "org.apache.maven.maven-builder-support:test" ],
             "cache" : true,
             "inputs" : [ "compat/maven-model-builder/target/test-classes/**/*", "compat/maven-model-builder/target/classes/**/*", "compat/maven-model-builder/src/test/resources/**/*", "compat/maven-model-builder/pom.xml" ],
-            "outputs" : [ "compat/maven-model-builder/target/surefire-reports", "compat/maven-model-builder/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -2510,7 +2510,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-builder-support:package" ],
             "cache" : true,
             "inputs" : [ "compat/maven-model-builder/target/classes/**/*", "compat/maven-model-builder/src/main/resources/**/*", "compat/maven-model-builder/pom.xml" ],
-            "outputs" : [ "compat/maven-model-builder/target/maven-model-builder-4.1.0-SNAPSHOT.jar", "compat/maven-model-builder/target/classes", "compat/maven-model-builder/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-model-builder-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -2522,7 +2522,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-model:verify", "org.apache.maven.maven-artifact:verify", "org.apache.maven.maven-builder-support:verify" ],
             "cache" : true,
             "inputs" : [ "compat/maven-model-builder/target/**/*", "compat/maven-model-builder/pom.xml", "compat/maven-model-builder/target/surefire-reports/**/*" ],
-            "outputs" : [ "compat/maven-model-builder/target/failsafe-reports", "compat/maven-model-builder/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -2576,7 +2576,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:validate", "org.apache.maven.maven-api-xml:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-xml:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-settings/pom.xml" ],
-            "outputs" : [ "compat/maven-settings/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -2588,7 +2588,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-xml:compile" ],
             "cache" : true,
             "inputs" : [ "compat/maven-settings/src/main/java/**/*", "compat/maven-settings/pom.xml" ],
-            "outputs" : [ "compat/maven-settings/target/classes", "compat/maven-settings/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "package" : {
@@ -2600,7 +2600,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-xml:package" ],
             "cache" : true,
             "inputs" : [ "compat/maven-settings/target/classes/**/*", "compat/maven-settings/pom.xml" ],
-            "outputs" : [ "compat/maven-settings/target/maven-settings-4.1.0-SNAPSHOT.jar", "compat/maven-settings/target/classes", "compat/maven-settings/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-settings-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -2612,7 +2612,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-xml:verify" ],
             "cache" : true,
             "inputs" : [ "compat/maven-settings/target/**/*", "compat/maven-settings/pom.xml" ],
-            "outputs" : [ "compat/maven-settings/target/failsafe-reports", "compat/maven-settings/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -2666,7 +2666,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:validate", "org.apache.maven.maven-api-core:validate", "org.apache.maven.maven-support:validate", "org.apache.maven.maven-builder-support:validate", "org.apache.maven.maven-settings:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-settings-builder/pom.xml" ],
-            "outputs" : [ "compat/maven-settings-builder/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -2678,7 +2678,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-support:compile", "org.apache.maven.maven-builder-support:compile", "org.apache.maven.maven-settings:compile" ],
             "cache" : true,
             "inputs" : [ "compat/maven-settings-builder/src/main/java/**/*", "compat/maven-settings-builder/pom.xml" ],
-            "outputs" : [ "compat/maven-settings-builder/target/classes", "compat/maven-settings-builder/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -2690,7 +2690,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:test", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-support:test", "org.apache.maven.maven-builder-support:test", "org.apache.maven.maven-settings:test" ],
             "cache" : true,
             "inputs" : [ "compat/maven-settings-builder/target/test-classes/**/*", "compat/maven-settings-builder/target/classes/**/*", "compat/maven-settings-builder/src/test/resources/**/*", "compat/maven-settings-builder/pom.xml" ],
-            "outputs" : [ "compat/maven-settings-builder/target/surefire-reports", "compat/maven-settings-builder/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -2702,7 +2702,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-support:package", "org.apache.maven.maven-builder-support:package", "org.apache.maven.maven-settings:package" ],
             "cache" : true,
             "inputs" : [ "compat/maven-settings-builder/target/classes/**/*", "compat/maven-settings-builder/pom.xml" ],
-            "outputs" : [ "compat/maven-settings-builder/target/maven-settings-builder-4.1.0-SNAPSHOT.jar", "compat/maven-settings-builder/target/classes", "compat/maven-settings-builder/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-settings-builder-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -2714,7 +2714,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-support:verify", "org.apache.maven.maven-builder-support:verify", "org.apache.maven.maven-settings:verify" ],
             "cache" : true,
             "inputs" : [ "compat/maven-settings-builder/target/**/*", "compat/maven-settings-builder/pom.xml", "compat/maven-settings-builder/target/surefire-reports/**/*" ],
-            "outputs" : [ "compat/maven-settings-builder/target/failsafe-reports", "compat/maven-settings-builder/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -2768,7 +2768,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-artifact/pom.xml" ],
-            "outputs" : [ "compat/maven-artifact/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -2780,7 +2780,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-artifact/src/main/java/**/*", "compat/maven-artifact/pom.xml" ],
-            "outputs" : [ "compat/maven-artifact/target/classes", "compat/maven-artifact/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -2792,7 +2792,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-artifact/target/test-classes/**/*", "compat/maven-artifact/target/classes/**/*", "compat/maven-artifact/pom.xml" ],
-            "outputs" : [ "compat/maven-artifact/target/surefire-reports", "compat/maven-artifact/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -2804,7 +2804,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-artifact/target/classes/**/*", "compat/maven-artifact/pom.xml" ],
-            "outputs" : [ "compat/maven-artifact/target/maven-artifact-4.1.0-SNAPSHOT.jar", "compat/maven-artifact/target/classes", "compat/maven-artifact/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-artifact-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -2816,7 +2816,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-artifact/target/**/*", "compat/maven-artifact/pom.xml", "compat/maven-artifact/target/surefire-reports/**/*", "compat/maven-artifact/target/failsafe-reports/**/*" ],
-            "outputs" : [ "compat/maven-artifact/target/failsafe-reports", "compat/maven-artifact/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -2870,7 +2870,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-xml:validate", "org.apache.maven.maven-api-metadata:validate", "org.apache.maven.maven-api-spi:validate", "org.apache.maven.maven-api-core:validate", "org.apache.maven.maven-xml:validate", "org.apache.maven.maven-support:validate", "org.apache.maven.maven-model:validate", "org.apache.maven.maven-model-builder:validate", "org.apache.maven.maven-repository-metadata:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-resolver-provider/pom.xml" ],
-            "outputs" : [ "compat/maven-resolver-provider/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -2882,7 +2882,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-api-metadata:compile", "org.apache.maven.maven-api-spi:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-xml:compile", "org.apache.maven.maven-support:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-model-builder:compile", "org.apache.maven.maven-repository-metadata:compile" ],
             "cache" : true,
             "inputs" : [ "compat/maven-resolver-provider/src/main/java/**/*", "compat/maven-resolver-provider/pom.xml" ],
-            "outputs" : [ "compat/maven-resolver-provider/target/classes", "compat/maven-resolver-provider/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -2894,7 +2894,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-xml:test", "org.apache.maven.maven-api-metadata:test", "org.apache.maven.maven-api-spi:test", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-xml:test", "org.apache.maven.maven-support:test", "org.apache.maven.maven-model:test", "org.apache.maven.maven-model-builder:test", "org.apache.maven.maven-repository-metadata:test" ],
             "cache" : true,
             "inputs" : [ "compat/maven-resolver-provider/target/test-classes/**/*", "compat/maven-resolver-provider/target/classes/**/*", "compat/maven-resolver-provider/src/test/resources/**/*", "compat/maven-resolver-provider/pom.xml" ],
-            "outputs" : [ "compat/maven-resolver-provider/target/surefire-reports", "compat/maven-resolver-provider/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -2906,7 +2906,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-api-spi:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-support:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-model-builder:package", "org.apache.maven.maven-repository-metadata:package" ],
             "cache" : true,
             "inputs" : [ "compat/maven-resolver-provider/target/classes/**/*", "compat/maven-resolver-provider/pom.xml" ],
-            "outputs" : [ "compat/maven-resolver-provider/target/maven-resolver-provider-4.1.0-SNAPSHOT.jar", "compat/maven-resolver-provider/target/classes", "compat/maven-resolver-provider/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-resolver-provider-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -2918,7 +2918,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-api-metadata:verify", "org.apache.maven.maven-api-spi:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-xml:verify", "org.apache.maven.maven-support:verify", "org.apache.maven.maven-model:verify", "org.apache.maven.maven-model-builder:verify", "org.apache.maven.maven-repository-metadata:verify" ],
             "cache" : true,
             "inputs" : [ "compat/maven-resolver-provider/target/**/*", "compat/maven-resolver-provider/pom.xml", "compat/maven-resolver-provider/target/surefire-reports/**/*" ],
-            "outputs" : [ "compat/maven-resolver-provider/target/failsafe-reports", "compat/maven-resolver-provider/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -2972,7 +2972,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-metadata:validate", "org.apache.maven.maven-support:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-repository-metadata/pom.xml" ],
-            "outputs" : [ "compat/maven-repository-metadata/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -2984,7 +2984,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-metadata:compile", "org.apache.maven.maven-support:compile" ],
             "cache" : true,
             "inputs" : [ "compat/maven-repository-metadata/src/main/java/**/*", "compat/maven-repository-metadata/pom.xml" ],
-            "outputs" : [ "compat/maven-repository-metadata/target/classes", "compat/maven-repository-metadata/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -2996,7 +2996,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-metadata:test", "org.apache.maven.maven-support:test" ],
             "cache" : true,
             "inputs" : [ "compat/maven-repository-metadata/target/test-classes/**/*", "compat/maven-repository-metadata/target/classes/**/*", "compat/maven-repository-metadata/pom.xml" ],
-            "outputs" : [ "compat/maven-repository-metadata/target/surefire-reports", "compat/maven-repository-metadata/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -3008,7 +3008,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-support:package" ],
             "cache" : true,
             "inputs" : [ "compat/maven-repository-metadata/target/classes/**/*", "compat/maven-repository-metadata/pom.xml" ],
-            "outputs" : [ "compat/maven-repository-metadata/target/maven-repository-metadata-4.1.0-SNAPSHOT.jar", "compat/maven-repository-metadata/target/classes", "compat/maven-repository-metadata/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-repository-metadata-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -3020,7 +3020,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-metadata:verify", "org.apache.maven.maven-support:verify" ],
             "cache" : true,
             "inputs" : [ "compat/maven-repository-metadata/target/**/*", "compat/maven-repository-metadata/pom.xml", "compat/maven-repository-metadata/target/surefire-reports/**/*" ],
-            "outputs" : [ "compat/maven-repository-metadata/target/failsafe-reports", "compat/maven-repository-metadata/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -3074,7 +3074,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-core:validate", "org.apache.maven.maven-api-cli:validate", "org.apache.maven.maven-api-model:validate", "org.apache.maven.maven-api-xml:validate", "org.apache.maven.maven-core:validate", "org.apache.maven.maven-cli:validate", "org.apache.maven.maven-di:validate", "org.apache.maven.maven-jline:validate", "org.apache.maven.maven-logging:validate", "org.apache.maven.maven-xml:validate", "org.apache.maven.maven-artifact:validate", "org.apache.maven.maven-builder-support:validate", "org.apache.maven.maven-model:validate", "org.apache.maven.maven-model-builder:validate", "org.apache.maven.maven-plugin-api:validate", "org.apache.maven.maven-settings:validate", "org.apache.maven.maven-settings-builder:validate", "org.apache.maven.maven-toolchain-builder:validate", "org.apache.maven.maven-toolchain-model:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-embedder/pom.xml" ],
-            "outputs" : [ "compat/maven-embedder/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -3086,7 +3086,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-cli:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-core:compile", "org.apache.maven.maven-cli:compile", "org.apache.maven.maven-di:compile", "org.apache.maven.maven-jline:compile", "org.apache.maven.maven-logging:compile", "org.apache.maven.maven-xml:compile", "org.apache.maven.maven-artifact:compile", "org.apache.maven.maven-builder-support:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-model-builder:compile", "org.apache.maven.maven-plugin-api:compile", "org.apache.maven.maven-settings:compile", "org.apache.maven.maven-settings-builder:compile", "org.apache.maven.maven-toolchain-builder:compile", "org.apache.maven.maven-toolchain-model:compile" ],
             "cache" : true,
             "inputs" : [ "compat/maven-embedder/src/main/java/**/*", "compat/maven-embedder/pom.xml" ],
-            "outputs" : [ "compat/maven-embedder/target/classes", "compat/maven-embedder/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -3098,7 +3098,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-api-cli:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-xml:test", "org.apache.maven.maven-core:test", "org.apache.maven.maven-cli:test", "org.apache.maven.maven-di:test", "org.apache.maven.maven-jline:test", "org.apache.maven.maven-logging:test", "org.apache.maven.maven-xml:test", "org.apache.maven.maven-artifact:test", "org.apache.maven.maven-builder-support:test", "org.apache.maven.maven-model:test", "org.apache.maven.maven-model-builder:test", "org.apache.maven.maven-plugin-api:test", "org.apache.maven.maven-settings:test", "org.apache.maven.maven-settings-builder:test", "org.apache.maven.maven-toolchain-builder:test", "org.apache.maven.maven-toolchain-model:test" ],
             "cache" : true,
             "inputs" : [ "compat/maven-embedder/target/test-classes/**/*", "compat/maven-embedder/target/classes/**/*", "compat/maven-embedder/pom.xml" ],
-            "outputs" : [ "compat/maven-embedder/target/surefire-reports", "compat/maven-embedder/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -3110,7 +3110,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-cli:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-core:package", "org.apache.maven.maven-cli:package", "org.apache.maven.maven-di:package", "org.apache.maven.maven-jline:package", "org.apache.maven.maven-logging:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-builder-support:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-model-builder:package", "org.apache.maven.maven-plugin-api:package", "org.apache.maven.maven-settings:package", "org.apache.maven.maven-settings-builder:package", "org.apache.maven.maven-toolchain-builder:package", "org.apache.maven.maven-toolchain-model:package" ],
             "cache" : true,
             "inputs" : [ "compat/maven-embedder/target/classes/**/*", "compat/maven-embedder/pom.xml" ],
-            "outputs" : [ "compat/maven-embedder/target/maven-embedder-4.1.0-SNAPSHOT.jar", "compat/maven-embedder/target/classes", "compat/maven-embedder/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-embedder-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -3122,7 +3122,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-cli:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-core:verify", "org.apache.maven.maven-cli:verify", "org.apache.maven.maven-di:verify", "org.apache.maven.maven-jline:verify", "org.apache.maven.maven-logging:verify", "org.apache.maven.maven-xml:verify", "org.apache.maven.maven-artifact:verify", "org.apache.maven.maven-builder-support:verify", "org.apache.maven.maven-model:verify", "org.apache.maven.maven-model-builder:verify", "org.apache.maven.maven-plugin-api:verify", "org.apache.maven.maven-settings:verify", "org.apache.maven.maven-settings-builder:verify", "org.apache.maven.maven-toolchain-builder:verify", "org.apache.maven.maven-toolchain-model:verify" ],
             "cache" : true,
             "inputs" : [ "compat/maven-embedder/target/**/*", "compat/maven-embedder/pom.xml", "compat/maven-embedder/target/surefire-reports/**/*" ],
-            "outputs" : [ "compat/maven-embedder/target/failsafe-reports", "compat/maven-embedder/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -3176,7 +3176,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:validate", "org.apache.maven.maven-api-core:validate", "org.apache.maven.maven-api-di:validate", "org.apache.maven.maven-api-metadata:validate", "org.apache.maven.maven-api-model:validate", "org.apache.maven.maven-api-toolchain:validate", "org.apache.maven.maven-impl:validate", "org.apache.maven.maven-core:validate", "org.apache.maven.maven-artifact:validate", "org.apache.maven.maven-model:validate", "org.apache.maven.maven-model-builder:validate", "org.apache.maven.maven-settings:validate", "org.apache.maven.maven-settings-builder:validate", "org.apache.maven.maven-plugin-api:validate", "org.apache.maven.maven-repository-metadata:validate", "org.apache.maven.maven-toolchain-builder:validate", "org.apache.maven.maven-toolchain-model:validate", "org.apache.maven.maven-resolver-provider:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-compat/pom.xml" ],
-            "outputs" : [ "compat/maven-compat/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -3188,7 +3188,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:compile", "org.apache.maven.maven-api-core:compile", "org.apache.maven.maven-api-di:compile", "org.apache.maven.maven-api-metadata:compile", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-impl:compile", "org.apache.maven.maven-core:compile", "org.apache.maven.maven-artifact:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-model-builder:compile", "org.apache.maven.maven-settings:compile", "org.apache.maven.maven-settings-builder:compile", "org.apache.maven.maven-plugin-api:compile", "org.apache.maven.maven-repository-metadata:compile", "org.apache.maven.maven-toolchain-builder:compile", "org.apache.maven.maven-toolchain-model:compile", "org.apache.maven.maven-resolver-provider:compile" ],
             "cache" : true,
             "inputs" : [ "compat/maven-compat/src/main/java/**/*", "compat/maven-compat/src/main/resources/**/*", "compat/maven-compat/pom.xml" ],
-            "outputs" : [ "compat/maven-compat/target/classes", "compat/maven-compat/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -3200,7 +3200,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:test", "org.apache.maven.maven-api-core:test", "org.apache.maven.maven-api-di:test", "org.apache.maven.maven-api-metadata:test", "org.apache.maven.maven-api-model:test", "org.apache.maven.maven-api-toolchain:test", "org.apache.maven.maven-impl:test", "org.apache.maven.maven-core:test", "org.apache.maven.maven-artifact:test", "org.apache.maven.maven-model:test", "org.apache.maven.maven-model-builder:test", "org.apache.maven.maven-settings:test", "org.apache.maven.maven-settings-builder:test", "org.apache.maven.maven-plugin-api:test", "org.apache.maven.maven-repository-metadata:test", "org.apache.maven.maven-toolchain-builder:test", "org.apache.maven.maven-toolchain-model:test", "org.apache.maven.maven-resolver-provider:test" ],
             "cache" : true,
             "inputs" : [ "compat/maven-compat/target/test-classes/**/*", "compat/maven-compat/target/classes/**/*", "compat/maven-compat/src/test/resources/**/*", "compat/maven-compat/pom.xml" ],
-            "outputs" : [ "compat/maven-compat/target/surefire-reports", "compat/maven-compat/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -3212,7 +3212,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-impl:package", "org.apache.maven.maven-core:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-model-builder:package", "org.apache.maven.maven-settings:package", "org.apache.maven.maven-settings-builder:package", "org.apache.maven.maven-plugin-api:package", "org.apache.maven.maven-repository-metadata:package", "org.apache.maven.maven-toolchain-builder:package", "org.apache.maven.maven-toolchain-model:package", "org.apache.maven.maven-resolver-provider:package" ],
             "cache" : true,
             "inputs" : [ "compat/maven-compat/target/classes/**/*", "compat/maven-compat/src/main/resources/**/*", "compat/maven-compat/pom.xml" ],
-            "outputs" : [ "compat/maven-compat/target/maven-compat-4.1.0-SNAPSHOT.jar", "compat/maven-compat/target/classes", "compat/maven-compat/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-compat-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -3224,7 +3224,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:verify", "org.apache.maven.maven-api-core:verify", "org.apache.maven.maven-api-di:verify", "org.apache.maven.maven-api-metadata:verify", "org.apache.maven.maven-api-model:verify", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-impl:verify", "org.apache.maven.maven-core:verify", "org.apache.maven.maven-artifact:verify", "org.apache.maven.maven-model:verify", "org.apache.maven.maven-model-builder:verify", "org.apache.maven.maven-settings:verify", "org.apache.maven.maven-settings-builder:verify", "org.apache.maven.maven-plugin-api:verify", "org.apache.maven.maven-repository-metadata:verify", "org.apache.maven.maven-toolchain-builder:verify", "org.apache.maven.maven-toolchain-model:verify", "org.apache.maven.maven-resolver-provider:verify" ],
             "cache" : true,
             "inputs" : [ "compat/maven-compat/target/**/*", "compat/maven-compat/pom.xml", "compat/maven-compat/target/surefire-reports/**/*" ],
-            "outputs" : [ "compat/maven-compat/target/failsafe-reports", "compat/maven-compat/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -3278,7 +3278,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-support:validate", "org.apache.maven.maven-api-toolchain:validate", "org.apache.maven.maven-api-xml:validate", "org.apache.maven.maven-api-annotations:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-toolchain-model/pom.xml" ],
-            "outputs" : [ "compat/maven-toolchain-model/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -3290,7 +3290,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-support:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-api-xml:compile", "org.apache.maven.maven-api-annotations:compile" ],
             "cache" : true,
             "inputs" : [ "compat/maven-toolchain-model/src/main/java/**/*", "compat/maven-toolchain-model/pom.xml" ],
-            "outputs" : [ "compat/maven-toolchain-model/target/classes", "compat/maven-toolchain-model/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "package" : {
@@ -3302,7 +3302,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-support:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-annotations:package" ],
             "cache" : true,
             "inputs" : [ "compat/maven-toolchain-model/target/classes/**/*", "compat/maven-toolchain-model/pom.xml" ],
-            "outputs" : [ "compat/maven-toolchain-model/target/maven-toolchain-model-4.1.0-SNAPSHOT.jar", "compat/maven-toolchain-model/target/classes", "compat/maven-toolchain-model/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-toolchain-model-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -3314,7 +3314,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-support:verify", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-api-xml:verify", "org.apache.maven.maven-api-annotations:verify" ],
             "cache" : true,
             "inputs" : [ "compat/maven-toolchain-model/target/**/*", "compat/maven-toolchain-model/pom.xml" ],
-            "outputs" : [ "compat/maven-toolchain-model/target/failsafe-reports", "compat/maven-toolchain-model/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -3368,7 +3368,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-toolchain:validate", "org.apache.maven.maven-support:validate", "org.apache.maven.maven-toolchain-model:validate", "org.apache.maven.maven-builder-support:validate", "org.apache.maven.maven-impl:validate" ],
             "cache" : true,
             "inputs" : [ "compat/maven-toolchain-builder/pom.xml" ],
-            "outputs" : [ "compat/maven-toolchain-builder/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "compile" : {
@@ -3380,7 +3380,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-support:compile", "org.apache.maven.maven-toolchain-model:compile", "org.apache.maven.maven-builder-support:compile", "org.apache.maven.maven-impl:compile" ],
             "cache" : true,
             "inputs" : [ "compat/maven-toolchain-builder/src/main/java/**/*", "compat/maven-toolchain-builder/pom.xml" ],
-            "outputs" : [ "compat/maven-toolchain-builder/target/classes", "compat/maven-toolchain-builder/target/generated-sources" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/generated-sources" ],
             "parallelism" : true
           },
           "test" : {
@@ -3392,7 +3392,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-toolchain:test", "org.apache.maven.maven-support:test", "org.apache.maven.maven-toolchain-model:test", "org.apache.maven.maven-builder-support:test", "org.apache.maven.maven-impl:test" ],
             "cache" : true,
             "inputs" : [ "compat/maven-toolchain-builder/target/test-classes/**/*", "compat/maven-toolchain-builder/target/classes/**/*", "compat/maven-toolchain-builder/src/test/resources/**/*", "compat/maven-toolchain-builder/pom.xml" ],
-            "outputs" : [ "compat/maven-toolchain-builder/target/surefire-reports", "compat/maven-toolchain-builder/target/test-results" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-results" ],
             "parallelism" : true
           },
           "package" : {
@@ -3404,7 +3404,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-support:package", "org.apache.maven.maven-toolchain-model:package", "org.apache.maven.maven-builder-support:package", "org.apache.maven.maven-impl:package" ],
             "cache" : true,
             "inputs" : [ "compat/maven-toolchain-builder/target/classes/**/*", "compat/maven-toolchain-builder/pom.xml" ],
-            "outputs" : [ "compat/maven-toolchain-builder/target/maven-toolchain-builder-4.1.0-SNAPSHOT.jar", "compat/maven-toolchain-builder/target/classes", "compat/maven-toolchain-builder/target/maven-archiver" ],
+            "outputs" : [ "{projectRoot}/target/maven-toolchain-builder-4.1.0-SNAPSHOT.jar", "{projectRoot}/target/classes", "{projectRoot}/target/maven-archiver" ],
             "parallelism" : true
           },
           "verify" : {
@@ -3416,7 +3416,7 @@
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-toolchain:verify", "org.apache.maven.maven-support:verify", "org.apache.maven.maven-toolchain-model:verify", "org.apache.maven.maven-builder-support:verify", "org.apache.maven.maven-impl:verify" ],
             "cache" : true,
             "inputs" : [ "compat/maven-toolchain-builder/target/**/*", "compat/maven-toolchain-builder/pom.xml", "compat/maven-toolchain-builder/target/surefire-reports/**/*" ],
-            "outputs" : [ "compat/maven-toolchain-builder/target/failsafe-reports", "compat/maven-toolchain-builder/target/verification-reports" ],
+            "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/verification-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -3470,7 +3470,7 @@
             "dependsOn" : [ "org.apache.maven.maven:validate" ],
             "cache" : true,
             "inputs" : [ "compat/pom.xml" ],
-            "outputs" : [ "compat/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -3524,7 +3524,7 @@
             "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-cli:validate", "org.apache.maven.maven-embedder:validate", "org.apache.maven.maven-core:validate", "org.apache.maven.maven-compat:validate", "org.apache.maven.maven-logging:validate" ],
             "cache" : true,
             "inputs" : [ "apache-maven/pom.xml" ],
-            "outputs" : [ "apache-maven/target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -3576,7 +3576,7 @@
             },
             "cache" : true,
             "inputs" : [ "./pom.xml" ],
-            "outputs" : [ "./target/validation-reports" ],
+            "outputs" : [ "{projectRoot}/target/validation-reports" ],
             "parallelism" : true
           },
           "install" : {
@@ -3602,7 +3602,7 @@
       }
     }
   } ] ],
-  "generatedAt" : 1755813388614,
+  "generatedAt" : 1755816314980,
   "workspaceRoot" : "/home/jason/projects/triage/java/maven",
   "totalProjects" : 39
 }
