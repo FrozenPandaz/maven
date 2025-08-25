@@ -9,7 +9,10 @@
     "lint": "nx lint",
     "format": "nx format:write",
     "affected": "nx affected",
-    "dep-graph": "nx dep-graph"
+    "dep-graph": "nx dep-graph",
+    "release": "nx release",
+    "release:version": "nx release version",
+    "release:publish": "nx release publish"
   },
   "devDependencies": {
     "@nx/devkit": "21.5.0-beta.0",
