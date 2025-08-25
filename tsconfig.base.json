@@ -9,7 +9,10 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "commonjs",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
@@ -20,8 +23,13 @@
     "composite": true,
     "declarationMap": true,
     "paths": {
-      "@nx/maven": ["packages/maven/src/index.ts"]
+      "@nx/maven": [
+        "packages/maven/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
