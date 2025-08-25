@@ -10,7 +10,7 @@
     "format": "nx format:write",
     "affected": "nx affected",
     "dep-graph": "nx dep-graph",
-    "release": "nx release",
+    "release": "pnpm release:version && pnpm nx run maven-analyzer-plugin:sync-maven-version && git add packages/maven/analyzer-plugin/pom.xml && git commit --amend --no-edit",
     "release:version": "nx release version",
     "release:publish": "nx release publish"
   },

@@ -86,21 +86,7 @@
               "tag": "maven-analyzer-plugin-{version}",
               "tagVersionPrefix": "maven-analyzer-plugin-"
             }
-          },
-          "versionActions": [
-            {
-              "type": "packageJson",
-              "file": "packages/maven/analyzer-plugin/package.json"
-            },
-            {
-              "type": "exec",
-              "command": "mvn versions:set -DnewVersion={version} -f packages/maven/analyzer-plugin/pom.xml"
-            },
-            {
-              "type": "exec", 
-              "command": "mvn versions:commit -f packages/maven/analyzer-plugin/pom.xml"
-            }
-          ]
+          }
         }
       }
     },
