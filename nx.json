@@ -44,5 +44,77 @@
         "verbose": true
       }
     }
-  ]
+  ],
+  "release": {
+    "groups": {
+      "maven": {
+        "projects": [
+          "@nx/maven",
+          "maven-analyzer-plugin"
+        ],
+        "version": {
+          "generatorOptions": {
+            "currentVersionResolver": "git-tag"
+          },
+          "git": {
+            "commitMessage": "chore: release maven {version}",
+            "tagMessage": "release(maven): {version}"
+          }
+        }
+      }
+    },
+    "projectsRelationship": "independent",
+    "version": {
+      "generatorOptions": {
+        "currentVersionResolver": "git-tag",
+        "fallbackCurrentVersionResolver": "disk"
+      },
+      "projects": {
+        "@nx/maven": {
+          "generatorOptions": {
+            "packageRoot": "packages/maven",
+            "currentVersionResolverMetadata": {
+              "tag": "@nx/maven-{version}",
+              "tagVersionPrefix": "@nx/maven-"
+            }
+          }
+        },
+        "maven-analyzer-plugin": {
+          "generatorOptions": {
+            "packageRoot": "packages/maven/analyzer-plugin",
+            "currentVersionResolverMetadata": {
+              "tag": "maven-analyzer-plugin-{version}",
+              "tagVersionPrefix": "maven-analyzer-plugin-"
+            }
+          },
+          "versionActions": [
+            {
+              "type": "packageJson",
+              "file": "packages/maven/analyzer-plugin/package.json"
+            },
+            {
+              "type": "exec",
+              "command": "mvn versions:set -DnewVersion={version} -f packages/maven/analyzer-plugin/pom.xml"
+            },
+            {
+              "type": "exec", 
+              "command": "mvn versions:commit -f packages/maven/analyzer-plugin/pom.xml"
+            }
+          ]
+        }
+      }
+    },
+    "changelog": {
+      "workspaceChangelog": {
+        "createRelease": "github"
+      },
+      "projectChangelogs": {
+        "createRelease": "github"
+      },
+      "git": {
+        "commitMessage": "chore: update changelog for {version}",
+        "tagMessage": "changelog: {version}"
+      }
+    }
+  }
 }
