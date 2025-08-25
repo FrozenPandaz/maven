@@ -31,5 +31,6 @@ Create an Nx plugin that integrates Maven with Nx to run Maven tasks more effici
 ## Development Guidelines
 - **Always commit and push changes as you go** - Make regular commits during development to avoid losing work
 - Create meaningful commit messages that describe the changes made
+- **Always push to the fork remote** - Use `git push fork <branch>` instead of `git push origin <branch>` since this is a fork of apache/maven
 - Push commits to maintain backup and collaboration history
 - **No backwards compatibility concerns** - Feel free to make breaking changes and improvements without worrying about backwards compatibility
