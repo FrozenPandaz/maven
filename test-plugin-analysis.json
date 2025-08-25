@@ -1,0 +1,419 @@
+{
+  "artifactId" : "maven-core",
+  "groupId" : "org.apache.maven",
+  "version" : "4.1.0-SNAPSHOT",
+  "packaging" : "jar",
+  "name" : "Maven 4 Core",
+  "description" : "Maven Core classes.",
+  "root" : "impl/maven-core",
+  "projectType" : "application",
+  "sourceRoots" : [ "impl/maven-core/src/main/java" ],
+  "testSourceRoots" : [ "impl/maven-core/src/test/java" ],
+  "dependencies" : [ {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-api-annotations",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-api-annotations"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-api-core",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-api-core"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-api-di",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-api-di"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-api-metadata",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-api-metadata"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-api-model",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-api-model"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-api-plugin",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-api-plugin"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-api-settings",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-api-settings"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-api-spi",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-api-spi"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-api-toolchain",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-api-toolchain"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-api-xml",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-api-xml"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-di",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-di"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-impl",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-impl"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-jline",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-jline"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-logging",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-logging"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-xml",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-xml"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-artifact",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-artifact"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-model",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-model"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-model-builder",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-model-builder"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-plugin-api",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-plugin-api"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-repository-metadata",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-repository-metadata"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-settings",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-settings"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-toolchain-model",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven:maven-toolchain-model"
+  }, {
+    "groupId" : "org.apache.maven.resolver",
+    "artifactId" : "maven-resolver-api",
+    "version" : "2.0.10",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven.resolver:maven-resolver-api"
+  }, {
+    "groupId" : "org.apache.maven.resolver",
+    "artifactId" : "maven-resolver-spi",
+    "version" : "2.0.10",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven.resolver:maven-resolver-spi"
+  }, {
+    "groupId" : "org.apache.maven.resolver",
+    "artifactId" : "maven-resolver-util",
+    "version" : "2.0.10",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven.resolver:maven-resolver-util"
+  }, {
+    "groupId" : "org.apache.maven.resolver",
+    "artifactId" : "maven-resolver-impl",
+    "version" : "2.0.10",
+    "scope" : "compile",
+    "coordinates" : "org.apache.maven.resolver:maven-resolver-impl"
+  }, {
+    "groupId" : "org.slf4j",
+    "artifactId" : "slf4j-api",
+    "version" : "2.0.17",
+    "scope" : "compile",
+    "coordinates" : "org.slf4j:slf4j-api"
+  }, {
+    "groupId" : "org.codehaus.plexus",
+    "artifactId" : "plexus-classworlds",
+    "version" : "2.9.0",
+    "scope" : "compile",
+    "coordinates" : "org.codehaus.plexus:plexus-classworlds"
+  }, {
+    "groupId" : "javax.inject",
+    "artifactId" : "javax.inject",
+    "version" : "1",
+    "scope" : "provided",
+    "coordinates" : "javax.inject:javax.inject"
+  }, {
+    "groupId" : "org.eclipse.sisu",
+    "artifactId" : "org.eclipse.sisu.plexus",
+    "version" : "0.9.0.M4",
+    "scope" : "provided",
+    "coordinates" : "org.eclipse.sisu:org.eclipse.sisu.plexus"
+  }, {
+    "groupId" : "org.eclipse.sisu",
+    "artifactId" : "org.eclipse.sisu.inject",
+    "version" : "0.9.0.M4",
+    "scope" : "provided",
+    "coordinates" : "org.eclipse.sisu:org.eclipse.sisu.inject"
+  }, {
+    "groupId" : "com.google.inject",
+    "artifactId" : "guice",
+    "version" : "5.1.0",
+    "scope" : "provided",
+    "coordinates" : "com.google.inject:guice"
+  }, {
+    "groupId" : "org.codehaus.plexus",
+    "artifactId" : "plexus-utils",
+    "version" : "4.0.2",
+    "scope" : "test",
+    "coordinates" : "org.codehaus.plexus:plexus-utils"
+  }, {
+    "groupId" : "org.codehaus.plexus",
+    "artifactId" : "plexus-xml",
+    "version" : "4.1.0",
+    "scope" : "compile",
+    "coordinates" : "org.codehaus.plexus:plexus-xml"
+  }, {
+    "groupId" : "org.junit.jupiter",
+    "artifactId" : "junit-jupiter-api",
+    "version" : "5.13.4",
+    "scope" : "test",
+    "coordinates" : "org.junit.jupiter:junit-jupiter-api"
+  }, {
+    "groupId" : "org.junit.jupiter",
+    "artifactId" : "junit-jupiter-params",
+    "version" : "5.13.4",
+    "scope" : "test",
+    "coordinates" : "org.junit.jupiter:junit-jupiter-params"
+  }, {
+    "groupId" : "org.hamcrest",
+    "artifactId" : "hamcrest",
+    "version" : "3.0",
+    "scope" : "test",
+    "coordinates" : "org.hamcrest:hamcrest"
+  }, {
+    "groupId" : "org.slf4j",
+    "artifactId" : "slf4j-simple",
+    "version" : "2.0.17",
+    "scope" : "test",
+    "coordinates" : "org.slf4j:slf4j-simple"
+  }, {
+    "groupId" : "commons-jxpath",
+    "artifactId" : "commons-jxpath",
+    "version" : "1.4.0",
+    "scope" : "test",
+    "coordinates" : "commons-jxpath:commons-jxpath"
+  }, {
+    "groupId" : "org.xmlunit",
+    "artifactId" : "xmlunit-assertj",
+    "version" : "2.10.3",
+    "scope" : "test",
+    "coordinates" : "org.xmlunit:xmlunit-assertj"
+  }, {
+    "groupId" : "org.codehaus.plexus",
+    "artifactId" : "plexus-testing",
+    "version" : "1.5.0",
+    "scope" : "test",
+    "coordinates" : "org.codehaus.plexus:plexus-testing"
+  }, {
+    "groupId" : "org.mockito",
+    "artifactId" : "mockito-junit-jupiter",
+    "version" : "5.18.0",
+    "scope" : "test",
+    "coordinates" : "org.mockito:mockito-junit-jupiter"
+  }, {
+    "groupId" : "org.mockito",
+    "artifactId" : "mockito-core",
+    "version" : "5.18.0",
+    "scope" : "test",
+    "coordinates" : "org.mockito:mockito-core"
+  }, {
+    "groupId" : "org.assertj",
+    "artifactId" : "assertj-core",
+    "version" : "3.27.4",
+    "scope" : "test",
+    "coordinates" : "org.assertj:assertj-core"
+  }, {
+    "groupId" : "org.openjdk.jmh",
+    "artifactId" : "jmh-core",
+    "version" : "1.37",
+    "scope" : "test",
+    "coordinates" : "org.openjdk.jmh:jmh-core"
+  }, {
+    "groupId" : "org.openjdk.jmh",
+    "artifactId" : "jmh-generator-annprocess",
+    "version" : "1.37",
+    "scope" : "test",
+    "coordinates" : "org.openjdk.jmh:jmh-generator-annprocess"
+  }, {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-toolchain-builder",
+    "version" : "4.1.0-SNAPSHOT",
+    "scope" : "test",
+    "coordinates" : "org.apache.maven:maven-toolchain-builder"
+  } ],
+  "parent" : {
+    "groupId" : "org.apache.maven",
+    "artifactId" : "maven-impl-modules",
+    "version" : "4.1.0-SNAPSHOT",
+    "coordinates" : "org.apache.maven:maven-impl-modules"
+  },
+  "phases" : {
+    "validate" : {
+      "cacheable" : false,
+      "reason" : "No meaningful inputs"
+    },
+    "initialize" : {
+      "cacheable" : false,
+      "reason" : "Has side effects"
+    },
+    "process-sources" : {
+      "cacheable" : true,
+      "reason" : "Deterministic based on plugin parameters",
+      "inputs" : [ "{projectRoot}/pom.xml", {
+        "dependentTasksOutputFiles" : "**/*",
+        "transitive" : true
+      }, "{projectRoot}/src/main/java/**/*", "{projectRoot}/src/test/java/**/*", "{projectRoot}//**/*" ],
+      "outputs" : [ "{projectRoot}/target/checkstyle-result.xml", "{projectRoot}/xml" ]
+    },
+    "generate-resources" : {
+      "cacheable" : false,
+      "reason" : "No meaningful inputs"
+    },
+    "process-resources" : {
+      "cacheable" : false,
+      "reason" : "No meaningful inputs"
+    },
+    "compile" : {
+      "cacheable" : true,
+      "reason" : "Deterministic based on plugin parameters",
+      "inputs" : [ "{projectRoot}/pom.xml", {
+        "dependentTasksOutputFiles" : "**/*",
+        "transitive" : true
+      }, "{projectRoot}//**/*", "{projectRoot}/target/generated-sources/annotations/**/*" ],
+      "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes", "{projectRoot}/1.8" ]
+    },
+    "process-classes" : {
+      "cacheable" : false,
+      "reason" : "No meaningful inputs"
+    },
+    "process-test-resources" : {
+      "cacheable" : false,
+      "reason" : "No meaningful inputs"
+    },
+    "test-compile" : {
+      "cacheable" : true,
+      "reason" : "Deterministic based on plugin parameters",
+      "inputs" : [ "{projectRoot}/pom.xml", {
+        "dependentTasksOutputFiles" : "**/*",
+        "transitive" : true
+      }, "{projectRoot}//**/*", "{projectRoot}/target/generated-test-sources/test-annotations/**/*" ],
+      "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/test-classes", "{projectRoot}/1.8" ]
+    },
+    "process-test-classes" : {
+      "cacheable" : false,
+      "reason" : "No meaningful inputs"
+    },
+    "test" : {
+      "cacheable" : true,
+      "reason" : "Deterministic based on plugin parameters",
+      "inputs" : [ "{projectRoot}/pom.xml", {
+        "dependentTasksOutputFiles" : "**/*",
+        "transitive" : true
+      }, "{projectRoot}//**/*", "{projectRoot}//**/*" ],
+      "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/${project.reporting.outputEncoding}", "{projectRoot}/target", "{projectRoot}/brief", "{projectRoot}/", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-classes" ]
+    },
+    "package" : {
+      "cacheable" : true,
+      "reason" : "Deterministic based on plugin parameters",
+      "inputs" : [ "{projectRoot}/pom.xml", {
+        "dependentTasksOutputFiles" : "**/*",
+        "transitive" : true
+      }, "{projectRoot}/target/classes" ],
+      "outputs" : [ "{projectRoot}/maven-core-4.1.0-SNAPSHOT", "{projectRoot}/target" ]
+    },
+    "integration-test" : {
+      "cacheable" : true,
+      "reason" : "Deterministic based on plugin parameters",
+      "inputs" : [ "{projectRoot}/pom.xml", {
+        "dependentTasksOutputFiles" : "**/*",
+        "transitive" : true
+      }, "{projectRoot}//**/*", "{projectRoot}//**/*" ],
+      "outputs" : [ "{projectRoot}/${project.reporting.outputEncoding}", "{projectRoot}/target", "{projectRoot}/brief", "{projectRoot}/", "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/test-classes" ]
+    },
+    "verify" : {
+      "cacheable" : true,
+      "reason" : "Deterministic based on plugin parameters",
+      "inputs" : [ "{projectRoot}/pom.xml", {
+        "dependentTasksOutputFiles" : "**/*",
+        "transitive" : true
+      }, "{projectRoot}//**/*" ],
+      "outputs" : [ "{projectRoot}/target/failsafe-reports", "{projectRoot}/target/test-classes" ]
+    },
+    "install" : {
+      "cacheable" : false,
+      "reason" : "Has side effects"
+    },
+    "deploy" : {
+      "cacheable" : false,
+      "reason" : "Has side effects"
+    },
+    "clean" : {
+      "cacheable" : false,
+      "reason" : "Has side effects"
+    },
+    "site" : {
+      "cacheable" : true,
+      "reason" : "Deterministic based on plugin parameters",
+      "inputs" : [ "{projectRoot}/pom.xml", {
+        "dependentTasksOutputFiles" : "**/*",
+        "transitive" : true
+      }, "{projectRoot}/src/site/**/*" ],
+      "outputs" : [ "{projectRoot}/${project.reporting.outputDirectory}", "{projectRoot}/${project.reporting.outputEncoding}" ]
+    }
+  },
+  "hasTests" : true,
+  "hasResources" : true,
+  "generatedAt" : 1756156461834,
+  "projectName" : "org.apache.maven.maven-core"
+}
