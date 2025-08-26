@@ -1,0 +1,184 @@
+{
+  "createNodesResults" : [ [ "./pom.xml", {
+    "projects" : {
+      "." : {
+        "name" : "org.apache.maven.maven-cli",
+        "root" : ".",
+        "projectType" : "application",
+        "sourceRoot" : "./src/main/java",
+        "targets" : {
+          "validate" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn validate -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "initialize" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn initialize -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "generate-sources" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn generate-sources -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "process-sources" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn process-sources -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/src/main/java/**/*", "{projectRoot}/src/test/java/**/*" ],
+            "outputs" : [ "{projectRoot}/target/checkstyle-result.xml", "{projectRoot}/target/dependency" ],
+            "parallelism" : true
+          },
+          "generate-resources" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn generate-resources -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "process-resources" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn process-resources -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "compile" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn compile -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
+            "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
+            "parallelism" : true
+          },
+          "process-test-resources" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn process-test-resources -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "test-compile" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn test-compile -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/generated-test-sources/test-annotations/**/*", "{projectRoot}/src/test/java/**/*" ],
+            "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/test-classes" ],
+            "parallelism" : true
+          },
+          "test" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn test -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "package" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn package -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
+            "parallelism" : true
+          },
+          "install" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn install -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "deploy" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn deploy -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "clean" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn clean -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "site" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn site -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "verify" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn verify -pl org.apache.maven:maven-cli",
+              "cwd" : "{workspaceRoot}"
+            },
+            "cache" : false,
+            "parallelism" : true
+          }
+        },
+        "tags" : [ "maven:org.apache.maven", "maven:jar" ]
+      }
+    }
+  } ] ],
+  "generatedAt" : 1756246254084,
+  "workspaceRoot" : "/home/jason/projects/triage/java/maven/impl/maven-cli",
+  "totalProjects" : 1,
+  "analyzedProjects" : 1,
+  "analysisMethod" : "two-tier"
+}
