@@ -15,7 +15,8 @@
     "reset": "nx reset && pnpm build && pnpm build:plugin",
     "release": "pnpm release:version && pnpm nx run maven-analyzer-plugin:sync-maven-version && git add packages/maven/analyzer-plugin/pom.xml && git commit --amend --no-edit",
     "release:version": "nx release version",
-    "release:publish": "nx release publish"
+    "release:publish": "nx release publish",
+    "release:local": "pnpm build && pnpm build:plugin && nx local-registry && npm publish packages/maven/dist --registry http://localhost:4873"
   },
   "devDependencies": {
     "@nx/devkit": "21.5.0-beta.0",
