@@ -13,7 +13,12 @@
               "command" : "mvn validate -pl org.apache.maven:maven-cli",
               "cwd" : "{workspaceRoot}"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            } ],
+            "outputs" : [ ],
             "parallelism" : true
           },
           "initialize" : {
@@ -22,7 +27,12 @@
               "command" : "mvn initialize -pl org.apache.maven:maven-cli",
               "cwd" : "{workspaceRoot}"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            } ],
+            "outputs" : [ ],
             "parallelism" : true
           },
           "generate-sources" : {
@@ -31,7 +41,12 @@
               "command" : "mvn generate-sources -pl org.apache.maven:maven-cli",
               "cwd" : "{workspaceRoot}"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            } ],
+            "outputs" : [ "{projectRoot}/target/generated-sources/modello" ],
             "parallelism" : true
           },
           "process-sources" : {
@@ -54,7 +69,12 @@
               "command" : "mvn generate-resources -pl org.apache.maven:maven-cli",
               "cwd" : "{workspaceRoot}"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            } ],
+            "outputs" : [ "{projectRoot}/target/maven-shared-archive-resources" ],
             "parallelism" : true
           },
           "process-resources" : {
@@ -63,7 +83,12 @@
               "command" : "mvn process-resources -pl org.apache.maven:maven-cli",
               "cwd" : "{workspaceRoot}"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            } ],
+            "outputs" : [ "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
           "compile" : {
@@ -86,7 +111,12 @@
               "command" : "mvn process-test-resources -pl org.apache.maven:maven-cli",
               "cwd" : "{workspaceRoot}"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            } ],
+            "outputs" : [ "{projectRoot}/target/test-classes" ],
             "parallelism" : true
           },
           "test-compile" : {
@@ -109,7 +139,12 @@
               "command" : "mvn test -pl org.apache.maven:maven-cli",
               "cwd" : "{workspaceRoot}"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            } ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target", "{projectRoot}/target/surefire-reports", "{projectRoot}/target/test-classes" ],
             "parallelism" : true
           },
           "package" : {
@@ -159,7 +194,12 @@
               "command" : "mvn site -pl org.apache.maven:maven-cli",
               "cwd" : "{workspaceRoot}"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/src/site/**/*" ],
+            "outputs" : [ ],
             "parallelism" : true
           },
           "verify" : {
@@ -176,7 +216,7 @@
       }
     }
   } ] ],
-  "generatedAt" : 1756246254084,
+  "generatedAt" : 1756247476214,
   "workspaceRoot" : "/home/jason/projects/triage/java/maven/impl/maven-cli",
   "totalProjects" : 1,
   "analyzedProjects" : 1,
