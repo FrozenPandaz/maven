@@ -39,7 +39,7 @@
     "groups": {
       "maven": {
         "projects": [
-          "nx-maven-plugin",
+          "@nx/maven",
           "maven-analyzer-plugin"
         ],
         "version": {
