@@ -5,7 +5,7 @@
   "description": "Nx plugin for Maven integration",
   "scripts": {
     "build": "cd packages/maven/analyzer-plugin && mvn clean install -DskipTests && nx build @nx/maven",
-    "build:plugin": "tsc -b",
+    "build:plugin": "cd packages/maven && tsc -b --clean && tsc -b tsconfig.lib.json",
     "test": "nx test",
     "lint": "nx lint",
     "format": "nx format:write",
