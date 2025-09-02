@@ -21,7 +21,10 @@
     {
       "plugin": "@nx/js/typescript",
       "options": {
-        "buildTarget": "build",
+        "build": {
+          "targetName": "build",
+          "configName": "tsconfig.lib.json"
+        },
         "analyzeSourceFiles": true
       }
     },
@@ -39,8 +42,7 @@
     "groups": {
       "maven": {
         "projects": [
-          "@nx/maven",
-          "maven-analyzer-plugin"
+          "@nx/maven"
         ],
         "version": {
           "generatorOptions": {

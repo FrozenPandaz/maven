@@ -4,7 +4,7 @@
   "private": true,
   "description": "Nx plugin for Maven integration",
   "scripts": {
-    "build": "cd packages/maven/analyzer-plugin && mvn clean install -DskipTests",
+    "build": "cd packages/maven/analyzer-plugin && mvn clean install -DskipTests && nx build @nx/maven",
     "build:plugin": "tsc -b",
     "test": "nx test",
     "lint": "nx lint",
@@ -15,7 +15,8 @@
     "reset": "nx reset && pnpm build && pnpm build:plugin",
     "release": "pnpm release:version && pnpm nx run maven-analyzer-plugin:sync-maven-version && git add packages/maven/analyzer-plugin/pom.xml && git commit --amend --no-edit",
     "release:version": "nx release version",
-    "release:publish": "nx release publish"
+    "release:publish": "nx release publish",
+    "release:local": "pnpm build && nx release version prerelease && nx release publish"
   },
   "devDependencies": {
     "@nx/devkit": "21.5.0-beta.0",
