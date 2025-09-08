@@ -98,5 +98,7 @@
         "tagMessage": "changelog: {version}"
       }
     }
-  }
+  },
+  "nxCloudUrl": "https://staging.nx.app",
+  "nxCloudId": "68bf439116a215717d3cb2e2"
 }
