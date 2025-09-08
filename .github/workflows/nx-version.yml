@@ -76,7 +76,7 @@ jobs:
 
       - name: Build Maven distributions
         shell: bash
-        run: nx run-many -t verify --verbose
+        run: npx nx run-many -t verify --verbose
 
       - name: List contents of target directory
         shell: bash
@@ -159,11 +159,11 @@ jobs:
 
       - name: Build with downloaded Maven
         shell: bash
-        run: nx run-many -t verify --verbose
+        run: npx nx run-many -t verify --verbose
 
       - name: Build site with downloaded Maven
         shell: bash
-        run: nx run-many -t site --verbose
+        run: npx nx run-many -t site --verbose
 
       - name: Upload test artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -249,7 +249,7 @@ jobs:
 
       - name: Build Maven and ITs and run them
         shell: bash
-        run: nx run-many -t verify --verbose
+        run: npx nx run-many -t verify --verbose
 
       - name: Upload test artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
