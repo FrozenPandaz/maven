@@ -1,74 +1,50 @@
-# Test Atomization Implementation Summary
+# Test Atomization Implementation for Maven
 
-## What Was Implemented
+## Overview
+Successfully implemented test atomization for Maven JUnit tests, allowing individual test classes to be executed as separate Nx targets for better parallelization and caching.
 
-### 1. Test Class Parser (`test-class-parser.ts`)
-- Parses Java files to detect JUnit test classes
-- Supports JUnit 4, JUnit 5, and TestNG annotations  
-- Extracts package paths and class names
-- Uses regex-based parsing (similar to Gradle's fallback approach)
+## Key Components Implemented
 
-### 2. Test Class Discovery (Kotlin - `TestClassDiscovery.kt`)
-- Scans Maven project test source directories
-- Identifies Java test files with test annotations
-- Extracts test class metadata for atomization
-- Integrated into `NxProjectAnalyzerSingleMojo.kt`
+### 1. Test Class Discovery (`TestClassDiscovery.kt`)
+- Simple string-based parsing to find test annotations
+- Supports JUnit 4, JUnit 5, and TestNG test annotations
+- Discovers test classes by looking for: `@Test`, `@ParameterizedTest`, `@TestFactory`, `@RepeatedTest`, `@TestTemplate`, `@org.junit.Test`, `@org.testng.annotations.Test`
 
-### 3. Test Atomization Logic (`test-atomization.ts`)  
-- Creates individual test targets per test class: `test-ci--<ClassName>`
-- Uses `nx:run-commands` executor with `mvn test -Dtest=<ClassName>`
-- Creates parent `test-ci` target using `nx:noop` executor
-- Groups all test targets under "verification" target group
+### 2. Module Discovery Fix (`NxWorkspaceGraphMojo.kt`)
+- **Critical Fix**: Replaced `session.allProjects` (discovered 1,888 pom.xml files) with Maven's module discovery logic
+- Now processes only actual modules (39 in Apache Maven case) using `project.modules`
+- Eliminated StackOverflowError when processing large Maven projects
+- Uses recursive module traversal following Maven's own discovery pattern
 
-### 4. Plugin Integration (`nodes.ts`)
-- Added atomization configuration options:
-  - `atomizeTests: boolean` (default: false)
-  - `minTestClassesForAtomization: number` (default: 1)
-- Post-processes Maven analysis data to add atomized targets
-- Preserves existing functionality when atomization disabled
+### 3. Test Atomization Logic (`test-atomization.ts`)
+- Creates individual test targets for each discovered test class
+- Uses Maven Surefire `-Dtest` parameter for targeted test execution
+- Target naming: `test-ci--{TestClassName}`
+- Target group: Changed from "verification" to "test" for semantic consistency
 
-### 5. Configuration Options (`types.ts`)
-- Extended `MavenPluginOptions` with atomization settings
-- Provides defaults for new configuration options
+### 4. Target Group Preservation (`maven-atomization-processor.ts`)
+- Fixed issue where test atomization was overwriting existing target groups
+- Now preserves plugin-specific target groups alongside test atomization groups
+- Ensures proper separation of targets by plugin type
 
-## Files Modified/Created
-
-### Created Files:
-- `src/utils/test-class-parser.ts` - Test class parsing logic
-- `src/utils/test-atomization.ts` - Atomization target generation  
-- `src/utils/maven-atomization-processor.ts` - Post-processing integration
-- `analyzer-plugin/.../TestClassDiscovery.kt` - Kotlin test discovery
-- `src/utils/test-class-parser.spec.ts` - Unit tests
-- `src/utils/test-atomization.spec.ts` - Unit tests
-
-### Modified Files:
-- `src/plugins/types.ts` - Added atomization options
-- `src/plugins/nodes.ts` - Integrated post-processing  
-- `NxProjectAnalyzerSingleMojo.kt` - Added test class discovery
-- `NxWorkspaceGraphMojo.kt` - Store analysis data in metadata
-
-## Usage
-
-Enable in `nx.json`:
-
+## Configuration
+Test atomization is configurable via `nx.json`:
 ```json
 {
-  "plugins": [
-    {
-      "plugin": "@nx/maven", 
-      "options": {
-        "atomizeTests": true,
-        "minTestClassesForAtomization": 2
-      }
-    }
-  ]
+  "plugin": "./packages/maven/dist",
+  "options": {
+    "atomizeTests": true,
+    "minTestClassesForAtomization": 1
+  }
 }
 ```
 
-## Benefits
+## Results
+- Successfully runs individual test classes: `nx run maven-cli:test-ci--BaseParserTest`
+- Proper target grouping in Nx project view
+- Eliminated StackOverflowError on large codebases
+- Maintained compatibility with existing Maven workflows
 
-1. **Parallel Test Execution** - Each test class runs independently
-2. **Better Caching** - Cache hits per test class, not entire test suite  
-3. **Faster CI Builds** - Only re-run affected test classes
-4. **Better Visibility** - See exactly which test classes pass/fail
-5. **Consistent with Gradle** - Same approach and naming conventions
+## Commits Made
+1. `7f5c978828` - Main implementation with module discovery fix
+2. `b84a856f31` - Changed target group from 'verification' to 'test'
