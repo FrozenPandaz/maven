@@ -15,18 +15,12 @@
     ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": ".",
     "strict": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "composite": true,
-    "declarationMap": true,
-    "paths": {
-      "@nx/maven": [
-        "packages/maven/src/index.ts"
-      ]
-    }
+    "declarationMap": true
   },
   "exclude": [
     "node_modules",
