@@ -60,6 +60,13 @@ jobs:
       - name: Build Nx Maven plugin
         run: pnpm build:plugin
 
+      - name: Verify plugin build
+        run: |
+          echo "Checking packages/maven directory:"
+          ls -la packages/maven/
+          echo "Checking if dist directory exists:"
+          ls -la packages/maven/dist/ || echo "dist directory does not exist"
+
       - name: Prepare Mimir
         shell: bash
         run: |
