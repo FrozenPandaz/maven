@@ -89,7 +89,9 @@ jobs:
 
       - name: Build Maven distributions
         shell: bash
-        run: npx nx run-many -t verify --verbose
+        run: NX_DAEMON=false npx nx run-many -t verify --verbose --parallel=2
+        env:
+          NX_VERBOSE_LOGGING: true
 
       - name: List contents of target directory
         shell: bash
