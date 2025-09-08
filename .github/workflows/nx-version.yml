@@ -87,11 +87,13 @@ jobs:
         shell: bash
         run: mvn --errors --batch-mode --show-version org.apache.maven.plugins:maven-wrapper-plugin:3.3.2:wrapper "-Dmaven=4.0.0-rc-3"
 
+      - name: Clean Maven build
+        shell: bash
+        run: ./mvnw clean
+
       - name: Build Maven distributions
         shell: bash
-        run: NX_DAEMON=false npx nx run-many -t verify --verbose --parallel=2
-        env:
-          NX_VERBOSE_LOGGING: true
+        run: npx nx run-many -t verify --verbose
 
       - name: List contents of target directory
         shell: bash
