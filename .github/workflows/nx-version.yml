@@ -83,14 +83,6 @@ jobs:
             mimir-${{ runner.os }}-initial-
             mimir-${{ runner.os }}-
 
-      - name: Set up Maven
-        shell: bash
-        run: mvn --errors --batch-mode --show-version org.apache.maven.plugins:maven-wrapper-plugin:3.3.2:wrapper "-Dmaven=4.0.0-rc-3"
-
-      - name: Clean Maven build
-        shell: bash
-        run: ./mvnw clean
-
       - name: Build Maven distributions
         shell: bash
         run: npx nx run-many -t verify --verbose
