@@ -55,7 +55,7 @@ jobs:
         run: pnpm install
 
       - name: Build Nx Maven plugin
-        run: pnpm build
+        run: pnpm build:plugin
 
       - name: Prepare Mimir
         shell: bash
@@ -207,7 +207,7 @@ jobs:
         run: pnpm install
 
       - name: Build Nx Maven plugin
-        run: pnpm build
+        run: pnpm build:plugin
 
       - name: Prepare Mimir
         shell: bash
