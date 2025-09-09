@@ -67,25 +67,29 @@ jobs:
           echo "Checking if dist directory exists:"
           ls -la packages/maven/dist/ || echo "dist directory does not exist"
 
-      - name: Prepare Mimir
-        shell: bash
-        run: |
-          mkdir -p ~/.mimir
-          cp .github/ci-extensions.xml ~/.m2/extensions.xml
-          cp .github/ci-mimir-daemon.properties ~/.mimir/daemon.properties
+#      - name: Prepare Mimir
+#        shell: bash
+#        run: |
+#          mkdir -p ~/.mimir
+#          cp .github/ci-extensions.xml ~/.m2/extensions.xml
+#          cp .github/ci-mimir-daemon.properties ~/.mimir/daemon.properties
+#
+#      - name: Handle Mimir caches
+#        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+#        with:
+#          path: ~/.mimir/local
+#          key: mimir-${{ runner.os }}-initial-${{ hashFiles('**/pom.xml') }}
+#          restore-keys: |
+#            mimir-${{ runner.os }}-initial-
+#            mimir-${{ runner.os }}-
 
-      - name: Handle Mimir caches
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-        with:
-          path: ~/.mimir/local
-          key: mimir-${{ runner.os }}-initial-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            mimir-${{ runner.os }}-initial-
-            mimir-${{ runner.os }}-
+      - name: Set up Maven
+        shell: bash
+        run: mvn --errors --batch-mode --show-version org.apache.maven.plugins:maven-wrapper-plugin:3.3.2:wrapper "-Dmaven=4.0.0-rc-3"
 
       - name: Build Maven distributions
         shell: bash
-        run: npx nx run-many -t verify --verbose
+        run: npx nx run-many -t verify
 
       - name: List contents of target directory
         shell: bash
@@ -139,22 +143,22 @@ jobs:
       - name: Build Nx Maven plugin
         run: pnpm build:plugin
 
-      - name: Prepare Mimir
-        shell: bash
-        run: |
-          mkdir -p ~/.m2
-          mkdir -p ~/.mimir
-          cp .github/ci-extensions.xml ~/.m2/extensions.xml
-          cp .github/ci-mimir-daemon.properties ~/.mimir/daemon.properties
-
-      - name: Handle Mimir caches
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-        with:
-          path: ~/.mimir/local
-          key: mimir-${{ runner.os }}-full-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            mimir-${{ runner.os }}-full-
-            mimir-${{ runner.os }}-
+#      - name: Prepare Mimir
+#        shell: bash
+#        run: |
+#          mkdir -p ~/.m2
+#          mkdir -p ~/.mimir
+#          cp .github/ci-extensions.xml ~/.m2/extensions.xml
+#          cp .github/ci-mimir-daemon.properties ~/.mimir/daemon.properties
+#
+#      - name: Handle Mimir caches
+#        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+#        with:
+#          path: ~/.mimir/local
+#          key: mimir-${{ runner.os }}-full-${{ hashFiles('**/pom.xml') }}
+#          restore-keys: |
+#            mimir-${{ runner.os }}-full-
+#            mimir-${{ runner.os }}-
 
       - name: Download Maven distribution
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
@@ -185,7 +189,7 @@ jobs:
 
       - name: Build with downloaded Maven
         shell: bash
-        run: npx nx run-many -t verify --verbose
+        run: npx nx run-many -t verify
 
       - name: Build site with downloaded Maven
         shell: bash
@@ -235,22 +239,22 @@ jobs:
       - name: Build Nx Maven plugin
         run: pnpm build:plugin
 
-      - name: Prepare Mimir
-        shell: bash
-        run: |
-          mkdir -p ~/.m2
-          mkdir -p ~/.mimir
-          cp .github/ci-extensions.xml ~/.m2/extensions.xml
-          cp .github/ci-mimir-daemon.properties ~/.mimir/daemon.properties
-
-      - name: Handle Mimir caches
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-        with:
-          path: ~/.mimir/local
-          key: mimir-${{ runner.os }}-its-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            mimir-${{ runner.os }}-its-
-            mimir-${{ runner.os }}-
+#      - name: Prepare Mimir
+#        shell: bash
+#        run: |
+#          mkdir -p ~/.m2
+#          mkdir -p ~/.mimir
+#          cp .github/ci-extensions.xml ~/.m2/extensions.xml
+#          cp .github/ci-mimir-daemon.properties ~/.mimir/daemon.properties
+#
+#      - name: Handle Mimir caches
+#        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+#        with:
+#          path: ~/.mimir/local
+#          key: mimir-${{ runner.os }}-its-${{ hashFiles('**/pom.xml') }}
+#          restore-keys: |
+#            mimir-${{ runner.os }}-its-
+#            mimir-${{ runner.os }}-
 
       - name: Download Maven distribution
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
@@ -281,7 +285,7 @@ jobs:
 
       - name: Build Maven and ITs and run them
         shell: bash
-        run: npx nx run-many -t verify --verbose
+        run: npx nx run-many -t verify
 
       - name: Upload test artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
