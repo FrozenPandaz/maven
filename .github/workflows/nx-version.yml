@@ -122,6 +122,23 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Setup Node.js
+        uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Maven analyzer plugin
+        run: cd packages/maven/analyzer-plugin && mvn clean install -DskipTests
+
+      - name: Build Nx Maven plugin
+        run: pnpm build:plugin
+
       - name: Prepare Mimir
         shell: bash
         run: |
