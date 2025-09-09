@@ -57,9 +57,6 @@ jobs:
       - name: Build Maven analyzer plugin
         run: cd packages/maven/analyzer-plugin && mvn clean install -DskipTests
 
-      - name: Install Maven
-        run: mvn clean install -DskipTests
-
       - name: Build Nx Maven plugin
         run: pnpm build:plugin
 
