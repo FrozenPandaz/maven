@@ -42,10 +42,16 @@ jobs:
         shell: bash
         run: |
           MVND_VERSION=1.0.2
-          wget -q https://github.com/apache/maven-mvnd/releases/download/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
+          wget -q https://downloads.apache.org/maven/mvnd/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
           unzip -q mvnd-${MVND_VERSION}-linux-amd64.zip
           echo "$PWD/mvnd-${MVND_VERSION}-linux-amd64/bin" >> $GITHUB_PATH
+          # mvnd --version will run in next step after PATH is updated
+
+      - name: Verify mvnd installation
+        shell: bash
+        run: |
           mvnd --version
+          echo "mvnd installation successful"
 
       - name: Checkout maven
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v4
@@ -108,20 +114,25 @@ jobs:
         run: |
           MVND_VERSION=1.0.2
           if [ "${{ runner.os }}" = "Windows" ]; then
-            curl -L -o mvnd.zip https://github.com/apache/maven-mvnd/releases/download/${MVND_VERSION}/mvnd-${MVND_VERSION}-windows-amd64.zip
+            curl -L -o mvnd.zip https://downloads.apache.org/maven/mvnd/${MVND_VERSION}/mvnd-${MVND_VERSION}-windows-amd64.zip
             unzip -q mvnd.zip
             echo "$PWD/mvnd-${MVND_VERSION}-windows-amd64/bin" >> $GITHUB_PATH
           elif [ "${{ runner.os }}" = "macOS" ]; then
-            wget -q https://github.com/apache/maven-mvnd/releases/download/${MVND_VERSION}/mvnd-${MVND_VERSION}-darwin-amd64.zip
+            wget -q https://downloads.apache.org/maven/mvnd/${MVND_VERSION}/mvnd-${MVND_VERSION}-darwin-amd64.zip
             unzip -q mvnd-${MVND_VERSION}-darwin-amd64.zip
             xattr -r -d com.apple.quarantine mvnd-${MVND_VERSION}-darwin-amd64 2>/dev/null || true
             echo "$PWD/mvnd-${MVND_VERSION}-darwin-amd64/bin" >> $GITHUB_PATH
           else
-            wget -q https://github.com/apache/maven-mvnd/releases/download/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
+            wget -q https://downloads.apache.org/maven/mvnd/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
             unzip -q mvnd-${MVND_VERSION}-linux-amd64.zip
             echo "$PWD/mvnd-${MVND_VERSION}-linux-amd64/bin" >> $GITHUB_PATH
           fi
+
+      - name: Verify mvnd installation
+        shell: bash
+        run: |
           mvnd --version
+          echo "mvnd installation successful"
 
       - name: Install Graphviz (MacOS)
         if: runner.os == 'macOS'
@@ -219,20 +230,25 @@ jobs:
         run: |
           MVND_VERSION=1.0.2
           if [ "${{ runner.os }}" = "Windows" ]; then
-            curl -L -o mvnd.zip https://github.com/apache/maven-mvnd/releases/download/${MVND_VERSION}/mvnd-${MVND_VERSION}-windows-amd64.zip
+            curl -L -o mvnd.zip https://downloads.apache.org/maven/mvnd/${MVND_VERSION}/mvnd-${MVND_VERSION}-windows-amd64.zip
             unzip -q mvnd.zip
             echo "$PWD/mvnd-${MVND_VERSION}-windows-amd64/bin" >> $GITHUB_PATH
           elif [ "${{ runner.os }}" = "macOS" ]; then
-            wget -q https://github.com/apache/maven-mvnd/releases/download/${MVND_VERSION}/mvnd-${MVND_VERSION}-darwin-amd64.zip
+            wget -q https://downloads.apache.org/maven/mvnd/${MVND_VERSION}/mvnd-${MVND_VERSION}-darwin-amd64.zip
             unzip -q mvnd-${MVND_VERSION}-darwin-amd64.zip
             xattr -r -d com.apple.quarantine mvnd-${MVND_VERSION}-darwin-amd64 2>/dev/null || true
             echo "$PWD/mvnd-${MVND_VERSION}-darwin-amd64/bin" >> $GITHUB_PATH
           else
-            wget -q https://github.com/apache/maven-mvnd/releases/download/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
+            wget -q https://downloads.apache.org/maven/mvnd/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
             unzip -q mvnd-${MVND_VERSION}-linux-amd64.zip
             echo "$PWD/mvnd-${MVND_VERSION}-linux-amd64/bin" >> $GITHUB_PATH
           fi
+
+      - name: Verify mvnd installation
+        shell: bash
+        run: |
           mvnd --version
+          echo "mvnd installation successful"
 
       - name: Checkout maven
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v4
