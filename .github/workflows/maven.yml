@@ -198,10 +198,14 @@ jobs:
 
       - name: Build with downloaded Maven
         shell: bash
-        run: mvnd verify -Dmvnd.noDaemon=true -Papache-release -Dgpg.skip=true -e -B -V
+        run: |
+          export PATH="$PWD/maven-mvnd-1.0.2-linux-amd64/bin:$PATH"  
+          mvnd verify -Papache-release -Dgpg.skip=true -e -B -V
       - name: Build site with downloaded Maven
         shell: bash
-        run: mvnd site -Dmvnd.noDaemon=true -e -B -V -Preporting
+        run: |
+          export PATH="$PWD/maven-mvnd-1.0.2-linux-amd64/bin:$PATH"
+          mvnd site -e -B -V -Preporting
       - name: Upload test artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: failure() || cancelled()
@@ -300,7 +304,9 @@ jobs:
 
       - name: Build Maven and ITs and run them
         shell: bash
-        run: mvnd verify -Dmvnd.noDaemon=true -e -B -V -Prun-its
+        run: |
+          export PATH="$PWD/maven-mvnd-1.0.2-linux-amd64/bin:$PATH"  
+          mvnd verify -e -B -V -Prun-its
       - name: Upload test artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: failure() || cancelled()
