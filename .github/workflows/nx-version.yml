@@ -54,6 +54,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Start CI run
+        run: npx nx-cloud start-ci-run --stop-agents-after="verify"
+
       - name: Build Maven analyzer plugin
         run: cd packages/maven/analyzer-plugin && mvn clean install -DskipTests
 
@@ -89,7 +92,7 @@ jobs:
 
       - name: Build Maven distributions
         shell: bash
-        run: npx nx run-many -t verify
+        run: npx nx run-many -t verify --parallel=3
 
       - name: List contents of target directory
         shell: bash
