@@ -71,7 +71,7 @@ jobs:
 
       - name: Build Maven analyzer plugin
         run: |
-          export PATH="$PWD/maven-mvnd-1.0.2-linux-amd64/bin:$PATH"
+          export PATH="$GITHUB_WORKSPACE/maven-mvnd-1.0.2-linux-amd64/bin:$PATH"
           cd packages/maven/analyzer-plugin && mvnd clean install -DskipTests
       - name: Build Nx Maven plugin
         run: pnpm build:plugin
@@ -170,7 +170,7 @@ jobs:
 
       - name: Build Maven analyzer plugin
         run: |
-          export PATH="$PWD/maven-mvnd-1.0.2-linux-amd64/bin:$PATH"
+          export PATH="$GITHUB_WORKSPACE/maven-mvnd-1.0.2-linux-amd64/bin:$PATH"
           cd packages/maven/analyzer-plugin && mvnd clean install -DskipTests
       - name: Build Nx Maven plugin
         run: pnpm build:plugin
@@ -282,7 +282,7 @@ jobs:
 
       - name: Build Maven analyzer plugin
         run: |
-          export PATH="$PWD/maven-mvnd-1.0.2-linux-amd64/bin:$PATH"
+          export PATH="$GITHUB_WORKSPACE/maven-mvnd-1.0.2-linux-amd64/bin:$PATH"
           cd packages/maven/analyzer-plugin && mvnd clean install -DskipTests
       - name: Build Nx Maven plugin
         run: pnpm build:plugin
