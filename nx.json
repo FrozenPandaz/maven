@@ -38,8 +38,7 @@
       "plugin": "./packages/maven/dist",
       "options": {
         "atomizeTests": true,
-        "minTestClassesForAtomization": 1,
-        "cacheDependencyAnalysis": true
+        "minTestClassesForAtomization": 1
       }
     }
   ],
