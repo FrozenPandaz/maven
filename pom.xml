@@ -864,6 +864,9 @@ under the License.
                 <exclude>src/main/appended-resources/licenses/EPL-1.0.txt</exclude>
                 <exclude>src/main/appended-resources/licenses/unrecognized-aopalliance-1.0.txt</exclude>
                 <exclude>src/main/appended-resources/licenses/unrecognized-javax.annotation-api-1.3.2.txt</exclude>
+                <!-- Exclude Nx cache/lock files with undefined paths -->
+                <exclude>undefined/lockfiles/job-*-*.lock</exclude>
+                <exclude>undefined/*-*.id</exclude>
               </excludes>
             </configuration>
           </execution>
