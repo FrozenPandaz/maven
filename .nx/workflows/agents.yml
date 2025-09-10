@@ -39,3 +39,9 @@ launch-templates:
           sudo apt install -y openjdk-21-jdk
           sudo update-alternatives --set java /usr/lib/jvm/java-21-openjdk-amd64/bin/java
           java -version
+
+      - name: Build Maven analyzer plugin
+        script: cd packages/maven/analyzer-plugin && ../../mvnw clean install -DskipTests
+
+      - name: Build Nx Maven plugin
+        script: pnpm build:plugin
