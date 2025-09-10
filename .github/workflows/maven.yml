@@ -80,8 +80,7 @@ jobs:
 
       - name: Build Maven distributions
         shell: bash
-        run: ./mvnw verify -e -B -V -Dmvnd.noDaemon=true
-
+        run: ./mvnw verify -e -B -V
       - name: List contents of target directory
         shell: bash
         run: ls -la apache-maven/target
@@ -118,8 +117,8 @@ jobs:
             unzip -q mvnd.zip
             echo "$PWD/maven-mvnd-${MVND_VERSION}-windows-amd64/bin" >> $GITHUB_PATH
           elif [ "${{ runner.os }}" = "macOS" ]; then
-            wget -q https://downloads.apache.org/maven/mvnd/${MVND_VERSION}/maven-maven-mvnd-${MVND_VERSION}-darwin-amd64.zip
-            unzip -q maven-maven-mvnd-${MVND_VERSION}-darwin-amd64.zip
+            wget -q https://downloads.apache.org/maven/mvnd/${MVND_VERSION}/maven-mvnd-${MVND_VERSION}-darwin-amd64.zip
+            unzip -q maven-mvnd-${MVND_VERSION}-darwin-amd64.zip
             xattr -r -d com.apple.quarantine maven-mvnd-${MVND_VERSION}-darwin-amd64 2>/dev/null || true
             echo "$PWD/maven-mvnd-${MVND_VERSION}-darwin-amd64/bin" >> $GITHUB_PATH
           else
@@ -131,6 +130,8 @@ jobs:
       - name: Verify mvnd installation
         shell: bash
         run: |
+          echo "PATH: $PATH"
+          which mvnd
           mvnd --version
           echo "mvnd installation successful"
 
@@ -197,12 +198,10 @@ jobs:
 
       - name: Build with downloaded Maven
         shell: bash
-        run: mvnd verify -Papache-release -Dgpg.skip=true -e -B -V -Dmvnd.noDaemon=true
-
+        run: mvnd verify -Dmvnd.noDaemon=true -Papache-release -Dgpg.skip=true -e -B -V
       - name: Build site with downloaded Maven
         shell: bash
-        run: mvnd site -e -B -V -Preporting -Dmvnd.noDaemon=true
-
+        run: mvnd site -Dmvnd.noDaemon=true -e -B -V -Preporting
       - name: Upload test artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: failure() || cancelled()
@@ -234,8 +233,8 @@ jobs:
             unzip -q mvnd.zip
             echo "$PWD/maven-mvnd-${MVND_VERSION}-windows-amd64/bin" >> $GITHUB_PATH
           elif [ "${{ runner.os }}" = "macOS" ]; then
-            wget -q https://downloads.apache.org/maven/mvnd/${MVND_VERSION}/maven-maven-mvnd-${MVND_VERSION}-darwin-amd64.zip
-            unzip -q maven-maven-mvnd-${MVND_VERSION}-darwin-amd64.zip
+            wget -q https://downloads.apache.org/maven/mvnd/${MVND_VERSION}/maven-mvnd-${MVND_VERSION}-darwin-amd64.zip
+            unzip -q maven-mvnd-${MVND_VERSION}-darwin-amd64.zip
             xattr -r -d com.apple.quarantine maven-mvnd-${MVND_VERSION}-darwin-amd64 2>/dev/null || true
             echo "$PWD/maven-mvnd-${MVND_VERSION}-darwin-amd64/bin" >> $GITHUB_PATH
           else
@@ -301,8 +300,7 @@ jobs:
 
       - name: Build Maven and ITs and run them
         shell: bash
-        run: mvnd verify -e -B -V -Prun-its -Dmvnd.noDaemon=true
-
+        run: mvnd verify -Dmvnd.noDaemon=true -e -B -V -Prun-its
       - name: Upload test artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: failure() || cancelled()

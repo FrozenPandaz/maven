@@ -70,8 +70,7 @@ jobs:
         run: pnpm install
 
       - name: Build Maven analyzer plugin
-        run: cd packages/maven/analyzer-plugin && mvnd clean install -DskipTests -Dmvnd.noDaemon=true
-
+        run: cd packages/maven/analyzer-plugin && mvnd clean install -Dmvnd.noDaemon=true -DskipTests
       - name: Build Nx Maven plugin
         run: pnpm build:plugin
 
@@ -168,8 +167,7 @@ jobs:
         run: pnpm install
 
       - name: Build Maven analyzer plugin
-        run: cd packages/maven/analyzer-plugin && mvnd clean install -DskipTests -Dmvnd.noDaemon=true
-
+        run: cd packages/maven/analyzer-plugin && mvnd clean install -Dmvnd.noDaemon=true -DskipTests
       - name: Build Nx Maven plugin
         run: pnpm build:plugin
 
@@ -279,8 +277,7 @@ jobs:
         run: pnpm install
 
       - name: Build Maven analyzer plugin
-        run: cd packages/maven/analyzer-plugin && mvnd clean install -DskipTests -Dmvnd.noDaemon=true
-
+        run: cd packages/maven/analyzer-plugin && mvnd clean install -Dmvnd.noDaemon=true -DskipTests
       - name: Build Nx Maven plugin
         run: pnpm build:plugin
 
