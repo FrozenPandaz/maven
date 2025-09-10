@@ -857,6 +857,7 @@ under the License.
                 <exclude>static/styles.css</exclude>
                 <exclude>.verdaccio/htpasswd</exclude>
                 <exclude>.verdaccio/config.yml</exclude>
+                <exclude>.nx/workflows/agents.yml</exclude>
                 <!--
                   ! Excluded the license files itself cause they do not have have a license of themselves.
                 -->
