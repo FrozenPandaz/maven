@@ -38,15 +38,6 @@ jobs:
           java-version: 21
           distribution: 'temurin'
 
-      - name: Install mvnd (Maven Daemon)
-        shell: bash
-        run: |
-          MVND_VERSION=1.0.2
-          wget -q https://github.com/apache/maven-mvnd/releases/download/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
-          unzip -q mvnd-${MVND_VERSION}-linux-amd64.zip
-          echo "$PWD/mvnd-${MVND_VERSION}-linux-amd64/bin" >> $GITHUB_PATH
-          mvnd --version
-
       - name: Checkout maven
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
@@ -64,7 +55,7 @@ jobs:
         run: pnpm install
 
       - name: Build Maven analyzer plugin
-        run: cd packages/maven/analyzer-plugin && mvnd clean install -DskipTests -Dmvnd.noDaemon=true
+        run: cd packages/maven/analyzer-plugin && mvn clean install -DskipTests
 
       - name: Build Nx Maven plugin
         run: pnpm build:plugin
@@ -127,15 +118,6 @@ jobs:
           java-version: ${{ matrix.java }}
           distribution: 'temurin'
 
-      - name: Install mvnd (Maven Daemon)
-        shell: bash
-        run: |
-          MVND_VERSION=1.0.2
-          wget -q https://github.com/apache/maven-mvnd/releases/download/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
-          unzip -q mvnd-${MVND_VERSION}-linux-amd64.zip
-          echo "$PWD/mvnd-${MVND_VERSION}-linux-amd64/bin" >> $GITHUB_PATH
-          mvnd --version
-
       - name: Install Graphviz
         run: sudo apt-get install graphviz
 
@@ -156,7 +138,7 @@ jobs:
         run: pnpm install
 
       - name: Build Maven analyzer plugin
-        run: cd packages/maven/analyzer-plugin && mvnd clean install -DskipTests -Dmvnd.noDaemon=true
+        run: cd packages/maven/analyzer-plugin && mvn clean install -DskipTests
 
       - name: Build Nx Maven plugin
         run: pnpm build:plugin
@@ -235,15 +217,6 @@ jobs:
           java-version: ${{ matrix.java }}
           distribution: 'temurin'
 
-      - name: Install mvnd (Maven Daemon)
-        shell: bash
-        run: |
-          MVND_VERSION=1.0.2
-          wget -q https://github.com/apache/maven-mvnd/releases/download/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
-          unzip -q mvnd-${MVND_VERSION}-linux-amd64.zip
-          echo "$PWD/mvnd-${MVND_VERSION}-linux-amd64/bin" >> $GITHUB_PATH
-          mvnd --version
-
       - name: Checkout maven
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
@@ -261,7 +234,7 @@ jobs:
         run: pnpm install
 
       - name: Build Maven analyzer plugin
-        run: cd packages/maven/analyzer-plugin && mvnd clean install -DskipTests -Dmvnd.noDaemon=true
+        run: cd packages/maven/analyzer-plugin && mvn clean install -DskipTests
 
       - name: Build Nx Maven plugin
         run: pnpm build:plugin
