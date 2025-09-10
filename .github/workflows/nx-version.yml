@@ -51,11 +51,11 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4
 
+      - name: Start CI run
+        run: npx nx-cloud start-ci-run --distribute-on="linux-large" --stop-agents-after="verify"
+
       - name: Install dependencies
         run: pnpm install
-
-      - name: Start CI run
-        run: npx nx-cloud start-ci-run --stop-agents-after="verify"
 
       - name: Build Maven analyzer plugin
         run: cd packages/maven/analyzer-plugin && mvn clean install -DskipTests
