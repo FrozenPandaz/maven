@@ -42,10 +42,16 @@ jobs:
         shell: bash
         run: |
           MVND_VERSION=1.0.2
-          wget -q https://github.com/apache/maven-mvnd/releases/download/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
+          wget -q https://downloads.apache.org/maven/mvnd/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
           unzip -q mvnd-${MVND_VERSION}-linux-amd64.zip
           echo "$PWD/mvnd-${MVND_VERSION}-linux-amd64/bin" >> $GITHUB_PATH
+          # mvnd --version will run in next step after PATH is updated
+
+      - name: Verify mvnd installation
+        shell: bash
+        run: |
           mvnd --version
+          echo "mvnd installation successful"
 
       - name: Checkout maven
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
@@ -131,10 +137,16 @@ jobs:
         shell: bash
         run: |
           MVND_VERSION=1.0.2
-          wget -q https://github.com/apache/maven-mvnd/releases/download/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
+          wget -q https://downloads.apache.org/maven/mvnd/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
           unzip -q mvnd-${MVND_VERSION}-linux-amd64.zip
           echo "$PWD/mvnd-${MVND_VERSION}-linux-amd64/bin" >> $GITHUB_PATH
+          # mvnd --version will run in next step after PATH is updated
+
+      - name: Verify mvnd installation
+        shell: bash
+        run: |
           mvnd --version
+          echo "mvnd installation successful"
 
       - name: Install Graphviz
         run: sudo apt-get install graphviz
@@ -239,10 +251,16 @@ jobs:
         shell: bash
         run: |
           MVND_VERSION=1.0.2
-          wget -q https://github.com/apache/maven-mvnd/releases/download/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
+          wget -q https://downloads.apache.org/maven/mvnd/${MVND_VERSION}/mvnd-${MVND_VERSION}-linux-amd64.zip
           unzip -q mvnd-${MVND_VERSION}-linux-amd64.zip
           echo "$PWD/mvnd-${MVND_VERSION}-linux-amd64/bin" >> $GITHUB_PATH
+          # mvnd --version will run in next step after PATH is updated
+
+      - name: Verify mvnd installation
+        shell: bash
+        run: |
           mvnd --version
+          echo "mvnd installation successful"
 
       - name: Checkout maven
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
