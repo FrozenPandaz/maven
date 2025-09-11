@@ -103,6 +103,7 @@ under the License.
     <module>impl</module>
     <module>compat</module>
     <module>apache-maven</module>
+    <module>packages/maven/analyzer-plugin</module>
   </modules>
 
   <scm>
