@@ -42,7 +42,7 @@ launch-templates:
           java -version
 
       - name: Build Maven analyzer plugin
-        script: cd packages/maven/analyzer-plugin && ../../../mvnw clean install -DskipTests
+        script: mvn clean install -am -pl packages/maven/analyzer-plugin -DskipTests
 
       - name: Build Nx Maven plugin
         script: pnpm build:plugin
