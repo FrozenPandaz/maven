@@ -19,14 +19,14 @@
     "release:local": "pnpm build && nx release version prerelease && nx release publish"
   },
   "devDependencies": {
-    "@nx/devkit": "21.6.1-beta.0",
-    "@nx/jest": "21.6.1-beta.0",
-    "@nx/js": "21.6.1-beta.0",
-    "@nx/plugin": "21.6.1-beta.0",
-    "@nx/workspace": "21.6.1-beta.0",
+    "@nx/devkit": "21.6.1-beta.1",
+    "@nx/jest": "21.6.1-beta.1",
+    "@nx/js": "21.6.1-beta.1",
+    "@nx/plugin": "21.6.1-beta.1",
+    "@nx/workspace": "21.6.1-beta.1",
     "@types/node": "^20.0.0",
     "jest": "^30.0.2",
-    "nx": "21.6.1-beta.0",
+    "nx": "21.6.1-beta.1",
     "tslib": "^2.3.0",
     "typescript": "^5.0.0",
     "verdaccio": "^6.1.6"
