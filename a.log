@@ -1,0 +1,284 @@
+
+> org.apache.maven.maven@0.1.0 test-analyzer /home/jason/projects/triage/java/maven
+> mvn clean install -pl packages/maven/analyzer-plugin -DskipTests && mvn dev.nx.maven:nx-maven-analyzer-plugin:4.1.0-SNAPSHOT:analyze
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< dev.nx.maven:nx-maven-analyzer-plugin >----------------
+[INFO] Building Nx Maven Analyzer Plugin 4.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] ----------------------------[ maven-plugin ]----------------------------
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ nx-maven-analyzer-plugin ---
+[INFO] Deleting /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/target
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-bytecode-version) @ nx-maven-analyzer-plugin ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] Rule 1: org.codehaus.mojo.extraenforcer.dependencies.EnforceBytecodeVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ nx-maven-analyzer-plugin ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ nx-maven-analyzer-plugin ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (ensure-no-guice-with-asm) @ nx-maven-analyzer-plugin ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (ensure-no-sonatype-cipher-and-sec-dispatcher) @ nx-maven-analyzer-plugin ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- dependency:3.8.1:properties (prepare-for-mockito-agent) @ nx-maven-analyzer-plugin ---
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (checkstyle-check) @ nx-maven-analyzer-plugin ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.44.5:apply (default) @ nx-maven-analyzer-plugin ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Pom is keeping 1 files clean - 0 were changed to be clean, 1 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ nx-maven-analyzer-plugin ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.7
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ nx-maven-analyzer-plugin ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ nx-maven-analyzer-plugin ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- kotlin:1.9.22:compile (compile) @ nx-maven-analyzer-plugin ---
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/MavenDependencyResolver.kt: (12, 9) Parameter 'phase' is never used
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/MavenDependencyResolver.kt: (13, 9) Parameter 'mavenProject' is never used
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/MavenDependencyResolver.kt: (14, 9) Parameter 'coordinatesToProjectName' is never used
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/MavenDependencyResolver.kt: (15, 9) Parameter 'allProjects' is never used
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/MavenDependencyResolver.kt: (16, 9) Parameter 'projectAnalyses' is never used
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/MavenExpressionResolver.kt: (45, 42) 'getter for compileSourceRoots: (Mutable)List<String!>!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/MavenExpressionResolver.kt: (46, 46) 'getter for testCompileSourceRoots: (Mutable)List<String!>!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/MavenExpressionResolver.kt: (52, 25) 'getter for compileClasspathElements: (Mutable)List<String!>!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/MavenExpressionResolver.kt: (55, 25) 'getter for testClasspathElements: (Mutable)List<String!>!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/MavenExpressionResolver.kt: (95, 68) 'getter for basedir: File!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/MavenExpressionResolver.kt: (96, 60) 'getter for basedir: File!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/MavenExpressionResolver.kt: (107, 83) 'getter for executionRootDirectory: String!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/MavenInputOutputAnalyzer.kt: (43, 64) 'getter for basedir: File!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/NxProjectAnalyzer.kt: (31, 68) 'getter for basedir: File!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/NxProjectAnalyzer.kt: (36, 39) 'getter for basedir: File!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/NxProjectAnalyzer.kt: (53, 29) 'put(String!, JsonNode!): JsonNode!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/NxProjectAnalyzer.kt: (54, 23) 'put(String!, JsonNode!): JsonNode!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/NxProjectAnalyzer.kt: (60, 23) 'put(String!, JsonNode!): JsonNode!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/NxTargetFactory.kt: (48, 26) 'put(String!, JsonNode!): JsonNode!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/NxTargetFactory.kt: (59, 26) 'put(String!, JsonNode!): JsonNode!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/NxTargetFactory.kt: (85, 24) 'put(String!, JsonNode!): JsonNode!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/NxTargetFactory.kt: (90, 28) 'put(String!, JsonNode!): JsonNode!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/NxTargetFactory.kt: (91, 28) 'put(String!, JsonNode!): JsonNode!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/NxTargetFactory.kt: (133, 9) Parameter 'mavenCommand' is never used
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/NxTargetFactory.kt: (174, 16) 'put(String!, JsonNode!): JsonNode!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/PathResolver.kt: (185, 40) 'getter for executionRootDirectory: String!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/TestClassDiscovery.kt: (153, 56) Parameter 'className' is never used
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/plugin/MojoParameterAnalyzer.kt: (226, 13) Variable 'pluginDescriptor' is never used
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/plugin/MojoParameterAnalyzer.kt: (238, 17) Variable 'type' is never used
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/plugin/MojoParameterAnalyzer.kt: (269, 13) Variable 'parameters' is never used
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/plugin/PluginBasedAnalyzer.kt: (188, 65) 'getter for executionRootDirectory: String!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/plugin/PluginBasedAnalyzer.kt: (237, 9) Parameter 'phase' is never used
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/plugin/PluginBasedAnalyzer.kt: (243, 25) 'getter for compileSourceRoots: (Mutable)List<String!>!' is deprecated. Deprecated in Java
+[WARNING] /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/main/kotlin/dev/nx/maven/plugin/PluginBasedAnalyzer.kt: (251, 25) 'getter for testCompileSourceRoots: (Mutable)List<String!>!' is deprecated. Deprecated in Java
+[INFO] 
+[INFO] --- plugin:3.11.0:descriptor (default-descriptor) @ nx-maven-analyzer-plugin ---
+[INFO] Using 'UTF-8' encoding to read mojo source files.
+[INFO] java-annotations mojo extractor found 1 mojo descriptor.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ nx-maven-analyzer-plugin ---
+[INFO] skip non existing resourceDirectory /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/src/test/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ nx-maven-analyzer-plugin ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- kotlin:1.9.22:test-compile (test-compile) @ nx-maven-analyzer-plugin ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ nx-maven-analyzer-plugin ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ nx-maven-analyzer-plugin ---
+[INFO] Building jar: /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/target/nx-maven-analyzer-plugin-4.1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.4:install (default-install) @ nx-maven-analyzer-plugin ---
+[INFO] Installing /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/pom.xml to /home/jason/.m2/repository/dev/nx/maven/nx-maven-analyzer-plugin/4.1.0-SNAPSHOT/nx-maven-analyzer-plugin-4.1.0-SNAPSHOT.pom
+[INFO] Installing /home/jason/projects/triage/java/maven/packages/maven/analyzer-plugin/target/nx-maven-analyzer-plugin-4.1.0-SNAPSHOT.jar to /home/jason/.m2/repository/dev/nx/maven/nx-maven-analyzer-plugin/4.1.0-SNAPSHOT/nx-maven-analyzer-plugin-4.1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.072 s
+[INFO] Finished at: 2025-09-12T15:49:26-04:00
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Apache Maven                                                       [pom]
+[INFO] Maven 4 API                                                        [pom]
+[INFO] Maven 4 API :: Meta annotations                                    [jar]
+[INFO] Maven 4 API :: Dependency Injection                                [jar]
+[INFO] Maven 4 API :: XML                                                 [jar]
+[INFO] Maven 4 API :: Model                                               [jar]
+[INFO] Maven 4 API :: Plugin                                              [jar]
+[INFO] Maven 4 API :: Settings                                            [jar]
+[INFO] Maven 4 API :: Toolchain                                           [jar]
+[INFO] Maven 4 API :: Repository Metadata                                 [jar]
+[INFO] Maven 4 API :: Core                                                [jar]
+[INFO] Maven 4 API :: SPI                                                 [jar]
+[INFO] Maven 4 API :: CLI                                                 [jar]
+[INFO] Maven 4 Implementation Modules                                     [pom]
+[INFO] Maven 4 XML Implementation                                         [jar]
+[INFO] Maven 4 Model Support                                              [jar]
+[INFO] Maven 4 Dependency Injection                                       [jar]
+[INFO] Maven 4 API Implementation                                         [jar]
+[INFO] Maven 4 JLine integration                                          [jar]
+[INFO] Maven 4 Logging                                                    [jar]
+[INFO] Maven Compatibility Modules                                        [pom]
+[INFO] Maven Artifact                                                     [jar]
+[INFO] Maven Model                                                        [jar]
+[INFO] Maven Builder Support (deprecated)                                 [jar]
+[INFO] Maven Model Builder (deprecated)                                   [jar]
+[INFO] Maven 3 Plugin API                                                 [jar]
+[INFO] Maven Repository Metadata Model                                    [jar]
+[INFO] Maven Settings                                                     [jar]
+[INFO] Maven Toolchain Model                                              [jar]
+[INFO] Maven Toolchain Builder (deprecated)                               [jar]
+[INFO] Maven 4 Core                                                       [jar]
+[INFO] Maven Settings Builder (deprecated)                                [jar]
+[INFO] Maven Artifact Resolver Provider (deprecated)                      [jar]
+[INFO] Maven Compat (deprecated)                                          [jar]
+[INFO] Maven 4 CLI                                                        [jar]
+[INFO] Maven Plugin Testing Mechanism                                     [jar]
+[INFO] Maven Embedder (deprecated)                                        [jar]
+[INFO] Apache Maven Distribution                                          [pom]
+[INFO] Maven 4 Executor                                                   [jar]
+[INFO] Nx Maven Analyzer Plugin                                  [maven-plugin]
+[INFO] 
+[INFO] -----------------------< org.apache.maven:maven >-----------------------
+[INFO] Building Apache Maven 4.1.0-SNAPSHOT                              [1/40]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- nx-maven:4.1.0-SNAPSHOT:analyze (default-cli) @ maven ---
+[INFO] Analyzing Maven projects using optimized two-tier approach...
+[INFO] Parameters: outputFile='nx-maven-projects.json', workspaceRoot='/home/jason/projects/triage/java/maven'
+[INFO] Found 40 Maven projects
+[INFO] Step 1: Running optimized per-project analysis...
+[INFO] Creating shared component instances for optimized analysis...
+[INFO] Shared components created in 28ms, analyzing 40 projects...
+[INFO] Analyzing project: maven-model-builder
+[INFO] Analyzing project: maven-api-toolchain
+[INFO] Analyzing project: maven-support
+[INFO] Analyzing project: maven-repository-metadata
+[INFO] Analyzing project: maven-impl-modules
+[INFO] Analyzing project: maven-di
+[INFO] Analyzing project: maven-jline
+[INFO] Analyzing project: maven-toolchain-model
+[INFO] Analyzing project: maven-executor
+[INFO] Analyzing project: maven-xml
+[INFO] Analyzing project: maven-builder-support
+[INFO] Analyzing project: maven-api-core
+[INFO] Analyzing project: maven-embedder
+[INFO] Analyzing project: maven-toolchain-builder
+[INFO] Analyzing project: maven-api
+[INFO] Analyzing project: maven-api-di
+[INFO] Analyzing project: maven-plugin-api
+[INFO] Analyzing project: maven-logging
+[INFO] Analyzing project: maven-api-xml
+[INFO] Analyzing project: apache-maven
+[INFO] Analyzing project: maven-compat-modules
+[INFO] Analyzing project: maven-resolver-provider
+[INFO] Analyzing project: nx-maven-analyzer-plugin
+[INFO] Analyzing project: maven-settings-builder
+[INFO] Analyzing project: maven-settings
+[INFO] Analyzing project: maven-compat
+[INFO] Analyzing project: maven-testing
+[INFO] Analyzing project: maven-api-settings
+[INFO] Analyzing project: maven-api-cli
+[INFO] Analyzing project: maven
+[INFO] Analyzing project: maven-api-plugin
+[INFO] Analyzing project: maven-artifact
+[INFO] Analyzing project: maven-api-model
+[INFO] Analyzing project: maven-impl
+[INFO] Analyzing project: maven-api-metadata
+[INFO] Analyzing project: maven-api-spi
+[INFO] Analyzing project: maven-api-annotations
+[INFO] Analyzing project: maven-model
+[INFO] Analyzing project: maven-cli
+[INFO] Analyzing project: maven-core
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Apache Maven 4.1.0-SNAPSHOT:
+[INFO] 
+[INFO] Apache Maven ....................................... FAILURE [  9.407 s]
+[INFO] Maven 4 API ........................................ SKIPPED
+[INFO] Maven 4 API :: Meta annotations .................... SKIPPED
+[INFO] Maven 4 API :: Dependency Injection ................ SKIPPED
+[INFO] Maven 4 API :: XML ................................. SKIPPED
+[INFO] Maven 4 API :: Model ............................... SKIPPED
+[INFO] Maven 4 API :: Plugin .............................. SKIPPED
+[INFO] Maven 4 API :: Settings ............................ SKIPPED
+[INFO] Maven 4 API :: Toolchain ........................... SKIPPED
+[INFO] Maven 4 API :: Repository Metadata ................. SKIPPED
+[INFO] Maven 4 API :: Core ................................ SKIPPED
+[INFO] Maven 4 API :: SPI ................................. SKIPPED
+[INFO] Maven 4 API :: CLI ................................. SKIPPED
+[INFO] Maven 4 Implementation Modules ..................... SKIPPED
+[INFO] Maven 4 XML Implementation ......................... SKIPPED
+[INFO] Maven 4 Model Support .............................. SKIPPED
+[INFO] Maven 4 Dependency Injection ....................... SKIPPED
+[INFO] Maven 4 API Implementation ......................... SKIPPED
+[INFO] Maven 4 JLine integration .......................... SKIPPED
+[INFO] Maven 4 Logging .................................... SKIPPED
+[INFO] Maven Compatibility Modules ........................ SKIPPED
+[INFO] Maven Artifact ..................................... SKIPPED
+[INFO] Maven Model ........................................ SKIPPED
+[INFO] Maven Builder Support (deprecated) ................. SKIPPED
+[INFO] Maven Model Builder (deprecated) ................... SKIPPED
+[INFO] Maven 3 Plugin API ................................. SKIPPED
+[INFO] Maven Repository Metadata Model .................... SKIPPED
+[INFO] Maven Settings ..................................... SKIPPED
+[INFO] Maven Toolchain Model .............................. SKIPPED
+[INFO] Maven Toolchain Builder (deprecated) ............... SKIPPED
+[INFO] Maven 4 Core ....................................... SKIPPED
+[INFO] Maven Settings Builder (deprecated) ................ SKIPPED
+[INFO] Maven Artifact Resolver Provider (deprecated) ...... SKIPPED
+[INFO] Maven Compat (deprecated) .......................... SKIPPED
+[INFO] Maven 4 CLI ........................................ SKIPPED
+[INFO] Maven Plugin Testing Mechanism ..................... SKIPPED
+[INFO] Maven Embedder (deprecated) ........................ SKIPPED
+[INFO] Apache Maven Distribution .......................... SKIPPED
+[INFO] Maven 4 Executor ................................... SKIPPED
+[INFO] Nx Maven Analyzer Plugin ........................... SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.807 s
+[INFO] Finished at: 2025-09-12T15:49:37-04:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal dev.nx.maven:nx-maven-analyzer-plugin:4.1.0-SNAPSHOT:analyze (default-cli) on project maven: Execution default-cli of goal dev.nx.maven:nx-maven-analyzer-plugin:4.1.0-SNAPSHOT:analyze failed: A required class was missing while executing dev.nx.maven:nx-maven-analyzer-plugin:4.1.0-SNAPSHOT:analyze: null
+[ERROR] -----------------------------------------------------
+[ERROR] realm =    plugin>dev.nx.maven:nx-maven-analyzer-plugin:4.1.0-SNAPSHOT
+[ERROR] strategy = org.codehaus.plexus.classworlds.strategy.SelfFirstStrategy
+[ERROR] urls[0] = file:/home/jason/.m2/repository/dev/nx/maven/nx-maven-analyzer-plugin/4.1.0-SNAPSHOT/nx-maven-analyzer-plugin-4.1.0-SNAPSHOT.jar
+[ERROR] urls[1] = file:/home/jason/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.jar
+[ERROR] urls[2] = file:/home/jason/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.jar
+[ERROR] urls[3] = file:/home/jason/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.jar
+[ERROR] urls[4] = file:/home/jason/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.9.22/kotlin-stdlib-1.9.22.jar
+[ERROR] urls[5] = file:/home/jason/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar
+[ERROR] Number of foreign imports: 1
+[ERROR] import: Entry[import  from realm ClassRealm[maven.api, parent: null]]
+[ERROR] 
+[ERROR] -----------------------------------------------------
+[ERROR] : NoClassDefFoundError: org/apache/maven/api/ProjectScope: org.apache.maven.api.ProjectScope
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/PluginContainerException
+ ELIFECYCLE  Command failed with exit code 1.
