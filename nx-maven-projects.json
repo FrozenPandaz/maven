@@ -122,7 +122,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -133,7 +133,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -273,7 +278,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -284,7 +289,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -424,7 +434,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -435,7 +445,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -575,7 +590,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -586,7 +601,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -726,7 +746,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -747,7 +767,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -887,7 +912,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -908,7 +933,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1048,7 +1078,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -1059,7 +1089,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1199,7 +1234,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -1210,7 +1245,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1350,7 +1390,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -1371,7 +1411,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-plugin:package", "org.apache.maven.maven-api-xml:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1511,7 +1556,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -1522,7 +1567,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-di:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1662,7 +1712,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -1673,7 +1723,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-api:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-xml:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -1920,7 +1975,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-model:compile", "org.apache.maven.maven-api-settings:compile", "org.apache.maven.maven-api-toolchain:compile", "org.apache.maven.maven-api-metadata:compile", "org.apache.maven.maven-api-plugin:compile", "org.apache.maven.maven-xml:compile" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/generated-sources/annotations/**/*" ],
+            "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
           "test" : {
@@ -1940,7 +2000,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-api-plugin:package", "org.apache.maven.maven-xml:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -2080,7 +2145,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -2101,7 +2166,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-spi:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-di:package", "org.apache.maven.maven-support:package", "org.apache.maven.maven-xml:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -2241,7 +2311,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -2262,7 +2332,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-annotations:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -2402,7 +2477,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -2423,7 +2498,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-xml:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -2563,7 +2643,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -2574,7 +2654,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-di:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -2714,7 +2799,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -2735,7 +2820,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-jline:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -3036,7 +3126,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -3057,7 +3147,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-impl-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-cli:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-spi:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-core:package", "org.apache.maven.maven-di:package", "org.apache.maven.maven-impl:package", "org.apache.maven.maven-jline:package", "org.apache.maven.maven-logging:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-plugin-api:package", "org.apache.maven.maven-settings:package", "org.apache.maven.maven-toolchain-model:package", "org.apache.maven.maven-compat:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -3640,7 +3735,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -3661,7 +3756,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-plugin:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-support:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -3801,7 +3901,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -3822,7 +3922,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-core:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -3962,7 +4067,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -3983,7 +4088,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-support:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -4123,7 +4233,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -4144,7 +4254,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-builder-support:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -4284,7 +4399,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -4295,7 +4410,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-xml:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -4435,7 +4555,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -4456,7 +4576,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-settings:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-support:package", "org.apache.maven.maven-builder-support:package", "org.apache.maven.maven-settings:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -4596,7 +4721,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -4617,7 +4742,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -4757,7 +4887,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -4778,7 +4908,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-api-spi:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-xml:package", "org.apache.maven.maven-support:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-model-builder:package", "org.apache.maven.maven-repository-metadata:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes", "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target", "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -4918,7 +5053,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -4939,7 +5074,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-support:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -5245,7 +5385,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -5266,7 +5406,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-annotations:package", "org.apache.maven.maven-api-core:package", "org.apache.maven.maven-api-di:package", "org.apache.maven.maven-api-metadata:package", "org.apache.maven.maven-api-model:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-impl:package", "org.apache.maven.maven-core:package", "org.apache.maven.maven-artifact:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-model-builder:package", "org.apache.maven.maven-settings:package", "org.apache.maven.maven-settings-builder:package", "org.apache.maven.maven-plugin-api:package", "org.apache.maven.maven-repository-metadata:package", "org.apache.maven.maven-toolchain-builder:package", "org.apache.maven.maven-toolchain-model:package", "org.apache.maven.maven-resolver-provider:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -5406,7 +5551,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -5417,7 +5562,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-support:package", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-api-xml:package", "org.apache.maven.maven-api-annotations:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -5557,7 +5707,7 @@
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/java/**/*" ],
+            }, "{projectRoot}/target/generated-sources/annotations/**/*", "{projectRoot}/src/main/java/**/*" ],
             "outputs" : [ "{projectRoot}/target", "{projectRoot}/target/classes" ],
             "parallelism" : true
           },
@@ -5578,7 +5728,12 @@
               "cwd" : "{workspaceRoot}"
             },
             "dependsOn" : [ "org.apache.maven.maven-compat-modules:validate", "org.apache.maven.maven-api-toolchain:package", "org.apache.maven.maven-support:package", "org.apache.maven.maven-toolchain-model:package", "org.apache.maven.maven-builder-support:package", "org.apache.maven.maven-impl:package" ],
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ {
+              "dependentTasksOutputFiles" : "**/*",
+              "transitive" : true
+            }, "{projectRoot}/target/classes" ],
+            "outputs" : [ "{projectRoot}/target" ],
             "parallelism" : true
           },
           "verify" : {
@@ -5836,7 +5991,7 @@
               "command" : "mvn validate -pl dev.nx.maven:nx-maven-analyzer-plugin",
               "cwd" : "{workspaceRoot}"
             },
-            "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-plugin-api:validate", "org.apache.maven.maven-core:validate", "org.apache.maven.maven-model:validate", "org.apache.maven.maven-compat:validate", "org.apache.maven.maven-artifact:validate" ],
+            "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-plugin-api:validate", "org.apache.maven.maven-core:validate", "org.apache.maven.maven-model:validate" ],
             "cache" : false,
             "parallelism" : true
           },
@@ -5846,7 +6001,7 @@
               "command" : "mvn initialize -pl dev.nx.maven:nx-maven-analyzer-plugin",
               "cwd" : "{workspaceRoot}"
             },
-            "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-plugin-api:validate", "org.apache.maven.maven-core:validate", "org.apache.maven.maven-model:validate", "org.apache.maven.maven-compat:validate", "org.apache.maven.maven-artifact:validate" ],
+            "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-plugin-api:validate", "org.apache.maven.maven-core:validate", "org.apache.maven.maven-model:validate" ],
             "cache" : false,
             "parallelism" : true
           },
@@ -5856,12 +6011,12 @@
               "command" : "mvn process-sources -pl dev.nx.maven:nx-maven-analyzer-plugin",
               "cwd" : "{workspaceRoot}"
             },
-            "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-plugin-api:validate", "org.apache.maven.maven-core:validate", "org.apache.maven.maven-model:validate", "org.apache.maven.maven-compat:validate", "org.apache.maven.maven-artifact:validate" ],
+            "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-plugin-api:validate", "org.apache.maven.maven-core:validate", "org.apache.maven.maven-model:validate" ],
             "cache" : true,
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
               "transitive" : true
-            }, "{projectRoot}/src/main/kotlin/**/*", "{projectRoot}/src/test/kotlin/**/*" ],
+            }, "{projectRoot}/src/main/kotlin/**/*" ],
             "outputs" : [ "{projectRoot}/target/checkstyle-result.xml" ],
             "parallelism" : true
           },
@@ -5871,7 +6026,7 @@
               "command" : "mvn generate-resources -pl dev.nx.maven:nx-maven-analyzer-plugin",
               "cwd" : "{workspaceRoot}"
             },
-            "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-plugin-api:validate", "org.apache.maven.maven-core:validate", "org.apache.maven.maven-model:validate", "org.apache.maven.maven-compat:validate", "org.apache.maven.maven-artifact:validate" ],
+            "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-plugin-api:validate", "org.apache.maven.maven-core:validate", "org.apache.maven.maven-model:validate" ],
             "cache" : false,
             "parallelism" : true
           },
@@ -5881,7 +6036,7 @@
               "command" : "mvn process-resources -pl dev.nx.maven:nx-maven-analyzer-plugin",
               "cwd" : "{workspaceRoot}"
             },
-            "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-plugin-api:validate", "org.apache.maven.maven-core:validate", "org.apache.maven.maven-model:validate", "org.apache.maven.maven-compat:validate", "org.apache.maven.maven-artifact:validate" ],
+            "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-plugin-api:validate", "org.apache.maven.maven-core:validate", "org.apache.maven.maven-model:validate" ],
             "cache" : false,
             "parallelism" : true
           },
@@ -5891,7 +6046,7 @@
               "command" : "mvn install -pl dev.nx.maven:nx-maven-analyzer-plugin",
               "cwd" : "{workspaceRoot}"
             },
-            "dependsOn" : [ "org.apache.maven.maven:install", "org.apache.maven.maven-plugin-api:install", "org.apache.maven.maven-core:install", "org.apache.maven.maven-model:install", "org.apache.maven.maven-compat:install", "org.apache.maven.maven-artifact:install" ],
+            "dependsOn" : [ "org.apache.maven.maven:install", "org.apache.maven.maven-plugin-api:install", "org.apache.maven.maven-core:install", "org.apache.maven.maven-model:install" ],
             "cache" : false,
             "parallelism" : true
           },
@@ -5901,7 +6056,7 @@
               "command" : "mvn deploy -pl dev.nx.maven:nx-maven-analyzer-plugin",
               "cwd" : "{workspaceRoot}"
             },
-            "dependsOn" : [ "org.apache.maven.maven:deploy", "org.apache.maven.maven-plugin-api:deploy", "org.apache.maven.maven-core:deploy", "org.apache.maven.maven-model:deploy", "org.apache.maven.maven-compat:deploy", "org.apache.maven.maven-artifact:deploy" ],
+            "dependsOn" : [ "org.apache.maven.maven:deploy", "org.apache.maven.maven-plugin-api:deploy", "org.apache.maven.maven-core:deploy", "org.apache.maven.maven-model:deploy" ],
             "cache" : false,
             "parallelism" : true
           },
@@ -5920,7 +6075,7 @@
               "command" : "mvn pre-site -pl dev.nx.maven:nx-maven-analyzer-plugin",
               "cwd" : "{workspaceRoot}"
             },
-            "dependsOn" : [ "org.apache.maven.maven:clean", "org.apache.maven.maven-plugin-api:clean", "org.apache.maven.maven-core:clean", "org.apache.maven.maven-model:clean", "org.apache.maven.maven-compat:clean", "org.apache.maven.maven-artifact:clean" ],
+            "dependsOn" : [ "org.apache.maven.maven:clean", "org.apache.maven.maven-plugin-api:clean", "org.apache.maven.maven-core:clean", "org.apache.maven.maven-model:clean" ],
             "cache" : false,
             "parallelism" : true
           },
@@ -5930,7 +6085,7 @@
               "command" : "mvn site -pl dev.nx.maven:nx-maven-analyzer-plugin",
               "cwd" : "{workspaceRoot}"
             },
-            "dependsOn" : [ "org.apache.maven.maven:clean", "org.apache.maven.maven-plugin-api:clean", "org.apache.maven.maven-core:clean", "org.apache.maven.maven-model:clean", "org.apache.maven.maven-compat:clean", "org.apache.maven.maven-artifact:clean" ],
+            "dependsOn" : [ "org.apache.maven.maven:clean", "org.apache.maven.maven-plugin-api:clean", "org.apache.maven.maven-core:clean", "org.apache.maven.maven-model:clean" ],
             "cache" : false,
             "parallelism" : true
           },
@@ -5940,7 +6095,7 @@
               "command" : "mvn compile -pl dev.nx.maven:nx-maven-analyzer-plugin",
               "cwd" : "{workspaceRoot}"
             },
-            "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-plugin-api:compile", "org.apache.maven.maven-core:compile", "org.apache.maven.maven-model:compile", "org.apache.maven.maven-compat:compile", "org.apache.maven.maven-artifact:compile" ],
+            "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-plugin-api:compile", "org.apache.maven.maven-core:compile", "org.apache.maven.maven-model:compile" ],
             "cache" : true,
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
@@ -5955,7 +6110,7 @@
               "command" : "mvn package -pl dev.nx.maven:nx-maven-analyzer-plugin",
               "cwd" : "{workspaceRoot}"
             },
-            "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-plugin-api:package", "org.apache.maven.maven-core:package", "org.apache.maven.maven-model:package", "org.apache.maven.maven-compat:package", "org.apache.maven.maven-artifact:package" ],
+            "dependsOn" : [ "org.apache.maven.maven:validate", "org.apache.maven.maven-plugin-api:package", "org.apache.maven.maven-core:package", "org.apache.maven.maven-model:package" ],
             "cache" : true,
             "inputs" : [ {
               "dependentTasksOutputFiles" : "**/*",
@@ -6071,7 +6226,7 @@
       }
     }
   } ] ],
-  "generatedAt" : 1757687981518,
+  "generatedAt" : 1757705844049,
   "workspaceRoot" : "/home/jason/projects/triage/java/maven",
   "totalProjects" : 40,
   "analyzedProjects" : 40,
