@@ -58,7 +58,7 @@ jobs:
         run: pnpm install
 
       - name: Build Maven analyzer plugin
-        run: mvn clean install -am -pl packages/maven/analyzer-plugin -DskipTests
+        run: ./mvnw clean install -am -pl packages/maven/analyzer-plugin -DskipTests
 
       - name: Build Nx Maven plugin
         run: pnpm build:plugin
