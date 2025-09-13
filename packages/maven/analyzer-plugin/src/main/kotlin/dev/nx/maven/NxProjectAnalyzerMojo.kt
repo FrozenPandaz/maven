@@ -45,13 +45,7 @@ class NxProjectAnalyzerMojo : AbstractMojo() {
     private lateinit var phaseAnalyzer: PhaseAnalyzer
 
     @Inject
-    private lateinit var pathResolver: PathResolver
-
-    @Inject
     private lateinit var expressionResolver: MavenExpressionResolver
-
-    @Inject
-    private lateinit var gitIgnoreClassifier: GitIgnoreClassifier
 
     @Parameter(property = "outputFile", defaultValue = "nx-maven-projects.json")
     private lateinit var outputFile: String

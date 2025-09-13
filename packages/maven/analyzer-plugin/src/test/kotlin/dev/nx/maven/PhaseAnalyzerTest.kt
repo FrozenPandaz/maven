@@ -7,123 +7,69 @@ import org.mockito.Mockito.*
 import org.apache.maven.execution.MavenSession
 import org.apache.maven.plugin.MavenPluginManager
 import org.apache.maven.project.MavenProject
-import org.apache.maven.lifecycle.DefaultLifecycles
-import org.apache.maven.lifecycle.LifecycleExecutor
 import java.io.File
 
 /**
- * Unit test for PhaseAnalyzer using JUnit 5 with manual DI component setup
+ * Unit test for PhaseAnalyzer using Maven 4 DI components
  * Tests that the DI components work correctly together
  */
 class PhaseAnalyzerTest {
 
     private lateinit var phaseAnalyzer: PhaseAnalyzer
-    private lateinit var expressionResolver: MavenExpressionResolver
-    private lateinit var pathResolver: PathResolver
-    private lateinit var gitIgnoreClassifier: GitIgnoreClassifier
     private lateinit var session: MavenSession
-    private lateinit var pluginManager: MavenPluginManager
     private lateinit var testProject: MavenProject
 
     @BeforeEach
     fun setUp() {
-        // Create mock session
-        session = mock(MavenSession::class.java)
-        `when`(session.executionRootDirectory).thenReturn(System.getProperty("user.dir"))
-        `when`(session.allProjects).thenReturn(listOf())
+        // Create test fixtures
+        session = createMockSession()
+        testProject = createMockProject()
+        val pluginManager = mock(MavenPluginManager::class.java)
 
-        // Create mock test project
-        testProject = mock(MavenProject::class.java)
-        val baseDir = File(System.getProperty("user.dir"))
-        `when`(testProject.basedir).thenReturn(baseDir)
-        `when`(testProject.groupId).thenReturn("test.group")
-        `when`(testProject.artifactId).thenReturn("test-artifact")
-        `when`(testProject.version).thenReturn("1.0.0-SNAPSHOT")
-        `when`(testProject.build).thenReturn(mock(org.apache.maven.model.Build::class.java))
-        `when`(testProject.build.plugins).thenReturn(emptyList())
+        // Create DI components with injected dependencies
+        val expressionResolver = createComponent(MavenExpressionResolver::class.java, session)
+        val pathResolver = createComponent(PathResolver::class.java, session)
+        val gitIgnoreClassifier = mock(GitIgnoreClassifier::class.java)
 
-        // Create mock plugin manager
-        pluginManager = mock(MavenPluginManager::class.java)
-
-        // Create DI components manually (simulating DI injection)
-        expressionResolver = MavenExpressionResolver().apply {
-            // Use reflection to set the private session field
-            val sessionField = MavenExpressionResolver::class.java.getDeclaredField("session")
-            sessionField.isAccessible = true
-            sessionField.set(this, session)
-        }
-
-        pathResolver = PathResolver().apply {
-            // Use reflection to set the private session field
-            val sessionField = PathResolver::class.java.getDeclaredField("session")
-            sessionField.isAccessible = true
-            sessionField.set(this, session)
-        }
-
-        // Create a mock GitIgnoreClassifier to avoid initialization issues in tests
-        gitIgnoreClassifier = mock(GitIgnoreClassifier::class.java)
-
+        // Create PhaseAnalyzer with all DI dependencies
         phaseAnalyzer = PhaseAnalyzer().apply {
-            // Use reflection to set all the DI fields
-            val sessionField = PhaseAnalyzer::class.java.getDeclaredField("session")
-            sessionField.isAccessible = true
-            sessionField.set(this, session)
-
-            val pluginManagerField = PhaseAnalyzer::class.java.getDeclaredField("pluginManager")
-            pluginManagerField.isAccessible = true
-            pluginManagerField.set(this, pluginManager)
-
-            val expressionResolverField = PhaseAnalyzer::class.java.getDeclaredField("expressionResolver")
-            expressionResolverField.isAccessible = true
-            expressionResolverField.set(this, expressionResolver)
-
-            val pathResolverField = PhaseAnalyzer::class.java.getDeclaredField("pathResolver")
-            pathResolverField.isAccessible = true
-            pathResolverField.set(this, pathResolver)
-
-            val gitIgnoreField = PhaseAnalyzer::class.java.getDeclaredField("gitIgnoreClassifier")
-            gitIgnoreField.isAccessible = true
-            gitIgnoreField.set(this, gitIgnoreClassifier)
+            injectField("session", session)
+            injectField("pluginManager", pluginManager)
+            injectField("expressionResolver", expressionResolver)
+            injectField("pathResolver", pathResolver)
+            injectField("gitIgnoreClassifier", gitIgnoreClassifier)
         }
     }
 
     @Test
     fun testAnalyzeCompilePhase() {
-        // Test compile phase analysis
         val result = phaseAnalyzer.analyze(testProject, "compile")
 
-        // Verify basic properties
         assertNotNull(result)
         assertTrue(result.isThreadSafe, "Compile phase should be thread safe")
         assertTrue(result.isCacheable, "Compile phase should be cacheable")
 
-        // Print results for debugging
         println("Compile phase analysis:")
         println("  Thread Safe: ${result.isThreadSafe}")
         println("  Cacheable: ${result.isCacheable}")
-        println("  Inputs (${result.inputs.size}): ${result.inputs}")
-        println("  Outputs (${result.outputs.size}): ${result.outputs}")
+        println("  Inputs: ${result.inputs.size}, Outputs: ${result.outputs.size}")
     }
 
     @Test
     fun testAnalyzeTestPhase() {
-        // Test phase analysis
         val result = phaseAnalyzer.analyze(testProject, "test")
 
-        // Verify basic properties
         assertNotNull(result)
         assertTrue(result.isThreadSafe, "Test phase should be thread safe")
 
         println("Test phase analysis:")
         println("  Thread Safe: ${result.isThreadSafe}")
         println("  Cacheable: ${result.isCacheable}")
-        println("  Inputs (${result.inputs.size}): ${result.inputs}")
-        println("  Outputs (${result.outputs.size}): ${result.outputs}")
+        println("  Inputs: ${result.inputs.size}, Outputs: ${result.outputs.size}")
     }
 
     @Test
     fun testAnalyzeEmptyPhase() {
-        // Test with a phase that has no plugins
         val result = phaseAnalyzer.analyze(testProject, "non-existent-phase")
 
         assertNotNull(result)
@@ -135,30 +81,56 @@ class PhaseAnalyzerTest {
 
     @Test
     fun testDIComponentsAreInjected() {
-        // Verify that all DI components are properly injected
+        // Verify all DI components are properly injected
         assertNotNull(phaseAnalyzer)
 
-        // Use reflection to verify the fields are set
-        val sessionField = PhaseAnalyzer::class.java.getDeclaredField("session")
-        sessionField.isAccessible = true
-        assertNotNull(sessionField.get(phaseAnalyzer))
-
-        val pluginManagerField = PhaseAnalyzer::class.java.getDeclaredField("pluginManager")
-        pluginManagerField.isAccessible = true
-        assertNotNull(pluginManagerField.get(phaseAnalyzer))
-
-        val expressionResolverField = PhaseAnalyzer::class.java.getDeclaredField("expressionResolver")
-        expressionResolverField.isAccessible = true
-        assertNotNull(expressionResolverField.get(phaseAnalyzer))
-
-        val pathResolverField = PhaseAnalyzer::class.java.getDeclaredField("pathResolver")
-        pathResolverField.isAccessible = true
-        assertNotNull(pathResolverField.get(phaseAnalyzer))
-
-        val gitIgnoreField = PhaseAnalyzer::class.java.getDeclaredField("gitIgnoreClassifier")
-        gitIgnoreField.isAccessible = true
-        assertNotNull(gitIgnoreField.get(phaseAnalyzer))
+        phaseAnalyzer.verifyFieldInjected("session")
+        phaseAnalyzer.verifyFieldInjected("pluginManager")
+        phaseAnalyzer.verifyFieldInjected("expressionResolver")
+        phaseAnalyzer.verifyFieldInjected("pathResolver")
+        phaseAnalyzer.verifyFieldInjected("gitIgnoreClassifier")
 
         println("✅ All DI components are properly injected into PhaseAnalyzer")
+    }
+
+    // Helper methods to reduce boilerplate
+
+    private fun createMockSession(): MavenSession {
+        return mock(MavenSession::class.java).apply {
+            `when`(executionRootDirectory).thenReturn(System.getProperty("user.dir"))
+            `when`(allProjects).thenReturn(emptyList())
+        }
+    }
+
+    private fun createMockProject(): MavenProject {
+        return mock(MavenProject::class.java).apply {
+            val baseDir = File(System.getProperty("user.dir"))
+            `when`(basedir).thenReturn(baseDir)
+            `when`(groupId).thenReturn("test.group")
+            `when`(artifactId).thenReturn("test-artifact")
+            `when`(version).thenReturn("1.0.0-SNAPSHOT")
+            `when`(build).thenReturn(mock(org.apache.maven.model.Build::class.java))
+            `when`(build.plugins).thenReturn(emptyList())
+        }
+    }
+
+    private fun <T> createComponent(clazz: Class<T>, session: MavenSession): T {
+        return clazz.getDeclaredConstructor().newInstance().apply {
+            injectField("session", session)
+        }
+    }
+
+    // Extension functions to make reflection cleaner
+
+    private fun Any.injectField(fieldName: String, value: Any?) {
+        val field = this::class.java.getDeclaredField(fieldName)
+        field.isAccessible = true
+        field.set(this, value)
+    }
+
+    private fun Any.verifyFieldInjected(fieldName: String) {
+        val field = this::class.java.getDeclaredField(fieldName)
+        field.isAccessible = true
+        assertNotNull(field.get(this), "Field '$fieldName' should be injected")
     }
 }

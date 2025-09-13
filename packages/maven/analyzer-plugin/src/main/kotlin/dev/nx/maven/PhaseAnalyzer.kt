@@ -358,7 +358,7 @@ class PhaseAnalyzer {
         )
 
         if (resolvedPath != null) {
-            val gitIgnoreRole = gitIgnoreClassifier?.classifyPath(resolvedPath)
+            val gitIgnoreRole = gitIgnoreClassifier.classifyPath(resolvedPath)
             if (gitIgnoreRole != null) {
                 log.debug("Parameter $name: Gitignore classification suggests $gitIgnoreRole")
                 return gitIgnoreRole
