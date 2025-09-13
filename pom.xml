@@ -103,6 +103,7 @@ under the License.
     <module>impl</module>
     <module>compat</module>
     <module>apache-maven</module>
+    <module>packages/maven/analyzer-plugin</module>
   </modules>
 
   <scm>
@@ -800,14 +801,6 @@ under the License.
     </pluginManagement>
     <plugins>
       <plugin>
-        <groupId>dev.nx.maven</groupId>
-        <artifactId>nx-maven-analyzer-plugin</artifactId>
-        <version>${project.version}</version>
-        <configuration>
-          <skip>true</skip>
-        </configuration>
-      </plugin>
-      <plugin>
         <groupId>io.github.olamy.maven.plugins</groupId>
         <artifactId>jacoco-aggregator-maven-plugin</artifactId>
         <version>1.0.3</version>
@@ -967,10 +960,27 @@ under the License.
 
   <profiles>
     <profile>
-      <id>analyzer-plugin</id>
+      <id>test-analyzer</id>
+      <activation>
+        <property>
+          <name>test.analyzer</name>
+        </property>
+      </activation>
       <modules>
-        <module>packages/maven/analyzer-plugin</module>
+        <module>api</module>
+        <module>impl</module>
+        <module>compat</module>
+        <module>apache-maven</module>
       </modules>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>dev.nx.maven</groupId>
+            <artifactId>nx-maven-analyzer-plugin</artifactId>
+            <version>${project.version}</version>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
     <profile>
       <id>mockito</id>
