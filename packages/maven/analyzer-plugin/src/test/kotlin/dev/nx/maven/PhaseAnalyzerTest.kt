@@ -2,6 +2,8 @@ package dev.nx.maven
 
 import org.apache.maven.api.plugin.testing.MojoTest
 import org.apache.maven.api.plugin.testing.InjectMojo
+import org.apache.maven.api.di.Inject
+import org.apache.maven.api.di.Provides
 import org.apache.maven.execution.MavenSession
 import org.apache.maven.plugin.MavenPluginManager
 import org.apache.maven.project.MavenProject
@@ -11,7 +13,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 
 /**
- * Working unit test for PhaseAnalyzer that uses Maven Plugin Testing Harness 4.0
+ * Working unit test for PhaseAnalyzer that uses Maven 4's DI testing system
  */
 @MojoTest
 class PhaseAnalyzerTest {
@@ -19,20 +21,18 @@ class PhaseAnalyzerTest {
     private lateinit var analyzer: PhaseAnalyzer
     private var gitIgnoreClassifier: GitIgnoreClassifier? = null
 
-    // Let the testing harness inject the session, plugin manager, and project
-    @InjectMojo(goal = "analyze")
+    // Use Maven 4 DI to inject components
+    @Inject
     private lateinit var session: MavenSession
 
-    @InjectMojo(goal = "analyze")
+    @Inject
     private lateinit var pluginManager: MavenPluginManager
 
-    @InjectMojo(goal = "analyze")
+    @Inject
     private lateinit var testProject: MavenProject
 
     @BeforeEach
     fun setUp() {
-        // No need to manually load the test project - it's injected by the harness
-
         // Create GitIgnoreClassifier exactly as done in the main mojo
         gitIgnoreClassifier = try {
             val sessionRoot = session.executionRootDirectory?.let { java.io.File(it) }
@@ -46,7 +46,7 @@ class PhaseAnalyzerTest {
             null
         }
 
-        // Create components with real session and plugin manager from testing harness
+        // Create components with real session and plugin manager from DI
         val expressionResolver = MavenExpressionResolver(session)
         val pathResolver = PathResolver(testProject.basedir.absolutePath, testProject.basedir.absolutePath, session)
 
@@ -58,8 +58,6 @@ class PhaseAnalyzerTest {
         // Clean up GitIgnoreClassifier resources
         gitIgnoreClassifier?.close()
     }
-
-
 
     @Test
     fun testAnalyzeCompilePhase() {

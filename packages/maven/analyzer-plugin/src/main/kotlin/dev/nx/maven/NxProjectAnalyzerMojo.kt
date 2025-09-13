@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import dev.nx.maven.plugin.PluginBasedAnalyzer
 import dev.nx.maven.plugin.PluginExecutionFinder
+import org.apache.maven.api.di.Inject
 import org.apache.maven.execution.MavenSession
 import org.apache.maven.lifecycle.DefaultLifecycles
 import org.apache.maven.lifecycle.LifecycleExecutor
@@ -31,13 +32,13 @@ class NxProjectAnalyzerMojo : AbstractMojo() {
     @Parameter(defaultValue = "\${session}", readonly = true, required = true)
     private lateinit var session: MavenSession
 
-    @Component
+    @Inject
     private lateinit var pluginManager: org.apache.maven.plugin.MavenPluginManager
 
-    @Component
+    @Inject
     private lateinit var lifecycles: DefaultLifecycles
 
-    @Component
+    @Inject
     private lateinit var lifecycleExecutor: LifecycleExecutor
 
     @Parameter(property = "outputFile", defaultValue = "nx-maven-projects.json")

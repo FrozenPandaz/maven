@@ -45,6 +45,14 @@
       <scope>provided</scope>
     </dependency>
 
+    <!-- Maven 4 DI API -->
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-api-di</artifactId>
+      <version>${project.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
     <!-- JSON Processing -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -85,15 +93,13 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Maven Plugin Testing Harness -->
+    <!-- Maven 4 Plugin Testing Framework -->
     <dependency>
-      <groupId>org.apache.maven.plugin-testing</groupId>
-      <artifactId>maven-plugin-testing-harness</artifactId>
-      <version>4.0.0-beta-4</version>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-testing</artifactId>
+      <version>${project.version}</version>
       <scope>test</scope>
     </dependency>
-
-    
 
     <!-- Snapshot Testing -->
     <dependency>
@@ -215,6 +221,12 @@
           </includes>
         </configuration>
         <dependencies>
+          <!-- Support for JUnit 5 tests -->
+          <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire-junit-platform</artifactId>
+            <version>3.2.5</version>
+          </dependency>
           <!-- Support for JUnit 4 tests (for Maven Plugin Testing Harness) -->
           <dependency>
             <groupId>org.apache.maven.surefire</groupId>
