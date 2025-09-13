@@ -185,7 +185,7 @@ class PluginBasedAnalyzer(
                     log.debug("Analyzing mojo: ${pluginArtifactId}:${mojo.goal}")
 
                     // Check for side effects - create temporary analyzer just for this check
-                    val tempPathResolver = PathResolver(session.executionRootDirectory ?: "", "", session)
+                    val tempPathResolver = PathResolver()
                     val tempMojoAnalyzer = MojoParameterAnalyzer(expressionResolver, tempPathResolver)
                     if (tempMojoAnalyzer.isSideEffectMojo(mojo)) {
                         log.warn("Mojo ${pluginArtifactId}:${mojo.goal} detected as having side effects")

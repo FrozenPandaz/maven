@@ -1,16 +1,37 @@
 package dev.nx.maven
 
+import org.apache.maven.api.di.Inject
+import org.apache.maven.api.di.Named
+import org.apache.maven.api.di.Singleton
 import org.apache.maven.execution.MavenSession
 import java.io.File
 
 /**
  * Handles path resolution, Maven command detection, and input/output path formatting for Nx
  */
-class PathResolver(
-    private val workspaceRoot: String,
-    private val projectBaseDir: String? = null,
-    private val session: MavenSession? = null
-) {
+@Named
+@Singleton
+class PathResolver {
+
+    @Inject
+    private lateinit var session: MavenSession
+
+    private val workspaceRoot: String
+        get() = session.executionRootDirectory ?: "."
+
+    // Allow using a different project base dir for specific contexts
+    fun toProjectPath(path: String, projectBaseDir: String? = null): String = try {
+        val filePath = java.nio.file.Paths.get(path)
+        val baseDirPath = if (projectBaseDir != null) {
+            java.nio.file.Paths.get(projectBaseDir)
+        } else {
+            java.nio.file.Paths.get(workspaceRoot)
+        }
+        val relativePath = baseDirPath.relativize(filePath)
+        "{projectRoot}/$relativePath".replace('\\', '/')
+    } catch (e: Exception) {
+        "{projectRoot}/$path"
+    }
 
     /**
      * Adds an input path to the inputs collection, checking existence and formatting appropriately
@@ -88,25 +109,6 @@ class PathResolver(
         outputs.add(toProjectPath(path))
     }
 
-    /**
-     * Converts an absolute path to a project-relative path using Nx token format
-     */
-    fun toProjectPath(path: String): String = try {
-        val filePath = java.nio.file.Paths.get(path)
-
-        // If we have a project base directory, make paths relative to the project root
-        // This ensures {projectRoot} refers to the individual project's directory, not workspace root
-        val baseDirPath = if (projectBaseDir != null) {
-            java.nio.file.Paths.get(projectBaseDir)
-        } else {
-            java.nio.file.Paths.get(workspaceRoot)
-        }
-
-        val relativePath = baseDirPath.relativize(filePath)
-        "{projectRoot}/$relativePath".replace('\\', '/')
-    } catch (e: Exception) {
-        "{projectRoot}/$path"
-    }
 
     /**
      * Determines the best Maven executable: mvnd > mvnw > mvn
@@ -141,21 +143,16 @@ class PathResolver(
      * Finds the workspace root by looking for the top-level pom.xml
      */
     private fun findProjectWorkspaceRoot(): File {
-        // If we have a session, use it to find the execution root and walk up to find workspace root
-        if (session != null) {
-            var current = File(session.executionRootDirectory)
-            while (current.parent != null) {
-                val parentPom = File(current.parent, "pom.xml")
-                if (parentPom.exists()) {
-                    current = current.parentFile
-                } else {
-                    break
-                }
+        var current = File(session.executionRootDirectory)
+        while (current.parent != null) {
+            val parentPom = File(current.parent, "pom.xml")
+            if (parentPom.exists()) {
+                current = current.parentFile
+            } else {
+                break
             }
-            return current
-        } else {
-            // Fallback to using the provided workspace root
-            return File(workspaceRoot)
         }
+        return current
     }
 }
+

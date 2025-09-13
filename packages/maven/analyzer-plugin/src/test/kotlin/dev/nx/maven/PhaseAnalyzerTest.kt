@@ -19,44 +19,23 @@ import org.junit.jupiter.api.Assertions.*
 class PhaseAnalyzerTest {
 
     private lateinit var analyzer: PhaseAnalyzer
-    private var gitIgnoreClassifier: GitIgnoreClassifier? = null
 
-    // Use Maven 4 DI to inject components
+    // Use Maven 4 DI to inject the PhaseAnalyzer directly
     @Inject
-    private lateinit var session: MavenSession
-
-    @Inject
-    private lateinit var pluginManager: MavenPluginManager
+    private lateinit var phaseAnalyzer: PhaseAnalyzer
 
     @Inject
     private lateinit var testProject: MavenProject
 
     @BeforeEach
     fun setUp() {
-        // Create GitIgnoreClassifier exactly as done in the main mojo
-        gitIgnoreClassifier = try {
-            val sessionRoot = session.executionRootDirectory?.let { java.io.File(it) }
-            if (sessionRoot != null) {
-                GitIgnoreClassifier(sessionRoot)
-            } else {
-                null
-            }
-        } catch (e: Exception) {
-            println("Failed to initialize GitIgnoreClassifier: ${e.message}")
-            null
-        }
-
-        // Create components with real session and plugin manager from DI
-        val expressionResolver = MavenExpressionResolver(session)
-        val pathResolver = PathResolver(testProject.basedir.absolutePath, testProject.basedir.absolutePath, session)
-
-        analyzer = PhaseAnalyzer(pluginManager, session, expressionResolver, pathResolver, gitIgnoreClassifier)
+        // PhaseAnalyzer and all its dependencies are now managed by DI
+        analyzer = phaseAnalyzer
     }
 
     @AfterEach
     fun tearDown() {
-        // Clean up GitIgnoreClassifier resources
-        gitIgnoreClassifier?.close()
+        // DI components are managed by the container
     }
 
     @Test

@@ -1,5 +1,9 @@
 package dev.nx.maven
 
+import org.apache.maven.api.di.Inject
+import org.apache.maven.api.di.Named
+import org.apache.maven.api.di.Singleton
+import org.apache.maven.execution.MavenSession
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.lib.Repository
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
@@ -11,15 +15,20 @@ import java.io.IOException
  * Uses JGit to determine if files match gitignore patterns
  * Provides heuristic for parameter classification: ignored files are likely outputs, tracked files are likely inputs
  */
-class GitIgnoreClassifier(
-    private val projectRoot: File
-) {
+@Named
+@Singleton
+class GitIgnoreClassifier {
+
+    @Inject
+    private lateinit var session: MavenSession
     private val log = LoggerFactory.getLogger(GitIgnoreClassifier::class.java)
     
     private var git: Git? = null
     private var repository: Repository? = null
     private var isGitRepo: Boolean = false
     
+    private val projectRoot: File = session.executionRootDirectory?.let { File(it) } ?: File(".")
+
     init {
         initializeGitRepository()
     }

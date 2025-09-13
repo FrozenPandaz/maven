@@ -1,5 +1,8 @@
 package dev.nx.maven
 
+import org.apache.maven.api.di.Inject
+import org.apache.maven.api.di.Named
+import org.apache.maven.api.di.Singleton
 import org.apache.maven.execution.MavenSession
 import org.apache.maven.project.MavenProject
 import org.slf4j.Logger
@@ -8,9 +11,12 @@ import org.slf4j.LoggerFactory
 /**
  * Resolves Maven expressions and parameter values
  */
-class MavenExpressionResolver(
-    private val session: MavenSession
-) {
+@Named
+@Singleton
+class MavenExpressionResolver {
+
+    @Inject
+    private lateinit var session: MavenSession
     private val log: Logger = LoggerFactory.getLogger(MavenExpressionResolver::class.java)
     
     /**

@@ -1,5 +1,8 @@
 package dev.nx.maven
 
+import org.apache.maven.api.di.Inject
+import org.apache.maven.api.di.Named
+import org.apache.maven.api.di.Singleton
 import org.apache.maven.execution.MavenSession
 import org.apache.maven.model.Plugin
 import org.apache.maven.plugin.MavenPluginManager
@@ -11,13 +14,24 @@ import org.slf4j.LoggerFactory
 /**
  * Analyzes Maven phases to determine inputs, outputs, and thread safety
  */
-class PhaseAnalyzer(
-    private val pluginManager: MavenPluginManager,
-    private val session: MavenSession,
-    private val expressionResolver: MavenExpressionResolver,
-    private val pathResolver: PathResolver,
-    private val gitIgnoreClassifier: GitIgnoreClassifier? = null
-) {
+@Named
+@Singleton
+class PhaseAnalyzer {
+
+    @Inject
+    private lateinit var pluginManager: MavenPluginManager
+
+    @Inject
+    private lateinit var session: MavenSession
+
+    @Inject
+    private lateinit var expressionResolver: MavenExpressionResolver
+
+    @Inject
+    private lateinit var pathResolver: PathResolver
+
+    @Inject
+    private lateinit var gitIgnoreClassifier: GitIgnoreClassifier
     private val log = LoggerFactory.getLogger(PhaseAnalyzer::class.java)
 
     fun analyze(project: MavenProject, phase: String): PhaseInformation {

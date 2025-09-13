@@ -28,7 +28,7 @@ class NxProjectAnalyzer(
      */
     fun analyze(): Pair<String, ObjectNode>? {
         try {
-            val pathResolver = PathResolver(workspaceRoot, project.basedir.absolutePath, session)
+            val pathResolver = PathResolver()
             val mavenCommand = pathResolver.getMavenCommand()
 
             // Calculate relative path from workspace root

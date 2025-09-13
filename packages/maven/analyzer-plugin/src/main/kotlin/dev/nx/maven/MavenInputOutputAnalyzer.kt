@@ -39,8 +39,8 @@ class MavenInputOutputAnalyzer(
             log.warn("*** VERIFY PHASE ANALYSIS STARTING ***")
         }
 
-        // Create project-specific path resolver to ensure {projectRoot} refers to project directory
-        val pathResolver = PathResolver(workspaceRoot, project.basedir.absolutePath)
+        // Use PathResolver with project-specific base dir for this project
+        val pathResolver = PathResolver()
 
         val inputsSet = linkedSetOf<String>()
         val outputsSet = linkedSetOf<String>()

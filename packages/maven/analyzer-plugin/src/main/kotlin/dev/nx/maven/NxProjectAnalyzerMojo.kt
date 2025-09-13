@@ -41,6 +41,18 @@ class NxProjectAnalyzerMojo : AbstractMojo() {
     @Inject
     private lateinit var lifecycleExecutor: LifecycleExecutor
 
+    @Inject
+    private lateinit var phaseAnalyzer: PhaseAnalyzer
+
+    @Inject
+    private lateinit var pathResolver: PathResolver
+
+    @Inject
+    private lateinit var expressionResolver: MavenExpressionResolver
+
+    @Inject
+    private lateinit var gitIgnoreClassifier: GitIgnoreClassifier
+
     @Parameter(property = "outputFile", defaultValue = "nx-maven-projects.json")
     private lateinit var outputFile: String
 
@@ -54,18 +66,7 @@ class NxProjectAnalyzerMojo : AbstractMojo() {
         log.info("Analyzing Maven projects using optimized two-tier approach...")
         log.info("Parameters: outputFile='$outputFile', workspaceRoot='$workspaceRoot'")
 
-        // Create GitIgnoreClassifier once for the entire session
-        val gitIgnoreClassifier: GitIgnoreClassifier? = try {
-            val sessionRoot = session.executionRootDirectory?.let { java.io.File(it) }
-            if (sessionRoot != null) {
-                GitIgnoreClassifier(sessionRoot)
-            } else {
-                null
-            }
-        } catch (e: Exception) {
-            log.debug("Failed to initialize GitIgnoreClassifier: ${e.message}")
-            null
-        }
+        // GitIgnoreClassifier is now injected as a DI component
 
         try {
             val allProjects = session.allProjects
@@ -73,7 +74,7 @@ class NxProjectAnalyzerMojo : AbstractMojo() {
 
             // Step 1: Execute per-project analysis for all projects (in-memory)
             log.info("Step 1: Running optimized per-project analysis...")
-            val inMemoryAnalyses = executePerProjectAnalysisInMemory(allProjects, gitIgnoreClassifier)
+            val inMemoryAnalyses = executePerProjectAnalysisInMemory(allProjects)
 
             // Step 2: Write project analyses to output file
             log.info("Step 2: Writing project analyses to output file...")
@@ -83,30 +84,22 @@ class NxProjectAnalyzerMojo : AbstractMojo() {
 
         } catch (e: Exception) {
             throw MojoExecutionException("Failed to execute optimized two-tier Maven analysis", e)
-        } finally {
-            // Clean up GitIgnoreClassifier resources
-            gitIgnoreClassifier?.close()
         }
     }
 
-    private fun executePerProjectAnalysisInMemory(allProjects: List<MavenProject>, gitIgnoreClassifier: GitIgnoreClassifier?): Map<String, Pair<String, JsonNode>?> {
+    private fun executePerProjectAnalysisInMemory(allProjects: List<MavenProject>): Map<String, Pair<String, JsonNode>?> {
         val startTime = System.currentTimeMillis()
         log.info("Creating shared component instances for optimized analysis...")
 
-        // Create deeply shared components for maximum caching efficiency
-        val sharedExpressionResolver = MavenExpressionResolver(session)
+        // Use DI-managed components - they are already shared and optimized
         val sharedPluginExecutionFinder = PluginExecutionFinder(lifecycleExecutor, session)
         val pluginAnalyzer = PluginBasedAnalyzer(
-            session, pluginManager, sharedPluginExecutionFinder, sharedExpressionResolver
+            session, pluginManager, sharedPluginExecutionFinder, expressionResolver
         )
 
-        // Create shared component instances ONCE for all projects (major optimization)
         val sharedInputOutputAnalyzer = MavenInputOutputAnalyzer(
             objectMapper, workspaceRoot, pluginAnalyzer
         )
-        val pathResolver = PathResolver(workspaceRoot)
-
-        val phaseAnalyzer = PhaseAnalyzer(pluginManager, session, sharedExpressionResolver, pathResolver, gitIgnoreClassifier)
         val sharedTestClassDiscovery = TestClassDiscovery()
 
         val sharedLifecycleAnalyzer = NxTargetFactory(lifecycles, sharedInputOutputAnalyzer, sharedPluginExecutionFinder, objectMapper, sharedTestClassDiscovery, phaseAnalyzer)
