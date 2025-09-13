@@ -1,5 +1,7 @@
 package dev.nx.maven
 
+import org.apache.maven.api.di.Named
+import org.apache.maven.api.di.Singleton
 import org.apache.maven.project.MavenProject
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -16,7 +18,9 @@ data class TestClassInfo(
  * Simple test class discovery utility for Maven projects
  * Uses lightweight string matching instead of complex AST parsing
  */
-class TestClassDiscovery() {
+@Named
+@Singleton
+class TestClassDiscovery {
     private val log: Logger = LoggerFactory.getLogger(TestClassDiscovery::class.java)
 
     // Essential test annotations (simple string matching)

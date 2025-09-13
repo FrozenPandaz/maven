@@ -2,6 +2,10 @@ package dev.nx.maven
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ArrayNode
+import org.apache.maven.api.di.Inject
+import org.apache.maven.api.di.Named
+import org.apache.maven.api.di.Singleton
+import org.apache.maven.execution.MavenSession
 import org.apache.maven.project.MavenProject
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -11,14 +15,23 @@ import dev.nx.maven.plugin.PluginBasedAnalyzer
  * Maven input/output analyzer using plugin parameter analysis
  * Examines actual plugin parameters to determine what files each phase reads and writes
  */
-class MavenInputOutputAnalyzer(
-    private val objectMapper: ObjectMapper,
-    private val workspaceRoot: String,
-    private val pluginAnalyzer: PluginBasedAnalyzer
-) {
+@Named
+@Singleton
+class MavenInputOutputAnalyzer {
+
+    @Inject
+    private lateinit var objectMapper: ObjectMapper
+
+    @Inject
+    private lateinit var session: MavenSession
+
+    @Inject
+    private lateinit var pluginAnalyzer: PluginBasedAnalyzer
+
     private val log: Logger = LoggerFactory.getLogger(MavenInputOutputAnalyzer::class.java)
 
-    // Components will be created per-project to ensure correct path resolution
+    private val workspaceRoot: String
+        get() = session.executionRootDirectory ?: "."
 
     /**
      * Result of cacheability analysis

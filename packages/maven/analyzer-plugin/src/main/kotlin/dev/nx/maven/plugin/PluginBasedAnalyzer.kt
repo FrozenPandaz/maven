@@ -1,5 +1,8 @@
 package dev.nx.maven.plugin
 
+import org.apache.maven.api.di.Inject
+import org.apache.maven.api.di.Named
+import org.apache.maven.api.di.Singleton
 import org.apache.maven.execution.MavenSession
 import org.apache.maven.plugin.MavenPluginManager
 import org.apache.maven.plugin.descriptor.PluginDescriptor
@@ -13,12 +16,21 @@ import dev.nx.maven.MavenExpressionResolver
  * Analyzes Maven phases by examining the actual plugin parameters that execute during each phase
  * This provides accurate input/output detection based on what plugins actually read and write
  */
-class PluginBasedAnalyzer(
-    private val session: MavenSession,
-    private val pluginManager: MavenPluginManager,
-    private val pluginExecutionFinder: PluginExecutionFinder,
-    private val expressionResolver: MavenExpressionResolver
-) {
+@Named
+@Singleton
+class PluginBasedAnalyzer {
+
+    @Inject
+    private lateinit var session: MavenSession
+
+    @Inject
+    private lateinit var pluginManager: MavenPluginManager
+
+    @Inject
+    private lateinit var pluginExecutionFinder: PluginExecutionFinder
+
+    @Inject
+    private lateinit var expressionResolver: MavenExpressionResolver
     private val log: Logger = LoggerFactory.getLogger(PluginBasedAnalyzer::class.java)
 
     // Cache for expensive plugin descriptor loading

@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ArrayNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import dev.nx.maven.plugin.PluginExecutionFinder
+import org.apache.maven.api.di.Inject
+import org.apache.maven.api.di.Named
+import org.apache.maven.api.di.Singleton
 import org.apache.maven.lifecycle.DefaultLifecycles
 import org.apache.maven.model.Plugin
 import org.apache.maven.project.MavenProject
@@ -14,14 +17,27 @@ import org.slf4j.LoggerFactory
 /**
  * Collects lifecycle and plugin information directly from Maven APIs
  */
-class NxTargetFactory(
-    private val lifecycles: DefaultLifecycles,
-    private val sharedInputOutputAnalyzer: MavenInputOutputAnalyzer,
-    private val pluginExecutionFinder: PluginExecutionFinder,
-    private val objectMapper: ObjectMapper,
-    private val testClassDiscovery: TestClassDiscovery,
-    private val phaseAnalyzer: PhaseAnalyzer
-) {
+@Named
+@Singleton
+class NxTargetFactory {
+
+    @Inject
+    private lateinit var lifecycles: DefaultLifecycles
+
+    @Inject
+    private lateinit var inputOutputAnalyzer: MavenInputOutputAnalyzer
+
+    @Inject
+    private lateinit var pluginExecutionFinder: PluginExecutionFinder
+
+    @Inject
+    private lateinit var objectMapper: ObjectMapper
+
+    @Inject
+    private lateinit var testClassDiscovery: TestClassDiscovery
+
+    @Inject
+    private lateinit var phaseAnalyzer: PhaseAnalyzer
     private val log: Logger = LoggerFactory.getLogger(NxTargetFactory::class.java)
     fun createNxTargets(
         mavenCommand: String,
@@ -80,7 +96,7 @@ class NxTargetFactory(
                 val analysis = phaseAnalyzer.analyze(project, phase)
 
 
-//                val analysis = sharedInputOutputAnalyzer.analyzeCacheability(phase, project)
+//                val analysis = inputOutputAnalyzer.analyzeCacheability(phase, project)
 //                log.warn("Phase '$phase' analysis result: cacheable=${analysis.cacheable}, reason='${analysis.reason}'")
 
                 val target = objectMapper.createObjectNode()

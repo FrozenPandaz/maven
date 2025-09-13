@@ -1,5 +1,8 @@
 package dev.nx.maven.plugin
 
+import org.apache.maven.api.di.Inject
+import org.apache.maven.api.di.Named
+import org.apache.maven.api.di.Singleton
 import org.apache.maven.execution.MavenSession
 import org.apache.maven.lifecycle.LifecycleExecutor
 import org.apache.maven.project.MavenProject
@@ -9,10 +12,15 @@ import org.slf4j.LoggerFactory
 /**
  * Finds plugin executions for specific Maven phases using Maven's lifecycle executor
  */
-class PluginExecutionFinder(
-    private val lifecycleExecutor: LifecycleExecutor,
-    private val session: MavenSession
-) {
+@Named
+@Singleton
+class PluginExecutionFinder {
+
+    @Inject
+    private lateinit var lifecycleExecutor: LifecycleExecutor
+
+    @Inject
+    private lateinit var session: MavenSession
     private val log: Logger = LoggerFactory.getLogger(PluginExecutionFinder::class.java)
     
     // Cache for expensive calculateExecutionPlan results

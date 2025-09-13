@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import dev.nx.maven.plugin.PluginBasedAnalyzer
 import dev.nx.maven.plugin.PluginExecutionFinder
 import org.apache.maven.api.di.Inject
+import org.apache.maven.api.di.Provides
 import org.apache.maven.execution.MavenSession
 import org.apache.maven.lifecycle.DefaultLifecycles
 import org.apache.maven.lifecycle.LifecycleExecutor
@@ -45,7 +46,13 @@ class NxProjectAnalyzerMojo : AbstractMojo() {
     private lateinit var phaseAnalyzer: PhaseAnalyzer
 
     @Inject
-    private lateinit var expressionResolver: MavenExpressionResolver
+    private lateinit var nxTargetFactory: NxTargetFactory
+
+    @Inject
+    private lateinit var pathResolver: PathResolver
+
+    @Provides
+    fun objectMapper(): ObjectMapper = ObjectMapper()
 
     @Parameter(property = "outputFile", defaultValue = "nx-maven-projects.json")
     private lateinit var outputFile: String
@@ -85,18 +92,7 @@ class NxProjectAnalyzerMojo : AbstractMojo() {
         val startTime = System.currentTimeMillis()
         log.info("Creating shared component instances for optimized analysis...")
 
-        // Use DI-managed components - they are already shared and optimized
-        val sharedPluginExecutionFinder = PluginExecutionFinder(lifecycleExecutor, session)
-        val pluginAnalyzer = PluginBasedAnalyzer(
-            session, pluginManager, sharedPluginExecutionFinder, expressionResolver
-        )
-
-        val sharedInputOutputAnalyzer = MavenInputOutputAnalyzer(
-            objectMapper, workspaceRoot, pluginAnalyzer
-        )
-        val sharedTestClassDiscovery = TestClassDiscovery()
-
-        val sharedLifecycleAnalyzer = NxTargetFactory(lifecycles, sharedInputOutputAnalyzer, sharedPluginExecutionFinder, objectMapper, sharedTestClassDiscovery, phaseAnalyzer)
+        // All components are now DI-managed - no manual creation needed!
 
         val setupTime = System.currentTimeMillis() - startTime
         log.info("Shared components created in ${setupTime}ms, analyzing ${allProjects.size} projects...")
@@ -108,20 +104,15 @@ class NxProjectAnalyzerMojo : AbstractMojo() {
             try {
                 log.info("Analyzing project: ${mavenProject.artifactId}")
 
-                // Create separate analyzer instance for each project (thread-safe)
-                val singleAnalyzer = NxProjectAnalyzer(
-                    session,
-                    mavenProject,
-                    workspaceRoot,
-                    sharedLifecycleAnalyzer,
-                    sharedTestClassDiscovery
-                )
+                // Use DI-managed components directly
+                val mavenCommand = pathResolver.getMavenCommand()
 
-                // Get Nx config for project
-                val nxConfig = singleAnalyzer.analyze()
+                // Create Nx project configuration using DI components
+                val (nxProject, nxTargets) = nxTargetFactory.createNxTargets(mavenCommand, mavenProject)
                 val projectName = "${mavenProject.groupId}.${mavenProject.artifactId}"
 
-                projectName to nxConfig
+                // Return in expected format: projectName to Pair(projectName, nxProjectNode)
+                projectName to (projectName to nxProject)
 
             } catch (e: Exception) {
                 log.warn("Failed to analyze project ${mavenProject.artifactId}: ${e.message}")
