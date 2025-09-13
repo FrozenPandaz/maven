@@ -139,6 +139,15 @@
       <artifactId>org.eclipse.jgit</artifactId>
       <version>6.8.0.202311291450-r</version>
     </dependency>
+
+    <!-- Maven 4 Testing Framework -->
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-testing</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
