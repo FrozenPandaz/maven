@@ -840,6 +840,7 @@ under the License.
                 <exclude>.mvn/**</exclude>
                 <exclude>.jbang/**</exclude>
                 <!-- Nx Maven plugin related files -->
+                <exclude>**/*</exclude>
                 <exclude>package.json</exclude>
                 <exclude>pnpm-lock.yaml</exclude>
                 <exclude>pnpm-workspace.yaml</exclude>
