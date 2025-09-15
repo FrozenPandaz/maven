@@ -21,12 +21,12 @@ import java.io.File
     defaultPhase = Phase.VALIDATE,
     aggregator = true
 )
-open class NxProjectAnalyzerMojo() : org.apache.maven.api.plugin.Mojo {
+open class NxProjectAnalyzerMojo : org.apache.maven.api.plugin.Mojo {
 
     private val log: Logger = LoggerFactory.getLogger(NxProjectAnalyzerMojo::class.java)
 
     @Inject
-    private lateinit var mavenSession: Session
+    private lateinit var session: Session
 
     @Inject
     private lateinit var nxProjectAnalyzer: NxProjectAnalyzer
@@ -44,7 +44,7 @@ open class NxProjectAnalyzerMojo() : org.apache.maven.api.plugin.Mojo {
         // GitIgnoreClassifier is now injected as a DI component
 
         try {
-            val allProjects = mavenSession.projects
+            val allProjects = session.projects
             log.info("Found ${allProjects.size} Maven projects")
 
             // Step 1: Execute per-project analysis for all projects (in-memory)
@@ -98,7 +98,7 @@ open class NxProjectAnalyzerMojo() : org.apache.maven.api.plugin.Mojo {
         val outputPath = if (outputFile.startsWith("/")) {
             File(outputFile)
         } else {
-            File("", outputFile)
+            File(session.rootDirectory.toFile(), outputFile)
         }
 
         // Ensure parent directory exists

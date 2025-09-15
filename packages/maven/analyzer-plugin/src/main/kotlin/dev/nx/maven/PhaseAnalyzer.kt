@@ -6,27 +6,27 @@ import org.apache.maven.api.di.Inject
 import org.apache.maven.api.di.Named
 import org.apache.maven.api.di.Singleton
 import org.apache.maven.api.model.Plugin
-import org.apache.maven.plugin.BuildPluginManager
-import org.apache.maven.plugin.descriptor.MojoDescriptor
-import org.apache.maven.plugin.descriptor.Parameter
+//import org.apache.maven.plugin.BuildPluginManager
+//import org.apache.maven.plugin.descriptor.MojoDescriptor
+//import org.apache.maven.plugin.descriptor.Parameter
 import org.apache.maven.impl.InternalSession
 import org.slf4j.LoggerFactory
 
 /**
  * Analyzes Maven phases to determine inputs, outputs, and thread safety
  */
-// @Named
-// @Singleton - Disabled for Maven 4.0.0-rc-3 compatibility
+ @Named
+ @Singleton
 class PhaseAnalyzer {
 
-    @Inject
-    private lateinit var buildPluginManager: BuildPluginManager
+//    @Inject
+//    private lateinit var buildPluginManager: BuildPluginManager
 
     @Inject
     private lateinit var session: Session
 
-    @Inject
-    private lateinit var expressionResolver: MavenExpressionResolver
+//    @Inject
+//    private lateinit var expressionResolver: MavenExpressionResolver
 
     @Inject
     private lateinit var pathResolver: PathResolver
@@ -43,31 +43,33 @@ class PhaseAnalyzer {
         val inputs = mutableSetOf<String>()
         val outputs = mutableSetOf<String>()
 
-        val mojoDescriptors = plugins
-            .flatMap { plugin ->
-                plugin.executions
-                    .filter { execution -> execution.phase == phase }
-                    .flatMap { execution -> execution.goals }
-                    .mapNotNull { goal -> getMojoDescriptor(plugin, goal, project) }
-            }
-
-        mojoDescriptors.forEach { descriptor ->
-            if (!descriptor.isThreadSafe) {
-                isThreadSafe = false
-            }
-
-            if (!isMojoCacheable(descriptor)) {
-                isCacheable = false
-            }
-
-            descriptor.parameters?.forEach { parameter ->
-                val paramInfo = analyzeParameterInputsOutputs(parameter, project)
-                inputs.addAll(paramInfo.inputs)
-                outputs.addAll(paramInfo.outputs)
-            }
-        }
-
         return PhaseInformation(isThreadSafe, isCacheable, inputs, outputs)
+
+//        val mojoDescriptors = plugins
+//            .flatMap { plugin ->
+//                plugin.executions
+//                    .filter { execution -> execution.phase == phase }
+//                    .flatMap { execution -> execution.goals }
+//                    .mapNotNull { goal -> getMojoDescriptor(plugin, goal, project) }
+//            }
+//
+//        mojoDescriptors.forEach { descriptor ->
+//            if (!descriptor.isThreadSafe) {
+//                isThreadSafe = false
+//            }
+//
+//            if (!isMojoCacheable(descriptor)) {
+//                isCacheable = false
+//            }
+//
+//            descriptor.parameters?.forEach { parameter ->
+//                val paramInfo = analyzeParameterInputsOutputs(parameter, project)
+//                inputs.addAll(paramInfo.inputs)
+//                outputs.addAll(paramInfo.outputs)
+//            }
+//        }
+//
+//        return PhaseInformation(isThreadSafe, isCacheable, inputs, outputs)
     }
 
     /**
@@ -111,105 +113,105 @@ class PhaseAnalyzer {
         return true
     }
 
-    /**
-     * Analyzes parameter to determine inputs and outputs
-     */
-    private fun analyzeParameterInputsOutputs(parameter: Parameter, project: Project): ParameterInformation {
-        val inputs = mutableSetOf<String>()
-        val outputs = mutableSetOf<String>()
-
-        val role = analyzeParameterRole(parameter, project)
-
-        log.debug("Parameter analysis: ${parameter.name} -> $role")
-
-        if (role == ParameterRole.UNKNOWN) {
-            log.debug("Skipping unknown parameter: ${parameter.name}")
-            return ParameterInformation(inputs, outputs)
-        }
-
-        val path = expressionResolver.resolveParameterValue(
-            parameter.name,
-            parameter.defaultValue,
-            parameter.expression,
-            project
-        )
-
-        if (path == null) {
-            log.debug("Parameter ${parameter.name} resolved to null path")
-            return ParameterInformation(inputs, outputs)
-        }
-
-        when (role) {
-            ParameterRole.INPUT -> {
-                pathResolver.addInputPath(path, inputs)
-                log.debug("Added input path: $path (from parameter ${parameter.name})")
-            }
-            ParameterRole.OUTPUT -> {
-                pathResolver.addOutputPath(path, outputs)
-                log.debug("Added output path: $path (from parameter ${parameter.name})")
-            }
-            ParameterRole.BOTH -> {
-                pathResolver.addInputPath(path, inputs)
-                pathResolver.addOutputPath(path, outputs)
-                log.debug("Added input/output path: $path (from parameter ${parameter.name})")
-            }
-
-            else -> {}
-        }
-
-        return ParameterInformation(inputs, outputs)
-    }
-
-    /**
-     * Determines if a mojo can be safely cached based on its characteristics
-     */
-    private fun isMojoCacheable(descriptor: MojoDescriptor): Boolean {
-        val goal = descriptor.goal
-        val artifactId = descriptor.pluginDescriptor?.artifactId ?: ""
-
-        // Known non-cacheable plugins/goals
-        val nonCacheablePatterns = listOf(
-            // Network/deployment operations
-            "deploy", "install", "release", "site-deploy",
-            // Interactive/time-sensitive operations
-            "exec", "run", "start", "stop",
-            // Cleaning operations
-            "clean",
-            // IDE integration
-            "eclipse", "idea",
-            // Help/info operations
-            "help", "dependency:tree", "versions:display"
-        )
-
-        // Check if goal matches non-cacheable patterns
-        if (nonCacheablePatterns.any { pattern ->
-            goal.contains(pattern, ignoreCase = true) ||
-            artifactId.contains(pattern, ignoreCase = true)
-        }) {
-            log.debug("Mojo $artifactId:$goal marked as non-cacheable due to goal/plugin pattern")
-            return false
-        }
-
-        // Check for network-related parameters
-        descriptor.parameters?.forEach { parameter ->
-            val name = parameter.name.lowercase()
-            val description = parameter.description?.lowercase() ?: ""
-
-            if (hasNetworkIndicators(name, description)) {
-                log.debug("Mojo $artifactId:$goal marked as non-cacheable due to network parameter: ${parameter.name}")
-                return false
-            }
-        }
-
-        // Check for time-sensitive operations
-        if (hasTimeSensitiveIndicators(goal, artifactId)) {
-            log.debug("Mojo $artifactId:$goal marked as non-cacheable due to time-sensitive operation")
-            return false
-        }
-
-        log.debug("Mojo $artifactId:$goal appears cacheable")
-        return true
-    }
+//    /**
+//     * Analyzes parameter to determine inputs and outputs
+//     */
+//    private fun analyzeParameterInputsOutputs(parameter: Parameter, project: Project): ParameterInformation {
+//        val inputs = mutableSetOf<String>()
+//        val outputs = mutableSetOf<String>()
+//
+//        val role = analyzeParameterRole(parameter, project)
+//
+//        log.debug("Parameter analysis: ${parameter.name} -> $role")
+//
+//        if (role == ParameterRole.UNKNOWN) {
+//            log.debug("Skipping unknown parameter: ${parameter.name}")
+//            return ParameterInformation(inputs, outputs)
+//        }
+//
+//        val path = expressionResolver.resolveParameterValue(
+//            parameter.name,
+//            parameter.defaultValue,
+//            parameter.expression,
+//            project
+//        )
+//
+//        if (path == null) {
+//            log.debug("Parameter ${parameter.name} resolved to null path")
+//            return ParameterInformation(inputs, outputs)
+//        }
+//
+//        when (role) {
+//            ParameterRole.INPUT -> {
+//                pathResolver.addInputPath(path, inputs)
+//                log.debug("Added input path: $path (from parameter ${parameter.name})")
+//            }
+//            ParameterRole.OUTPUT -> {
+//                pathResolver.addOutputPath(path, outputs)
+//                log.debug("Added output path: $path (from parameter ${parameter.name})")
+//            }
+//            ParameterRole.BOTH -> {
+//                pathResolver.addInputPath(path, inputs)
+//                pathResolver.addOutputPath(path, outputs)
+//                log.debug("Added input/output path: $path (from parameter ${parameter.name})")
+//            }
+//
+//            else -> {}
+//        }
+//
+//        return ParameterInformation(inputs, outputs)
+//    }
+//
+//    /**
+//     * Determines if a mojo can be safely cached based on its characteristics
+//     */
+//    private fun isMojoCacheable(descriptor: MojoDescriptor): Boolean {
+//        val goal = descriptor.goal
+//        val artifactId = descriptor.pluginDescriptor?.artifactId ?: ""
+//
+//        // Known non-cacheable plugins/goals
+//        val nonCacheablePatterns = listOf(
+//            // Network/deployment operations
+//            "deploy", "install", "release", "site-deploy",
+//            // Interactive/time-sensitive operations
+//            "exec", "run", "start", "stop",
+//            // Cleaning operations
+//            "clean",
+//            // IDE integration
+//            "eclipse", "idea",
+//            // Help/info operations
+//            "help", "dependency:tree", "versions:display"
+//        )
+//
+//        // Check if goal matches non-cacheable patterns
+//        if (nonCacheablePatterns.any { pattern ->
+//            goal.contains(pattern, ignoreCase = true) ||
+//            artifactId.contains(pattern, ignoreCase = true)
+//        }) {
+//            log.debug("Mojo $artifactId:$goal marked as non-cacheable due to goal/plugin pattern")
+//            return false
+//        }
+//
+//        // Check for network-related parameters
+//        descriptor.parameters?.forEach { parameter ->
+//            val name = parameter.name.lowercase()
+//            val description = parameter.description?.lowercase() ?: ""
+//
+//            if (hasNetworkIndicators(name, description)) {
+//                log.debug("Mojo $artifactId:$goal marked as non-cacheable due to network parameter: ${parameter.name}")
+//                return false
+//            }
+//        }
+//
+//        // Check for time-sensitive operations
+//        if (hasTimeSensitiveIndicators(goal, artifactId)) {
+//            log.debug("Mojo $artifactId:$goal marked as non-cacheable due to time-sensitive operation")
+//            return false
+//        }
+//
+//        log.debug("Mojo $artifactId:$goal appears cacheable")
+//        return true
+//    }
 
     private fun hasNetworkIndicators(name: String, description: String): Boolean {
         val networkKeywords = listOf(
@@ -234,188 +236,188 @@ class PhaseAnalyzer {
         }
     }
 
-    private fun analyzeParameterRole(parameter: Parameter, project: Project): ParameterRole {
-        val name = parameter.name
-        val type = parameter.type
-        val expression = parameter.expression ?: parameter.defaultValue ?: ""
-        val description = parameter.description?.lowercase() ?: ""
-        val isEditable = parameter.isEditable
-        val isRequired = parameter.isRequired
-        val alias = parameter.alias
-
-        // Analyze Maven expressions (highest priority)
-        when {
-            expression.contains("project.compileSourceRoots") -> {
-                log.debug("Parameter $name: Maven source roots expression")
-                return ParameterRole.INPUT
-            }
-            expression.contains("project.testCompileSourceRoots") -> {
-                log.debug("Parameter $name: Maven test source roots expression")
-                return ParameterRole.INPUT
-            }
-            expression.contains("project.build.sourceDirectory") -> {
-                log.debug("Parameter $name: Maven source directory expression")
-                return ParameterRole.INPUT
-            }
-            expression.contains("project.build.testSourceDirectory") -> {
-                log.debug("Parameter $name: Maven test source directory expression")
-                return ParameterRole.INPUT
-            }
-            expression.contains("project.artifacts") -> {
-                log.debug("Parameter $name: Project artifacts dependency")
-                return ParameterRole.INPUT
-            }
-            expression.contains("project.dependencies") -> {
-                log.debug("Parameter $name: Project dependencies")
-                return ParameterRole.INPUT
-            }
-            expression.contains("project.build.resources") -> {
-                log.debug("Parameter $name: Maven resources expression")
-                return ParameterRole.INPUT
-            }
-            expression.contains("project.build.testResources") -> {
-                log.debug("Parameter $name: Maven test resources expression")
-                return ParameterRole.INPUT
-            }
-            expression.contains("basedir") -> {
-                log.debug("Parameter $name: Project base directory")
-                return ParameterRole.INPUT
-            }
-            expression.contains("project.build.directory") && expression.contains("target") -> {
-                log.debug("Parameter $name: Maven target directory expression")
-                return ParameterRole.OUTPUT
-            }
-            expression.contains("project.build.outputDirectory") -> {
-                log.debug("Parameter $name: Maven output directory expression")
-                return ParameterRole.OUTPUT
-            }
-            expression.contains("project.build.testOutputDirectory") -> {
-                log.debug("Parameter $name: Maven test output directory expression")
-                return ParameterRole.OUTPUT
-            }
-            expression.contains("project.reporting.outputDirectory") -> {
-                log.debug("Parameter $name: Maven reporting output directory")
-                return ParameterRole.OUTPUT
-            }
-            expression.contains("project.build.directory") -> {
-                log.debug("Parameter $name: Maven build directory expression")
-                return ParameterRole.OUTPUT
-            }
-        }
-
-        // Type and editability analysis (medium priority)
-        if (!isEditable) {
-            log.debug("Parameter $name: Non-editable parameter (likely derived from project model)")
-            return ParameterRole.INPUT
-        }
-
-        if (type.startsWith("java.util.List") && isRequired) {
-            log.debug("Parameter $name: Required list parameter")
-            return ParameterRole.INPUT
-        }
-
-        // Description analysis (lowest priority)
-        when {
-            description.contains("read") && (description.contains("file") || description.contains("directory")) -> {
-                log.debug("Parameter $name: Description indicates reading files")
-                return ParameterRole.INPUT
-            }
-            description.contains("source") && description.contains("directory") -> {
-                log.debug("Parameter $name: Description mentions source directory")
-                return ParameterRole.INPUT
-            }
-            description.contains("input") -> {
-                log.debug("Parameter $name: Description mentions input")
-                return ParameterRole.INPUT
-            }
-            description.contains("classpath") -> {
-                log.debug("Parameter $name: Description mentions classpath")
-                return ParameterRole.INPUT
-            }
-            description.contains("output") && (description.contains("file") || description.contains("directory")) -> {
-                log.debug("Parameter $name: Description indicates output files")
-                return ParameterRole.OUTPUT
-            }
-            description.contains("target") && description.contains("directory") -> {
-                log.debug("Parameter $name: Description mentions target directory")
-                return ParameterRole.OUTPUT
-            }
-            description.contains("generate") -> {
-                log.debug("Parameter $name: Description mentions generating")
-                return ParameterRole.OUTPUT
-            }
-            description.contains("destination") -> {
-                log.debug("Parameter $name: Description mentions destination")
-                return ParameterRole.OUTPUT
-            }
-        }
-
-        // NEW: Check gitignore status as final fallback strategy
-        val resolvedPath = expressionResolver.resolveParameterValue(
-            name,
-            parameter.defaultValue,
-            expression,
-            project
-        )
-
-        if (resolvedPath != null) {
-            val gitIgnoreRole = gitIgnoreClassifier.classifyPath(resolvedPath)
-            if (gitIgnoreRole != null) {
-                log.debug("Parameter $name: Gitignore classification suggests $gitIgnoreRole")
-                return gitIgnoreRole
-            }
-        }
-
-        log.debug("Parameter $name: No analysis strategy succeeded")
-        return ParameterRole.UNKNOWN
-    }
-
-    private fun getMojoDescriptor(plugin: Plugin, goal: String, project: Project): MojoDescriptor? {
-        return try {
-            // Convert Maven 4 Plugin to Maven 3 Plugin
-            val maven3Plugin = toMaven3Plugin(plugin)
-
-            // Get the internal session for conversions
-            val internalSession = InternalSession.from(session)
-
-            // Convert repositories
-            val remoteRepos = session.getRemoteRepositories()
-                .map { internalSession.toRepository(it) }
-
-            // Get the repository session
-            val repoSession = internalSession.getSession()
-
-            // Get the MojoDescriptor
-            buildPluginManager.getMojoDescriptor(
-                maven3Plugin,
-                goal,
-                remoteRepos,
-                repoSession
-            )
-        } catch (e: Exception) {
-            log.warn("Failed to get MojoDescriptor for ${plugin.artifactId}:$goal: ${e.message}")
-            null
-        }
-    }
-
-    private fun toMaven3Plugin(plugin: Plugin): org.apache.maven.model.Plugin {
-        val maven3Plugin = org.apache.maven.model.Plugin()
-        maven3Plugin.groupId = plugin.groupId
-        maven3Plugin.artifactId = plugin.artifactId
-        maven3Plugin.version = plugin.version
-
-        // Convert executions if needed
-        plugin.executions?.forEach { execution ->
-            val maven3Execution = org.apache.maven.model.PluginExecution()
-            maven3Execution.id = execution.id
-            maven3Execution.phase = execution.phase
-            maven3Execution.goals = execution.goals.toList()
-            // Note: Configuration conversion would be complex, skipping for now
-            maven3Plugin.addExecution(maven3Execution)
-        }
-
-        return maven3Plugin
-    }
+//    private fun analyzeParameterRole(parameter: Parameter, project: Project): ParameterRole {
+//        val name = parameter.name
+//        val type = parameter.type
+//        val expression = parameter.expression ?: parameter.defaultValue ?: ""
+//        val description = parameter.description?.lowercase() ?: ""
+//        val isEditable = parameter.isEditable
+//        val isRequired = parameter.isRequired
+//        val alias = parameter.alias
+//
+//        // Analyze Maven expressions (highest priority)
+//        when {
+//            expression.contains("project.compileSourceRoots") -> {
+//                log.debug("Parameter $name: Maven source roots expression")
+//                return ParameterRole.INPUT
+//            }
+//            expression.contains("project.testCompileSourceRoots") -> {
+//                log.debug("Parameter $name: Maven test source roots expression")
+//                return ParameterRole.INPUT
+//            }
+//            expression.contains("project.build.sourceDirectory") -> {
+//                log.debug("Parameter $name: Maven source directory expression")
+//                return ParameterRole.INPUT
+//            }
+//            expression.contains("project.build.testSourceDirectory") -> {
+//                log.debug("Parameter $name: Maven test source directory expression")
+//                return ParameterRole.INPUT
+//            }
+//            expression.contains("project.artifacts") -> {
+//                log.debug("Parameter $name: Project artifacts dependency")
+//                return ParameterRole.INPUT
+//            }
+//            expression.contains("project.dependencies") -> {
+//                log.debug("Parameter $name: Project dependencies")
+//                return ParameterRole.INPUT
+//            }
+//            expression.contains("project.build.resources") -> {
+//                log.debug("Parameter $name: Maven resources expression")
+//                return ParameterRole.INPUT
+//            }
+//            expression.contains("project.build.testResources") -> {
+//                log.debug("Parameter $name: Maven test resources expression")
+//                return ParameterRole.INPUT
+//            }
+//            expression.contains("basedir") -> {
+//                log.debug("Parameter $name: Project base directory")
+//                return ParameterRole.INPUT
+//            }
+//            expression.contains("project.build.directory") && expression.contains("target") -> {
+//                log.debug("Parameter $name: Maven target directory expression")
+//                return ParameterRole.OUTPUT
+//            }
+//            expression.contains("project.build.outputDirectory") -> {
+//                log.debug("Parameter $name: Maven output directory expression")
+//                return ParameterRole.OUTPUT
+//            }
+//            expression.contains("project.build.testOutputDirectory") -> {
+//                log.debug("Parameter $name: Maven test output directory expression")
+//                return ParameterRole.OUTPUT
+//            }
+//            expression.contains("project.reporting.outputDirectory") -> {
+//                log.debug("Parameter $name: Maven reporting output directory")
+//                return ParameterRole.OUTPUT
+//            }
+//            expression.contains("project.build.directory") -> {
+//                log.debug("Parameter $name: Maven build directory expression")
+//                return ParameterRole.OUTPUT
+//            }
+//        }
+//
+//        // Type and editability analysis (medium priority)
+//        if (!isEditable) {
+//            log.debug("Parameter $name: Non-editable parameter (likely derived from project model)")
+//            return ParameterRole.INPUT
+//        }
+//
+//        if (type.startsWith("java.util.List") && isRequired) {
+//            log.debug("Parameter $name: Required list parameter")
+//            return ParameterRole.INPUT
+//        }
+//
+//        // Description analysis (lowest priority)
+//        when {
+//            description.contains("read") && (description.contains("file") || description.contains("directory")) -> {
+//                log.debug("Parameter $name: Description indicates reading files")
+//                return ParameterRole.INPUT
+//            }
+//            description.contains("source") && description.contains("directory") -> {
+//                log.debug("Parameter $name: Description mentions source directory")
+//                return ParameterRole.INPUT
+//            }
+//            description.contains("input") -> {
+//                log.debug("Parameter $name: Description mentions input")
+//                return ParameterRole.INPUT
+//            }
+//            description.contains("classpath") -> {
+//                log.debug("Parameter $name: Description mentions classpath")
+//                return ParameterRole.INPUT
+//            }
+//            description.contains("output") && (description.contains("file") || description.contains("directory")) -> {
+//                log.debug("Parameter $name: Description indicates output files")
+//                return ParameterRole.OUTPUT
+//            }
+//            description.contains("target") && description.contains("directory") -> {
+//                log.debug("Parameter $name: Description mentions target directory")
+//                return ParameterRole.OUTPUT
+//            }
+//            description.contains("generate") -> {
+//                log.debug("Parameter $name: Description mentions generating")
+//                return ParameterRole.OUTPUT
+//            }
+//            description.contains("destination") -> {
+//                log.debug("Parameter $name: Description mentions destination")
+//                return ParameterRole.OUTPUT
+//            }
+//        }
+//
+//        // NEW: Check gitignore status as final fallback strategy
+//        val resolvedPath = expressionResolver.resolveParameterValue(
+//            name,
+//            parameter.defaultValue,
+//            expression,
+//            project
+//        )
+//
+//        if (resolvedPath != null) {
+//            val gitIgnoreRole = gitIgnoreClassifier.classifyPath(resolvedPath)
+//            if (gitIgnoreRole != null) {
+//                log.debug("Parameter $name: Gitignore classification suggests $gitIgnoreRole")
+//                return gitIgnoreRole
+//            }
+//        }
+//
+//        log.debug("Parameter $name: No analysis strategy succeeded")
+//        return ParameterRole.UNKNOWN
+//    }
+//
+//    private fun getMojoDescriptor(plugin: Plugin, goal: String, project: Project): MojoDescriptor? {
+//        return try {
+//            // Convert Maven 4 Plugin to Maven 3 Plugin
+//            val maven3Plugin = toMaven3Plugin(plugin)
+//
+//            // Get the internal session for conversions
+//            val internalSession = InternalSession.from(session)
+//
+//            // Convert repositories
+//            val remoteRepos = session.getRemoteRepositories()
+//                .map { internalSession.toRepository(it) }
+//
+//            // Get the repository session
+//            val repoSession = internalSession.getSession()
+//
+//            // Get the MojoDescriptor
+//            buildPluginManager.getMojoDescriptor(
+//                maven3Plugin,
+//                goal,
+//                remoteRepos,
+//                repoSession
+//            )
+//        } catch (e: Exception) {
+//            log.warn("Failed to get MojoDescriptor for ${plugin.artifactId}:$goal: ${e.message}")
+//            null
+//        }
+//    }
+//
+//    private fun toMaven3Plugin(plugin: Plugin): org.apache.maven.model.Plugin {
+//        val maven3Plugin = org.apache.maven.model.Plugin()
+//        maven3Plugin.groupId = plugin.groupId
+//        maven3Plugin.artifactId = plugin.artifactId
+//        maven3Plugin.version = plugin.version
+//
+//        // Convert executions if needed
+//        plugin.executions?.forEach { execution ->
+//            val maven3Execution = org.apache.maven.model.PluginExecution()
+//            maven3Execution.id = execution.id
+//            maven3Execution.phase = execution.phase
+//            maven3Execution.goals = execution.goals.toList()
+//            // Note: Configuration conversion would be complex, skipping for now
+//            maven3Plugin.addExecution(maven3Execution)
+//        }
+//
+//        return maven3Plugin
+//    }
 
 }
 

@@ -15,8 +15,8 @@ import org.slf4j.LoggerFactory
 /**
  * Resolves Maven expressions and parameter values
  */
-@Named
-@Singleton
+//@Named
+//@Singleton
 class MavenExpressionResolver {
 
     @Inject
@@ -27,7 +27,7 @@ class MavenExpressionResolver {
 
     @Inject
     private lateinit var projectManager: ProjectManager
-    
+
     private val log: Logger = LoggerFactory.getLogger(MavenExpressionResolver::class.java)
 
     /**
@@ -68,7 +68,7 @@ class MavenExpressionResolver {
             "testClasspathElements" -> "\${project.testClasspathElements}"
             else -> null
         }
-        
+
         val result = parameterExpression?.let { expr ->
             val resolved = resolveExpression(expr, project)
             if (isValidPath(resolved)) resolved else null
@@ -119,7 +119,7 @@ class MavenExpressionResolver {
                         .orElse("${project.basedir}/src/main/java")
                 }
                 "project.build.testSourceDirectory" -> {
-                    // Get test source root from ProjectManager  
+                    // Get test source root from ProjectManager
                     projectManager.getEnabledSourceRoots(project, ProjectScope.TEST, Language.JAVA_FAMILY)
                         .findFirst()
                         .map { it.directory().toString() }
@@ -152,7 +152,7 @@ class MavenExpressionResolver {
                 "session.executionRootDirectory" -> session.rootDirectory.toString()
                 else -> {
                     // Try session properties first, then system properties
-                    session.userProperties[variable] 
+                    session.userProperties[variable]
                         ?: session.systemProperties[variable]
                         ?: System.getProperty(variable)
                 }

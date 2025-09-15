@@ -24,11 +24,8 @@ class NxTargetFactory {
     @Inject
     private lateinit var testClassDiscovery: TestClassDiscovery
 
-    // ProjectManager not available as injectable service in Maven 4.0.0-rc-4
-    // Use Project.getBuild() directly to access source directories
-
-    // @Inject
-    // private lateinit var phaseAnalyzer: PhaseAnalyzer
+     @Inject
+     private lateinit var phaseAnalyzer: PhaseAnalyzer
     private val log: Logger = LoggerFactory.getLogger(NxTargetFactory::class.java)
     fun createNxTargets(
         mavenCommand: String,
@@ -94,18 +91,19 @@ class NxTargetFactory {
                 options.put("command", "$mavenCommand $phase -am -pl ${project.groupId}:${project.artifactId}")
                 target.put("options", options)
 
+                val phaseInformation = phaseAnalyzer.analyze(project, phase)
+
                 // Basic defaults without phase analysis
-                target.put("cache", true)
-                target.put("parallelism", true)
+                target.put("cache", phaseInformation.isCacheable)
+                target.put("parallelism", phaseInformation.isThreadSafe)
 
                 // Basic inputs/outputs
                 val inputsArray = objectMapper.createArrayNode()
-                inputsArray.add("{projectRoot}/pom.xml")
-                inputsArray.add("{projectRoot}/src/**/*")
+                phaseInformation.inputs.forEach { input -> inputsArray.add(input) }
                 target.set<ArrayNode>("inputs", inputsArray)
 
                 val outputsArray = objectMapper.createArrayNode()
-                outputsArray.add("{projectRoot}/target/**/*")
+                phaseInformation.outputs.forEach { output -> outputsArray.add(output) }
                 target.set<ArrayNode>("outputs", outputsArray)
                 targets[phase] = target
 
@@ -186,7 +184,7 @@ class NxTargetFactory {
     private fun getPhases(): Set<String> {
         return setOf(
             "validate",
-            "initialize", 
+            "initialize",
             "generate-sources",
             "process-sources",
             "generate-resources",
