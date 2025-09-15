@@ -15,8 +15,8 @@ import org.slf4j.LoggerFactory
 /**
  * Analyzes Maven phases to determine inputs, outputs, and thread safety
  */
-@Named
-@Singleton
+// @Named
+// @Singleton - Disabled for Maven 4.0.0-rc-3 compatibility
 class PhaseAnalyzer {
 
     @Inject

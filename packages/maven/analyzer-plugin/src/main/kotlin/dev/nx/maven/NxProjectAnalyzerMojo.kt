@@ -21,7 +21,7 @@ import java.io.File
     defaultPhase = Phase.VALIDATE,
     aggregator = true
 )
-class NxProjectAnalyzerMojo() : org.apache.maven.api.plugin.Mojo {
+open class NxProjectAnalyzerMojo() : org.apache.maven.api.plugin.Mojo {
 
     private val log: Logger = LoggerFactory.getLogger(NxProjectAnalyzerMojo::class.java)
 

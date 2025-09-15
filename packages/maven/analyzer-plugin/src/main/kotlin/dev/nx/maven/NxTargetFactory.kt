@@ -1,6 +1,5 @@
 package dev.nx.maven
 
-import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ArrayNode
 import com.fasterxml.jackson.databind.node.ObjectNode
@@ -9,9 +8,6 @@ import org.apache.maven.api.di.Inject
 import org.apache.maven.api.di.Named
 import org.apache.maven.api.di.Singleton
 import org.apache.maven.api.model.Plugin
-import org.apache.maven.api.services.ProjectManager
-import org.apache.maven.api.services.LifecycleRegistry
-import org.apache.maven.api.Session
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -22,22 +18,17 @@ import org.slf4j.LoggerFactory
 @Singleton
 class NxTargetFactory {
 
-    @Inject
-    private lateinit var session: Session
-    
-    @Inject
-    private lateinit var lifecycleRegistry: LifecycleRegistry
 
-    @Inject
-    private lateinit var objectMapper: ObjectMapper
+    private val objectMapper = ObjectMapper()
 
     @Inject
     private lateinit var testClassDiscovery: TestClassDiscovery
 
-    @Inject lateinit var projectManager: ProjectManager
+    // ProjectManager not available as injectable service in Maven 4.0.0-rc-4
+    // Use Project.getBuild() directly to access source directories
 
-    @Inject
-    private lateinit var phaseAnalyzer: PhaseAnalyzer
+    // @Inject
+    // private lateinit var phaseAnalyzer: PhaseAnalyzer
     private val log: Logger = LoggerFactory.getLogger(NxTargetFactory::class.java)
     fun createNxTargets(
         mavenCommand: String,
@@ -93,7 +84,8 @@ class NxTargetFactory {
         // Generate targets from phase analysis
         phasesToAnalyze.forEach { phase ->
             try {
-                val analysis = phaseAnalyzer.analyze(project, phase)
+                // PhaseAnalyzer temporarily disabled for Maven 4.0.0-rc-3 compatibility
+                // TODO: Re-enable when PathMatcherFactory is available
 
                 val target = objectMapper.createObjectNode()
                 target.put("executor", "nx:run-commands")
@@ -102,24 +94,19 @@ class NxTargetFactory {
                 options.put("command", "$mavenCommand $phase -am -pl ${project.groupId}:${project.artifactId}")
                 target.put("options", options)
 
-                // Copy caching info from analysis
-                if (analysis.isCacheable) {
-                    target.put("cache", true)
+                // Basic defaults without phase analysis
+                target.put("cache", true)
+                target.put("parallelism", true)
 
-                    // Convert inputs to JsonNode array
-                    val inputsArray = objectMapper.createArrayNode()
-                    analysis.inputs.forEach { input -> inputsArray.add(input) }
-                    target.set<ArrayNode>("inputs", inputsArray)
+                // Basic inputs/outputs
+                val inputsArray = objectMapper.createArrayNode()
+                inputsArray.add("{projectRoot}/pom.xml")
+                inputsArray.add("{projectRoot}/src/**/*")
+                target.set<ArrayNode>("inputs", inputsArray)
 
-                    // Convert outputs to JsonNode array
-                    val outputsArray = objectMapper.createArrayNode()
-                    analysis.outputs.forEach { output -> outputsArray.add(output) }
-                    target.set<ArrayNode>("outputs", outputsArray)
-                } else {
-                    target.put("cache", false)
-                }
-
-                target.put("parallelism", analysis.isThreadSafe)
+                val outputsArray = objectMapper.createArrayNode()
+                outputsArray.add("{projectRoot}/target/**/*")
+                target.set<ArrayNode>("outputs", outputsArray)
                 targets[phase] = target
 
             } catch (e: Exception) {
@@ -197,16 +184,33 @@ class NxTargetFactory {
     }
 
     private fun getPhases(): Set<String> {
-        // Maven 4 way: Use injected LifecycleRegistry to dynamically get all phases
-        val phases = mutableSetOf<String>()
-        
-        lifecycleRegistry.forEach { lifecycle ->
-            // Get all phases for this lifecycle
-            val lifecyclePhases = lifecycleRegistry.computePhases(lifecycle)
-            phases.addAll(lifecyclePhases)
-        }
-        
-        return phases
+        return setOf(
+            "validate",
+            "initialize", 
+            "generate-sources",
+            "process-sources",
+            "generate-resources",
+            "process-resources",
+            "compile",
+            "process-classes",
+            "generate-test-sources",
+            "process-test-sources",
+            "generate-test-resources",
+            "process-test-resources",
+            "test-compile",
+            "process-test-classes",
+            "test",
+            "prepare-package",
+            "package",
+            "pre-integration-test",
+            "integration-test",
+            "post-integration-test",
+            "verify",
+            "install",
+            "deploy",
+            "clean",
+            "site"
+        )
     }
 
     private fun createGoalTarget(

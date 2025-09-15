@@ -1,15 +1,12 @@
 package dev.nx.maven
 
-import org.apache.maven.api.Language
 import org.apache.maven.api.Project
-import org.apache.maven.api.ProjectScope
-import org.apache.maven.api.di.Inject
 import org.apache.maven.api.di.Named
 import org.apache.maven.api.di.Singleton
-import org.apache.maven.api.services.ProjectManager
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.io.File
+import java.nio.file.Path
 
 data class TestClassInfo(
     val className: String,
@@ -38,8 +35,6 @@ class TestClassDiscovery {
         "@org.testng.annotations.Test" // TestNG
     )
 
-    @Inject
-    private lateinit var projectManager: ProjectManager
 
     /**
      * Discover test classes in the given Maven project
@@ -49,8 +44,8 @@ class TestClassDiscovery {
 
         log.info("Getting Test Classes for project ${project.artifactId}")
 
-        // Get test source roots
-        val testSourceRoots = projectManager.getEnabledSourceRoots(project, ProjectScope.TEST, Language.JAVA_FAMILY)
+        // Get test source roots from project build configuration
+        val testSourceRoots = getTestSourceRoots(project)
 
         for (testSourceRoot in testSourceRoots) {
             val testDir = File(testSourceRoot.toString())
@@ -70,6 +65,27 @@ class TestClassDiscovery {
         }
 
         return testClasses
+    }
+
+    /**
+     * Get test source roots from project build configuration
+     */
+    private fun getTestSourceRoots(project: Project): List<Path> {
+        val testSourceRoots = mutableListOf<Path>()
+        
+        // Add default test source directory if it exists
+        val defaultTestSourceDir = project.basedir.resolve("src/test/java")
+        if (defaultTestSourceDir.toFile().exists()) {
+            testSourceRoots.add(defaultTestSourceDir)
+        }
+        
+        // Add Kotlin test sources if they exist
+        val kotlinTestSourceDir = project.basedir.resolve("src/test/kotlin")
+        if (kotlinTestSourceDir.toFile().exists()) {
+            testSourceRoots.add(kotlinTestSourceDir)
+        }
+        
+        return testSourceRoots
     }
 
     /**

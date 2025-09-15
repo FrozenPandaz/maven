@@ -16,6 +16,10 @@
   <name>Nx Maven Analyzer Plugin</name>
   <description>Maven plugin to analyze project structure for Nx integration</description>
 
+  <prerequisites>
+    <maven>4.0.0-rc-4</maven>
+  </prerequisites>
+
   <properties>
     <kotlin.version>1.9.22</kotlin.version>
   </properties>

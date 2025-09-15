@@ -3,24 +3,29 @@ package dev.nx.maven
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ObjectNode
 import org.apache.maven.api.Project
+import org.apache.maven.api.Session
 import org.apache.maven.api.di.Inject
+import org.apache.maven.api.di.Named
+import org.apache.maven.api.di.Singleton
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import java.nio.file.Paths
 
 /**
  * Analyzer for a single Maven project structure to generate JSON for Nx integration
  * This is a simplified, per-project analyzer that doesn't require cross-project coordination
  */
-class NxProjectAnalyzer(
-    private val workspaceRoot: String,
+@Named
+@Singleton
+class NxProjectAnalyzer {
 
     @Inject
-    private val nxTargetFactory: NxTargetFactory,
+    private lateinit var session: Session
 
     @Inject
-    private val pathResolver: PathResolver
-) {
+    private lateinit var nxTargetFactory: NxTargetFactory
+
+    @Inject
+    private lateinit var pathResolver: PathResolver
     private val objectMapper = ObjectMapper()
     private val log: Logger = LoggerFactory.getLogger(NxProjectAnalyzer::class.java)
 
@@ -33,7 +38,7 @@ class NxProjectAnalyzer(
             val mavenCommand = pathResolver.getMavenCommand()
 
             // Calculate relative path from workspace root
-            val workspaceRootPath = Paths.get(workspaceRoot)
+            val workspaceRootPath = session.rootDirectory
             val projectPath = project.basedir
             val root = workspaceRootPath.relativize(projectPath).toString().replace('\\', '/')
             val projectName = "${project.groupId}.${project.artifactId}"
