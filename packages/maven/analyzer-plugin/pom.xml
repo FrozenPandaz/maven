@@ -147,6 +147,21 @@
       <version>${project.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-cli</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Maven Integration Test Helper (Verifier) - Commented out until built -->
+    <!--
+    <dependency>
+      <groupId>org.apache.maven.its</groupId>
+      <artifactId>maven-it-helper</artifactId>
+      <version>2.1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+    -->
 
   </dependencies>
 
@@ -200,7 +215,7 @@
         </configuration>
       </plugin>
 
-      <!-- Maven Surefire Plugin for running tests -->
+      <!-- Maven Surefire Plugin for running unit tests -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -211,7 +226,44 @@
             <include>**/*Test.java</include>
             <include>**/*Test.kt</include>
           </includes>
+          <excludes>
+            <!-- Exclude integration tests from unit test phase -->
+            <exclude>**/*IT.java</exclude>
+            <exclude>**/*IT.kt</exclude>
+            <exclude>**/*ITCase.java</exclude>
+            <exclude>**/*ITCase.kt</exclude>
+          </excludes>
         </configuration>
+      </plugin>
+
+      <!-- Maven Failsafe Plugin for running integration tests -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <useSystemClassLoader>false</useSystemClassLoader>
+          <includes>
+            <include>**/*IT.java</include>
+            <include>**/*IT.kt</include>
+            <include>**/*ITCase.java</include>
+            <include>**/*ITCase.kt</include>
+          </includes>
+          <!-- Ensure IT tests have access to the plugin under test -->
+          <systemPropertyVariables>
+            <maven.plugin.version>${project.version}</maven.plugin.version>
+            <maven.test.skip>false</maven.test.skip>
+          </systemPropertyVariables>
+        </configuration>
+        <executions>
+          <execution>
+            <id>integration-tests</id>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
     <sourceDirectory>src/main/kotlin</sourceDirectory>

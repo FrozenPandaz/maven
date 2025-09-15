@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+  <name>Nx Maven Analyzer Plugin</name>
+  <groupId>dev.nx.maven</groupId>
+  <artifactId>nx-maven-analyzer-plugin</artifactId>
+  <version>4.1.0-SNAPSHOT</version>
+  <goalPrefix>nx-maven</goalPrefix>
+  <mojos>
+    <mojo>
+      <goal>analyze</goal>
+      <implementation>dev.nx.maven.NxProjectAnalyzerMojo</implementation>
+      <language>java</language>
+    </mojo>
+  </mojos>
+</plugin>
