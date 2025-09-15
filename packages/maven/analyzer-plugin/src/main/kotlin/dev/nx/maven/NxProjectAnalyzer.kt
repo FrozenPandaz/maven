@@ -2,8 +2,8 @@ package dev.nx.maven
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ObjectNode
-import org.apache.maven.execution.MavenSession
-import org.apache.maven.project.MavenProject
+import org.apache.maven.api.Project
+import org.apache.maven.api.di.Inject
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.nio.file.Paths
@@ -13,11 +13,13 @@ import java.nio.file.Paths
  * This is a simplified, per-project analyzer that doesn't require cross-project coordination
  */
 class NxProjectAnalyzer(
-    private val session: MavenSession,
-    private val project: MavenProject,
     private val workspaceRoot: String,
-    private val sharedLifecycleAnalyzer: NxTargetFactory,
-    private val sharedTestClassDiscovery: TestClassDiscovery
+
+    @Inject
+    private val nxTargetFactory: NxTargetFactory,
+
+    @Inject
+    private val pathResolver: PathResolver
 ) {
     private val objectMapper = ObjectMapper()
     private val log: Logger = LoggerFactory.getLogger(NxProjectAnalyzer::class.java)
@@ -26,17 +28,16 @@ class NxProjectAnalyzer(
     /**
      * Analyzes the project and returns Nx project config
      */
-    fun analyze(): Pair<String, ObjectNode>? {
+    fun analyze(project: Project): Pair<String, ObjectNode>? {
         try {
-            val pathResolver = PathResolver()
             val mavenCommand = pathResolver.getMavenCommand()
 
             // Calculate relative path from workspace root
             val workspaceRootPath = Paths.get(workspaceRoot)
-            val projectPath = project.basedir.toPath()
+            val projectPath = project.basedir
             val root = workspaceRootPath.relativize(projectPath).toString().replace('\\', '/')
             val projectName = "${project.groupId}.${project.artifactId}"
-            val projectType = determineProjectType(project.packaging)
+            val projectType = determineProjectType(project)
 
             // Create Nx project configuration
             val nxProject = objectMapper.createObjectNode()
@@ -45,7 +46,7 @@ class NxProjectAnalyzer(
             nxProject.put("projectType", projectType)
             nxProject.put("sourceRoot", "${root}/src/main/java")
 
-            val (nxTargets, targetGroups) = sharedLifecycleAnalyzer.createNxTargets(mavenCommand, project)
+            val (nxTargets, targetGroups) = nxTargetFactory.createNxTargets(mavenCommand, project)
             nxProject.set<ObjectNode>("targets", nxTargets)
 
             // Project metadata including target groups
@@ -69,8 +70,8 @@ class NxProjectAnalyzer(
         }
     }
 
-    private fun determineProjectType(packaging: String): String {
-        return when (packaging.lowercase()) {
+    private fun determineProjectType(project: Project): String {
+        return when (project.packaging.id()) {
             "pom" -> "library"
             "jar", "war", "ear" -> "application"
             "maven-plugin" -> "library"

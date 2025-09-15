@@ -2,17 +2,13 @@ package dev.nx.maven
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
-import dev.nx.maven.plugin.PluginBasedAnalyzer
-import dev.nx.maven.plugin.PluginExecutionFinder
+import org.apache.maven.api.Lifecycle.Phase
+import org.apache.maven.api.Project
+import org.apache.maven.api.Session
 import org.apache.maven.api.di.Inject
-import org.apache.maven.api.di.Provides
-import org.apache.maven.execution.MavenSession
-import org.apache.maven.lifecycle.DefaultLifecycles
-import org.apache.maven.lifecycle.LifecycleExecutor
-import org.apache.maven.plugin.AbstractMojo
-import org.apache.maven.plugin.MojoExecutionException
-import org.apache.maven.plugins.annotations.*
-import org.apache.maven.project.MavenProject
+import org.apache.maven.api.plugin.annotations.Mojo
+import org.apache.maven.api.plugin.annotations.Parameter
+import org.apache.maven.api.plugin.MojoException
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.io.File
@@ -22,55 +18,33 @@ import java.io.File
  */
 @Mojo(
     name = "analyze",
-    defaultPhase = LifecyclePhase.VALIDATE,
-    aggregator = true,
-    requiresDependencyResolution = ResolutionScope.NONE
+    defaultPhase = Phase.VALIDATE,
+    aggregator = true
 )
-class NxProjectAnalyzerMojo : AbstractMojo() {
+class NxProjectAnalyzerMojo() : org.apache.maven.api.plugin.Mojo {
 
     private val log: Logger = LoggerFactory.getLogger(NxProjectAnalyzerMojo::class.java)
 
-    @Parameter(defaultValue = "\${session}", readonly = true, required = true)
-    private lateinit var session: MavenSession
+    @Inject
+    private lateinit var mavenSession: Session
 
     @Inject
-    private lateinit var pluginManager: org.apache.maven.plugin.MavenPluginManager
-
-    @Inject
-    private lateinit var lifecycles: DefaultLifecycles
-
-    @Inject
-    private lateinit var lifecycleExecutor: LifecycleExecutor
-
-    @Inject
-    private lateinit var phaseAnalyzer: PhaseAnalyzer
-
-    @Inject
-    private lateinit var nxTargetFactory: NxTargetFactory
-
-    @Inject
-    private lateinit var pathResolver: PathResolver
-
-    @Provides
-    fun objectMapper(): ObjectMapper = ObjectMapper()
+    private lateinit var nxProjectAnalyzer: NxProjectAnalyzer
 
     @Parameter(property = "outputFile", defaultValue = "nx-maven-projects.json")
     private lateinit var outputFile: String
 
-    @Parameter(property = "workspaceRoot", defaultValue = "\${session.executionRootDirectory}")
-    private lateinit var workspaceRoot: String
-
     private val objectMapper = ObjectMapper()
 
-    @Throws(MojoExecutionException::class)
+    @Throws(MojoException::class)
     override fun execute() {
         log.info("Analyzing Maven projects using optimized two-tier approach...")
-        log.info("Parameters: outputFile='$outputFile', workspaceRoot='$workspaceRoot'")
+//        log.info("Parameters: outputFile='$outputFile', workspaceRoot='$workspaceRoot'")
 
         // GitIgnoreClassifier is now injected as a DI component
 
         try {
-            val allProjects = session.allProjects
+            val allProjects = mavenSession.projects
             log.info("Found ${allProjects.size} Maven projects")
 
             // Step 1: Execute per-project analysis for all projects (in-memory)
@@ -84,11 +58,11 @@ class NxProjectAnalyzerMojo : AbstractMojo() {
             log.info("Optimized two-tier analysis completed successfully")
 
         } catch (e: Exception) {
-            throw MojoExecutionException("Failed to execute optimized two-tier Maven analysis", e)
+            throw MojoException("Failed to execute optimized two-tier Maven analysis", e)
         }
     }
 
-    private fun executePerProjectAnalysisInMemory(allProjects: List<MavenProject>): Map<String, Pair<String, JsonNode>?> {
+    private fun executePerProjectAnalysisInMemory(allProjects: List<Project>): Map<String, Pair<String, JsonNode>?> {
         val startTime = System.currentTimeMillis()
         log.info("Creating shared component instances for optimized analysis...")
 
@@ -100,25 +74,18 @@ class NxProjectAnalyzerMojo : AbstractMojo() {
         val projectStartTime = System.currentTimeMillis()
 
         // Process projects in parallel with separate analyzer instances
-        val inMemoryAnalyses = allProjects.parallelStream().map { mavenProject ->
+        val inMemoryAnalyses = allProjects.parallelStream().map { project ->
             try {
-                log.info("Analyzing project: ${mavenProject.artifactId}")
+                log.info("Analyzing project: ${project.artifactId}")
 
-                // Use DI-managed components directly
-                val mavenCommand = pathResolver.getMavenCommand()
-
-                // Create Nx project configuration using DI components
-                val (nxProject, nxTargets) = nxTargetFactory.createNxTargets(mavenCommand, mavenProject)
-                val projectName = "${mavenProject.groupId}.${mavenProject.artifactId}"
-
-                // Return in expected format: projectName to Pair(projectName, nxProjectNode)
-                projectName to (projectName to nxProject)
+                val analysis = nxProjectAnalyzer.analyze(project)
+                project.artifactId to analysis
 
             } catch (e: Exception) {
-                log.warn("Failed to analyze project ${mavenProject.artifactId}: ${e.message}")
-                null
+                log.warn("Failed to analyze project ${project.artifactId}: ${e.message}")
+                project.artifactId to null
             }
-        }.collect(java.util.stream.Collectors.toList()).filterNotNull().toMap()
+        }.collect(java.util.stream.Collectors.toList()).toMap()
 
         val totalTime = System.currentTimeMillis() - startTime
         val analysisTime = System.currentTimeMillis() - projectStartTime
@@ -131,7 +98,7 @@ class NxProjectAnalyzerMojo : AbstractMojo() {
         val outputPath = if (outputFile.startsWith("/")) {
             File(outputFile)
         } else {
-            File(workspaceRoot, outputFile)
+            File("", outputFile)
         }
 
         // Ensure parent directory exists
@@ -150,7 +117,7 @@ class NxProjectAnalyzerMojo : AbstractMojo() {
 
         // Add metadata
         rootNode.put("totalProjects", inMemoryAnalyses.size)
-        rootNode.put("workspaceRoot", workspaceRoot)
+//        rootNode.put("workspaceRoot", workspaceRoot)
         rootNode.put("analysisMethod", "optimized-parallel")
         rootNode.put("analyzedProjects", inMemoryAnalyses.size)
 

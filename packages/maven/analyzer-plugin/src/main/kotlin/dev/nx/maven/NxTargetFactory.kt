@@ -4,13 +4,14 @@ import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ArrayNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import dev.nx.maven.plugin.PluginExecutionFinder
+import org.apache.maven.api.Project
 import org.apache.maven.api.di.Inject
 import org.apache.maven.api.di.Named
 import org.apache.maven.api.di.Singleton
-import org.apache.maven.lifecycle.DefaultLifecycles
-import org.apache.maven.model.Plugin
-import org.apache.maven.project.MavenProject
+import org.apache.maven.api.model.Plugin
+import org.apache.maven.api.services.ProjectManager
+import org.apache.maven.api.services.LifecycleRegistry
+import org.apache.maven.api.Session
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -22,13 +23,10 @@ import org.slf4j.LoggerFactory
 class NxTargetFactory {
 
     @Inject
-    private lateinit var lifecycles: DefaultLifecycles
-
+    private lateinit var session: Session
+    
     @Inject
-    private lateinit var inputOutputAnalyzer: MavenInputOutputAnalyzer
-
-    @Inject
-    private lateinit var pluginExecutionFinder: PluginExecutionFinder
+    private lateinit var lifecycleRegistry: LifecycleRegistry
 
     @Inject
     private lateinit var objectMapper: ObjectMapper
@@ -36,12 +34,14 @@ class NxTargetFactory {
     @Inject
     private lateinit var testClassDiscovery: TestClassDiscovery
 
+    @Inject lateinit var projectManager: ProjectManager
+
     @Inject
     private lateinit var phaseAnalyzer: PhaseAnalyzer
     private val log: Logger = LoggerFactory.getLogger(NxTargetFactory::class.java)
     fun createNxTargets(
         mavenCommand: String,
-        project: MavenProject
+        project: Project
     ): Pair<ObjectNode, ObjectNode> {
         val nxTargets = objectMapper.createObjectNode()
 
@@ -81,7 +81,7 @@ class NxTargetFactory {
     }
 
     private fun generatePhaseTargets(
-        project: MavenProject,
+        project: Project,
         mavenCommand: String,
     ): Map<String, ObjectNode> {
         val targets = mutableMapOf<String, ObjectNode>()
@@ -94,10 +94,6 @@ class NxTargetFactory {
         phasesToAnalyze.forEach { phase ->
             try {
                 val analysis = phaseAnalyzer.analyze(project, phase)
-
-
-//                val analysis = inputOutputAnalyzer.analyzeCacheability(phase, project)
-//                log.warn("Phase '$phase' analysis result: cacheable=${analysis.cacheable}, reason='${analysis.reason}'")
 
                 val target = objectMapper.createObjectNode()
                 target.put("executor", "nx:run-commands")
@@ -134,14 +130,14 @@ class NxTargetFactory {
     }
 
     private fun generateGoalTargets(
-        project: MavenProject,
+        project: Project,
         mavenCommand: String
     ): Pair<Map<String, ObjectNode>, Map<String, List<String>>> {
         val targets = mutableMapOf<String, ObjectNode>()
         val targetGroups = mutableMapOf<String, List<String>>()
 
         // Extract discovered plugin goals
-        val plugins = pluginExecutionFinder.getExecutablePlugins(project)
+        val plugins = getExecutablePlugins(project)
 
         plugins.forEach { plugin: Plugin ->
             val goals = getGoals(plugin)
@@ -158,8 +154,12 @@ class NxTargetFactory {
         return Pair(targets, targetGroups)
     }
 
+    private fun getExecutablePlugins(project: Project): List<Plugin> {
+        return project.build.plugins
+    }
+
     private fun generateAtomizedTestTargets(
-        project: MavenProject,
+        project: Project,
         mavenCommand: String
     ): Pair<Map<String, ObjectNode>, Map<String, List<String>>> {
         val targets = mutableMapOf<String, ObjectNode>()
@@ -197,18 +197,21 @@ class NxTargetFactory {
     }
 
     private fun getPhases(): Set<String> {
-        val result = mutableSetOf<String>()
-        lifecycles.lifeCycles.forEach { lifecycle ->
-            lifecycle.phases.forEach { phase ->
-                result.add(phase)
-            }
+        // Maven 4 way: Use injected LifecycleRegistry to dynamically get all phases
+        val phases = mutableSetOf<String>()
+        
+        lifecycleRegistry.forEach { lifecycle ->
+            // Get all phases for this lifecycle
+            val lifecyclePhases = lifecycleRegistry.computePhases(lifecycle)
+            phases.addAll(lifecyclePhases)
         }
-        return result
+        
+        return phases
     }
 
     private fun createGoalTarget(
         mavenCommand: String,
-        project: MavenProject,
+        project: Project,
         cleanPluginName: String,
         goalName: String
     ): Pair<String, ObjectNode> {

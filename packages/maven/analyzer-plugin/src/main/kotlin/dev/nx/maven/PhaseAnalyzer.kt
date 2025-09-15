@@ -1,14 +1,15 @@
 package dev.nx.maven
 
+import org.apache.maven.api.Project
+import org.apache.maven.api.Session
 import org.apache.maven.api.di.Inject
 import org.apache.maven.api.di.Named
 import org.apache.maven.api.di.Singleton
-import org.apache.maven.execution.MavenSession
-import org.apache.maven.model.Plugin
-import org.apache.maven.plugin.MavenPluginManager
+import org.apache.maven.api.model.Plugin
+import org.apache.maven.plugin.BuildPluginManager
 import org.apache.maven.plugin.descriptor.MojoDescriptor
 import org.apache.maven.plugin.descriptor.Parameter
-import org.apache.maven.project.MavenProject
+import org.apache.maven.impl.InternalSession
 import org.slf4j.LoggerFactory
 
 /**
@@ -19,10 +20,10 @@ import org.slf4j.LoggerFactory
 class PhaseAnalyzer {
 
     @Inject
-    private lateinit var pluginManager: MavenPluginManager
+    private lateinit var buildPluginManager: BuildPluginManager
 
     @Inject
-    private lateinit var session: MavenSession
+    private lateinit var session: Session
 
     @Inject
     private lateinit var expressionResolver: MavenExpressionResolver
@@ -32,9 +33,10 @@ class PhaseAnalyzer {
 
     @Inject
     private lateinit var gitIgnoreClassifier: GitIgnoreClassifier
+
     private val log = LoggerFactory.getLogger(PhaseAnalyzer::class.java)
 
-    fun analyze(project: MavenProject, phase: String): PhaseInformation {
+    fun analyze(project: Project, phase: String): PhaseInformation {
         val plugins = project.build.plugins
         var isThreadSafe = true
         var isCacheable = isPhaseCacheable(phase)
@@ -112,7 +114,7 @@ class PhaseAnalyzer {
     /**
      * Analyzes parameter to determine inputs and outputs
      */
-    private fun analyzeParameterInputsOutputs(parameter: Parameter, project: MavenProject): ParameterInformation {
+    private fun analyzeParameterInputsOutputs(parameter: Parameter, project: Project): ParameterInformation {
         val inputs = mutableSetOf<String>()
         val outputs = mutableSetOf<String>()
 
@@ -232,7 +234,7 @@ class PhaseAnalyzer {
         }
     }
 
-    private fun analyzeParameterRole(parameter: Parameter, project: MavenProject): ParameterRole {
+    private fun analyzeParameterRole(parameter: Parameter, project: Project): ParameterRole {
         val name = parameter.name
         val type = parameter.type
         val expression = parameter.expression ?: parameter.defaultValue ?: ""
@@ -368,18 +370,51 @@ class PhaseAnalyzer {
         return ParameterRole.UNKNOWN
     }
 
-    private fun getMojoDescriptor(plugin: Plugin, goal: String, project: MavenProject): MojoDescriptor? {
+    private fun getMojoDescriptor(plugin: Plugin, goal: String, project: Project): MojoDescriptor? {
         return try {
-            val pluginDescriptor = pluginManager.getPluginDescriptor(
-                plugin,
-                project.remotePluginRepositories,
-                session.repositorySession
+            // Convert Maven 4 Plugin to Maven 3 Plugin
+            val maven3Plugin = toMaven3Plugin(plugin)
+
+            // Get the internal session for conversions
+            val internalSession = InternalSession.from(session)
+
+            // Convert repositories
+            val remoteRepos = session.getRemoteRepositories()
+                .map { internalSession.toRepository(it) }
+
+            // Get the repository session
+            val repoSession = internalSession.getSession()
+
+            // Get the MojoDescriptor
+            buildPluginManager.getMojoDescriptor(
+                maven3Plugin,
+                goal,
+                remoteRepos,
+                repoSession
             )
-            pluginDescriptor?.getMojo(goal)
         } catch (e: Exception) {
-            log.warn("Failed to get MojoDescriptor for plugin ${plugin.artifactId} and goal $goal: ${e.message}")
+            log.warn("Failed to get MojoDescriptor for ${plugin.artifactId}:$goal: ${e.message}")
             null
         }
+    }
+
+    private fun toMaven3Plugin(plugin: Plugin): org.apache.maven.model.Plugin {
+        val maven3Plugin = org.apache.maven.model.Plugin()
+        maven3Plugin.groupId = plugin.groupId
+        maven3Plugin.artifactId = plugin.artifactId
+        maven3Plugin.version = plugin.version
+
+        // Convert executions if needed
+        plugin.executions?.forEach { execution ->
+            val maven3Execution = org.apache.maven.model.PluginExecution()
+            maven3Execution.id = execution.id
+            maven3Execution.phase = execution.phase
+            maven3Execution.goals = execution.goals.toList()
+            // Note: Configuration conversion would be complex, skipping for now
+            maven3Plugin.addExecution(maven3Execution)
+        }
+
+        return maven3Plugin
     }
 
 }

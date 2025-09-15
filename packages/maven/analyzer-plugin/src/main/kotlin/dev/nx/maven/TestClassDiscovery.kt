@@ -1,8 +1,12 @@
 package dev.nx.maven
 
+import org.apache.maven.api.Language
+import org.apache.maven.api.Project
+import org.apache.maven.api.ProjectScope
+import org.apache.maven.api.di.Inject
 import org.apache.maven.api.di.Named
 import org.apache.maven.api.di.Singleton
-import org.apache.maven.project.MavenProject
+import org.apache.maven.api.services.ProjectManager
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.io.File
@@ -34,16 +38,19 @@ class TestClassDiscovery {
         "@org.testng.annotations.Test" // TestNG
     )
 
+    @Inject
+    private lateinit var projectManager: ProjectManager
+
     /**
      * Discover test classes in the given Maven project
      */
-    fun discoverTestClasses(project: MavenProject): List<TestClassInfo> {
+    fun discoverTestClasses(project: Project): List<TestClassInfo> {
         val testClasses = mutableListOf<TestClassInfo>()
 
         log.info("Getting Test Classes for project ${project.artifactId}")
 
         // Get test source roots
-        val testSourceRoots = project.testCompileSourceRoots
+        val testSourceRoots = projectManager.getEnabledSourceRoots(project, ProjectScope.TEST, Language.JAVA_FAMILY)
 
         for (testSourceRoot in testSourceRoots) {
             val testDir = File(testSourceRoot.toString())

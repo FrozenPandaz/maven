@@ -64,15 +64,9 @@
                 <groupId>dev.nx.maven</groupId>
                 <artifactId>nx-maven-analyzer-plugin</artifactId>
                 <version>@project.version@</version>
-                <executions>
-                    <execution>
-                        <id>analyze</id>
-                        <goals>
-                            <goal>analyze</goal>
-                        </goals>
-                        <phase>process-classes</phase>
-                    </execution>
-                </executions>
+                <configuration>
+                    <outputFile>target/nx-analysis.json</outputFile>
+                </configuration>
             </plugin>
         </plugins>
     </build>

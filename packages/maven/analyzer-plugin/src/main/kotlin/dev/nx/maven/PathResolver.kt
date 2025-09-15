@@ -1,9 +1,9 @@
 package dev.nx.maven
 
+import org.apache.maven.api.Session
 import org.apache.maven.api.di.Inject
 import org.apache.maven.api.di.Named
 import org.apache.maven.api.di.Singleton
-import org.apache.maven.execution.MavenSession
 import java.io.File
 
 /**
@@ -14,10 +14,10 @@ import java.io.File
 class PathResolver {
 
     @Inject
-    private lateinit var session: MavenSession
+    private lateinit var session: Session
 
     private val workspaceRoot: String
-        get() = session.executionRootDirectory ?: "."
+        get() = session.rootDirectory.toString()
 
     // Allow using a different project base dir for specific contexts
     fun toProjectPath(path: String, projectBaseDir: String? = null): String = try {
@@ -143,7 +143,7 @@ class PathResolver {
      * Finds the workspace root by looking for the top-level pom.xml
      */
     private fun findProjectWorkspaceRoot(): File {
-        var current = File(session.executionRootDirectory)
+        var current = session.rootDirectory.toFile()
         while (current.parent != null) {
             val parentPom = File(current.parent, "pom.xml")
             if (parentPom.exists()) {
