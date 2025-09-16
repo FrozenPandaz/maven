@@ -339,7 +339,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/api/maven-api-annotations/**/*" ],
-            "outputs" : [ "{projectRoot}/api/maven-api-annotations/target/classes", "{projectRoot}/api/maven-api-annotations/target", "{projectRoot}/api/maven-api-annotations/target/surefire-reports", "{projectRoot}/api/maven-api-annotations/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-annotations/target", "{projectRoot}/api/maven-api-annotations/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -399,7 +399,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/api/maven-api-annotations/target/classes", "{projectRoot}/api/maven-api-annotations/target" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-annotations/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -1113,7 +1113,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/api/maven-api-di/**/*" ],
-            "outputs" : [ "{projectRoot}/api/maven-api-di/target/classes", "{projectRoot}/api/maven-api-di/target", "{projectRoot}/api/maven-api-di/target/surefire-reports", "{projectRoot}/api/maven-api-di/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-di/target", "{projectRoot}/api/maven-api-di/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -1173,7 +1173,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/api/maven-api-di/target/classes", "{projectRoot}/api/maven-api-di/target" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-di/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -1887,7 +1887,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/api/maven-api-xml/**/*" ],
-            "outputs" : [ "{projectRoot}/api/maven-api-xml/target/classes", "{projectRoot}/api/maven-api-xml/target", "{projectRoot}/api/maven-api-xml/target/surefire-reports", "{projectRoot}/api/maven-api-xml/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-xml/target", "{projectRoot}/api/maven-api-xml/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -1947,7 +1947,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/api/maven-api-xml/target/classes", "{projectRoot}/api/maven-api-xml/target" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-xml/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -2661,7 +2661,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/api/maven-api-model/**/*" ],
-            "outputs" : [ "{projectRoot}/api/maven-api-model/target/classes", "{projectRoot}/api/maven-api-model/target", "{projectRoot}/api/maven-api-model/target/surefire-reports", "{projectRoot}/api/maven-api-model/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-model/target", "{projectRoot}/api/maven-api-model/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -2721,7 +2721,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/api/maven-api-model/target/classes", "{projectRoot}/api/maven-api-model/target" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-model/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -3469,7 +3469,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/api/maven-api-plugin/**/*" ],
-            "outputs" : [ "{projectRoot}/api/maven-api-plugin/target/classes", "{projectRoot}/api/maven-api-plugin/target", "{projectRoot}/api/maven-api-plugin/target/surefire-reports", "{projectRoot}/api/maven-api-plugin/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-plugin/target", "{projectRoot}/api/maven-api-plugin/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -3529,7 +3529,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/api/maven-api-plugin/target/classes", "{projectRoot}/api/maven-api-plugin/target" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-plugin/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -4268,7 +4268,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/api/maven-api-settings/**/*" ],
-            "outputs" : [ "{projectRoot}/api/maven-api-settings/target/classes", "{projectRoot}/api/maven-api-settings/target", "{projectRoot}/api/maven-api-settings/target/surefire-reports", "{projectRoot}/api/maven-api-settings/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-settings/target", "{projectRoot}/api/maven-api-settings/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -4328,7 +4328,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/api/maven-api-settings/target/classes", "{projectRoot}/api/maven-api-settings/target" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-settings/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -5067,7 +5067,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/api/maven-api-toolchain/**/*" ],
-            "outputs" : [ "{projectRoot}/api/maven-api-toolchain/target/classes", "{projectRoot}/api/maven-api-toolchain/target", "{projectRoot}/api/maven-api-toolchain/target/surefire-reports", "{projectRoot}/api/maven-api-toolchain/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-toolchain/target", "{projectRoot}/api/maven-api-toolchain/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -5127,7 +5127,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/api/maven-api-toolchain/target/classes", "{projectRoot}/api/maven-api-toolchain/target" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-toolchain/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -5866,7 +5866,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/api/maven-api-metadata/**/*" ],
-            "outputs" : [ "{projectRoot}/api/maven-api-metadata/target/classes", "{projectRoot}/api/maven-api-metadata/target", "{projectRoot}/api/maven-api-metadata/target/surefire-reports", "{projectRoot}/api/maven-api-metadata/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-metadata/target", "{projectRoot}/api/maven-api-metadata/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -5926,7 +5926,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/api/maven-api-metadata/target/classes", "{projectRoot}/api/maven-api-metadata/target" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-metadata/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -6665,7 +6665,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/api/maven-api-core/**/*" ],
-            "outputs" : [ "{projectRoot}/api/maven-api-core/target/classes", "{projectRoot}/api/maven-api-core/target", "{projectRoot}/api/maven-api-core/target/surefire-reports", "{projectRoot}/api/maven-api-core/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-core/target", "{projectRoot}/api/maven-api-core/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -6725,7 +6725,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/api/maven-api-core/target/classes", "{projectRoot}/api/maven-api-core/target" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-core/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -7447,7 +7447,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/api/maven-api-spi/**/*" ],
-            "outputs" : [ "{projectRoot}/api/maven-api-spi/target/classes", "{projectRoot}/api/maven-api-spi/target", "{projectRoot}/api/maven-api-spi/target/surefire-reports", "{projectRoot}/api/maven-api-spi/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-spi/target", "{projectRoot}/api/maven-api-spi/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -7507,7 +7507,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/api/maven-api-spi/target/classes", "{projectRoot}/api/maven-api-spi/target" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-spi/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -8221,7 +8221,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/api/maven-api-cli/**/*" ],
-            "outputs" : [ "{projectRoot}/api/maven-api-cli/target/classes", "{projectRoot}/api/maven-api-cli/target", "{projectRoot}/api/maven-api-cli/target/surefire-reports", "{projectRoot}/api/maven-api-cli/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-cli/target", "{projectRoot}/api/maven-api-cli/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -8281,7 +8281,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/api/maven-api-cli/target/classes", "{projectRoot}/api/maven-api-cli/target" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-cli/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -9742,7 +9742,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/impl/maven-support/**/*" ],
-            "outputs" : [ "{projectRoot}/impl/maven-support/target/classes", "{projectRoot}/impl/maven-support/target", "{projectRoot}/impl/maven-support/target/surefire-reports", "{projectRoot}/impl/maven-support/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/impl/maven-support/target", "{projectRoot}/impl/maven-support/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -9802,7 +9802,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/impl/maven-support/target/classes", "{projectRoot}/impl/maven-support/target" ],
+            "outputs" : [ "{projectRoot}/impl/maven-support/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -10525,7 +10525,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/impl/maven-impl/**/*" ],
-            "outputs" : [ "{projectRoot}/impl/maven-impl/target/classes", "{projectRoot}/impl/maven-impl/target", "{projectRoot}/impl/maven-impl/target/surefire-reports", "{projectRoot}/impl/maven-impl/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/impl/maven-impl/target", "{projectRoot}/impl/maven-impl/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -10585,7 +10585,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/impl/maven-impl/target/classes", "{projectRoot}/impl/maven-impl/target" ],
+            "outputs" : [ "{projectRoot}/impl/maven-impl/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -10928,14 +10928,6 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.PathSelectorTest.PathSelectorTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
           "test--org.apache.maven.impl.ModelVersionParserTest.ModelVersionParserTest" : {
             "executor" : "nx:run-commands",
             "options" : {
@@ -10944,10 +10936,18 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest" : {
+          "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest" : {
             "executor" : "nx:run-commands",
             "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest"
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.PathSelectorTest.PathSelectorTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.VersionRangeTest.VersionRangeTest"
             },
             "cache" : false,
             "parallelism" : false
@@ -10960,10 +10960,10 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest" : {
+          "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest" : {
             "executor" : "nx:run-commands",
             "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest"
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest"
             },
             "cache" : false,
             "parallelism" : false
@@ -10976,10 +10976,10 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest" : {
+          "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest" : {
             "executor" : "nx:run-commands",
             "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.VersionRangeTest.VersionRangeTest"
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest"
             },
             "cache" : false,
             "parallelism" : false
@@ -10995,7 +10995,7 @@
           "verify-ci" : {
             "executor" : "nx:noop",
             "cache" : true,
-            "dependsOn" : [ "package", "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest", "test--org.apache.maven.impl.ModelVersionParserTest.ModelVersionParserTest", "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest", "test--org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest", "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest", "test--org.apache.maven.impl.VersionTest.VersionTest", "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest", "test--org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest" ]
+            "dependsOn" : [ "package", "test--org.apache.maven.impl.ModelVersionParserTest.ModelVersionParserTest", "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest", "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest", "test--org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest", "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest", "test--org.apache.maven.impl.VersionTest.VersionTest", "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest", "test--org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest" ]
           }
         },
         "metadata" : {
@@ -11363,7 +11363,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/impl/maven-di/**/*" ],
-            "outputs" : [ "{projectRoot}/impl/maven-di/target/classes", "{projectRoot}/impl/maven-di/target", "{projectRoot}/impl/maven-di/target/surefire-reports", "{projectRoot}/impl/maven-di/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/impl/maven-di/target", "{projectRoot}/impl/maven-di/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -11423,7 +11423,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/impl/maven-di/target/classes", "{projectRoot}/impl/maven-di/target" ],
+            "outputs" : [ "{projectRoot}/impl/maven-di/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -12153,7 +12153,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/impl/maven-xml/**/*" ],
-            "outputs" : [ "{projectRoot}/impl/maven-xml/target/classes", "{projectRoot}/impl/maven-xml/target", "{projectRoot}/impl/maven-xml/target/surefire-reports", "{projectRoot}/impl/maven-xml/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/impl/maven-xml/target", "{projectRoot}/impl/maven-xml/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -12213,7 +12213,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/impl/maven-xml/target/classes", "{projectRoot}/impl/maven-xml/target" ],
+            "outputs" : [ "{projectRoot}/impl/maven-xml/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -12927,7 +12927,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/impl/maven-jline/**/*" ],
-            "outputs" : [ "{projectRoot}/impl/maven-jline/target/classes", "{projectRoot}/impl/maven-jline/target", "{projectRoot}/impl/maven-jline/target/surefire-reports", "{projectRoot}/impl/maven-jline/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/impl/maven-jline/target", "{projectRoot}/impl/maven-jline/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -12987,7 +12987,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/impl/maven-jline/target/classes", "{projectRoot}/impl/maven-jline/target" ],
+            "outputs" : [ "{projectRoot}/impl/maven-jline/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -13701,7 +13701,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/impl/maven-logging/**/*" ],
-            "outputs" : [ "{projectRoot}/impl/maven-logging/target/classes", "{projectRoot}/impl/maven-logging/target", "{projectRoot}/impl/maven-logging/target/surefire-reports", "{projectRoot}/impl/maven-logging/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/impl/maven-logging/target", "{projectRoot}/impl/maven-logging/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -13761,7 +13761,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/impl/maven-logging/target/classes", "{projectRoot}/impl/maven-logging/target" ],
+            "outputs" : [ "{projectRoot}/impl/maven-logging/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -14475,7 +14475,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/impl/maven-core/**/*" ],
-            "outputs" : [ "{projectRoot}/impl/maven-core/target/classes", "{projectRoot}/impl/maven-core/target", "{projectRoot}/impl/maven-core/target/surefire-reports", "{projectRoot}/impl/maven-core/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/impl/maven-core/target", "{projectRoot}/impl/maven-core/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -14535,7 +14535,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/impl/maven-core/target/classes", "{projectRoot}/impl/maven-core/target" ],
+            "outputs" : [ "{projectRoot}/impl/maven-core/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -14926,30 +14926,6 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.project.GraphTest.GraphTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.project.GraphTest.GraphTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
-          "test--org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
-          "test--org.apache.maven.session.scope.SessionScopeProxyTest.SessionScopeProxyTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.session.scope.SessionScopeProxyTest.SessionScopeProxyTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
           "test--org.apache.maven.internal.impl.DefaultChecksumAlgorithmServiceTest.DefaultChecksumAlgorithmServiceTest" : {
             "executor" : "nx:run-commands",
             "options" : {
@@ -14966,10 +14942,18 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.model.ModelBuilderTest.ModelBuilderTest" : {
+          "test--org.apache.maven.project.GraphTest.GraphTest" : {
             "executor" : "nx:run-commands",
             "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.model.ModelBuilderTest.ModelBuilderTest"
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.project.GraphTest.GraphTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.session.scope.SessionScopeProxyTest.SessionScopeProxyTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.session.scope.SessionScopeProxyTest.SessionScopeProxyTest"
             },
             "cache" : false,
             "parallelism" : false
@@ -14990,6 +14974,14 @@
             "cache" : false,
             "parallelism" : false
           },
+          "test--org.apache.maven.model.ModelBuilderTest.ModelBuilderTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.model.ModelBuilderTest.ModelBuilderTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
           "test--org.apache.maven.di.DiTest.DiTest" : {
             "executor" : "nx:run-commands",
             "options" : {
@@ -15006,10 +14998,18 @@
             "cache" : false,
             "parallelism" : false
           },
+          "test--org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
           "verify-ci" : {
             "executor" : "nx:noop",
             "cache" : true,
-            "dependsOn" : [ "package", "test--org.apache.maven.project.GraphTest.GraphTest", "test--org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest", "test--org.apache.maven.session.scope.SessionScopeProxyTest.SessionScopeProxyTest", "test--org.apache.maven.internal.impl.DefaultChecksumAlgorithmServiceTest.DefaultChecksumAlgorithmServiceTest", "test--org.apache.maven.internal.impl.DefaultSessionTest.DefaultSessionTest", "test--org.apache.maven.model.ModelBuilderTest.ModelBuilderTest", "test--org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest", "test--org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test", "test--org.apache.maven.di.DiTest.DiTest", "test--org.apache.maven.internal.transformation.impl.ConsumerPomBuilderTest.ConsumerPomBuilderTest" ]
+            "dependsOn" : [ "package", "test--org.apache.maven.internal.impl.DefaultChecksumAlgorithmServiceTest.DefaultChecksumAlgorithmServiceTest", "test--org.apache.maven.internal.impl.DefaultSessionTest.DefaultSessionTest", "test--org.apache.maven.project.GraphTest.GraphTest", "test--org.apache.maven.session.scope.SessionScopeProxyTest.SessionScopeProxyTest", "test--org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest", "test--org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test", "test--org.apache.maven.model.ModelBuilderTest.ModelBuilderTest", "test--org.apache.maven.di.DiTest.DiTest", "test--org.apache.maven.internal.transformation.impl.ConsumerPomBuilderTest.ConsumerPomBuilderTest", "test--org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest" ]
           }
         },
         "metadata" : {
@@ -15381,7 +15381,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/impl/maven-cli/**/*" ],
-            "outputs" : [ "{projectRoot}/impl/maven-cli/target/classes", "{projectRoot}/impl/maven-cli/target", "{projectRoot}/impl/maven-cli/target/surefire-reports", "{projectRoot}/impl/maven-cli/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/impl/maven-cli/target", "{projectRoot}/impl/maven-cli/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -15441,7 +15441,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/impl/maven-cli/target/classes", "{projectRoot}/impl/maven-cli/target" ],
+            "outputs" : [ "{projectRoot}/impl/maven-cli/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -15800,22 +15800,6 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.cling.invoker.BaseParserTest.BaseParserTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-cli -Dtest=org.apache.maven.cling.invoker.BaseParserTest.BaseParserTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
-          "test--org.apache.maven.cling.invoker.mvn.resident.ResidentMavenInvokerTest.ResidentMavenInvokerTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-cli -Dtest=org.apache.maven.cling.invoker.mvn.resident.ResidentMavenInvokerTest.ResidentMavenInvokerTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
           "test--org.apache.maven.cling.invoker.mvn.MavenInvokerTest.MavenInvokerTest" : {
             "executor" : "nx:run-commands",
             "options" : {
@@ -15832,10 +15816,26 @@
             "cache" : false,
             "parallelism" : false
           },
+          "test--org.apache.maven.cling.invoker.mvn.resident.ResidentMavenInvokerTest.ResidentMavenInvokerTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-cli -Dtest=org.apache.maven.cling.invoker.mvn.resident.ResidentMavenInvokerTest.ResidentMavenInvokerTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.cling.invoker.BaseParserTest.BaseParserTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-cli -Dtest=org.apache.maven.cling.invoker.BaseParserTest.BaseParserTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
           "verify-ci" : {
             "executor" : "nx:noop",
             "cache" : true,
-            "dependsOn" : [ "package", "test--org.apache.maven.cling.invoker.BaseParserTest.BaseParserTest", "test--org.apache.maven.cling.invoker.mvn.resident.ResidentMavenInvokerTest.ResidentMavenInvokerTest", "test--org.apache.maven.cling.invoker.mvn.MavenInvokerTest.MavenInvokerTest", "test--org.apache.maven.cling.invoker.cisupport.CIDetectorHelperTest.CIDetectorHelperTest" ]
+            "dependsOn" : [ "package", "test--org.apache.maven.cling.invoker.mvn.MavenInvokerTest.MavenInvokerTest", "test--org.apache.maven.cling.invoker.cisupport.CIDetectorHelperTest.CIDetectorHelperTest", "test--org.apache.maven.cling.invoker.mvn.resident.ResidentMavenInvokerTest.ResidentMavenInvokerTest", "test--org.apache.maven.cling.invoker.BaseParserTest.BaseParserTest" ]
           }
         },
         "metadata" : {
@@ -16204,7 +16204,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/impl/maven-testing/**/*" ],
-            "outputs" : [ "{projectRoot}/impl/maven-testing/target/classes", "{projectRoot}/impl/maven-testing/target", "{projectRoot}/impl/maven-testing/target/surefire-reports", "{projectRoot}/impl/maven-testing/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/impl/maven-testing/target", "{projectRoot}/impl/maven-testing/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -16264,7 +16264,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/impl/maven-testing/target/classes", "{projectRoot}/impl/maven-testing/target" ],
+            "outputs" : [ "{projectRoot}/impl/maven-testing/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -16994,7 +16994,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/impl/maven-executor/**/*" ],
-            "outputs" : [ "{projectRoot}/impl/maven-executor/target/classes", "{projectRoot}/impl/maven-executor/target", "{projectRoot}/impl/maven-executor/target/surefire-reports", "{projectRoot}/impl/maven-executor/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/impl/maven-executor/target", "{projectRoot}/impl/maven-executor/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -17054,7 +17054,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/impl/maven-executor/target/classes", "{projectRoot}/impl/maven-executor/target" ],
+            "outputs" : [ "{projectRoot}/impl/maven-executor/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -18522,7 +18522,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/compat/maven-plugin-api/**/*" ],
-            "outputs" : [ "{projectRoot}/compat/maven-plugin-api/target/classes", "{projectRoot}/compat/maven-plugin-api/target", "{projectRoot}/compat/maven-plugin-api/target/surefire-reports", "{projectRoot}/compat/maven-plugin-api/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/compat/maven-plugin-api/target", "{projectRoot}/compat/maven-plugin-api/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -18582,7 +18582,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/compat/maven-plugin-api/target/classes", "{projectRoot}/compat/maven-plugin-api/target" ],
+            "outputs" : [ "{projectRoot}/compat/maven-plugin-api/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -19305,7 +19305,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/compat/maven-builder-support/**/*" ],
-            "outputs" : [ "{projectRoot}/compat/maven-builder-support/target/classes", "{projectRoot}/compat/maven-builder-support/target", "{projectRoot}/compat/maven-builder-support/target/surefire-reports", "{projectRoot}/compat/maven-builder-support/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/compat/maven-builder-support/target", "{projectRoot}/compat/maven-builder-support/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -19365,7 +19365,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/compat/maven-builder-support/target/classes", "{projectRoot}/compat/maven-builder-support/target" ],
+            "outputs" : [ "{projectRoot}/compat/maven-builder-support/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -20079,7 +20079,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/compat/maven-model/**/*" ],
-            "outputs" : [ "{projectRoot}/compat/maven-model/target/classes", "{projectRoot}/compat/maven-model/target", "{projectRoot}/compat/maven-model/target/surefire-reports", "{projectRoot}/compat/maven-model/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/compat/maven-model/target", "{projectRoot}/compat/maven-model/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -20139,7 +20139,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/compat/maven-model/target/classes", "{projectRoot}/compat/maven-model/target" ],
+            "outputs" : [ "{projectRoot}/compat/maven-model/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -20871,7 +20871,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/compat/maven-model-builder/**/*" ],
-            "outputs" : [ "{projectRoot}/compat/maven-model-builder/target/classes", "{projectRoot}/compat/maven-model-builder/target", "{projectRoot}/compat/maven-model-builder/target/surefire-reports", "{projectRoot}/compat/maven-model-builder/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/compat/maven-model-builder/target", "{projectRoot}/compat/maven-model-builder/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -20931,7 +20931,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/compat/maven-model-builder/target/classes", "{projectRoot}/compat/maven-model-builder/target" ],
+            "outputs" : [ "{projectRoot}/compat/maven-model-builder/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -21703,7 +21703,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/compat/maven-settings/**/*" ],
-            "outputs" : [ "{projectRoot}/compat/maven-settings/target/classes", "{projectRoot}/compat/maven-settings/target", "{projectRoot}/compat/maven-settings/target/surefire-reports", "{projectRoot}/compat/maven-settings/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings/target", "{projectRoot}/compat/maven-settings/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -21763,7 +21763,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/compat/maven-settings/target/classes", "{projectRoot}/compat/maven-settings/target" ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -22495,7 +22495,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/compat/maven-settings-builder/**/*" ],
-            "outputs" : [ "{projectRoot}/compat/maven-settings-builder/target/classes", "{projectRoot}/compat/maven-settings-builder/target", "{projectRoot}/compat/maven-settings-builder/target/surefire-reports", "{projectRoot}/compat/maven-settings-builder/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings-builder/target", "{projectRoot}/compat/maven-settings-builder/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -22555,7 +22555,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/compat/maven-settings-builder/target/classes", "{projectRoot}/compat/maven-settings-builder/target" ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings-builder/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -23295,7 +23295,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/compat/maven-artifact/**/*" ],
-            "outputs" : [ "{projectRoot}/compat/maven-artifact/target/classes", "{projectRoot}/compat/maven-artifact/target", "{projectRoot}/compat/maven-artifact/target/surefire-reports", "{projectRoot}/compat/maven-artifact/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/compat/maven-artifact/target", "{projectRoot}/compat/maven-artifact/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -23355,7 +23355,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/compat/maven-artifact/target/classes", "{projectRoot}/compat/maven-artifact/target" ],
+            "outputs" : [ "{projectRoot}/compat/maven-artifact/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -24086,7 +24086,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/compat/maven-resolver-provider/**/*" ],
-            "outputs" : [ "{projectRoot}/compat/maven-resolver-provider/target/classes", "{projectRoot}/compat/maven-resolver-provider/target", "{projectRoot}/compat/maven-resolver-provider/target/surefire-reports", "{projectRoot}/compat/maven-resolver-provider/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/compat/maven-resolver-provider/target", "{projectRoot}/compat/maven-resolver-provider/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -24146,7 +24146,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/compat/maven-resolver-provider/target/classes", "{projectRoot}/compat/maven-resolver-provider/target" ],
+            "outputs" : [ "{projectRoot}/compat/maven-resolver-provider/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -24868,7 +24868,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/compat/maven-repository-metadata/**/*" ],
-            "outputs" : [ "{projectRoot}/compat/maven-repository-metadata/target/classes", "{projectRoot}/compat/maven-repository-metadata/target", "{projectRoot}/compat/maven-repository-metadata/target/surefire-reports", "{projectRoot}/compat/maven-repository-metadata/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/compat/maven-repository-metadata/target", "{projectRoot}/compat/maven-repository-metadata/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -24928,7 +24928,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/compat/maven-repository-metadata/target/classes", "{projectRoot}/compat/maven-repository-metadata/target" ],
+            "outputs" : [ "{projectRoot}/compat/maven-repository-metadata/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -25651,7 +25651,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/compat/maven-embedder/**/*" ],
-            "outputs" : [ "{projectRoot}/compat/maven-embedder/target/classes", "{projectRoot}/compat/maven-embedder/target", "{projectRoot}/compat/maven-embedder/target/surefire-reports", "{projectRoot}/compat/maven-embedder/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/compat/maven-embedder/target", "{projectRoot}/compat/maven-embedder/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -25711,7 +25711,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/compat/maven-embedder/target/classes", "{projectRoot}/compat/maven-embedder/target" ],
+            "outputs" : [ "{projectRoot}/compat/maven-embedder/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -26450,7 +26450,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/compat/maven-compat/**/*" ],
-            "outputs" : [ "{projectRoot}/compat/maven-compat/target/classes", "{projectRoot}/compat/maven-compat/target", "{projectRoot}/compat/maven-compat/target/surefire-reports", "{projectRoot}/compat/maven-compat/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/compat/maven-compat/target", "{projectRoot}/compat/maven-compat/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -26510,7 +26510,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/compat/maven-compat/target/classes", "{projectRoot}/compat/maven-compat/target" ],
+            "outputs" : [ "{projectRoot}/compat/maven-compat/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -27266,7 +27266,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/compat/maven-toolchain-model/**/*" ],
-            "outputs" : [ "{projectRoot}/compat/maven-toolchain-model/target/classes", "{projectRoot}/compat/maven-toolchain-model/target", "{projectRoot}/compat/maven-toolchain-model/target/surefire-reports", "{projectRoot}/compat/maven-toolchain-model/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-model/target", "{projectRoot}/compat/maven-toolchain-model/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -27326,7 +27326,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/compat/maven-toolchain-model/target/classes", "{projectRoot}/compat/maven-toolchain-model/target" ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-model/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -28058,7 +28058,7 @@
             },
             "cache" : true,
             "inputs" : [ "{projectRoot}/compat/maven-toolchain-builder/**/*" ],
-            "outputs" : [ "{projectRoot}/compat/maven-toolchain-builder/target/classes", "{projectRoot}/compat/maven-toolchain-builder/target", "{projectRoot}/compat/maven-toolchain-builder/target/surefire-reports", "{projectRoot}/compat/maven-toolchain-builder/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-builder/target", "{projectRoot}/compat/maven-toolchain-builder/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -28118,7 +28118,7 @@
             },
             "cache" : true,
             "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/compat/maven-toolchain-builder/target/classes", "{projectRoot}/compat/maven-toolchain-builder/target" ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-builder/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -30345,8 +30345,8 @@
               "command" : "./mvnw test -am -pl dev.nx.maven:nx-maven-analyzer-plugin"
             },
             "cache" : true,
-            "inputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/**/*" ],
-            "outputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/target/classes", "{projectRoot}/packages/maven/analyzer-plugin/target", "{projectRoot}/packages/maven/analyzer-plugin/target/surefire-reports", "{projectRoot}/packages/maven/analyzer-plugin/target/test-classes" ],
+            "inputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/**/*", "{projectRoot}/packages/maven/analyzer-plugin/target/classes", "{projectRoot}/packages/maven/analyzer-plugin/target/test-classes" ],
+            "outputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/target", "{projectRoot}/packages/maven/analyzer-plugin/target/surefire-reports" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -30405,8 +30405,8 @@
               "command" : "./mvnw package -am -pl dev.nx.maven:nx-maven-analyzer-plugin"
             },
             "cache" : true,
-            "inputs" : [ ],
-            "outputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/target/classes", "{projectRoot}/packages/maven/analyzer-plugin/target" ],
+            "inputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/target/classes" ],
+            "outputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/target" ],
             "parallelism" : true
           },
           "after:package" : {
