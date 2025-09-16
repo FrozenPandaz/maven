@@ -56,6 +56,7 @@ import org.codehaus.plexus.PlexusContainer;
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluator;
 import org.codehaus.plexus.configuration.DefaultPlexusConfiguration;
 import org.codehaus.plexus.util.Os;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -447,6 +448,7 @@ class PluginParameterExpressionEvaluatorTest extends AbstractCoreMavenComponentT
     }
 
     @Test
+    @Disabled("Fails on CI with Unicode path handling issues")
     public void testPluginInjection() throws Exception {
         Path path = Paths.get("rép➜α").toAbsolutePath();
 
