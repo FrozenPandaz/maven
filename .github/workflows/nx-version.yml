@@ -92,7 +92,7 @@ jobs:
 
       - name: Build Maven distributions
         shell: bash
-        run: npx nx run-many -t verify
+        run: npx nx run-many -t verify-ci
 
       - name: List contents of target directory
         shell: bash
