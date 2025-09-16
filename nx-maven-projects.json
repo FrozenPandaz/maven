@@ -187,7 +187,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-api-annotations"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-annotations/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-annotations/target", "{projectRoot}/api/maven-api-annotations/target/generated-sources/annotations", "{projectRoot}/api/maven-api-annotations/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -305,7 +307,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-api-annotations"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-annotations/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-annotations/target", "{projectRoot}/api/maven-api-annotations/target/generated-test-sources/test-annotations", "{projectRoot}/api/maven-api-annotations/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -333,7 +337,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-api-annotations"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-annotations/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-annotations/target/classes", "{projectRoot}/api/maven-api-annotations/target", "{projectRoot}/api/maven-api-annotations/target/surefire-reports", "{projectRoot}/api/maven-api-annotations/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -391,7 +397,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-api-annotations"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/api/maven-api-annotations/target/classes", "{projectRoot}/api/maven-api-annotations/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -567,7 +575,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-api-annotations"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-annotations/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-annotations/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -951,7 +961,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-api-di"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-di/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-di/target", "{projectRoot}/api/maven-api-di/target/generated-sources/annotations", "{projectRoot}/api/maven-api-di/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -1069,7 +1081,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-api-di"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-di/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-di/target", "{projectRoot}/api/maven-api-di/target/generated-test-sources/test-annotations", "{projectRoot}/api/maven-api-di/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -1097,7 +1111,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-api-di"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-di/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-di/target/classes", "{projectRoot}/api/maven-api-di/target", "{projectRoot}/api/maven-api-di/target/surefire-reports", "{projectRoot}/api/maven-api-di/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -1155,7 +1171,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-api-di"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/api/maven-api-di/target/classes", "{projectRoot}/api/maven-api-di/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -1331,7 +1349,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-api-di"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-di/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-di/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -1715,7 +1735,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-api-xml"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-xml/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-xml/target", "{projectRoot}/api/maven-api-xml/target/generated-sources/annotations", "{projectRoot}/api/maven-api-xml/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -1833,7 +1855,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-api-xml"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-xml/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-xml/target", "{projectRoot}/api/maven-api-xml/target/generated-test-sources/test-annotations", "{projectRoot}/api/maven-api-xml/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -1861,7 +1885,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-api-xml"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-xml/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-xml/target/classes", "{projectRoot}/api/maven-api-xml/target", "{projectRoot}/api/maven-api-xml/target/surefire-reports", "{projectRoot}/api/maven-api-xml/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -1919,7 +1945,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-api-xml"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/api/maven-api-xml/target/classes", "{projectRoot}/api/maven-api-xml/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -2095,7 +2123,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-api-xml"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-xml/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-xml/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -2479,7 +2509,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-api-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-model/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-model/target", "{projectRoot}/api/maven-api-model/target/generated-sources/annotations", "{projectRoot}/api/maven-api-model/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -2597,7 +2629,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-api-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-model/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-model/target", "{projectRoot}/api/maven-api-model/target/generated-test-sources/test-annotations", "{projectRoot}/api/maven-api-model/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -2625,7 +2659,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-api-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-model/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-model/target/classes", "{projectRoot}/api/maven-api-model/target", "{projectRoot}/api/maven-api-model/target/surefire-reports", "{projectRoot}/api/maven-api-model/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -2683,7 +2719,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-api-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/api/maven-api-model/target/classes", "{projectRoot}/api/maven-api-model/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -2859,7 +2897,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-api-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-model/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-model/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -3277,7 +3317,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-api-plugin"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-plugin/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-plugin/target", "{projectRoot}/api/maven-api-plugin/target/generated-sources/annotations", "{projectRoot}/api/maven-api-plugin/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -3395,7 +3437,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-api-plugin"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-plugin/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-plugin/target", "{projectRoot}/api/maven-api-plugin/target/generated-test-sources/test-annotations", "{projectRoot}/api/maven-api-plugin/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -3423,7 +3467,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-api-plugin"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-plugin/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-plugin/target/classes", "{projectRoot}/api/maven-api-plugin/target", "{projectRoot}/api/maven-api-plugin/target/surefire-reports", "{projectRoot}/api/maven-api-plugin/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -3481,7 +3527,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-api-plugin"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/api/maven-api-plugin/target/classes", "{projectRoot}/api/maven-api-plugin/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -3657,7 +3705,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-api-plugin"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-plugin/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-plugin/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -4066,7 +4116,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-api-settings"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-settings/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-settings/target", "{projectRoot}/api/maven-api-settings/target/generated-sources/annotations", "{projectRoot}/api/maven-api-settings/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -4184,7 +4236,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-api-settings"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-settings/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-settings/target", "{projectRoot}/api/maven-api-settings/target/generated-test-sources/test-annotations", "{projectRoot}/api/maven-api-settings/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -4212,7 +4266,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-api-settings"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-settings/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-settings/target/classes", "{projectRoot}/api/maven-api-settings/target", "{projectRoot}/api/maven-api-settings/target/surefire-reports", "{projectRoot}/api/maven-api-settings/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -4270,7 +4326,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-api-settings"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/api/maven-api-settings/target/classes", "{projectRoot}/api/maven-api-settings/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -4446,7 +4504,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-api-settings"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-settings/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-settings/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -4855,7 +4915,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-api-toolchain"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-toolchain/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-toolchain/target", "{projectRoot}/api/maven-api-toolchain/target/generated-sources/annotations", "{projectRoot}/api/maven-api-toolchain/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -4973,7 +5035,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-api-toolchain"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-toolchain/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-toolchain/target", "{projectRoot}/api/maven-api-toolchain/target/generated-test-sources/test-annotations", "{projectRoot}/api/maven-api-toolchain/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -5001,7 +5065,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-api-toolchain"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-toolchain/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-toolchain/target/classes", "{projectRoot}/api/maven-api-toolchain/target", "{projectRoot}/api/maven-api-toolchain/target/surefire-reports", "{projectRoot}/api/maven-api-toolchain/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -5059,7 +5125,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-api-toolchain"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/api/maven-api-toolchain/target/classes", "{projectRoot}/api/maven-api-toolchain/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -5235,7 +5303,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-api-toolchain"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-toolchain/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-toolchain/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -5644,7 +5714,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-api-metadata"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-metadata/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-metadata/target", "{projectRoot}/api/maven-api-metadata/target/generated-sources/annotations", "{projectRoot}/api/maven-api-metadata/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -5762,7 +5834,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-api-metadata"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-metadata/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-metadata/target", "{projectRoot}/api/maven-api-metadata/target/generated-test-sources/test-annotations", "{projectRoot}/api/maven-api-metadata/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -5790,7 +5864,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-api-metadata"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-metadata/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-metadata/target/classes", "{projectRoot}/api/maven-api-metadata/target", "{projectRoot}/api/maven-api-metadata/target/surefire-reports", "{projectRoot}/api/maven-api-metadata/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -5848,7 +5924,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-api-metadata"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/api/maven-api-metadata/target/classes", "{projectRoot}/api/maven-api-metadata/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -6024,7 +6102,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-api-metadata"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-metadata/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-metadata/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -6433,7 +6513,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-api-core"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-core/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-core/target", "{projectRoot}/api/maven-api-core/target/generated-sources/annotations", "{projectRoot}/api/maven-api-core/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -6551,7 +6633,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-api-core"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-core/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-core/target", "{projectRoot}/api/maven-api-core/target/generated-test-sources/test-annotations", "{projectRoot}/api/maven-api-core/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -6579,7 +6663,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-api-core"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-core/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-core/target/classes", "{projectRoot}/api/maven-api-core/target", "{projectRoot}/api/maven-api-core/target/surefire-reports", "{projectRoot}/api/maven-api-core/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -6637,7 +6723,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-api-core"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/api/maven-api-core/target/classes", "{projectRoot}/api/maven-api-core/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -6813,7 +6901,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-api-core"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-core/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-core/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -7205,7 +7295,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-api-spi"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-spi/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-spi/target", "{projectRoot}/api/maven-api-spi/target/generated-sources/annotations", "{projectRoot}/api/maven-api-spi/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -7323,7 +7415,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-api-spi"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-spi/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-spi/target", "{projectRoot}/api/maven-api-spi/target/generated-test-sources/test-annotations", "{projectRoot}/api/maven-api-spi/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -7351,7 +7445,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-api-spi"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-spi/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-spi/target/classes", "{projectRoot}/api/maven-api-spi/target", "{projectRoot}/api/maven-api-spi/target/surefire-reports", "{projectRoot}/api/maven-api-spi/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -7409,7 +7505,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-api-spi"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/api/maven-api-spi/target/classes", "{projectRoot}/api/maven-api-spi/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -7585,7 +7683,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-api-spi"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-spi/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-spi/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -7969,7 +8069,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-api-cli"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-cli/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-cli/target", "{projectRoot}/api/maven-api-cli/target/generated-sources/annotations", "{projectRoot}/api/maven-api-cli/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -8087,7 +8189,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-api-cli"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-cli/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-cli/target", "{projectRoot}/api/maven-api-cli/target/generated-test-sources/test-annotations", "{projectRoot}/api/maven-api-cli/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -8115,7 +8219,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-api-cli"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/maven-api-cli/**/*" ],
+            "outputs" : [ "{projectRoot}/api/maven-api-cli/target/classes", "{projectRoot}/api/maven-api-cli/target", "{projectRoot}/api/maven-api-cli/target/surefire-reports", "{projectRoot}/api/maven-api-cli/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -8173,7 +8279,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-api-cli"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/api/maven-api-cli/target/classes", "{projectRoot}/api/maven-api-cli/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -8349,7 +8457,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-api-cli"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/api/maven-api-cli/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -9146,7 +9256,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-api"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/api/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/api/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -9478,7 +9590,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-support"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-support/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-support/target", "{projectRoot}/impl/maven-support/target/generated-sources/annotations", "{projectRoot}/impl/maven-support/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -9596,7 +9710,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-support"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-support/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-support/target", "{projectRoot}/impl/maven-support/target/generated-test-sources/test-annotations", "{projectRoot}/impl/maven-support/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -9624,7 +9740,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-support"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-support/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-support/target/classes", "{projectRoot}/impl/maven-support/target", "{projectRoot}/impl/maven-support/target/surefire-reports", "{projectRoot}/impl/maven-support/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -9682,7 +9800,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-support"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/maven-support/target/classes", "{projectRoot}/impl/maven-support/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -9858,7 +9978,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-support"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/maven-support/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -10251,7 +10373,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-impl"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-impl/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-impl/target", "{projectRoot}/impl/maven-impl/target/generated-sources/annotations", "{projectRoot}/impl/maven-impl/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -10369,7 +10493,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-impl"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-impl/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-impl/target", "{projectRoot}/impl/maven-impl/target/generated-test-sources/test-annotations", "{projectRoot}/impl/maven-impl/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -10397,7 +10523,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-impl"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-impl/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-impl/target/classes", "{projectRoot}/impl/maven-impl/target", "{projectRoot}/impl/maven-impl/target/surefire-reports", "{projectRoot}/impl/maven-impl/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -10455,7 +10583,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-impl"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/maven-impl/target/classes", "{projectRoot}/impl/maven-impl/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -10631,7 +10761,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-impl"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-impl/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-impl/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -10796,26 +10928,10 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "mvnd test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.VersionRangeTest.VersionRangeTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
           "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest" : {
             "executor" : "nx:run-commands",
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.PathSelectorTest.PathSelectorTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
-          "test--org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "mvnd test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest"
             },
             "cache" : false,
             "parallelism" : false
@@ -10828,26 +10944,18 @@
             "cache" : false,
             "parallelism" : false
           },
+          "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvnd test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.VersionRangeTest.VersionRangeTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
           "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest" : {
             "executor" : "nx:run-commands",
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
-          "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "mvnd test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
-          "test--org.apache.maven.impl.VersionTest.VersionTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "mvnd test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.VersionTest.VersionTest"
             },
             "cache" : false,
             "parallelism" : false
@@ -10860,10 +10968,34 @@
             "cache" : false,
             "parallelism" : false
           },
+          "test--org.apache.maven.impl.VersionTest.VersionTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvnd test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.VersionTest.VersionTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvnd test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvnd test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
           "verify-ci" : {
             "executor" : "nx:noop",
             "cache" : true,
-            "dependsOn" : [ "package", "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest", "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest", "test--org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest", "test--org.apache.maven.impl.ModelVersionParserTest.ModelVersionParserTest", "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest", "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest", "test--org.apache.maven.impl.VersionTest.VersionTest", "test--org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest" ]
+            "dependsOn" : [ "package", "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest", "test--org.apache.maven.impl.ModelVersionParserTest.ModelVersionParserTest", "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest", "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest", "test--org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest", "test--org.apache.maven.impl.VersionTest.VersionTest", "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest", "test--org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest" ]
           }
         },
         "metadata" : {
@@ -11079,7 +11211,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-di"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-di/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-di/target", "{projectRoot}/impl/maven-di/target/generated-sources/annotations", "{projectRoot}/impl/maven-di/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -11197,7 +11331,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-di"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-di/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-di/target", "{projectRoot}/impl/maven-di/target/generated-test-sources/test-annotations", "{projectRoot}/impl/maven-di/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -11225,7 +11361,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-di"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-di/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-di/target/classes", "{projectRoot}/impl/maven-di/target", "{projectRoot}/impl/maven-di/target/surefire-reports", "{projectRoot}/impl/maven-di/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -11283,7 +11421,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-di"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/maven-di/target/classes", "{projectRoot}/impl/maven-di/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -11459,7 +11599,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-di"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-di/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-di/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -11859,7 +12001,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-xml"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-xml/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-xml/target", "{projectRoot}/impl/maven-xml/target/generated-sources/annotations", "{projectRoot}/impl/maven-xml/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -11977,7 +12121,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-xml"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-xml/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-xml/target", "{projectRoot}/impl/maven-xml/target/generated-test-sources/test-annotations", "{projectRoot}/impl/maven-xml/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -12005,7 +12151,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-xml"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-xml/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-xml/target/classes", "{projectRoot}/impl/maven-xml/target", "{projectRoot}/impl/maven-xml/target/surefire-reports", "{projectRoot}/impl/maven-xml/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -12063,7 +12211,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-xml"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/maven-xml/target/classes", "{projectRoot}/impl/maven-xml/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -12239,7 +12389,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-xml"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-xml/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-xml/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -12623,7 +12775,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-jline"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-jline/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-jline/target", "{projectRoot}/impl/maven-jline/target/generated-sources/annotations", "{projectRoot}/impl/maven-jline/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -12741,7 +12895,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-jline"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-jline/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-jline/target", "{projectRoot}/impl/maven-jline/target/generated-test-sources/test-annotations", "{projectRoot}/impl/maven-jline/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -12769,7 +12925,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-jline"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-jline/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-jline/target/classes", "{projectRoot}/impl/maven-jline/target", "{projectRoot}/impl/maven-jline/target/surefire-reports", "{projectRoot}/impl/maven-jline/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -12827,7 +12985,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-jline"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/maven-jline/target/classes", "{projectRoot}/impl/maven-jline/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -13003,7 +13163,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-jline"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-jline/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-jline/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -13387,7 +13549,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-logging"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-logging/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-logging/target", "{projectRoot}/impl/maven-logging/target/generated-sources/annotations", "{projectRoot}/impl/maven-logging/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -13505,7 +13669,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-logging"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-logging/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-logging/target", "{projectRoot}/impl/maven-logging/target/generated-test-sources/test-annotations", "{projectRoot}/impl/maven-logging/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -13533,7 +13699,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-logging"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-logging/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-logging/target/classes", "{projectRoot}/impl/maven-logging/target", "{projectRoot}/impl/maven-logging/target/surefire-reports", "{projectRoot}/impl/maven-logging/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -13591,7 +13759,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-logging"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/maven-logging/target/classes", "{projectRoot}/impl/maven-logging/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -13767,7 +13937,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-logging"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-logging/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-logging/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -14151,7 +14323,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-core"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-core/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-core/target", "{projectRoot}/impl/maven-core/target/generated-sources/annotations", "{projectRoot}/impl/maven-core/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -14269,7 +14443,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-core"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-core/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-core/target", "{projectRoot}/impl/maven-core/target/generated-test-sources/test-annotations", "{projectRoot}/impl/maven-core/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -14297,7 +14473,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-core"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-core/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-core/target/classes", "{projectRoot}/impl/maven-core/target", "{projectRoot}/impl/maven-core/target/surefire-reports", "{projectRoot}/impl/maven-core/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -14355,7 +14533,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-core"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/maven-core/target/classes", "{projectRoot}/impl/maven-core/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -14433,7 +14613,9 @@
             "options" : {
               "command" : "mvnd verify -am -pl org.apache.maven:maven-core"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/maven-core/target" ],
             "parallelism" : true
           },
           "after:verify" : {
@@ -14529,7 +14711,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-core"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-core/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-core/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -14758,14 +14942,6 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.internal.impl.DefaultSessionTest.DefaultSessionTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "mvnd test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.internal.impl.DefaultSessionTest.DefaultSessionTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
           "test--org.apache.maven.internal.transformation.impl.ConsumerPomBuilderTest.ConsumerPomBuilderTest" : {
             "executor" : "nx:run-commands",
             "options" : {
@@ -14774,26 +14950,10 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest" : {
+          "test--org.apache.maven.internal.impl.DefaultSessionTest.DefaultSessionTest" : {
             "executor" : "nx:run-commands",
             "options" : {
-              "command" : "mvnd test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
-          "test--org.apache.maven.di.DiTest.DiTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "mvnd test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.di.DiTest.DiTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
-          "test--org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "mvnd test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest"
+              "command" : "mvnd test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.internal.impl.DefaultSessionTest.DefaultSessionTest"
             },
             "cache" : false,
             "parallelism" : false
@@ -14806,14 +14966,6 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "mvnd test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
           "test--org.apache.maven.model.ModelBuilderTest.ModelBuilderTest" : {
             "executor" : "nx:run-commands",
             "options" : {
@@ -14822,10 +14974,42 @@
             "cache" : false,
             "parallelism" : false
           },
+          "test--org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvnd test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvnd test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvnd test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.di.DiTest.DiTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvnd test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.di.DiTest.DiTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
           "verify-ci" : {
             "executor" : "nx:noop",
             "cache" : true,
-            "dependsOn" : [ "package", "test--org.apache.maven.project.GraphTest.GraphTest", "test--org.apache.maven.internal.impl.DefaultChecksumAlgorithmServiceTest.DefaultChecksumAlgorithmServiceTest", "test--org.apache.maven.internal.impl.DefaultSessionTest.DefaultSessionTest", "test--org.apache.maven.internal.transformation.impl.ConsumerPomBuilderTest.ConsumerPomBuilderTest", "test--org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest", "test--org.apache.maven.di.DiTest.DiTest", "test--org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest", "test--org.apache.maven.session.scope.SessionScopeProxyTest.SessionScopeProxyTest", "test--org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test", "test--org.apache.maven.model.ModelBuilderTest.ModelBuilderTest" ]
+            "dependsOn" : [ "package", "test--org.apache.maven.project.GraphTest.GraphTest", "test--org.apache.maven.internal.impl.DefaultChecksumAlgorithmServiceTest.DefaultChecksumAlgorithmServiceTest", "test--org.apache.maven.internal.transformation.impl.ConsumerPomBuilderTest.ConsumerPomBuilderTest", "test--org.apache.maven.internal.impl.DefaultSessionTest.DefaultSessionTest", "test--org.apache.maven.session.scope.SessionScopeProxyTest.SessionScopeProxyTest", "test--org.apache.maven.model.ModelBuilderTest.ModelBuilderTest", "test--org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest", "test--org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest", "test--org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test", "test--org.apache.maven.di.DiTest.DiTest" ]
           }
         },
         "metadata" : {
@@ -15045,7 +15229,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-cli"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-cli/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-cli/target", "{projectRoot}/impl/maven-cli/target/generated-sources/annotations", "{projectRoot}/impl/maven-cli/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -15163,7 +15349,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-cli"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-cli/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-cli/target", "{projectRoot}/impl/maven-cli/target/generated-test-sources/test-annotations", "{projectRoot}/impl/maven-cli/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -15191,7 +15379,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-cli"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-cli/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-cli/target/classes", "{projectRoot}/impl/maven-cli/target", "{projectRoot}/impl/maven-cli/target/surefire-reports", "{projectRoot}/impl/maven-cli/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -15249,7 +15439,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-cli"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/maven-cli/target/classes", "{projectRoot}/impl/maven-cli/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -15425,7 +15617,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-cli"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-cli/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-cli/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -15858,7 +16052,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-testing"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-testing/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-testing/target", "{projectRoot}/impl/maven-testing/target/generated-sources/annotations", "{projectRoot}/impl/maven-testing/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -15976,7 +16172,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-testing"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-testing/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-testing/target", "{projectRoot}/impl/maven-testing/target/generated-test-sources/test-annotations", "{projectRoot}/impl/maven-testing/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -16004,7 +16202,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-testing"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-testing/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-testing/target/classes", "{projectRoot}/impl/maven-testing/target", "{projectRoot}/impl/maven-testing/target/surefire-reports", "{projectRoot}/impl/maven-testing/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -16062,7 +16262,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-testing"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/maven-testing/target/classes", "{projectRoot}/impl/maven-testing/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -16238,7 +16440,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-testing"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/maven-testing/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -16638,7 +16842,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-executor"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-executor/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-executor/target", "{projectRoot}/impl/maven-executor/target/generated-sources/annotations", "{projectRoot}/impl/maven-executor/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -16756,7 +16962,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-executor"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-executor/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-executor/target", "{projectRoot}/impl/maven-executor/target/generated-test-sources/test-annotations", "{projectRoot}/impl/maven-executor/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -16784,7 +16992,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-executor"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/impl/maven-executor/**/*" ],
+            "outputs" : [ "{projectRoot}/impl/maven-executor/target/classes", "{projectRoot}/impl/maven-executor/target", "{projectRoot}/impl/maven-executor/target/surefire-reports", "{projectRoot}/impl/maven-executor/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -16842,7 +17052,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-executor"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/maven-executor/target/classes", "{projectRoot}/impl/maven-executor/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -17018,7 +17230,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-executor"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/maven-executor/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -17822,7 +18036,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-impl-modules"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/impl/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -18154,7 +18370,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-plugin-api"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-plugin-api/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-plugin-api/target", "{projectRoot}/compat/maven-plugin-api/target/generated-sources/annotations", "{projectRoot}/compat/maven-plugin-api/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -18272,7 +18490,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-plugin-api"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-plugin-api/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-plugin-api/target", "{projectRoot}/compat/maven-plugin-api/target/generated-test-sources/test-annotations", "{projectRoot}/compat/maven-plugin-api/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -18300,7 +18520,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-plugin-api"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-plugin-api/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-plugin-api/target/classes", "{projectRoot}/compat/maven-plugin-api/target", "{projectRoot}/compat/maven-plugin-api/target/surefire-reports", "{projectRoot}/compat/maven-plugin-api/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -18358,7 +18580,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-plugin-api"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-plugin-api/target/classes", "{projectRoot}/compat/maven-plugin-api/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -18436,7 +18660,9 @@
             "options" : {
               "command" : "mvnd verify -am -pl org.apache.maven:maven-plugin-api"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-plugin-api/target" ],
             "parallelism" : true
           },
           "after:verify" : {
@@ -18532,7 +18758,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-plugin-api"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-plugin-api/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-plugin-api/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -18925,7 +19153,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-builder-support"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-builder-support/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-builder-support/target", "{projectRoot}/compat/maven-builder-support/target/generated-sources/annotations", "{projectRoot}/compat/maven-builder-support/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -19043,7 +19273,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-builder-support"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-builder-support/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-builder-support/target", "{projectRoot}/compat/maven-builder-support/target/generated-test-sources/test-annotations", "{projectRoot}/compat/maven-builder-support/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -19071,7 +19303,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-builder-support"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-builder-support/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-builder-support/target/classes", "{projectRoot}/compat/maven-builder-support/target", "{projectRoot}/compat/maven-builder-support/target/surefire-reports", "{projectRoot}/compat/maven-builder-support/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -19129,7 +19363,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-builder-support"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-builder-support/target/classes", "{projectRoot}/compat/maven-builder-support/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -19305,7 +19541,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-builder-support"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-builder-support/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-builder-support/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -19689,7 +19927,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-model/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-model/target", "{projectRoot}/compat/maven-model/target/generated-sources/annotations", "{projectRoot}/compat/maven-model/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -19807,7 +20047,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-model/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-model/target", "{projectRoot}/compat/maven-model/target/generated-test-sources/test-annotations", "{projectRoot}/compat/maven-model/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -19835,7 +20077,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-model/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-model/target/classes", "{projectRoot}/compat/maven-model/target", "{projectRoot}/compat/maven-model/target/surefire-reports", "{projectRoot}/compat/maven-model/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -19893,7 +20137,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-model/target/classes", "{projectRoot}/compat/maven-model/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -19971,7 +20217,9 @@
             "options" : {
               "command" : "mvnd verify -am -pl org.apache.maven:maven-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-model/target" ],
             "parallelism" : true
           },
           "after:verify" : {
@@ -20067,7 +20315,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-model/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-model/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -20469,7 +20719,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-model-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-model-builder/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-model-builder/target", "{projectRoot}/compat/maven-model-builder/target/generated-sources/annotations", "{projectRoot}/compat/maven-model-builder/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -20587,7 +20839,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-model-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-model-builder/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-model-builder/target", "{projectRoot}/compat/maven-model-builder/target/generated-test-sources/test-annotations", "{projectRoot}/compat/maven-model-builder/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -20615,7 +20869,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-model-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-model-builder/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-model-builder/target/classes", "{projectRoot}/compat/maven-model-builder/target", "{projectRoot}/compat/maven-model-builder/target/surefire-reports", "{projectRoot}/compat/maven-model-builder/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -20673,7 +20929,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-model-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-model-builder/target/classes", "{projectRoot}/compat/maven-model-builder/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -20751,7 +21009,9 @@
             "options" : {
               "command" : "mvnd verify -am -pl org.apache.maven:maven-model-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-model-builder/target" ],
             "parallelism" : true
           },
           "after:verify" : {
@@ -20847,7 +21107,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-model-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-model-builder/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-model-builder/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -21036,26 +21298,10 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.model.interpolation.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "mvnd test -am -pl org.apache.maven:maven-model-builder -Dtest=org.apache.maven.model.interpolation.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
           "test--org.apache.maven.model.building.GraphTest.GraphTest" : {
             "executor" : "nx:run-commands",
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-model-builder -Dtest=org.apache.maven.model.building.GraphTest.GraphTest"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
-          "test--org.apache.maven.model.profile.DefaultProfileSelectorTest.DefaultProfileSelectorTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "mvnd test -am -pl org.apache.maven:maven-model-builder -Dtest=org.apache.maven.model.profile.DefaultProfileSelectorTest.DefaultProfileSelectorTest"
             },
             "cache" : false,
             "parallelism" : false
@@ -21068,10 +21314,26 @@
             "cache" : false,
             "parallelism" : false
           },
+          "test--org.apache.maven.model.profile.DefaultProfileSelectorTest.DefaultProfileSelectorTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvnd test -am -pl org.apache.maven:maven-model-builder -Dtest=org.apache.maven.model.profile.DefaultProfileSelectorTest.DefaultProfileSelectorTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.model.interpolation.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvnd test -am -pl org.apache.maven:maven-model-builder -Dtest=org.apache.maven.model.interpolation.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
           "verify-ci" : {
             "executor" : "nx:noop",
             "cache" : true,
-            "dependsOn" : [ "package", "test--org.apache.maven.model.interpolation.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest", "test--org.apache.maven.model.building.GraphTest.GraphTest", "test--org.apache.maven.model.profile.DefaultProfileSelectorTest.DefaultProfileSelectorTest", "test--org.apache.maven.model.building.DefaultModelBuilderTest.DefaultModelBuilderTest" ]
+            "dependsOn" : [ "package", "test--org.apache.maven.model.building.GraphTest.GraphTest", "test--org.apache.maven.model.building.DefaultModelBuilderTest.DefaultModelBuilderTest", "test--org.apache.maven.model.profile.DefaultProfileSelectorTest.DefaultProfileSelectorTest", "test--org.apache.maven.model.interpolation.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest" ]
           }
         },
         "metadata" : {
@@ -21289,7 +21551,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-settings"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-settings/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings/target", "{projectRoot}/compat/maven-settings/target/generated-sources/annotations", "{projectRoot}/compat/maven-settings/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -21407,7 +21671,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-settings"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-settings/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings/target", "{projectRoot}/compat/maven-settings/target/generated-test-sources/test-annotations", "{projectRoot}/compat/maven-settings/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -21435,7 +21701,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-settings"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-settings/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings/target/classes", "{projectRoot}/compat/maven-settings/target", "{projectRoot}/compat/maven-settings/target/surefire-reports", "{projectRoot}/compat/maven-settings/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -21493,7 +21761,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-settings"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings/target/classes", "{projectRoot}/compat/maven-settings/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -21571,7 +21841,9 @@
             "options" : {
               "command" : "mvnd verify -am -pl org.apache.maven:maven-settings"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings/target" ],
             "parallelism" : true
           },
           "after:verify" : {
@@ -21667,7 +21939,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-settings"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-settings/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -22069,7 +22343,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-settings-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-settings-builder/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings-builder/target", "{projectRoot}/compat/maven-settings-builder/target/generated-sources/annotations", "{projectRoot}/compat/maven-settings-builder/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -22187,7 +22463,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-settings-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-settings-builder/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings-builder/target", "{projectRoot}/compat/maven-settings-builder/target/generated-test-sources/test-annotations", "{projectRoot}/compat/maven-settings-builder/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -22215,7 +22493,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-settings-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-settings-builder/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings-builder/target/classes", "{projectRoot}/compat/maven-settings-builder/target", "{projectRoot}/compat/maven-settings-builder/target/surefire-reports", "{projectRoot}/compat/maven-settings-builder/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -22273,7 +22553,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-settings-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings-builder/target/classes", "{projectRoot}/compat/maven-settings-builder/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -22351,7 +22633,9 @@
             "options" : {
               "command" : "mvnd verify -am -pl org.apache.maven:maven-settings-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings-builder/target" ],
             "parallelism" : true
           },
           "after:verify" : {
@@ -22447,7 +22731,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-settings-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-settings-builder/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-settings-builder/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -22857,7 +23143,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-artifact"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-artifact/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-artifact/target", "{projectRoot}/compat/maven-artifact/target/generated-sources/annotations", "{projectRoot}/compat/maven-artifact/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -22975,7 +23263,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-artifact"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-artifact/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-artifact/target", "{projectRoot}/compat/maven-artifact/target/generated-test-sources/test-annotations", "{projectRoot}/compat/maven-artifact/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -23003,7 +23293,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-artifact"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-artifact/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-artifact/target/classes", "{projectRoot}/compat/maven-artifact/target", "{projectRoot}/compat/maven-artifact/target/surefire-reports", "{projectRoot}/compat/maven-artifact/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -23061,7 +23353,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-artifact"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-artifact/target/classes", "{projectRoot}/compat/maven-artifact/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -23237,7 +23531,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-artifact"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-artifact/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-artifact/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -23638,7 +23934,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-resolver-provider"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-resolver-provider/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-resolver-provider/target", "{projectRoot}/compat/maven-resolver-provider/target/generated-sources/annotations", "{projectRoot}/compat/maven-resolver-provider/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -23756,7 +24054,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-resolver-provider"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-resolver-provider/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-resolver-provider/target", "{projectRoot}/compat/maven-resolver-provider/target/generated-test-sources/test-annotations", "{projectRoot}/compat/maven-resolver-provider/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -23784,7 +24084,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-resolver-provider"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-resolver-provider/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-resolver-provider/target/classes", "{projectRoot}/compat/maven-resolver-provider/target", "{projectRoot}/compat/maven-resolver-provider/target/surefire-reports", "{projectRoot}/compat/maven-resolver-provider/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -23842,7 +24144,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-resolver-provider"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-resolver-provider/target/classes", "{projectRoot}/compat/maven-resolver-provider/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -24018,7 +24322,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-resolver-provider"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-resolver-provider/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-resolver-provider/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -24410,7 +24716,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-repository-metadata"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-repository-metadata/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-repository-metadata/target", "{projectRoot}/compat/maven-repository-metadata/target/generated-sources/annotations", "{projectRoot}/compat/maven-repository-metadata/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -24528,7 +24836,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-repository-metadata"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-repository-metadata/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-repository-metadata/target", "{projectRoot}/compat/maven-repository-metadata/target/generated-test-sources/test-annotations", "{projectRoot}/compat/maven-repository-metadata/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -24556,7 +24866,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-repository-metadata"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-repository-metadata/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-repository-metadata/target/classes", "{projectRoot}/compat/maven-repository-metadata/target", "{projectRoot}/compat/maven-repository-metadata/target/surefire-reports", "{projectRoot}/compat/maven-repository-metadata/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -24614,7 +24926,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-repository-metadata"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-repository-metadata/target/classes", "{projectRoot}/compat/maven-repository-metadata/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -24790,7 +25104,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-repository-metadata"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-repository-metadata/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-repository-metadata/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -25183,7 +25499,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-embedder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-embedder/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-embedder/target", "{projectRoot}/compat/maven-embedder/target/generated-sources/annotations", "{projectRoot}/compat/maven-embedder/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -25301,7 +25619,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-embedder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-embedder/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-embedder/target", "{projectRoot}/compat/maven-embedder/target/generated-test-sources/test-annotations", "{projectRoot}/compat/maven-embedder/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -25329,7 +25649,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-embedder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-embedder/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-embedder/target/classes", "{projectRoot}/compat/maven-embedder/target", "{projectRoot}/compat/maven-embedder/target/surefire-reports", "{projectRoot}/compat/maven-embedder/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -25387,7 +25709,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-embedder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-embedder/target/classes", "{projectRoot}/compat/maven-embedder/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -25563,7 +25887,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-embedder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-embedder/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-embedder/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -25972,7 +26298,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-compat"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-compat/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-compat/target", "{projectRoot}/compat/maven-compat/target/generated-sources/annotations", "{projectRoot}/compat/maven-compat/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -26090,7 +26418,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-compat"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-compat/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-compat/target", "{projectRoot}/compat/maven-compat/target/generated-test-sources/test-annotations", "{projectRoot}/compat/maven-compat/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -26118,7 +26448,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-compat"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-compat/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-compat/target/classes", "{projectRoot}/compat/maven-compat/target", "{projectRoot}/compat/maven-compat/target/surefire-reports", "{projectRoot}/compat/maven-compat/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -26176,7 +26508,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-compat"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-compat/target/classes", "{projectRoot}/compat/maven-compat/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -26352,7 +26686,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-compat"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-compat/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-compat/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -26778,7 +27114,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-toolchain-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-toolchain-model/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-model/target", "{projectRoot}/compat/maven-toolchain-model/target/generated-sources/annotations", "{projectRoot}/compat/maven-toolchain-model/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -26896,7 +27234,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-toolchain-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-toolchain-model/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-model/target", "{projectRoot}/compat/maven-toolchain-model/target/generated-test-sources/test-annotations", "{projectRoot}/compat/maven-toolchain-model/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -26924,7 +27264,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-toolchain-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-toolchain-model/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-model/target/classes", "{projectRoot}/compat/maven-toolchain-model/target", "{projectRoot}/compat/maven-toolchain-model/target/surefire-reports", "{projectRoot}/compat/maven-toolchain-model/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -26982,7 +27324,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-toolchain-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-model/target/classes", "{projectRoot}/compat/maven-toolchain-model/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -27060,7 +27404,9 @@
             "options" : {
               "command" : "mvnd verify -am -pl org.apache.maven:maven-toolchain-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-model/target" ],
             "parallelism" : true
           },
           "after:verify" : {
@@ -27156,7 +27502,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-toolchain-model"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-toolchain-model/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-model/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -27558,7 +27906,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl org.apache.maven:maven-toolchain-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-toolchain-builder/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-builder/target", "{projectRoot}/compat/maven-toolchain-builder/target/generated-sources/annotations", "{projectRoot}/compat/maven-toolchain-builder/target/classes" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -27676,7 +28026,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl org.apache.maven:maven-toolchain-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-toolchain-builder/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-builder/target", "{projectRoot}/compat/maven-toolchain-builder/target/generated-test-sources/test-annotations", "{projectRoot}/compat/maven-toolchain-builder/target/test-classes" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -27704,7 +28056,9 @@
             "options" : {
               "command" : "mvnd test -am -pl org.apache.maven:maven-toolchain-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-toolchain-builder/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-builder/target/classes", "{projectRoot}/compat/maven-toolchain-builder/target", "{projectRoot}/compat/maven-toolchain-builder/target/surefire-reports", "{projectRoot}/compat/maven-toolchain-builder/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -27762,7 +28116,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:maven-toolchain-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-builder/target/classes", "{projectRoot}/compat/maven-toolchain-builder/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -27840,7 +28196,9 @@
             "options" : {
               "command" : "mvnd verify -am -pl org.apache.maven:maven-toolchain-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-builder/target" ],
             "parallelism" : true
           },
           "after:verify" : {
@@ -27936,7 +28294,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-toolchain-builder"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/compat/maven-toolchain-builder/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/compat/maven-toolchain-builder/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -28734,7 +29094,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven-compat-modules"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/compat/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -29276,7 +29638,9 @@
             "options" : {
               "command" : "mvnd package -am -pl org.apache.maven:apache-maven"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/apache-maven/**/*" ],
+            "outputs" : [ "{projectRoot}/apache-maven/target", "{projectRoot}/apache-maven/target/archive-tmp", "{projectRoot}/apache-maven/target/assembly/work" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -29452,7 +29816,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:apache-maven"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/apache-maven/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/apache-maven/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -29828,7 +30194,9 @@
             "options" : {
               "command" : "mvnd compile -am -pl dev.nx.maven:nx-maven-analyzer-plugin"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/**/*" ],
+            "outputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/target/kotlin-ic", "{projectRoot}/packages/maven/analyzer-plugin/target/classes", "{projectRoot}/packages/maven/analyzer-plugin/target/test-classes", "{projectRoot}/packages/maven/analyzer-plugin/target", "{projectRoot}/packages/maven/analyzer-plugin/target/generated-sources/annotations" ],
             "parallelism" : true
           },
           "after:compile" : {
@@ -29946,7 +30314,9 @@
             "options" : {
               "command" : "mvnd test-compile -am -pl dev.nx.maven:nx-maven-analyzer-plugin"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/**/*" ],
+            "outputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/target/kotlin-ic", "{projectRoot}/packages/maven/analyzer-plugin/target/classes", "{projectRoot}/packages/maven/analyzer-plugin/target/test-classes", "{projectRoot}/packages/maven/analyzer-plugin/target", "{projectRoot}/packages/maven/analyzer-plugin/target/generated-test-sources/test-annotations" ],
             "parallelism" : true
           },
           "after:test-compile" : {
@@ -29974,7 +30344,9 @@
             "options" : {
               "command" : "mvnd test -am -pl dev.nx.maven:nx-maven-analyzer-plugin"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/**/*" ],
+            "outputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/target/classes", "{projectRoot}/packages/maven/analyzer-plugin/target", "{projectRoot}/packages/maven/analyzer-plugin/target/surefire-reports", "{projectRoot}/packages/maven/analyzer-plugin/target/test-classes" ],
             "parallelism" : true
           },
           "after:test" : {
@@ -30032,7 +30404,9 @@
             "options" : {
               "command" : "mvnd package -am -pl dev.nx.maven:nx-maven-analyzer-plugin"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/target/classes", "{projectRoot}/packages/maven/analyzer-plugin/target" ],
             "parallelism" : true
           },
           "after:package" : {
@@ -30208,7 +30582,9 @@
             "options" : {
               "command" : "mvnd site -am -pl dev.nx.maven:nx-maven-analyzer-plugin"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ ],
+            "outputs" : [ "{projectRoot}/packages/maven/analyzer-plugin/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
@@ -30961,7 +31337,9 @@
             "options" : {
               "command" : "mvnd site -am -pl org.apache.maven:maven"
             },
-            "cache" : false,
+            "cache" : true,
+            "inputs" : [ "{projectRoot}/src/site/**/*" ],
+            "outputs" : [ "{projectRoot}/target/generated-site" ],
             "parallelism" : true
           },
           "after:site" : {
