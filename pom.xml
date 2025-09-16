@@ -956,33 +956,15 @@ under the License.
           </execution>
         </executions>
       </plugin>
+        <plugin>
+            <groupId>dev.nx.maven</groupId>
+            <artifactId>nx-maven-analyzer-plugin</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </plugin>
     </plugins>
   </build>
 
   <profiles>
-    <profile>
-      <id>test-analyzer</id>
-      <activation>
-        <property>
-          <name>test.analyzer</name>
-        </property>
-      </activation>
-      <modules>
-        <module>api</module>
-        <module>impl</module>
-        <module>compat</module>
-        <module>apache-maven</module>
-      </modules>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>dev.nx.maven</groupId>
-            <artifactId>nx-maven-analyzer-plugin</artifactId>
-            <version>${project.version}</version>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
     <profile>
       <id>mockito</id>
       <activation>
