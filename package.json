@@ -6,7 +6,7 @@
   "scripts": {
     "build": "mvn clean install -pl packages/maven/analyzer-plugin -DskipTests && nx build @nx/maven",
     "build:plugin": "cd packages/maven && tsc -b --clean && tsc -b tsconfig.lib.json --force",
-    "test": "pnpm reset && echo RUNNING && nx run-many -t verify --verbose",
+    "test": "pnpm reset && echo RUNNING && nx run-many -t verify --verbose --parallel 12 --skipNxCache",
     "lint": "nx lint",
     "format": "nx format:write",
     "affected": "nx affected",
@@ -20,20 +20,21 @@
     "release:local": "pnpm build && nx release version prerelease && nx release publish"
   },
   "devDependencies": {
-    "@nx/devkit": "21.6.1-beta.1",
-    "@nx/jest": "21.6.1-beta.1",
-    "@nx/js": "21.6.1-beta.1",
-    "@nx/plugin": "21.6.1-beta.1",
-    "@nx/workspace": "21.6.1-beta.1",
+    "@nx/devkit": "21.6.1-beta.2",
+    "@nx/jest": "21.6.1-beta.2",
+    "@nx/js": "21.6.1-beta.2",
+    "@nx/plugin": "21.6.1-beta.2",
+    "@nx/workspace": "21.6.1-beta.2",
     "@types/node": "^20.0.0",
     "jest": "^30.0.2",
-    "nx": "21.6.1-beta.1",
+    "nx": "21.6.1-beta.2",
     "tslib": "^2.3.0",
     "typescript": "^5.0.0",
     "verdaccio": "^6.1.6"
   },
   "nx": {
-    "name": "org.apache.maven.maven"
+    "name": "org.apache.maven:maven",
+    "includedScripts": []
   },
   "packageManager": "pnpm@9.15.0"
 }
