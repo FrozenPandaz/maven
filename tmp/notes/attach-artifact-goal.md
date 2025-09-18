@@ -1,7 +1,7 @@
 # Attach Artifact Goal Implementation
 
 ## Summary
-Implemented a new Maven goal `nx-maven:attach-artifact` that allows attaching artifacts to Maven projects. This goal is not bound to any phase and can be used standalone.
+Implemented a new Maven goal `nx:attach-artifact` that allows attaching artifacts to Maven projects. This goal is not bound to any phase and can be used standalone.
 
 ## Key Components
 
@@ -27,23 +27,23 @@ Implemented a new Maven goal `nx-maven:attach-artifact` that allows attaching ar
 
 ### Basic Usage
 ```bash
-./mvnw nx-maven:attach-artifact -Dartifact=/path/to/artifact.jar -pl com.example:demo -N
+./mvnw nx:attach-artifact -Dartifact=/path/to/artifact.jar -pl com.example:demo -N
 ```
 
 ### Set as Main Artifact (for install goal)
 ```bash
-./mvnw nx-maven:attach-artifact -Dartifact=/path/to/artifact.jar -DmainArtifact=true -pl com.example:demo -N
+./mvnw nx:attach-artifact -Dartifact=/path/to/artifact.jar -DmainArtifact=true -pl com.example:demo -N
 ```
 
 ### With Classifier
 ```bash
-./mvnw nx-maven:attach-artifact -Dartifact=/path/to/artifact.jar -Dclassifier=sources -pl com.example:demo -N
+./mvnw nx:attach-artifact -Dartifact=/path/to/artifact.jar -Dclassifier=sources -pl com.example:demo -N
 ```
 
 ## Integration with Install Goal
-The implementation now automatically prepends `nx-maven:attach-artifact` to the `install:install` goal when needed, creating a command like:
+The implementation now automatically prepends `nx:attach-artifact` to the `install:install` goal when needed, creating a command like:
 ```bash
-mvn nx-maven:attach-artifact -Dartifact=/path/to/artifact.jar -DmainArtifact=true install:install@execution-id -pl com.example:demo -N
+mvn nx:attach-artifact -Dartifact=/path/to/artifact.jar -DmainArtifact=true install:install@execution-id -pl com.example:demo -N
 ```
 
 ## Benefits
