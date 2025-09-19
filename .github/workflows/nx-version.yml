@@ -55,8 +55,8 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4
 
-      - name: Start CI run
-        run: npx nx-cloud start-ci-run --distribute-on="4 linux-large" --stop-agents-after="verify-ci"
+#      - name: Start CI run
+#        run: npx nx-cloud start-ci-run --distribute-on="4 linux-large" --stop-agents-after="verify"
 
       - name: Install dependencies
         run: pnpm install
@@ -92,7 +92,7 @@ jobs:
 
       - name: Build Maven distributions
         shell: bash
-        run: npx nx run-many -t verify-ci
+        run: npx nx run-many -t verify
 
       - name: List contents of target directory
         shell: bash
