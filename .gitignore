@@ -34,3 +34,6 @@ dist
 .github/instructions/nx.instructions.md
 
 tmp/local-registry
+
+# Log files
+*.log
