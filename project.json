@@ -11,6 +11,5 @@
         "storage": "tmp/local-registry/storage"
       }
     }
-  },
-  "tags": []
+  }
 }
