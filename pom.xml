@@ -958,7 +958,7 @@ under the License.
       </plugin>
       <plugin>
         <groupId>dev.nx.maven</groupId>
-        <artifactId>nx-maven-analyzer-plugin</artifactId>
+        <artifactId>nx-maven-plugin</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <executions>
           <execution>
