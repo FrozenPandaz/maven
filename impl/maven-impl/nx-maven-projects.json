@@ -1,0 +1,716 @@
+{
+  "projects" : { },
+  "createNodesResults" : [ [ "pom.xml", {
+    "projects" : {
+      "" : {
+        "name" : "org.apache.maven:maven-impl",
+        "root" : "",
+        "projectType" : "application",
+        "sourceRoot" : "/src/main/java",
+        "targets" : {
+          "remote-resources:process@process-resource-bundles" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn remote-resources:process@process-resource-bundles -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "checkstyle:check@checkstyle-check" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn checkstyle:check@checkstyle-check -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "enforcer:enforce@enforce-bytecode-version" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn enforcer:enforce@enforce-bytecode-version -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "enforcer:enforce@enforce-maven-version" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn enforcer:enforce@enforce-maven-version -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "enforcer:enforce@enforce-java-version" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn enforcer:enforce@enforce-java-version -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "enforcer:enforce@ensure-no-guice-with-asm" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn enforcer:enforce@ensure-no-guice-with-asm -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "enforcer:enforce@ensure-no-sonatype-cipher-and-sec-dispatcher" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn enforcer:enforce@ensure-no-sonatype-cipher-and-sec-dispatcher -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "site:site@default-site" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn site:site@default-site -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "site:deploy@default-deploy" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn site:deploy@default-deploy -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "spotless:apply@default" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn spotless:apply@default -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "dependency:properties@prepare-for-mockito-agent" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dependency:properties@prepare-for-mockito-agent -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "nx:analyze@default" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn nx:analyze@default -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : false,
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "surefire:test@default-test" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn surefire:test@default-test -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/surefire-reports" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "clean:clean@default-clean" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn clean:clean@default-clean -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "resources:testResources@default-testResources" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn resources:testResources@default-testResources -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/test-classes" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "resources:resources@default-resources" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn resources:resources@default-resources -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/classes" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "jar:jar@default-jar" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn jar:jar@default-jar -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "compiler:compile@default-compile" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn compiler:compile@default-compile -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/classes" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "compiler:testCompile@default-testCompile" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn compiler:testCompile@default-testCompile -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "outputs" : [ "{projectRoot}/target/test-classes" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "install:install@default-install" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn install:install@default-install -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "deploy:deploy@default-deploy" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn deploy:deploy@default-deploy -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : false,
+            "parallelism" : true
+          },
+          "test--org.apache.maven.impl.ModelVersionParserTest.ModelVersionParserTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.ModelVersionParserTest.ModelVersionParserTest -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.PathSelectorTest.PathSelectorTest -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.VersionRangeTest.VersionRangeTest -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.impl.VersionTest.VersionTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.VersionTest.VersionTest -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "verify-ci" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : false,
+            "dependsOn" : [ "package", "test--org.apache.maven.impl.ModelVersionParserTest.ModelVersionParserTest", "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest", "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest", "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest", "test--org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest", "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest", "test--org.apache.maven.impl.VersionTest.VersionTest", "test--org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest" ]
+          },
+          "pre-clean" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ ]
+          },
+          "clean" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply clean:clean@default-clean dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "pre-clean" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "post-clean" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "clean" ]
+          },
+          "validate" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply enforcer:enforce@enforce-bytecode-version enforcer:enforce@enforce-maven-version enforcer:enforce@enforce-java-version enforcer:enforce@ensure-no-guice-with-asm enforcer:enforce@ensure-no-sonatype-cipher-and-sec-dispatcher dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "^install" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "initialize" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply dependency:properties@prepare-for-mockito-agent dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "validate", "^install" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "generate-sources" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "initialize", "^install" ]
+          },
+          "process-sources" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply checkstyle:check@checkstyle-check spotless:apply@default dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "generate-sources", "^install" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "generate-resources" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply remote-resources:process@process-resource-bundles dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "process-sources", "^install" ],
+            "outputs" : [ "{projectRoot}/target/classes", "{projectRoot}/target/test-classes", "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "process-resources" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply resources:resources@default-resources dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "generate-resources", "^install" ],
+            "outputs" : [ "{projectRoot}/target/classes" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "compile" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply compiler:compile@default-compile dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "process-resources", "^install" ],
+            "outputs" : [ "{projectRoot}/target/classes" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "process-classes" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "compile", "^install" ]
+          },
+          "generate-test-sources" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "process-classes", "^install" ]
+          },
+          "process-test-sources" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "generate-test-sources", "^install" ]
+          },
+          "generate-test-resources" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "process-test-sources", "^install" ]
+          },
+          "process-test-resources" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply resources:testResources@default-testResources dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "generate-test-resources", "^install" ],
+            "outputs" : [ "{projectRoot}/target/test-classes" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "test-compile" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply compiler:testCompile@default-testCompile dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "process-test-resources", "^install" ],
+            "outputs" : [ "{projectRoot}/target/test-classes" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "process-test-classes" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "test-compile", "^install" ]
+          },
+          "test" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply surefire:test@default-test dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "process-test-classes", "^install" ],
+            "outputs" : [ "{projectRoot}/target/surefire-reports" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "prepare-package" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "test", "^install" ]
+          },
+          "package" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply jar:jar@default-jar dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "prepare-package", "^install" ],
+            "outputs" : [ "{projectRoot}/target" ],
+            "inputs" : [ "{projectRoot}/src/main/java", "{projectRoot}/src/test/java", "{projectRoot}/src/main/resources", "{projectRoot}/src/test/resources", "{projectRoot}/pom.xml" ]
+          },
+          "pre-integration-test" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "package", "^install" ]
+          },
+          "integration-test" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "pre-integration-test", "^install" ]
+          },
+          "post-integration-test" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "integration-test", "^install" ]
+          },
+          "verify" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "post-integration-test", "^install" ]
+          },
+          "install" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply install:install@default-install dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : false,
+            "parallelism" : true,
+            "dependsOn" : [ "verify", "^install" ]
+          },
+          "deploy" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply deploy:deploy@default-deploy dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : false,
+            "parallelism" : true,
+            "dependsOn" : [ "install", "^install" ]
+          },
+          "pre-site" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ ]
+          },
+          "site" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply site:site@default-site dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : false,
+            "parallelism" : true,
+            "dependsOn" : [ "pre-site" ]
+          },
+          "post-site" : {
+            "executor" : "nx:noop",
+            "cache" : true,
+            "parallelism" : true,
+            "dependsOn" : [ "site" ]
+          },
+          "site-deploy" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "mvn dev.nx.maven:nx-maven-plugin:apply site:deploy@default-deploy dev.nx.maven:nx-maven-plugin:record -pl org.apache.maven:maven-impl -N --batch-mode"
+            },
+            "cache" : false,
+            "parallelism" : false,
+            "dependsOn" : [ "post-site" ]
+          }
+        },
+        "metadata" : {
+          "targetGroups" : {
+            "verify-ci" : [ "test--org.apache.maven.impl.ModelVersionParserTest.ModelVersionParserTest", "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest", "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest", "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest", "test--org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest", "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest", "test--org.apache.maven.impl.VersionTest.VersionTest", "test--org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest", "verify-ci" ],
+            "maven-phases" : [ "pre-clean", "clean", "post-clean", "validate", "initialize", "generate-sources", "process-sources", "generate-resources", "process-resources", "compile", "process-classes", "generate-test-sources", "process-test-sources", "generate-test-resources", "process-test-resources", "test-compile", "process-test-classes", "test", "prepare-package", "package", "pre-integration-test", "integration-test", "post-integration-test", "verify", "install", "deploy", "pre-site", "site", "post-site", "site-deploy" ]
+          }
+        },
+        "tags" : [ "maven:org.apache.maven", "maven:jar" ]
+      }
+    }
+  } ] ],
+  "createDependenciesResults" : [ {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven:maven-api-core",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven:maven-api-spi",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven:maven-api-metadata",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven:maven-api-xml",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven:maven-api-toolchain",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven:maven-api-di",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven:maven-api-annotations",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven:maven-api-model",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven:maven-api-settings",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven:maven-di",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven:maven-support",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven.resolver:maven-resolver-api",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven.resolver:maven-resolver-spi",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven.resolver:maven-resolver-util",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven:maven-xml",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "com.fasterxml.woodstox:woodstox-core",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.codehaus.woodstox:stax2-api",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.slf4j:slf4j-api",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven.resolver:maven-resolver-impl",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven.resolver:maven-resolver-named-locks",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven.resolver:maven-resolver-connector-basic",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.codehaus.plexus:plexus-sec-dispatcher",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.junit.jupiter:junit-jupiter-api",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.slf4j:slf4j-simple",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.mockito:mockito-core",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.mockito:mockito-junit-jupiter",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.hamcrest:hamcrest",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.assertj:assertj-core",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven.resolver:maven-resolver-transport-file",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven.resolver:maven-resolver-transport-apache",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "com.google.jimfs:jimfs",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.openjdk.jmh:jmh-core",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.openjdk.jmh:jmh-generator-annprocess",
+    "sourceFile" : "pom.xml"
+  }, {
+    "type" : "static",
+    "source" : "org.apache.maven:maven-impl",
+    "target" : "org.apache.maven:maven-impl-modules",
+    "sourceFile" : "pom.xml"
+  } ],
+  "totalProjects" : 1,
+  "workspaceRoot" : "/home/jason/projects/triage/java/maven/impl/maven-impl",
+  "analysisMethod" : "optimized-parallel",
+  "analyzedProjects" : 1
+}
