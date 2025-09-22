@@ -9156,18 +9156,18 @@
             "cache" : false,
             "parallelism" : true
           },
-          "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest" : {
+          "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest" : {
             "executor" : "nx:run-commands",
             "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest -Dsurefire.failIfNoSpecifiedTests=false"
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest -Dsurefire.failIfNoSpecifiedTests=false"
             },
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest" : {
+          "test--org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest" : {
             "executor" : "nx:run-commands",
             "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.PathSelectorTest.PathSelectorTest -Dsurefire.failIfNoSpecifiedTests=false"
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest -Dsurefire.failIfNoSpecifiedTests=false"
             },
             "cache" : false,
             "parallelism" : false
@@ -9176,6 +9176,14 @@
             "executor" : "nx:run-commands",
             "options" : {
               "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.ModelVersionParserTest.ModelVersionParserTest -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest -Dsurefire.failIfNoSpecifiedTests=false"
             },
             "cache" : false,
             "parallelism" : false
@@ -9196,6 +9204,14 @@
             "cache" : false,
             "parallelism" : false
           },
+          "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.PathSelectorTest.PathSelectorTest -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
           "test--org.apache.maven.impl.VersionTest.VersionTest" : {
             "executor" : "nx:run-commands",
             "options" : {
@@ -9204,27 +9220,11 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest -Dsurefire.failIfNoSpecifiedTests=false"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
-          "test--org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-impl -Dtest=org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest -Dsurefire.failIfNoSpecifiedTests=false"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
           "verify-ci" : {
             "executor" : "nx:noop",
             "cache" : true,
             "parallelism" : false,
-            "dependsOn" : [ "package", "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest", "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest", "test--org.apache.maven.impl.ModelVersionParserTest.ModelVersionParserTest", "test--org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest", "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest", "test--org.apache.maven.impl.VersionTest.VersionTest", "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest", "test--org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest" ]
+            "dependsOn" : [ "package", "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest", "test--org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest", "test--org.apache.maven.impl.ModelVersionParserTest.ModelVersionParserTest", "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest", "test--org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest", "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest", "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest", "test--org.apache.maven.impl.VersionTest.VersionTest" ]
           },
           "before:clean" : {
             "executor" : "nx:noop",
@@ -9674,7 +9674,7 @@
         },
         "metadata" : {
           "targetGroups" : {
-            "verify-ci" : [ "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest", "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest", "test--org.apache.maven.impl.ModelVersionParserTest.ModelVersionParserTest", "test--org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest", "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest", "test--org.apache.maven.impl.VersionTest.VersionTest", "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest", "test--org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest", "verify-ci" ],
+            "verify-ci" : [ "test--org.apache.maven.impl.model.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest", "test--org.apache.maven.impl.model.profile.ConditionProfileActivatorTest.ConditionProfileActivatorTest", "test--org.apache.maven.impl.ModelVersionParserTest.ModelVersionParserTest", "test--org.apache.maven.impl.DefaultPathMatcherFactoryTest.DefaultPathMatcherFactoryTest", "test--org.apache.maven.impl.DefaultSourceRootTest.DefaultSourceRootTest", "test--org.apache.maven.impl.VersionRangeTest.VersionRangeTest", "test--org.apache.maven.impl.PathSelectorTest.PathSelectorTest", "test--org.apache.maven.impl.VersionTest.VersionTest", "verify-ci" ],
             "maven-phases" : [ "before:clean", "clean", "after:clean", "before:all", "before:initialize", "before:validate", "validate", "after:validate", "initialize", "after:initialize", "before:build", "before:sources", "sources", "after:sources", "before:resources", "resources", "after:resources", "before:compile", "compile", "after:compile", "before:ready", "ready", "after:ready", "before:test-sources", "test-sources", "after:test-sources", "before:test-resources", "test-resources", "after:test-resources", "before:test-compile", "test-compile", "after:test-compile", "before:test", "test", "after:test", "before:unit-test", "unit-test", "after:unit-test", "before:package", "package", "after:package", "build", "after:build", "before:verify", "before:integration-test", "integration-test", "after:integration-test", "verify", "after:verify", "before:install", "install", "after:install", "before:deploy", "deploy", "after:deploy", "all", "after:all", "before:site", "site", "after:site", "before:site-deploy", "site-deploy", "after:site-deploy" ]
           }
         },
@@ -12659,10 +12659,10 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.model.ModelBuilderTest.ModelBuilderTest" : {
+          "test--org.apache.maven.internal.impl.DefaultChecksumAlgorithmServiceTest.DefaultChecksumAlgorithmServiceTest" : {
             "executor" : "nx:run-commands",
             "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.model.ModelBuilderTest.ModelBuilderTest -Dsurefire.failIfNoSpecifiedTests=false"
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.internal.impl.DefaultChecksumAlgorithmServiceTest.DefaultChecksumAlgorithmServiceTest -Dsurefire.failIfNoSpecifiedTests=false"
             },
             "cache" : false,
             "parallelism" : false
@@ -12675,14 +12675,6 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.internal.impl.DefaultChecksumAlgorithmServiceTest.DefaultChecksumAlgorithmServiceTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.internal.impl.DefaultChecksumAlgorithmServiceTest.DefaultChecksumAlgorithmServiceTest -Dsurefire.failIfNoSpecifiedTests=false"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
           "test--org.apache.maven.internal.impl.DefaultSessionTest.DefaultSessionTest" : {
             "executor" : "nx:run-commands",
             "options" : {
@@ -12691,34 +12683,10 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.di.DiTest.DiTest" : {
+          "test--org.apache.maven.model.ModelBuilderTest.ModelBuilderTest" : {
             "executor" : "nx:run-commands",
             "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.di.DiTest.DiTest -Dsurefire.failIfNoSpecifiedTests=false"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
-          "test--org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test -Dsurefire.failIfNoSpecifiedTests=false"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
-          "test--org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest -Dsurefire.failIfNoSpecifiedTests=false"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
-          "test--org.apache.maven.internal.transformation.impl.ConsumerPomBuilderTest.ConsumerPomBuilderTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.internal.transformation.impl.ConsumerPomBuilderTest.ConsumerPomBuilderTest -Dsurefire.failIfNoSpecifiedTests=false"
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.model.ModelBuilderTest.ModelBuilderTest -Dsurefire.failIfNoSpecifiedTests=false"
             },
             "cache" : false,
             "parallelism" : false
@@ -12731,11 +12699,43 @@
             "cache" : false,
             "parallelism" : false
           },
+          "test--org.apache.maven.internal.transformation.impl.ConsumerPomBuilderTest.ConsumerPomBuilderTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.internal.transformation.impl.ConsumerPomBuilderTest.ConsumerPomBuilderTest -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.di.DiTest.DiTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.di.DiTest.DiTest -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
+          "test--org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-core -Dtest=org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
           "verify-ci" : {
             "executor" : "nx:noop",
             "cache" : true,
             "parallelism" : false,
-            "dependsOn" : [ "package", "test--org.apache.maven.project.GraphTest.GraphTest", "test--org.apache.maven.model.ModelBuilderTest.ModelBuilderTest", "test--org.apache.maven.session.scope.SessionScopeProxyTest.SessionScopeProxyTest", "test--org.apache.maven.internal.impl.DefaultChecksumAlgorithmServiceTest.DefaultChecksumAlgorithmServiceTest", "test--org.apache.maven.internal.impl.DefaultSessionTest.DefaultSessionTest", "test--org.apache.maven.di.DiTest.DiTest", "test--org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test", "test--org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest", "test--org.apache.maven.internal.transformation.impl.ConsumerPomBuilderTest.ConsumerPomBuilderTest", "test--org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest" ]
+            "dependsOn" : [ "package", "test--org.apache.maven.project.GraphTest.GraphTest", "test--org.apache.maven.internal.impl.DefaultChecksumAlgorithmServiceTest.DefaultChecksumAlgorithmServiceTest", "test--org.apache.maven.session.scope.SessionScopeProxyTest.SessionScopeProxyTest", "test--org.apache.maven.internal.impl.DefaultSessionTest.DefaultSessionTest", "test--org.apache.maven.model.ModelBuilderTest.ModelBuilderTest", "test--org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest", "test--org.apache.maven.internal.transformation.impl.ConsumerPomBuilderTest.ConsumerPomBuilderTest", "test--org.apache.maven.di.DiTest.DiTest", "test--org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest", "test--org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test" ]
           },
           "before:clean" : {
             "executor" : "nx:noop",
@@ -13205,7 +13205,7 @@
         },
         "metadata" : {
           "targetGroups" : {
-            "verify-ci" : [ "test--org.apache.maven.project.GraphTest.GraphTest", "test--org.apache.maven.model.ModelBuilderTest.ModelBuilderTest", "test--org.apache.maven.session.scope.SessionScopeProxyTest.SessionScopeProxyTest", "test--org.apache.maven.internal.impl.DefaultChecksumAlgorithmServiceTest.DefaultChecksumAlgorithmServiceTest", "test--org.apache.maven.internal.impl.DefaultSessionTest.DefaultSessionTest", "test--org.apache.maven.di.DiTest.DiTest", "test--org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test", "test--org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest", "test--org.apache.maven.internal.transformation.impl.ConsumerPomBuilderTest.ConsumerPomBuilderTest", "test--org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest", "verify-ci" ],
+            "verify-ci" : [ "test--org.apache.maven.project.GraphTest.GraphTest", "test--org.apache.maven.internal.impl.DefaultChecksumAlgorithmServiceTest.DefaultChecksumAlgorithmServiceTest", "test--org.apache.maven.session.scope.SessionScopeProxyTest.SessionScopeProxyTest", "test--org.apache.maven.internal.impl.DefaultSessionTest.DefaultSessionTest", "test--org.apache.maven.model.ModelBuilderTest.ModelBuilderTest", "test--org.apache.maven.internal.aether.DefaultRepositorySystemSessionFactoryTest.DefaultRepositorySystemSessionFactoryTest", "test--org.apache.maven.internal.transformation.impl.ConsumerPomBuilderTest.ConsumerPomBuilderTest", "test--org.apache.maven.di.DiTest.DiTest", "test--org.apache.maven.configuration.internal.CompositeBeanHelperPerformanceTest.CompositeBeanHelperPerformanceTest", "test--org.apache.maven.plugin.PluginParameterExpressionEvaluatorV4Test.PluginParameterExpressionEvaluatorV4Test", "verify-ci" ],
             "maven-phases" : [ "before:clean", "clean", "after:clean", "before:all", "before:initialize", "before:validate", "validate", "after:validate", "initialize", "after:initialize", "before:build", "before:sources", "sources", "after:sources", "before:resources", "resources", "after:resources", "before:compile", "compile", "after:compile", "before:ready", "ready", "after:ready", "before:test-sources", "test-sources", "after:test-sources", "before:test-resources", "test-resources", "after:test-resources", "before:test-compile", "test-compile", "after:test-compile", "before:test", "test", "after:test", "before:unit-test", "unit-test", "after:unit-test", "before:package", "package", "after:package", "build", "after:build", "before:verify", "before:integration-test", "integration-test", "after:integration-test", "verify", "after:verify", "before:install", "install", "after:install", "before:deploy", "deploy", "after:deploy", "all", "after:all", "before:site", "site", "after:site", "before:site-deploy", "site-deploy", "after:site-deploy" ]
           }
         },
@@ -13442,10 +13442,10 @@
             "cache" : false,
             "parallelism" : true
           },
-          "test--org.apache.maven.cling.invoker.mvn.resident.ResidentMavenInvokerTest.ResidentMavenInvokerTest" : {
+          "test--org.apache.maven.cling.invoker.BaseParserTest.BaseParserTest" : {
             "executor" : "nx:run-commands",
             "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-cli -Dtest=org.apache.maven.cling.invoker.mvn.resident.ResidentMavenInvokerTest.ResidentMavenInvokerTest -Dsurefire.failIfNoSpecifiedTests=false"
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-cli -Dtest=org.apache.maven.cling.invoker.BaseParserTest.BaseParserTest -Dsurefire.failIfNoSpecifiedTests=false"
             },
             "cache" : false,
             "parallelism" : false
@@ -13458,10 +13458,10 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.cling.invoker.BaseParserTest.BaseParserTest" : {
+          "test--org.apache.maven.cling.invoker.mvn.resident.ResidentMavenInvokerTest.ResidentMavenInvokerTest" : {
             "executor" : "nx:run-commands",
             "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-cli -Dtest=org.apache.maven.cling.invoker.BaseParserTest.BaseParserTest -Dsurefire.failIfNoSpecifiedTests=false"
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-cli -Dtest=org.apache.maven.cling.invoker.mvn.resident.ResidentMavenInvokerTest.ResidentMavenInvokerTest -Dsurefire.failIfNoSpecifiedTests=false"
             },
             "cache" : false,
             "parallelism" : false
@@ -13478,7 +13478,7 @@
             "executor" : "nx:noop",
             "cache" : true,
             "parallelism" : false,
-            "dependsOn" : [ "package", "test--org.apache.maven.cling.invoker.mvn.resident.ResidentMavenInvokerTest.ResidentMavenInvokerTest", "test--org.apache.maven.cling.invoker.cisupport.CIDetectorHelperTest.CIDetectorHelperTest", "test--org.apache.maven.cling.invoker.BaseParserTest.BaseParserTest", "test--org.apache.maven.cling.invoker.mvn.MavenInvokerTest.MavenInvokerTest" ]
+            "dependsOn" : [ "package", "test--org.apache.maven.cling.invoker.BaseParserTest.BaseParserTest", "test--org.apache.maven.cling.invoker.cisupport.CIDetectorHelperTest.CIDetectorHelperTest", "test--org.apache.maven.cling.invoker.mvn.resident.ResidentMavenInvokerTest.ResidentMavenInvokerTest", "test--org.apache.maven.cling.invoker.mvn.MavenInvokerTest.MavenInvokerTest" ]
           },
           "before:clean" : {
             "executor" : "nx:noop",
@@ -13933,7 +13933,7 @@
         },
         "metadata" : {
           "targetGroups" : {
-            "verify-ci" : [ "test--org.apache.maven.cling.invoker.mvn.resident.ResidentMavenInvokerTest.ResidentMavenInvokerTest", "test--org.apache.maven.cling.invoker.cisupport.CIDetectorHelperTest.CIDetectorHelperTest", "test--org.apache.maven.cling.invoker.BaseParserTest.BaseParserTest", "test--org.apache.maven.cling.invoker.mvn.MavenInvokerTest.MavenInvokerTest", "verify-ci" ],
+            "verify-ci" : [ "test--org.apache.maven.cling.invoker.BaseParserTest.BaseParserTest", "test--org.apache.maven.cling.invoker.cisupport.CIDetectorHelperTest.CIDetectorHelperTest", "test--org.apache.maven.cling.invoker.mvn.resident.ResidentMavenInvokerTest.ResidentMavenInvokerTest", "test--org.apache.maven.cling.invoker.mvn.MavenInvokerTest.MavenInvokerTest", "verify-ci" ],
             "maven-phases" : [ "before:clean", "clean", "after:clean", "before:all", "before:initialize", "before:validate", "validate", "after:validate", "initialize", "after:initialize", "before:build", "before:sources", "sources", "after:sources", "before:resources", "resources", "after:resources", "before:compile", "compile", "after:compile", "before:ready", "ready", "after:ready", "before:test-sources", "test-sources", "after:test-sources", "before:test-resources", "test-resources", "after:test-resources", "before:test-compile", "test-compile", "after:test-compile", "before:test", "test", "after:test", "before:unit-test", "unit-test", "after:unit-test", "before:package", "package", "after:package", "build", "after:build", "before:verify", "before:integration-test", "integration-test", "after:integration-test", "verify", "after:verify", "before:install", "install", "after:install", "before:deploy", "deploy", "after:deploy", "all", "after:all", "before:site", "site", "after:site", "before:site-deploy", "site-deploy", "after:site-deploy" ]
           }
         },
@@ -18226,14 +18226,6 @@
             "cache" : false,
             "parallelism" : false
           },
-          "test--org.apache.maven.model.interpolation.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest" : {
-            "executor" : "nx:run-commands",
-            "options" : {
-              "command" : "./mvnw test -am -pl org.apache.maven:maven-model-builder -Dtest=org.apache.maven.model.interpolation.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest -Dsurefire.failIfNoSpecifiedTests=false"
-            },
-            "cache" : false,
-            "parallelism" : false
-          },
           "test--org.apache.maven.model.profile.DefaultProfileSelectorTest.DefaultProfileSelectorTest" : {
             "executor" : "nx:run-commands",
             "options" : {
@@ -18250,11 +18242,19 @@
             "cache" : false,
             "parallelism" : false
           },
+          "test--org.apache.maven.model.interpolation.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest" : {
+            "executor" : "nx:run-commands",
+            "options" : {
+              "command" : "./mvnw test -am -pl org.apache.maven:maven-model-builder -Dtest=org.apache.maven.model.interpolation.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest -Dsurefire.failIfNoSpecifiedTests=false"
+            },
+            "cache" : false,
+            "parallelism" : false
+          },
           "verify-ci" : {
             "executor" : "nx:noop",
             "cache" : true,
             "parallelism" : false,
-            "dependsOn" : [ "package", "test--org.apache.maven.model.building.GraphTest.GraphTest", "test--org.apache.maven.model.interpolation.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest", "test--org.apache.maven.model.profile.DefaultProfileSelectorTest.DefaultProfileSelectorTest", "test--org.apache.maven.model.building.DefaultModelBuilderTest.DefaultModelBuilderTest" ]
+            "dependsOn" : [ "package", "test--org.apache.maven.model.building.GraphTest.GraphTest", "test--org.apache.maven.model.profile.DefaultProfileSelectorTest.DefaultProfileSelectorTest", "test--org.apache.maven.model.building.DefaultModelBuilderTest.DefaultModelBuilderTest", "test--org.apache.maven.model.interpolation.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest" ]
           },
           "before:clean" : {
             "executor" : "nx:noop",
@@ -18719,7 +18719,7 @@
         },
         "metadata" : {
           "targetGroups" : {
-            "verify-ci" : [ "test--org.apache.maven.model.building.GraphTest.GraphTest", "test--org.apache.maven.model.interpolation.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest", "test--org.apache.maven.model.profile.DefaultProfileSelectorTest.DefaultProfileSelectorTest", "test--org.apache.maven.model.building.DefaultModelBuilderTest.DefaultModelBuilderTest", "verify-ci" ],
+            "verify-ci" : [ "test--org.apache.maven.model.building.GraphTest.GraphTest", "test--org.apache.maven.model.profile.DefaultProfileSelectorTest.DefaultProfileSelectorTest", "test--org.apache.maven.model.building.DefaultModelBuilderTest.DefaultModelBuilderTest", "test--org.apache.maven.model.interpolation.reflection.ReflectionValueExtractorTest.ReflectionValueExtractorTest", "verify-ci" ],
             "maven-phases" : [ "before:clean", "clean", "after:clean", "before:all", "before:initialize", "before:validate", "validate", "after:validate", "initialize", "after:initialize", "before:build", "before:sources", "sources", "after:sources", "before:resources", "resources", "after:resources", "before:compile", "compile", "after:compile", "before:ready", "ready", "after:ready", "before:test-sources", "test-sources", "after:test-sources", "before:test-resources", "test-resources", "after:test-resources", "before:test-compile", "test-compile", "after:test-compile", "before:test", "test", "after:test", "before:unit-test", "unit-test", "after:unit-test", "before:package", "package", "after:package", "build", "after:build", "before:verify", "before:integration-test", "integration-test", "after:integration-test", "verify", "after:verify", "before:install", "install", "after:install", "before:deploy", "deploy", "after:deploy", "all", "after:all", "before:site", "site", "after:site", "before:site-deploy", "site-deploy", "after:site-deploy" ]
           }
         },
