@@ -61,30 +61,6 @@
     },
     "projectsRelationship": "independent",
     "version": {
-      "generatorOptions": {
-        "currentVersionResolver": "git-tag",
-        "fallbackCurrentVersionResolver": "disk"
-      },
-      "projects": {
-        "@nx/maven": {
-          "generatorOptions": {
-            "packageRoot": "packages/maven",
-            "currentVersionResolverMetadata": {
-              "tag": "@nx/maven-{version}",
-              "tagVersionPrefix": "@nx/maven-"
-            }
-          }
-        },
-        "maven-analyzer-plugin": {
-          "generatorOptions": {
-            "packageRoot": "packages/maven/analyzer-plugin",
-            "currentVersionResolverMetadata": {
-              "tag": "maven-analyzer-plugin-{version}",
-              "tagVersionPrefix": "maven-analyzer-plugin-"
-            }
-          }
-        }
-      }
     },
     "changelog": {
       "workspaceChangelog": {
