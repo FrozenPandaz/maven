@@ -132,6 +132,11 @@ class NxTargetFactory(
                     phaseDependsOn[phase]?.add(previousPhase)
                     log.info("Phase '$phase' depends on previous phase: '$previousPhase'")
                 }
+                if (hasGoals) {
+                    goalsForPhase?.forEach { goal ->
+                        target.dependsOn?.add(goal)
+                    }
+                }
 
                 if (hasInstall) {
                     target.dependsOn?.add("^install")
@@ -169,6 +174,11 @@ class NxTargetFactory(
                         return@forEach
                     }
 
+                    val mojoDescriptor = pluginDescriptor.getMojo(goal)
+                    val phase = execution.phase ?: mojoDescriptor?.phase
+
+                    val normalizedPhase = normalizePhase(phase)
+
                     val goalTargetName = "$goalPrefix:$goal@${execution.id}"
                     val goalTarget = createSimpleGoalTarget(
                         mavenCommand,
@@ -176,7 +186,8 @@ class NxTargetFactory(
                         pluginDescriptor,
                         goalPrefix,
                         goal,
-                        execution
+                        execution,
+                        phaseDependsOn[normalizedPhase]
                     ) ?: return@forEach
                     nxTargets.set<ObjectNode>(goalTargetName, goalTarget.toJSON(objectMapper))
 
@@ -266,50 +277,50 @@ class NxTargetFactory(
 
         log.info("Phase $phase analysis: thread safe: $isThreadSafe, cacheable: $isCacheable, inputs: $inputs, outputs: $outputs")
 
-        val options = objectMapper.createObjectNode()
+//        val options = objectMapper.createObjectNode()
 
-        // Build command with goals bundled together
-        val commandParts = mutableListOf<String>()
-        commandParts.add(mavenCommand)
-
-        // Add build state apply if needed (before goals)
-        if (shouldApplyBuildState()) {
-            commandParts.add("dev.nx.maven:nx-maven-plugin:apply")
-        }
-
-        // Add all goals for this phase
-        commandParts.addAll(goals)
-
-        // Add build state record if needed (after goals)
-        if (shouldRecordBuildState()) {
-            commandParts.add("dev.nx.maven:nx-maven-plugin:record")
-        }
+//        // Build command with goals bundled together
+//        val commandParts = mutableListOf<String>()
+//        commandParts.add(mavenCommand)
+//
+//        // Add build state apply if needed (before goals)
+//        if (shouldApplyBuildState()) {
+//            commandParts.add("dev.nx.maven:nx-maven-plugin:apply")
+//        }
+//
+//        // Add all goals for this phase
+//        commandParts.addAll(goals)
+//
+//        // Add build state record if needed (after goals)
+//        if (shouldRecordBuildState()) {
+//            commandParts.add("dev.nx.maven:nx-maven-plugin:record")
+//        }
 
         // Add project selection and non-recursive flag
-        commandParts.add("-pl")
-        commandParts.add("${project.groupId}:${project.artifactId}")
-        commandParts.add("-N")
-        commandParts.add("--batch-mode")
+//        commandParts.add("-pl")
+//        commandParts.add("${project.groupId}:${project.artifactId}")
+//        commandParts.add("-N")
+//        commandParts.add("--batch-mode")
 
-        val command = commandParts.joinToString(" ")
-        options.put("command", command)
+//        val command = commandParts.joinToString(" ")
+//        options.put("command", command)
 
-        log.info("Created phase target '$phase' with command: $command")
+//        log.info("Created phase target '$phase' with command: $command")
 
-        val target = NxTarget("nx:run-commands", options, isCacheable, isThreadSafe)
+        val target = NxTarget("nx:noop", null, true, true)
 
         // Copy caching info from analysis
-        if (isCacheable) {
-            // Convert inputs to JsonNode array
-            val inputsArray = objectMapper.createArrayNode()
-            inputs.forEach { input -> inputsArray.add(input) }
-            target.inputs = inputsArray
-
-            // Convert outputs to JsonNode array
-            val outputsArray = objectMapper.createArrayNode()
-            outputs.forEach { output -> outputsArray.add(output) }
-            target.outputs = outputsArray
-        }
+//        if (isCacheable) {
+//            // Convert inputs to JsonNode array
+//            val inputsArray = objectMapper.createArrayNode()
+//            inputs.forEach { input -> inputsArray.add(input) }
+//            target.inputs = inputsArray
+//
+//            // Convert outputs to JsonNode array
+//            val outputsArray = objectMapper.createArrayNode()
+//            outputs.forEach { output -> outputsArray.add(output) }
+//            target.outputs = outputsArray
+//        }
 
         return target
     }
@@ -327,18 +338,25 @@ class NxTargetFactory(
         pluginDescriptor: PluginDescriptor,
         goalPrefix: String,
         goalName: String,
-        execution: PluginExecution
+        execution: PluginExecution,
+        phaseDependsOn: MutableList<String>?
     ): NxTarget? {
         val options = objectMapper.createObjectNode()
 
         // Simple command without nx:apply/nx:record
         val command =
-            "$mavenCommand $goalPrefix:$goalName@${execution.id} -pl ${project.groupId}:${project.artifactId} -N --batch-mode"
+            "$mavenCommand dev.nx.maven:nx-maven-plugin:apply $goalPrefix:$goalName@${execution.id} dev.nx.maven:nx-maven-plugin:record -pl ${project.groupId}:${project.artifactId} -N --batch-mode"
         options.put("command", command)
         val analysis = mojoAnalyzer.analyzeMojo(pluginDescriptor, goalName, project)
             ?: return null
 
-        val target = NxTarget("nx:run-commands", options, analysis.isCacheable, analysis.isThreadSafe)
+        val dependsOn = objectMapper.createArrayNode();
+
+        phaseDependsOn?.forEach { targetName ->
+            dependsOn.add(targetName)
+        }
+
+        val target = NxTarget("nx:run-commands", options, analysis.isCacheable, analysis.isThreadSafe, dependsOn)
 
         // Add inputs and outputs if cacheable
         if (analysis.isCacheable) {
