@@ -85,7 +85,7 @@ class NxProjectAnalyzerMojo : AbstractMojo() {
 
         // Create shared component instances ONCE for all projects (major optimization)
 
-        val pathFormatter = PathFormatter()
+        val pathFormatter = PathFormatter(workspaceRoot)
         val mojoAnalyzer = MojoAnalyzer(sharedExpressionResolver, pathFormatter, gitIgnoreClassifier)
 
         val sharedTestClassDiscovery = TestClassDiscovery()

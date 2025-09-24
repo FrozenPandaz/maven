@@ -8,12 +8,13 @@ import java.io.File
  * Handles path resolution, Maven command detection, and input/output path formatting for Nx
  */
 class PathFormatter(
+    private val workspaceRoot: File,
 ) {
 
     private val log: Logger = LoggerFactory.getLogger(PathFormatter::class.java)
 
     fun formatInputPath(path: File, projectRoot: File): String {
-        return toProjectPath(path, projectRoot)
+        return formatPath(path, projectRoot)
     }
 
     fun toDependentTaskOutputs(path: File, projectRoot: File): DependentTaskOutputs {
@@ -22,13 +23,23 @@ class PathFormatter(
     }
 
     fun formatOutputPath(path: File, projectRoot: File): String {
-        return toProjectPath(path, projectRoot)
+        return formatPath(path, projectRoot)
     }
 
-    fun toProjectPath(path: File, projectRoot: File): String {
-        val relativePath = path.relativeToOrSelf(projectRoot)
+    private fun formatPath(path: File, projectRoot: File): String {
+        return toProjectPath(path, projectRoot) ?: toWorkspacePath(path)
+    }
 
-        return "{projectRoot}/$relativePath"
+    private fun toWorkspacePath(path: File): String {
+        return "{workspaceRoot}/${path.relativeToOrSelf(workspaceRoot)}"
+    }
+
+    private fun toProjectPath(path: File, projectRoot: File): String? {
+        return if (path.path.startsWith(projectRoot.path)) {
+            "{projectRoot}/${path.relativeTo(projectRoot)}"
+        } else {
+            null
+        }
     }
 }
 

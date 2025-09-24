@@ -10,6 +10,7 @@ data class Parameter(val name: String, val glob: String?)
 data class MojoConfig(
     val inputProperties: Set<String>? = null,
     val inputParameters: Set<Parameter>? = null,
+    val outputProperties: Set<String>? = null,
     val outputParameters: Set<Parameter>? = null
 )
 
@@ -174,13 +175,17 @@ data class CacheConfig(
                     outputParameters = setOf(
                         Parameter("outputDirectory", "*.jar"),
                     )
+                ),
+                "maven-install-plugin:install" to MojoConfig(
+                    inputProperties = setOf("project.build.directory"),
+                    outputProperties = setOf("installPaths"),
                 )
             ),
             nonCacheable = setOf(
                 "maven-clean-plugin:clean",
                 "maven-deploy-plugin:deploy",
                 "maven-site-plugin:site",
-                "maven-install-plugin:install",
+//                "maven-install-plugin:install",
                 "bb-sdk-codegen:deploy-local",
                 "spring-boot-maven-plugin:run"
             ),

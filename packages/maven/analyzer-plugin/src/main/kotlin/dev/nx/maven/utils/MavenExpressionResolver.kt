@@ -226,6 +226,8 @@ class MavenExpressionResolver(
     fun resolveProperty(propertyPath: String, project: MavenProject): List<String> {
         return when(propertyPath) {
             "project.build.resources" -> project.build.resources.mapNotNull { resource -> resource.directory }
+            "project.build.directory" -> listOf(project.build.directory)
+            "installPath" -> listOfNotNull(session.localRepository.find(project.artifact).file.path)
             else -> emptyList()
         }
     }

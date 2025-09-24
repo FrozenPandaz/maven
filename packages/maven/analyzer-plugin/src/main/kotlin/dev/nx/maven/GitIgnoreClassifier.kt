@@ -53,13 +53,11 @@ class GitIgnoreClassifier(
         if (ignoreRules.isEmpty()) {
             return false
         }
-
-        val relativePath = try {
-            path.relativeTo(workspaceRoot).path
-        } catch (e: IllegalArgumentException) {
-            // Path is outside workspace
+        if (path.isAbsolute && !path.startsWith(workspaceRoot)) {
             return false
         }
+
+        val relativePath = path.relativeToOrSelf(workspaceRoot).path
 
         return try {
             // Check path against all ignore rules

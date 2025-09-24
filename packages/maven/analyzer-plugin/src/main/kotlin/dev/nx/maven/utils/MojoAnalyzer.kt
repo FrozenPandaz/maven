@@ -75,6 +75,7 @@ class MojoAnalyzer(
         val inputs = mutableSetOf<String>()
         val dependentTaskOutputInputs = mutableSetOf<DependentTaskOutputs>()
 
+
         mojoConfig?.inputParameters?.forEach { paramConfig ->
             val parameter = mojoDescriptor.parameterMap[paramConfig.name]
                 ?: return@forEach
@@ -161,7 +162,19 @@ class MojoAnalyzer(
             }
         }
 
-        if (mojoConfig?.outputParameters == null) {
+        mojoConfig?.outputProperties?.forEach { propertyPath ->
+            val paths = expressionResolver.resolveProperty(propertyPath, project)
+
+            paths.forEach { path ->
+                val pathFile = File(path)
+
+                val formattedPath = pathResolver.formatOutputPath(pathFile, project.basedir)
+
+                outputs.add(formattedPath)
+            }
+        }
+
+        if (mojoConfig?.outputParameters == null && mojoConfig?.outputProperties == null) {
             return cacheConfig.defaultOutputs.map { output ->
                 val pathFile = File(output.path);
                 pathResolver.formatOutputPath(
