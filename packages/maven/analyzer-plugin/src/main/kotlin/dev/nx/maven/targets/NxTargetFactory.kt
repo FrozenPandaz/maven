@@ -334,7 +334,8 @@ class NxTargetFactory(
         commandParts.addAll(goals.map { it.goalSpecifier })
 
         // Add build state record if needed (after goals)
-        if (shouldRecordBuildState()) {
+        // TODO: install cannot record because it attaches a unique timestamp to artifacts, breaking caching
+        if (shouldRecordBuildState() && phase !== "install") {
             commandParts.add(RECORD_GOAL)
         }
 
@@ -351,7 +352,6 @@ class NxTargetFactory(
 
         val target = NxTarget("nx:run-commands", options, isCacheable, isThreadSafe)
 
-        addBuildStateJsonInputsAndOutputs(project, target)
 
         // Copy caching info from analysis
         if (isCacheable) {
@@ -364,6 +364,7 @@ class NxTargetFactory(
             val outputsArray = objectMapper.createArrayNode()
             outputs.forEach { output -> outputsArray.add(output) }
             target.outputs = outputsArray
+            addBuildStateJsonInputsAndOutputs(project, target)
         }
 
         return target
@@ -399,7 +400,6 @@ class NxTargetFactory(
         if (analysis.isCacheable) {
             // Convert inputs to JsonNode array
             val inputsArray = objectMapper.createArrayNode()
-            addBuildStateJsonInputsAndOutputs(project, target)
             analysis.inputs.forEach { input -> inputsArray.add(input) }
             analysis.dependentTaskOutputInputs.forEach { input ->
                 val obj = objectMapper.createObjectNode()
@@ -413,6 +413,7 @@ class NxTargetFactory(
             val outputsArray = objectMapper.createArrayNode()
             analysis.outputs.forEach { output -> outputsArray.add(output) }
             target.outputs = outputsArray
+            addBuildStateJsonInputsAndOutputs(project, target)
         }
 
         return target
@@ -450,8 +451,6 @@ class NxTargetFactory(
 
             val target = NxTarget("nx:run-commands", options, analysis.isCacheable, analysis.isThreadSafe, dependsOn, objectMapper.createArrayNode(), objectMapper.createArrayNode())
 
-            addBuildStateJsonInputsAndOutputs(project, target)
-
             analysis.inputs.forEach { input -> target.inputs?.add(input) }
             analysis.outputs.forEach { output -> target.outputs?.add(output) }
             analysis.dependentTaskOutputInputs.forEach { input ->
@@ -465,6 +464,7 @@ class NxTargetFactory(
             testCiTargetGroup.add(targetName)
 
             testCiTarget.dependsOn!!.add(targetName)
+            addBuildStateJsonInputsAndOutputs(project, target)
         }
 
         return targets
@@ -473,6 +473,8 @@ class NxTargetFactory(
     private fun addBuildStateJsonInputsAndOutputs(project: MavenProject, target: NxTarget) {
         val buildJsonFile = File("${project.build.directory}/nx-build-state.json")
 
+        log.info("Build state json file: $buildJsonFile")
+        log.info("Adding build state json inputs and outputs for project ${project.artifactId}")
         val isIgnored = gitIgnoreClassifier.isIgnored(buildJsonFile)
         if (isIgnored) {
             log.warn("Input path is gitignored: ${buildJsonFile.path}")
