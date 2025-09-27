@@ -5,6 +5,7 @@ An Nx plugin for integrating Maven projects into Nx workspaces.
 ## Overview
 
 This plugin enables you to:
+
 - Generate new Maven projects with Nx integration
 - Run Maven commands through Nx executors
 - Leverage Nx's caching and task scheduling for Maven builds
@@ -35,6 +36,7 @@ nx g @nx/maven:project my-app --groupId=com.example --artifactId=my-app
 ```
 
 Options:
+
 - `--name`: Project name
 - `--directory`: Directory where the project is placed
 - `--groupId`: Maven group ID
@@ -61,6 +63,7 @@ nx test my-app
 ```
 
 Options:
+
 - `--testNamePattern`: Run tests matching this pattern
 
 ### `@nx/maven:package`
@@ -72,6 +75,7 @@ nx package my-app
 ```
 
 Options:
+
 - `--skipTests`: Skip running tests during packaging
 
 ## Configuration
