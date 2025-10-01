@@ -9,20 +9,20 @@ importers:
   .:
     devDependencies:
       '@nx/devkit':
-        specifier: 21.6.1-beta.3
-        version: 21.6.1-beta.3(nx@21.6.1-beta.3)
+        specifier: 22.0.0-beta.1
+        version: 22.0.0-beta.1(nx@22.0.0-beta.1)
       '@nx/jest':
-        specifier: 21.6.1-beta.3
-        version: 21.6.1-beta.3(@babel/traverse@7.28.3)(@types/node@20.19.10)(babel-plugin-macros@3.1.0)(nx@21.6.1-beta.3)(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))(typescript@5.9.2)(verdaccio@6.1.6(typanion@3.14.0))
+        specifier: 22.0.0-beta.1
+        version: 22.0.0-beta.1(@babel/traverse@7.28.3)(@types/node@20.19.10)(babel-plugin-macros@3.1.0)(nx@22.0.0-beta.1)(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))(typescript@5.9.2)(verdaccio@6.1.6(typanion@3.14.0))
       '@nx/js':
-        specifier: 21.6.1-beta.3
-        version: 21.6.1-beta.3(@babel/traverse@7.28.3)(nx@21.6.1-beta.3)(verdaccio@6.1.6(typanion@3.14.0))
+        specifier: 22.0.0-beta.1
+        version: 22.0.0-beta.1(@babel/traverse@7.28.3)(nx@22.0.0-beta.1)(verdaccio@6.1.6(typanion@3.14.0))
       '@nx/plugin':
-        specifier: 21.6.1-beta.3
-        version: 21.6.1-beta.3(@babel/traverse@7.28.3)(@types/node@20.19.10)(@zkochan/js-yaml@0.0.7)(babel-plugin-macros@3.1.0)(eslint@9.33.0)(nx@21.6.1-beta.3)(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))(typescript@5.9.2)(verdaccio@6.1.6(typanion@3.14.0))
+        specifier: 22.0.0-beta.1
+        version: 22.0.0-beta.1(@babel/traverse@7.28.3)(@types/node@20.19.10)(@zkochan/js-yaml@0.0.7)(babel-plugin-macros@3.1.0)(eslint@9.33.0)(nx@22.0.0-beta.1)(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))(typescript@5.9.2)(verdaccio@6.1.6(typanion@3.14.0))
       '@nx/workspace':
-        specifier: 21.6.1-beta.3
-        version: 21.6.1-beta.3
+        specifier: 22.0.0-beta.1
+        version: 22.0.0-beta.1
       '@types/node':
         specifier: ^20.0.0
         version: 20.19.10
@@ -30,8 +30,8 @@ importers:
         specifier: ^30.0.2
         version: 30.0.5(@types/node@20.19.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))
       nx:
-        specifier: 21.6.1-beta.3
-        version: 21.6.1-beta.3
+        specifier: 22.0.0-beta.1
+        version: 22.0.0-beta.1
       tslib:
         specifier: ^2.3.0
         version: 2.8.1
@@ -46,7 +46,7 @@ importers:
     dependencies:
       '@nx/devkit':
         specifier: ^21.4.0
-        version: 21.4.0(nx@21.6.1-beta.3)
+        version: 21.4.0(nx@22.0.0-beta.1)
       tslib:
         specifier: ^2.3.0
         version: 2.8.1
@@ -993,13 +993,13 @@ packages:
     peerDependencies:
       nx: 21.4.0
 
-  '@nx/devkit@21.6.1-beta.3':
-    resolution: {integrity: sha512-lQSqlyyML6j1miAf+Nqw26TdOUJBK+5Cm9Pzjvz8W9ELOl1fnwmGUmHmN/50P3VyDVbVvZGP52mxE2WQFkkF6w==}
+  '@nx/devkit@22.0.0-beta.1':
+    resolution: {integrity: sha512-tKtxvJ4CWzqqfPhJ9gGdEN2J/DDPlfQqvwmq7PHtah8RlWtCxCQM0uIgrzppgVIxzCJmML5I5K2Yx8Hnkrdkxg==}
     peerDependencies:
-      nx: '>= 20 <= 22'
+      nx: '>= 21 <= 23'
 
-  '@nx/eslint@21.6.1-beta.3':
-    resolution: {integrity: sha512-lzV6B8a2vK0rap0sfxHOrPJxzfYx2UKREw0XiLhAfcqjvfa0ambx59UerX/3cmxepM4S2nsfIA6rAVKLvbIOFw==}
+  '@nx/eslint@22.0.0-beta.1':
+    resolution: {integrity: sha512-jFCb4rqivqywK1s118ygh8q0eUmpWVRhv/FvijnGMNcfEmBh4SCJUDrt7G3PCk/2++/qSudw6CBeq8h8R6Ejow==}
     peerDependencies:
       '@zkochan/js-yaml': 0.0.7
       eslint: ^8.0.0 || ^9.0.0
@@ -1007,72 +1007,72 @@ packages:
       '@zkochan/js-yaml':
         optional: true
 
-  '@nx/jest@21.6.1-beta.3':
-    resolution: {integrity: sha512-vyMZwGrLcIFGSlC2IDw4uO+lrrvivOHVzNXGVPoNQ+yzFGXeIdw8PXqjRa5mqzC+UClnIT74/A25deK7ysSfbg==}
+  '@nx/jest@22.0.0-beta.1':
+    resolution: {integrity: sha512-YZVUieQXq5x1gWJR/nOzNiH52VckeLsDha2AsX77tvCEOmD0T2/IH9jawnFsuQm2Z9WmorfTZWdalQPVznBMUQ==}
 
-  '@nx/js@21.6.1-beta.3':
-    resolution: {integrity: sha512-6Mpen+EzIY8Xs86PaZZyJjRISiD9ddlEQsNUZEtCVF9+o8D0z7VCKYbjhlwZKH4GPeA0tnLFO/y9wASTLWXJow==}
+  '@nx/js@22.0.0-beta.1':
+    resolution: {integrity: sha512-roUUedHBvvOFm2BLS1Joi8OGuaJVttj8HAN5ZOYHmoZSt28NQ5DUCLiTwTk0+iMizFU5gDfZ5Cv+8PThM0SNag==}
     peerDependencies:
       verdaccio: ^6.0.5
     peerDependenciesMeta:
       verdaccio:
         optional: true
 
-  '@nx/nx-darwin-arm64@21.6.1-beta.3':
-    resolution: {integrity: sha512-GkYVY4rYu843uBosS5HNhC9erazYLdP8k8T8Mg+o+fmXmx9aN9fDny8HXsg5xYaoTxGInGEtTXd+I2QuT0US0Q==}
+  '@nx/nx-darwin-arm64@21.6.2':
+    resolution: {integrity: sha512-Iwf7gxWMeDdrNqXYkVOib6PlDYwLw51+nMiFm1UW5nKxbQyVYHp7lhQNHsZrQ7Oqo84m9swWgzE7bhs21HkbYQ==}
     cpu: [arm64]
     os: [darwin]
 
-  '@nx/nx-darwin-x64@21.6.1-beta.3':
-    resolution: {integrity: sha512-6BxCOQAO/UWj38NEokPCjE5a1/R2usjMoYdwsgn0/l6CL7Q3by3uASXtzg0+Tu1jXdAVEuKbiYuZ/oH/O1e7Gw==}
+  '@nx/nx-darwin-x64@21.6.2':
+    resolution: {integrity: sha512-A+q5AULxNEk15ol8ELmnOIUQuwBV5n9vK/vpzpfmTQqsMAUC6ksdBOI8N7I6+YVWLV0vUHWoRp9iH7I2IecERQ==}
     cpu: [x64]
     os: [darwin]
 
-  '@nx/nx-freebsd-x64@21.6.1-beta.3':
-    resolution: {integrity: sha512-QwEJUsCAehDl6TRjGsm59xF8UCvAXzJZWvdAW7Y3lg5V6IB8R+NnDduNVLV4WsBkA4+7sCAaPPdrS+v403nwZg==}
+  '@nx/nx-freebsd-x64@21.6.2':
+    resolution: {integrity: sha512-Hw6eOsdtD21j/B514eRJzgX03ew8ErFCfxWtjLwl7wB31Dw4nZbScj2FNDTc0xtg6oXCkw5Gt5uFKI5QFQUVfg==}
     cpu: [x64]
     os: [freebsd]
 
-  '@nx/nx-linux-arm-gnueabihf@21.6.1-beta.3':
-    resolution: {integrity: sha512-lDDCKGIz1imXYn0za1mvx6v+CO63hVc3owmQE1KcOts6lx7QSVlyqIEd0PN9JnLXkwcVjtYyK/Xsf0SDCBaW4Q==}
+  '@nx/nx-linux-arm-gnueabihf@21.6.2':
+    resolution: {integrity: sha512-fzFyOioyO0G+NqThTwqn6YRcVZOHdsdN7M/lGSgjgfOChNuf3A0eTQzy2jh/8j868YpKV/esPlBphq3CGXWPmg==}
     cpu: [arm]
     os: [linux]
 
-  '@nx/nx-linux-arm64-gnu@21.6.1-beta.3':
-    resolution: {integrity: sha512-zs1iJrT/WsdRBcHLXM5aYGuwkB73KAGBxChaYaUb7Hy5jDrStAHXcwzhB7RluGNrlen0etuWrxETz0wh0j9PcQ==}
+  '@nx/nx-linux-arm64-gnu@21.6.2':
+    resolution: {integrity: sha512-daRHdZzJWtzuEkrN+jDKdN59K2nPsXIHbWZq/4bIxvz/hszRX4hQZcrpVgtr0YV6jHY+/gKZCJsKnr2yYdaF3w==}
     cpu: [arm64]
     os: [linux]
 
-  '@nx/nx-linux-arm64-musl@21.6.1-beta.3':
-    resolution: {integrity: sha512-9EMHgoAnSqGlClV/tDyl1mJc1cEixGaSxqB92h2Pj0huKh1xKYHet4mWOG63bORWBb7a2E/mQeyzEq3lTIOSPA==}
+  '@nx/nx-linux-arm64-musl@21.6.2':
+    resolution: {integrity: sha512-pB67mhywxV+WrVCiYV/+DgK2lfen3dv8PPgmBN/7qHQUgHqTJSLw7f9upiLlApuVN20qyCaktNT6Nq41Q88NCg==}
     cpu: [arm64]
     os: [linux]
 
-  '@nx/nx-linux-x64-gnu@21.6.1-beta.3':
-    resolution: {integrity: sha512-J7wMuVzq6i4HgZiJqPnbfC8Ah2DpAE1Xn/YxG9KFjawKdf0eC4A2u522xRhl4j4X0r3YII9rJMg+EUg+imn0aQ==}
+  '@nx/nx-linux-x64-gnu@21.6.2':
+    resolution: {integrity: sha512-pavN0n/VdQP2qKxdjdL8lt0fJWK5N3AvH3veSM5UROZ06HZVURcqEt3T74vLUGRiRnIPbFO/YEJGt2cO2THwXg==}
     cpu: [x64]
     os: [linux]
 
-  '@nx/nx-linux-x64-musl@21.6.1-beta.3':
-    resolution: {integrity: sha512-mbj/XJdVt6sLXMJkq2Tosd2dkhK8y73Hfcq/5W7rX/W2Imr2atd/D+fLs9A/6bT8bqlPWlOjrtQlTsNw7GUAhg==}
+  '@nx/nx-linux-x64-musl@21.6.2':
+    resolution: {integrity: sha512-nEEkb3fBuqL18q6q7oqC1PpRiP8LMCmLf7UkGl6owDzCPy48K36Nept2YjHzABdUN2Wv5kojCWjNpGqhnTZSiw==}
     cpu: [x64]
     os: [linux]
 
-  '@nx/nx-win32-arm64-msvc@21.6.1-beta.3':
-    resolution: {integrity: sha512-WauFavtm1XufxeMpEEHk+ocfLLKzuQGoMzaCzF9HsMWFMYvK9ZToShdJRhBILjsuTEbgFxfPmqKyjxd5ui39+g==}
+  '@nx/nx-win32-arm64-msvc@21.6.2':
+    resolution: {integrity: sha512-FnVZbMHN4PeaNdyPDNKyUWCK1+XKBi3A15jb0VdiJHTv+6jzNxBfPZfsI6RkAjSag3TeVC/Lgz0asWTW3LDyXA==}
     cpu: [arm64]
     os: [win32]
 
-  '@nx/nx-win32-x64-msvc@21.6.1-beta.3':
-    resolution: {integrity: sha512-NKiSfbMH2qe5pOvzvRwibKZ+5xZoRwWsKmok3x7gz+cSYnFh9PwHRv3/xwqN42trq1yT06/egHCMwy1hw6CQ8Q==}
+  '@nx/nx-win32-x64-msvc@21.6.2':
+    resolution: {integrity: sha512-7xzDBz7TgaCfAxFa1Z1V+1YXNiCBHSUzLOeWAQYZ1McBltuxjEddK4w4FcHMVvjs7NUUTja+5fDxE42rUp9IQw==}
     cpu: [x64]
     os: [win32]
 
-  '@nx/plugin@21.6.1-beta.3':
-    resolution: {integrity: sha512-QZXGqRDBkYlR8S6yEuLfGMg3j6/uEhbhT2fJTSvX+LgTjbRcJ+oXBNqC6OWhjMD8bq/R88blXEa9AT9Al6WxOQ==}
+  '@nx/plugin@22.0.0-beta.1':
+    resolution: {integrity: sha512-pIKpHbdp+5LdemmFlpQa11fdQSkKhHN75UkZFUb7CbbBW5bOO1GJuTx+kwNyUK0QpeNdJzXS9+zrvgsqe9Y1dA==}
 
-  '@nx/workspace@21.6.1-beta.3':
-    resolution: {integrity: sha512-yAAbDZLTmBGWZHQMeD7WHa985Nyx5Kbhxad7sjMpAVpRf4FBXs67XWxttQg0IKOvCGKNmdWM5rlse9Mf0wmIzg==}
+  '@nx/workspace@22.0.0-beta.1':
+    resolution: {integrity: sha512-AGdnmxQzQImlQj4sPjpAaqW8mpEf2EMkRwhFDqBc0/blTGxnh18h2RfoLPJjRj+2dRC9/cLS/tVrSlPXYAjlVg==}
 
   '@phenomnomnominal/tsquery@5.0.1':
     resolution: {integrity: sha512-3nVv+e2FQwsW8Aw6qTU6f+1rfcJ3hrcnvH/mu9i8YhxO+9sqbOfpL8m6PbET5+xKOlz/VSbp0RoYWYCtIsnmuA==}
@@ -2291,6 +2291,10 @@ packages:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
     engines: {node: '>= 4'}
 
+  ignore@7.0.5:
+    resolution: {integrity: sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg==}
+    engines: {node: '>= 4'}
+
   import-fresh@3.3.1:
     resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
     engines: {node: '>=6'}
@@ -2980,8 +2984,8 @@ packages:
     resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
     engines: {node: '>=8'}
 
-  nx@21.6.1-beta.3:
-    resolution: {integrity: sha512-qvCtT3HqFcOWtsuddMyFlGyP0FePyB2m8UsEPEqtyyAi6rbS5bvizWR69EYgxHvltPDrDTVJdKhNO1+w5joP8g==}
+  nx@22.0.0-beta.1:
+    resolution: {integrity: sha512-++NRBSdvvLrQOntvzFPuBmc3DSYRCoWRsLwtoejNsFAZLWZI1xKcxCQ3xYlxXlnWv5A87K8+x0EXHqXLtBjJ3w==}
     hasBin: true
     peerDependencies:
       '@swc-node/register': ^1.8.0
@@ -5104,33 +5108,32 @@ snapshots:
       '@emnapi/runtime': 1.4.5
       '@tybys/wasm-util': 0.9.0
 
-  '@nx/devkit@21.4.0(nx@21.6.1-beta.3)':
+  '@nx/devkit@21.4.0(nx@22.0.0-beta.1)':
     dependencies:
       ejs: 3.1.10
       enquirer: 2.3.6
       ignore: 5.3.2
       minimatch: 9.0.3
-      nx: 21.6.1-beta.3
+      nx: 22.0.0-beta.1
       semver: 7.7.2
       tmp: 0.2.5
       tslib: 2.8.1
       yargs-parser: 21.1.1
 
-  '@nx/devkit@21.6.1-beta.3(nx@21.6.1-beta.3)':
+  '@nx/devkit@22.0.0-beta.1(nx@22.0.0-beta.1)':
     dependencies:
       ejs: 3.1.10
       enquirer: 2.3.6
-      ignore: 5.3.2
       minimatch: 9.0.3
-      nx: 21.6.1-beta.3
+      nx: 22.0.0-beta.1
       semver: 7.7.2
       tslib: 2.8.1
       yargs-parser: 21.1.1
 
-  '@nx/eslint@21.6.1-beta.3(@babel/traverse@7.28.3)(@zkochan/js-yaml@0.0.7)(eslint@9.33.0)(nx@21.6.1-beta.3)(verdaccio@6.1.6(typanion@3.14.0))':
+  '@nx/eslint@22.0.0-beta.1(@babel/traverse@7.28.3)(@zkochan/js-yaml@0.0.7)(eslint@9.33.0)(nx@22.0.0-beta.1)(verdaccio@6.1.6(typanion@3.14.0))':
     dependencies:
-      '@nx/devkit': 21.6.1-beta.3(nx@21.6.1-beta.3)
-      '@nx/js': 21.6.1-beta.3(@babel/traverse@7.28.3)(nx@21.6.1-beta.3)(verdaccio@6.1.6(typanion@3.14.0))
+      '@nx/devkit': 22.0.0-beta.1(nx@22.0.0-beta.1)
+      '@nx/js': 22.0.0-beta.1(@babel/traverse@7.28.3)(nx@22.0.0-beta.1)(verdaccio@6.1.6(typanion@3.14.0))
       eslint: 9.33.0
       semver: 7.7.2
       tslib: 2.8.1
@@ -5146,12 +5149,12 @@ snapshots:
       - supports-color
       - verdaccio
 
-  '@nx/jest@21.6.1-beta.3(@babel/traverse@7.28.3)(@types/node@20.19.10)(babel-plugin-macros@3.1.0)(nx@21.6.1-beta.3)(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))(typescript@5.9.2)(verdaccio@6.1.6(typanion@3.14.0))':
+  '@nx/jest@22.0.0-beta.1(@babel/traverse@7.28.3)(@types/node@20.19.10)(babel-plugin-macros@3.1.0)(nx@22.0.0-beta.1)(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))(typescript@5.9.2)(verdaccio@6.1.6(typanion@3.14.0))':
     dependencies:
       '@jest/reporters': 30.0.5
       '@jest/test-result': 30.0.5
-      '@nx/devkit': 21.6.1-beta.3(nx@21.6.1-beta.3)
-      '@nx/js': 21.6.1-beta.3(@babel/traverse@7.28.3)(nx@21.6.1-beta.3)(verdaccio@6.1.6(typanion@3.14.0))
+      '@nx/devkit': 22.0.0-beta.1(nx@22.0.0-beta.1)
+      '@nx/js': 22.0.0-beta.1(@babel/traverse@7.28.3)(nx@22.0.0-beta.1)(verdaccio@6.1.6(typanion@3.14.0))
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.9.2)
       identity-obj-proxy: 3.0.0
       jest-config: 30.0.5(@types/node@20.19.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))
@@ -5178,7 +5181,7 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nx/js@21.6.1-beta.3(@babel/traverse@7.28.3)(nx@21.6.1-beta.3)(verdaccio@6.1.6(typanion@3.14.0))':
+  '@nx/js@22.0.0-beta.1(@babel/traverse@7.28.3)(nx@22.0.0-beta.1)(verdaccio@6.1.6(typanion@3.14.0))':
     dependencies:
       '@babel/core': 7.28.3
       '@babel/plugin-proposal-decorators': 7.28.0(@babel/core@7.28.3)
@@ -5187,8 +5190,8 @@ snapshots:
       '@babel/preset-env': 7.28.3(@babel/core@7.28.3)
       '@babel/preset-typescript': 7.27.1(@babel/core@7.28.3)
       '@babel/runtime': 7.28.3
-      '@nx/devkit': 21.6.1-beta.3(nx@21.6.1-beta.3)
-      '@nx/workspace': 21.6.1-beta.3
+      '@nx/devkit': 22.0.0-beta.1(nx@22.0.0-beta.1)
+      '@nx/workspace': 22.0.0-beta.1
       '@zkochan/js-yaml': 0.0.7
       babel-plugin-const-enum: 1.2.0(@babel/core@7.28.3)
       babel-plugin-macros: 3.1.0
@@ -5219,42 +5222,42 @@ snapshots:
       - nx
       - supports-color
 
-  '@nx/nx-darwin-arm64@21.6.1-beta.3':
+  '@nx/nx-darwin-arm64@21.6.2':
     optional: true
 
-  '@nx/nx-darwin-x64@21.6.1-beta.3':
+  '@nx/nx-darwin-x64@21.6.2':
     optional: true
 
-  '@nx/nx-freebsd-x64@21.6.1-beta.3':
+  '@nx/nx-freebsd-x64@21.6.2':
     optional: true
 
-  '@nx/nx-linux-arm-gnueabihf@21.6.1-beta.3':
+  '@nx/nx-linux-arm-gnueabihf@21.6.2':
     optional: true
 
-  '@nx/nx-linux-arm64-gnu@21.6.1-beta.3':
+  '@nx/nx-linux-arm64-gnu@21.6.2':
     optional: true
 
-  '@nx/nx-linux-arm64-musl@21.6.1-beta.3':
+  '@nx/nx-linux-arm64-musl@21.6.2':
     optional: true
 
-  '@nx/nx-linux-x64-gnu@21.6.1-beta.3':
+  '@nx/nx-linux-x64-gnu@21.6.2':
     optional: true
 
-  '@nx/nx-linux-x64-musl@21.6.1-beta.3':
+  '@nx/nx-linux-x64-musl@21.6.2':
     optional: true
 
-  '@nx/nx-win32-arm64-msvc@21.6.1-beta.3':
+  '@nx/nx-win32-arm64-msvc@21.6.2':
     optional: true
 
-  '@nx/nx-win32-x64-msvc@21.6.1-beta.3':
+  '@nx/nx-win32-x64-msvc@21.6.2':
     optional: true
 
-  '@nx/plugin@21.6.1-beta.3(@babel/traverse@7.28.3)(@types/node@20.19.10)(@zkochan/js-yaml@0.0.7)(babel-plugin-macros@3.1.0)(eslint@9.33.0)(nx@21.6.1-beta.3)(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))(typescript@5.9.2)(verdaccio@6.1.6(typanion@3.14.0))':
+  '@nx/plugin@22.0.0-beta.1(@babel/traverse@7.28.3)(@types/node@20.19.10)(@zkochan/js-yaml@0.0.7)(babel-plugin-macros@3.1.0)(eslint@9.33.0)(nx@22.0.0-beta.1)(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))(typescript@5.9.2)(verdaccio@6.1.6(typanion@3.14.0))':
     dependencies:
-      '@nx/devkit': 21.6.1-beta.3(nx@21.6.1-beta.3)
-      '@nx/eslint': 21.6.1-beta.3(@babel/traverse@7.28.3)(@zkochan/js-yaml@0.0.7)(eslint@9.33.0)(nx@21.6.1-beta.3)(verdaccio@6.1.6(typanion@3.14.0))
-      '@nx/jest': 21.6.1-beta.3(@babel/traverse@7.28.3)(@types/node@20.19.10)(babel-plugin-macros@3.1.0)(nx@21.6.1-beta.3)(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))(typescript@5.9.2)(verdaccio@6.1.6(typanion@3.14.0))
-      '@nx/js': 21.6.1-beta.3(@babel/traverse@7.28.3)(nx@21.6.1-beta.3)(verdaccio@6.1.6(typanion@3.14.0))
+      '@nx/devkit': 22.0.0-beta.1(nx@22.0.0-beta.1)
+      '@nx/eslint': 22.0.0-beta.1(@babel/traverse@7.28.3)(@zkochan/js-yaml@0.0.7)(eslint@9.33.0)(nx@22.0.0-beta.1)(verdaccio@6.1.6(typanion@3.14.0))
+      '@nx/jest': 22.0.0-beta.1(@babel/traverse@7.28.3)(@types/node@20.19.10)(babel-plugin-macros@3.1.0)(nx@22.0.0-beta.1)(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))(typescript@5.9.2)(verdaccio@6.1.6(typanion@3.14.0))
+      '@nx/js': 22.0.0-beta.1(@babel/traverse@7.28.3)(nx@22.0.0-beta.1)(verdaccio@6.1.6(typanion@3.14.0))
       tslib: 2.8.1
     transitivePeerDependencies:
       - '@babel/traverse'
@@ -5273,13 +5276,13 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nx/workspace@21.6.1-beta.3':
+  '@nx/workspace@22.0.0-beta.1':
     dependencies:
-      '@nx/devkit': 21.6.1-beta.3(nx@21.6.1-beta.3)
+      '@nx/devkit': 22.0.0-beta.1(nx@22.0.0-beta.1)
       '@zkochan/js-yaml': 0.0.7
       chalk: 4.1.2
       enquirer: 2.3.6
-      nx: 21.6.1-beta.3
+      nx: 22.0.0-beta.1
       picomatch: 4.0.2
       semver: 7.7.2
       tslib: 2.8.1
@@ -6621,6 +6624,8 @@ snapshots:
 
   ignore@5.3.2: {}
 
+  ignore@7.0.5: {}
+
   import-fresh@3.3.1:
     dependencies:
       parent-module: 1.0.1
@@ -7624,7 +7629,7 @@ snapshots:
     dependencies:
       path-key: 3.1.1
 
-  nx@21.6.1-beta.3:
+  nx@22.0.0-beta.1:
     dependencies:
       '@napi-rs/wasm-runtime': 0.2.4
       '@yarnpkg/lockfile': 1.1.0
@@ -7641,7 +7646,7 @@ snapshots:
       figures: 3.2.0
       flat: 5.0.2
       front-matter: 4.0.2
-      ignore: 5.3.2
+      ignore: 7.0.5
       jest-diff: 30.0.5
       jsonc-parser: 3.2.0
       lines-and-columns: 2.0.3
@@ -7662,16 +7667,16 @@ snapshots:
       yargs: 17.7.2
       yargs-parser: 21.1.1
     optionalDependencies:
-      '@nx/nx-darwin-arm64': 21.6.1-beta.3
-      '@nx/nx-darwin-x64': 21.6.1-beta.3
-      '@nx/nx-freebsd-x64': 21.6.1-beta.3
-      '@nx/nx-linux-arm-gnueabihf': 21.6.1-beta.3
-      '@nx/nx-linux-arm64-gnu': 21.6.1-beta.3
-      '@nx/nx-linux-arm64-musl': 21.6.1-beta.3
-      '@nx/nx-linux-x64-gnu': 21.6.1-beta.3
-      '@nx/nx-linux-x64-musl': 21.6.1-beta.3
-      '@nx/nx-win32-arm64-msvc': 21.6.1-beta.3
-      '@nx/nx-win32-x64-msvc': 21.6.1-beta.3
+      '@nx/nx-darwin-arm64': 21.6.2
+      '@nx/nx-darwin-x64': 21.6.2
+      '@nx/nx-freebsd-x64': 21.6.2
+      '@nx/nx-linux-arm-gnueabihf': 21.6.2
+      '@nx/nx-linux-arm64-gnu': 21.6.2
+      '@nx/nx-linux-arm64-musl': 21.6.2
+      '@nx/nx-linux-x64-gnu': 21.6.2
+      '@nx/nx-linux-x64-musl': 21.6.2
+      '@nx/nx-win32-arm64-msvc': 21.6.2
+      '@nx/nx-win32-x64-msvc': 21.6.2
     transitivePeerDependencies:
       - debug
 
