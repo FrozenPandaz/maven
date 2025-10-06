@@ -53,29 +53,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4
         with:
-          node-version: '20'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4
+          node-version: '24'
 
       - name: Start CI run
-        run: npx nx-cloud start-ci-run --distribute-on="./.nx/workflows/dynamic-changesets.yaml" --stop-agents-after="verify-ci"
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build Maven analyzer plugin
-        run: ./mvnw clean install -am -pl packages/maven/analyzer-plugin -DskipTests
-
-      - name: Build Nx Maven plugin
-        run: pnpm build:plugin
-
-      - name: Verify plugin build
-        run: |
-          echo "Checking packages/maven directory:"
-          ls -la packages/maven/
-          echo "Checking if dist directory exists:"
-          ls -la packages/maven/dist/ || echo "dist directory does not exist"
+        run: ./nx start-ci-run --distribute-on="./.nx/workflows/dynamic-changesets.yaml" --stop-agents-after="verify-ci"
 
 #      - name: Prepare Mimir
 #        shell: bash
@@ -95,7 +76,7 @@ jobs:
 
       - name: Build Maven distributions
         shell: bash
-        run: npx nx run-many -t verify-ci
+        run: ./nx run-many -t verify-ci
 
       - name: List contents of target directory
         shell: bash
@@ -135,22 +116,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4
         with:
-          node-version: '20'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4
+          node-version: '24'
 
       - name: Start CI run
-        run: npx nx-cloud start-ci-run --distribute-on="./.nx/workflows/dynamic-changesets.yaml" --stop-agents-after="verify-ci"
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build Maven analyzer plugin
-        run: cd packages/maven/analyzer-plugin && mvn clean install -DskipTests
-
-      - name: Build Nx Maven plugin
-        run: pnpm build:plugin
+        run: ./nx start-ci-run --distribute-on="./.nx/workflows/dynamic-changesets.yaml" --stop-agents-after="verify-ci"
 
 #      - name: Prepare Mimir
 #        shell: bash
@@ -198,11 +167,11 @@ jobs:
 
       - name: Build with downloaded Maven
         shell: bash
-        run: npx nx run-many -t verify-ci
+        run: ./nx run-many -t verify-ci
 
       - name: Build site with downloaded Maven
         shell: bash
-        run: npx nx run-many -t site --verbose
+        run: ./nx run-many -t site --verbose
 
       - name: Upload test artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -234,22 +203,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4
         with:
-          node-version: '20'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4
+          node-version: '24'
 
       - name: Start CI run
-        run: npx nx-cloud start-ci-run --distribute-on="./.nx/workflows/dynamic-changesets.yaml" --stop-agents-after="verify-ci"
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build Maven analyzer plugin
-        run: cd packages/maven/analyzer-plugin && mvn clean install -DskipTests
-
-      - name: Build Nx Maven plugin
-        run: pnpm build:plugin
+        run: ./nx start-ci-run --distribute-on="./.nx/workflows/dynamic-changesets.yaml" --stop-agents-after="verify-ci"
 
 #      - name: Prepare Mimir
 #        shell: bash
@@ -297,7 +254,7 @@ jobs:
 
       - name: Build Maven and ITs and run them
         shell: bash
-        run: npx nx run-many -t verify-ci -Prun-its
+        run: ./nx run-many -t verify-ci -Prun-its
 
       - name: Upload test artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

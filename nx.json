@@ -1,0 +1,16 @@
+{
+  "installation": {
+    "version": "0.0.0-pr-32947-aa25f06",
+    "plugins": {
+      "@nx/maven": "0.0.0-pr-32947-aa25f06"
+    }
+  },
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "defaultBase": "master",
+  "nxCloudUrl": "https://staging.nx.app",
+  "nxCloudId": "68c341e4323d6703b5457365",
+  "bust": 1,
+  "plugins": [
+    "@nx/maven"
+  ]
+}
