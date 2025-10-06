@@ -844,6 +844,10 @@ under the License.
                 <exclude>.asf.yaml</exclude>
                 <exclude>.mvn/**</exclude>
                 <exclude>.jbang/**</exclude>
+                <exclude>.nx/workflows/**</exclude>
+                <exclude>.nx/nxw.js</exclude>
+                <exclude>nx.bat</exclude>
+                <exclude>nx</exclude>
                 <!--
                   ! Excluded the license files itself cause they do not have have a license of themselves.
                 -->
