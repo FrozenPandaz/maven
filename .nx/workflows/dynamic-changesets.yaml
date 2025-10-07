@@ -1,5 +1,5 @@
 distribute-on:
-  default: 4 linux-large
+  default: 2 linux-large
 assignment-rules:
   - targets:
       - '*'
