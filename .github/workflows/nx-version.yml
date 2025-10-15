@@ -34,6 +34,8 @@ permissions: {}
 jobs:
   initial-build:
     runs-on: ubuntu-latest
+    env:
+      NX_CI_EXECUTION_ENV: 'initial-build'
     steps:
       - name: Set up JDK
         uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4
@@ -98,6 +100,8 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         java: ['21']
+    env:
+      NX_CI_EXECUTION_ENV: 'full-build'
     steps:
       - name: Set up JDK ${{ matrix.java }}
         uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4
@@ -188,6 +192,8 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         java: ['21']
+    env:
+      NX_CI_EXECUTION_ENV: 'interaction-tests'
     steps:
       - name: Set up JDK ${{ matrix.java }}
         uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4
