@@ -30,9 +30,6 @@ concurrency:
 # clear all permissions for GITHUB_TOKEN
 permissions: {}
 
-env:
-  NX_CLOUD_USE_TASK_SETS: true
-
 jobs:
   initial-build:
     runs-on: ubuntu-latest
