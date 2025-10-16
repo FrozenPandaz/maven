@@ -16,16 +16,8 @@
         </pluginRepository>
       </pluginRepositories>
     </profile>
-    <profile>
-      <id>logging</id>
-      <properties>
-        <maven.logger.showDateTime>true</maven.logger.showDateTime>
-        <maven.logger.dateTimeFormat>yyyy-MM-dd HH:mm:ss.SSSSSSSSS</maven.logger.dateTimeFormat>
-      </properties>
-    </profile>
   </profiles>
   <activeProfiles>
     <activeProfile>snapshots</activeProfile>
-    <activeProfile>logging</activeProfile>
   </activeProfiles>
 </settings>
