@@ -123,7 +123,7 @@ jobs:
           node-version: '24'
 
       - name: Start CI run
-        run: ./nx start-ci-run --distribute-on="./.nx/workflows/dynamic-changesets.yaml" --stop-agents-after="verify-ci"
+        run: ./nx start-ci-run --distribute-on="./.nx/workflows/dynamic-changesets.yaml" --stop-agents-after="site"
 
 #      - name: Prepare Mimir
 #        shell: bash
