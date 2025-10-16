@@ -45,22 +45,6 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Prepare Mimir
-        shell: bash
-        run: |
-          mkdir -p ~/.mimir
-          cp .github/ci-extensions.xml ~/.m2/extensions.xml
-          cp .github/ci-mimir-daemon.properties ~/.mimir/daemon.properties
-
-      - name: Handle Mimir caches
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-        with:
-          path: ~/.mimir/local
-          key: mimir-${{ runner.os }}-initial-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            mimir-${{ runner.os }}-initial-
-            mimir-${{ runner.os }}-
-
       - name: Set up Maven
         shell: bash
         run: mvn --errors --batch-mode --show-version org.apache.maven.plugins:maven-wrapper-plugin:3.3.2:wrapper "-Dmaven=4.0.0-rc-3"
@@ -112,23 +96,6 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           persist-credentials: false
-
-      - name: Prepare Mimir
-        shell: bash
-        run: |
-          mkdir -p ~/.m2
-          mkdir -p ~/.mimir
-          cp .github/ci-extensions.xml ~/.m2/extensions.xml
-          cp .github/ci-mimir-daemon.properties ~/.mimir/daemon.properties
-
-      - name: Handle Mimir caches
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-        with:
-          path: ~/.mimir/local
-          key: mimir-${{ runner.os }}-full-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            mimir-${{ runner.os }}-full-
-            mimir-${{ runner.os }}-
 
       - name: Download Maven distribution
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
@@ -191,23 +158,6 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           persist-credentials: false
-
-      - name: Prepare Mimir
-        shell: bash
-        run: |
-          mkdir -p ~/.m2
-          mkdir -p ~/.mimir
-          cp .github/ci-extensions.xml ~/.m2/extensions.xml
-          cp .github/ci-mimir-daemon.properties ~/.mimir/daemon.properties
-
-      - name: Handle Mimir caches
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-        with:
-          path: ~/.mimir/local
-          key: mimir-${{ runner.os }}-its-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            mimir-${{ runner.os }}-its-
-            mimir-${{ runner.os }}-
 
       - name: Download Maven distribution
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
