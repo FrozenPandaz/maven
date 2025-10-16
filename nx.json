@@ -9,7 +9,7 @@
   "defaultBase": "master",
   "nxCloudUrl": "https://staging.nx.app",
   "nxCloudId": "68c341e4323d6703b5457365",
-  "bust": 6,
+  "bust": 7,
   "plugins": [
     "@nx/maven"
   ]
