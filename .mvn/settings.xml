@@ -2,22 +2,4 @@
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-  <profiles>
-    <profile>
-      <id>snapshots</id>
-      <pluginRepositories>
-        <pluginRepository>
-          <id>central-snapshots</id>
-          <url>https://central.sonatype.com/repository/maven-snapshots/</url>
-          <snapshots>
-            <enabled>true</enabled>
-            <updatePolicy>always</updatePolicy>
-          </snapshots>
-        </pluginRepository>
-      </pluginRepositories>
-    </profile>
-  </profiles>
-  <activeProfiles>
-    <activeProfile>snapshots</activeProfile>
-  </activeProfiles>
 </settings>
