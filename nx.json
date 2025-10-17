@@ -1,8 +1,8 @@
 {
   "installation": {
-    "version": "0.0.0-pr-32947-9a62b66",
+    "version": "0.0.0-pr-32947-099ed0e",
     "plugins": {
-      "@nx/maven": "0.0.0-pr-32947-9a62b66"
+      "@nx/maven": "0.0.0-pr-32947-099ed0e"
     }
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",

@@ -37,6 +37,20 @@ jobs:
         shell: bash
         run: mvn --errors --batch-mode --show-version org.apache.maven.plugins:maven-wrapper-plugin:3.3.2:wrapper "-Dmaven=4.0.0-rc-3"
 
+      - name: Install mvnd
+        shell: bash
+        run: |
+          mkdir -p ~/.mvnd
+          wget -q https://github.com/mvndaemon/mvnd/releases/download/0.10.1/mvnd-0.10.1-linux-amd64.tar.gz
+          tar xzf mvnd-0.10.1-linux-amd64.tar.gz -C ~/.mvnd --strip-components 1
+          echo "$HOME/.mvnd/bin" >> $GITHUB_PATH
+
+      - name: Configure mvnd
+        shell: bash
+        run: |
+          echo "MAVEN_OPTS=-Dmvnd.server.port=0" >> $GITHUB_ENV
+          echo "MVND_HOME=$HOME/.mvnd" >> $GITHUB_ENV
+
       - name: Setup Node.js
         uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4
         with:
@@ -101,6 +115,20 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           persist-credentials: false
+
+      - name: Install mvnd
+        shell: bash
+        run: |
+          mkdir -p ~/.mvnd
+          wget -q https://github.com/mvndaemon/mvnd/releases/download/0.10.1/mvnd-0.10.1-linux-amd64.tar.gz
+          tar xzf mvnd-0.10.1-linux-amd64.tar.gz -C ~/.mvnd --strip-components 1
+          echo "$HOME/.mvnd/bin" >> $GITHUB_PATH
+
+      - name: Configure mvnd
+        shell: bash
+        run: |
+          echo "MAVEN_OPTS=-Dmvnd.server.port=0" >> $GITHUB_ENV
+          echo "MVND_HOME=$HOME/.mvnd" >> $GITHUB_ENV
 
       - name: Setup Node.js
         uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4
@@ -190,6 +218,20 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           persist-credentials: false
+
+      - name: Install mvnd
+        shell: bash
+        run: |
+          mkdir -p ~/.mvnd
+          wget -q https://github.com/mvndaemon/mvnd/releases/download/0.10.1/mvnd-0.10.1-linux-amd64.tar.gz
+          tar xzf mvnd-0.10.1-linux-amd64.tar.gz -C ~/.mvnd --strip-components 1
+          echo "$HOME/.mvnd/bin" >> $GITHUB_PATH
+
+      - name: Configure mvnd
+        shell: bash
+        run: |
+          echo "MAVEN_OPTS=-Dmvnd.server.port=0" >> $GITHUB_ENV
+          echo "MVND_HOME=$HOME/.mvnd" >> $GITHUB_ENV
 
       - name: Setup Node.js
         uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4

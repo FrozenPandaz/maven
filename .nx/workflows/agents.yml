@@ -40,3 +40,16 @@ launch-templates:
           sudo apt install -y openjdk-21-jdk
           sudo update-alternatives --set java /usr/lib/jvm/java-21-openjdk-amd64/bin/java
           java -version
+
+      - name: Install mvnd
+        script: |
+          mkdir -p ~/.mvnd
+          wget -q https://github.com/mvndaemon/mvnd/releases/download/0.10.1/mvnd-0.10.1-linux-amd64.tar.gz
+          tar xzf mvnd-0.10.1-linux-amd64.tar.gz -C ~/.mvnd --strip-components 1
+          echo "$HOME/.mvnd/bin" >> $PATH
+          mvnd --version
+
+      - name: Configure mvnd
+        script: |
+          echo "export MAVEN_OPTS=-Dmvnd.server.port=0" >> ~/.bashrc
+          echo "export MVND_HOME=$HOME/.mvnd" >> ~/.bashrc
