@@ -4,6 +4,7 @@ name: Nx Java CI
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  NX_BATCH_MODE: true
 
 on:
   push:
@@ -63,7 +64,7 @@ jobs:
 
       - name: Build Maven distributions
         shell: bash
-        run: ./nx run-many -t verify-ci
+        run: ./nx run-many -t verify-ci --verbose
 
       - name: List contents of target directory
         shell: bash
@@ -170,7 +171,7 @@ jobs:
 
       - name: Build with downloaded Maven
         shell: bash
-        run: ./nx run-many -t verify-ci
+        run: ./nx run-many -t verify-ci --verbose
 
       - name: Build site with downloaded Maven
         shell: bash

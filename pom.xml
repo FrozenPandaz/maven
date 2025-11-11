@@ -800,7 +800,7 @@ under the License.
         <plugin>
           <groupId>dev.nx.maven</groupId>
           <artifactId>nx-maven-plugin</artifactId>
-          <version>0.0.6-SNAPSHOT</version>
+          <version>0.0.10-SNAPSHOT</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -848,6 +848,10 @@ under the License.
                 <exclude>.nx/nxw.js</exclude>
                 <exclude>nx.bat</exclude>
                 <exclude>nx</exclude>
+                <exclude>.local.env</exclude>
+                <exclude>a.log</exclude>
+                <exclude>mise.toml</exclude>
+                <exclude>tmp/**/*</exclude>
                 <exclude>.github/workflows/nx-version.yml</exclude>
                 <exclude>.github/workflows/nx-version-local.yml</exclude>
                 <!--
