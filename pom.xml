@@ -796,6 +796,12 @@ under the License.
             </dependency>
           </dependencies>
         </plugin>
+
+        <plugin>
+          <groupId>dev.nx.maven</groupId>
+          <artifactId>nx-maven-plugin</artifactId>
+          <version>0.0.11-SNAPSHOT</version>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -838,6 +844,16 @@ under the License.
                 <exclude>.asf.yaml</exclude>
                 <exclude>.mvn/**</exclude>
                 <exclude>.jbang/**</exclude>
+                <exclude>.nx/workflows/**</exclude>
+                <exclude>.nx/nxw.js</exclude>
+                <exclude>nx.bat</exclude>
+                <exclude>nx</exclude>
+                <exclude>.local.env</exclude>
+                <exclude>a.log</exclude>
+                <exclude>mise.toml</exclude>
+                <exclude>tmp/**/*</exclude>
+                <exclude>.github/workflows/nx-version.yml</exclude>
+                <exclude>.github/workflows/nx-version-local.yml</exclude>
                 <!--
                   ! Excluded the license files itself cause they do not have have a license of themselves.
                 -->
