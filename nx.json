@@ -8,7 +8,7 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "defaultBase": "master",
   "nxCloudUrl": "https://snapshot.nx.app",
-  "nxCloudId": "691cf5f2f38e74203c2ebf85",
+  "nxCloudId": "691cf73db2613230156c9a38",
   "bust": 11,
   "plugins": [
     "@nx/maven"
