@@ -6,6 +6,7 @@ env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
   NX_BATCH_MODE: true
   NX_VERBOSE_LOGGING: true
+  NX_CLOUD_USE_TASK_SETS: true
 
 on:
   push:
