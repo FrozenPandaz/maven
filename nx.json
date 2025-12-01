@@ -1,6 +1,6 @@
 {
   "installation": {
-    "version": "0.0.0-pr-33228-f4ef600",
+    "version": "0.0.0-pr-33440-4f75d1c",
     "plugins": {
       "@nx/maven": "0.0.0-pr-33228-f4ef600"
     }
