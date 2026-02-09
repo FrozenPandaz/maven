@@ -66,7 +66,7 @@ jobs:
 
       - name: Build Maven distributions
         shell: bash
-        run: ./nx run-many -t verify-ci --verbose --parallel 64
+        run: ./nx run-many -t verify-ci --parallel 64
 
       - name: List contents of target directory
         shell: bash
