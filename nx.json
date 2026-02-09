@@ -1,8 +1,8 @@
 {
   "installation": {
-    "version": "22.5.0-beta.4",
+    "version": "22.5.0-beta.5",
     "plugins": {
-      "@nx/maven": "22.5.0-beta.4"
+      "@nx/maven": "22.5.0-beta.5"
     }
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
