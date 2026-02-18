@@ -7,6 +7,7 @@ env:
   NX_BATCH_MODE: true
   NX_VERBOSE_LOGGING: false
   NX_CLOUD_USE_TASK_SETS: true
+  NX_CLOUD_CONTINUOUS_ASSIGNMENT: true
 
 on:
   push:
